@@ -1,0 +1,126 @@
+@import "~themes/vars";
+@font-face {
+  font-family: 'Nunito-woff';
+  src: url("/public/font/Nunito.woff2") format('woff2');
+}
+@font-face {
+  font-family: 'Nunito-Regular';
+  src: url("/public/font/NunitoSans-Regular.ttf") format('truetype');
+}
+@font-face {
+  font-family: 'Nunito-Light';
+  src: url("/public/font/NunitoSans-Light.ttf") format('truetype');
+}
+@font-face {
+  font-family: 'Nunito-Bold';
+  src: url("/public/font/NunitoSans-Bold.ttf") format('truetype');
+}
+
+body{
+  font-family: 'Nunito-Regular',sans-serif;
+  background-color: #F1F1F1;
+}
+.left{
+  width: 50%;
+  height: 100vh;
+  display: block;
+  background-image: url("/public/images/head_ill_login.svg");
+  background-position: center center;
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+.form {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 50%;
+  height:100vh;
+  background-color: #ffffff;
+  padding: 10rem 5.5rem;
+
+  button {
+    display: inline-block;
+    padding: 1.2rem 1.5rem;
+    height: auto;
+    border-radius: 35px;
+    min-width: 200px;
+    margin: 25px 0;
+    text-transform: uppercase;
+    font-size: 12px;
+    //background-color: #432F93;
+  }
+
+  p {
+    color: rgb(204, 204, 204);
+    text-align: center;
+    margin-top: 16px;
+    font-size: 12px;
+    display: flex;
+    justify-content: space-between;
+  }
+  .oms_input{
+    padding: 1.2rem 0rem;
+    height: auto;
+    border-color: #ebebeb;
+    border-radius: 6px;
+    &::placeholder{
+      font-weight: 300;
+    }
+    &:focus{
+      outline: none;
+      box-shadow: none;
+      border-color: #1890ff;
+    }
+  }
+  .title{
+    font-weight: 200;
+    font-size: 34px;
+    font-family: 'Nunito-Light',sans-serif;
+  }
+}
+
+.logo {
+  padding: 3.5rem 2.5rem;
+  text-align:left;
+  cursor: pointer;
+  margin-bottom: 24px;
+  display: block;
+  justify-content: center;
+  align-items: center;
+
+  img {
+    width: 50px;
+    margin-right: 8px;
+    animation: rotate 2s ease-in-out alternate infinite;
+    animation-delay: 2s;
+    //animation-play-state: paused;
+  }
+
+  span {
+    font-size:24px;
+    //text-transform: uppercase;
+    letter-spacing: 1.2px;
+    display: inline-block;
+    font-weight: 200;
+    color: @primary-color;
+    vertical-align: middle;
+    text-shadow: 0 0 50px rgba(80,80,80,0.5);
+
+  }
+  @keyframes rotate{
+    0%{
+      transform: rotateY(360deg);
+    }
+    50%{
+      transform: rotateY(0deg);
+    }
+    100%{
+      transform: rotateY(0deg);
+    }
+  }
+}
+
+.ant-spin-container,
+.ant-spin-nested-loading {
+  height: 100%;
+}
