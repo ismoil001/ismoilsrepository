@@ -14,6 +14,13 @@ export function editOrder (data) {
     data,
   })
 }
+export function deleteOrder (data) {
+  return request({
+    url: '/api/order/'+data.id,
+    method: 'delete',
+    data,
+  })
+}
 export function getCustomers (data) {
   return request({
     url: '/api/users/customer',

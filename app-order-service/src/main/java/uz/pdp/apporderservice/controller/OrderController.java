@@ -20,7 +20,6 @@ public class OrderController {
         return orderService.getActiveOrders(page,size,name);
     }
 
-
     @PostMapping
     public HttpEntity<?> saveOrder(@RequestBody ReqOrder reqOrder) {
         return orderService.saveOrder(reqOrder);
@@ -30,4 +29,8 @@ public class OrderController {
         return orderService.editOrder(reqOrder,id);
     }
 
+    @DeleteMapping("{id}")
+    public HttpEntity deleteOrder(@PathVariable UUID id){
+        return orderService.delete(id);
+    }
 }

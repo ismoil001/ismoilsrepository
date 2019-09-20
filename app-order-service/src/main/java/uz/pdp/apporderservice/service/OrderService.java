@@ -80,4 +80,15 @@ public class OrderService {
                 }).collect(Collectors.toList())
         )));
     }
+
+    public HttpEntity delete(UUID id) {
+        try {
+            orderRepository.deleteById(id);
+            return ResponseEntity.ok(new ApiResponse("deleted",true));
+        }catch (Exception e){
+            e.printStackTrace();
+            return ResponseEntity.ok(new ApiResponse("error",false));
+        }
+
+    }
 }

@@ -27,7 +27,7 @@ public class Order extends AbsEntity{
     private User user;
 
     @JsonBackReference
-    @OneToMany(fetch = FetchType.LAZY,mappedBy = "order")
+    @OneToMany(fetch = FetchType.LAZY,mappedBy = "order",cascade = CascadeType.ALL)
     private List<OrderPayment> orderPayments;
 
     private Timestamp orderedDate;

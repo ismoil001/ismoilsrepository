@@ -16,7 +16,7 @@ import {
   Dropdown,
   Menu,
   Icon,
-  Pagination, Card
+  Pagination, Card, Popconfirm
 } from "antd";
 import './index.less'
 @connect(({dashboard}) => ({dashboard}))
@@ -80,6 +80,11 @@ class Index extends PureComponent {
         key:'company',
       },
       {
+        title:'User',
+        dataIndex:'userFullName',
+        key:'user',
+      },
+      {
         title:'Count',
         dataIndex:'count',
         key:'count'
@@ -109,7 +114,9 @@ class Index extends PureComponent {
         render:(text,record)=>
           <div>
             <Button onClick={()=>onClickMenu(1,record)}>edit</Button>
-            <Button onClick={()=>onClickMenu(2,record)}>delete</Button>
+            <Popconfirm placement="topLeft" title="Tasdiqlash" onConfirm={()=>onClickMenu(2,record)} okText="Yes" cancelText="No">
+              <Button>delete</Button>
+            </Popconfirm>
             <Button onClick={()=>onClickMenu(3,record)}>addpayment</Button>
           </div>
 
@@ -129,7 +136,8 @@ class Index extends PureComponent {
       }
       if(key===2){
         dispatch({
-          type:'dashboard/deleteOrder'
+          type:'dashboard/deleteOrder',
+          payload:item.id
         })
       }
       if(key===3){
@@ -182,7 +190,7 @@ class Index extends PureComponent {
         <Card>
        <Row>
          <Col span={6} offset={2}>
-           <Input onClick={handleSearch}/>
+           <Input onChange={handleSearch}/>
          </Col>
          <Col span={2}>
            <Button onClick={searchButton}>Search</Button>

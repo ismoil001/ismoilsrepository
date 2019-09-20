@@ -1,4 +1,4 @@
-import {saveOrder,getCustomers,getActiveOrders,editOrder} from './service'
+import {saveOrder,getCustomers,getActiveOrders,editOrder,deleteOrder} from './service'
 import {notification} from "antd";
 export default {
   namespace: 'dashboard',
@@ -37,6 +37,22 @@ export default {
 
   effects: {
 
+    *deleteOrder({payload},{call,put,select}){
+      const data = yield call(deleteOrder,{id:payload})
+      if(data.success){
+        notification['success']({
+          message:'deleted'
+        })
+        yield put({
+          type:'getOrders',
+          payload:{
+            page:0,
+            size:10,
+            name:''
+          }
+        })
+      }
+    },
     * saveOrder({payload}, {call, put, select}) {
       payload.orderedDate = new Date(payload.orderedDate).getTime()
       const data = yield call(saveOrder,payload);
