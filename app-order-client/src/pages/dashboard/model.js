@@ -1,4 +1,4 @@
-import {saveOrder,getCustomers,getActiveOrders,editOrder,deleteOrder} from './service'
+import {saveOrder,getCustomers,getActiveOrders,editOrder,deleteOrder,saveOrderPayment} from './service'
 import {notification} from "antd";
 export default {
   namespace: 'dashboard',
@@ -9,6 +9,7 @@ export default {
     customerList:[],
     orderLists:[],
     searchValue:'',
+    paymentModalVisible:false,
     page:0,
     totalElements:0,
   },
@@ -36,6 +37,9 @@ export default {
   },
 
   effects: {
+    *saveOrderPayment({payload},{call,put,select}){
+      const data = yield call(saveOrderPayment,payload)
+    },
 
     *deleteOrder({payload},{call,put,select}){
       const data = yield call(deleteOrder,{id:payload})

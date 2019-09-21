@@ -26,6 +26,18 @@ public class UserController {
     @Autowired
     RoleRepository roleRepository;
 
+    @GetMapping("search")
+    public HttpEntity<?> searchUsers(@RequestParam String name){
+           try {
+               return ResponseEntity.ok(new ApiResponseData(true,"success",userRepository.searchCustomers(name)));
+           }catch (Exception e){
+               e.printStackTrace();
+               return ResponseEntity.ok(new ApiResponse("error",false));
+           }
+    }
+
+
+
     @GetMapping
     public HttpEntity<?> getUsers(){
         return ResponseEntity.ok(userRepository.findAll());

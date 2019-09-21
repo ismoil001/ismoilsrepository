@@ -21,6 +21,13 @@ export function deleteOrder (data) {
     data,
   })
 }
+export function saveOrderPayment (data) {
+  return request({
+    url: '/api/orderPayment',
+    method: 'post',
+    data,
+  })
+}
 export function getCustomers (data) {
   return request({
     url: '/api/users/customer',

@@ -18,11 +18,12 @@ import javax.persistence.ManyToOne;
 @Entity
 public class OrderPayment extends AbsEntity {
 
+    @ManyToOne(fetch = FetchType.LAZY,optional = false)
     private Payment payment;
 
     private Double amount;
 
     @JsonManagedReference
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY,optional = false)
     private Order order;
 }
