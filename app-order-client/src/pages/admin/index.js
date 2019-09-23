@@ -1,15 +1,26 @@
-import React, {Component} from 'react';
-import PropTypes from 'prop-types';
+import { Layout, Menu, Icon } from 'antd';
+import {Link} from "react-router-dom";
+import React from "react";
 
-class Index extends Component {
+const { Header, Sider, Content } = Layout;
+
+class Index extends React.Component {
+  state = {
+    collapsed: false,
+  };
+
+  toggle = () => {
+    this.setState({
+      collapsed: !this.state.collapsed,
+    });
+  };
+
   render() {
     return (
-      <div>
-        <h1>admin</h1>
-      </div>
-    );
+     <div>s</div>    );
   }
 }
+
 
 Index.propTypes = {};
 
