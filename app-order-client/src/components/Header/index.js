@@ -1,6 +1,5 @@
 import React from 'react';
 import '../../global.scss'
-import {Link, animateScroll as scroll} from "react-scroll";
 import {
   Container,
   Collapse,
@@ -21,6 +20,7 @@ export default class Header extends React.Component {
 
     this.toggle = this.toggle.bind(this);
     this.state = {
+
       isOpen: false
     };
   }
@@ -31,6 +31,7 @@ export default class Header extends React.Component {
   }
   render() {
     return (
+
       <Container>
         <Navbar  light expand="md" className="lato-bold " >
           <NavbarBrand href="/"><img src="/assets/images/logo.png" alt="salom"/></NavbarBrand>
@@ -38,37 +39,24 @@ export default class Header extends React.Component {
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
-                <Link spy={true} smooth={true} duration={1000} activeClass="active" activeClassName="selected" to="bizhaqimizda">
-                  <NavLink>Biz haqimizda</NavLink>
-                </Link>
+                <NavLink href="/" className="aboutUs">Biz haqimizda <div></div></NavLink>
               </NavItem>
               <NavItem>
-                <Link spy={true} smooth={true} duration={1500} activeClass="active" activeClassName="selected" to="xizmatlar">
-                  <NavLink>Xizmatlar</NavLink>
-                </Link>
+                <NavLink href="/">Xizmatlar
+                  <div></div></NavLink>
               </NavItem>
               <NavItem>
-                <Link spy={true} smooth={true} duration={1800} activeClass="active" activeClassName="selected" to="portfolio">
-                  <NavLink>Portfolio</NavLink>
-                </Link>
+                <NavLink href="/">Portfolio
+                  <div></div></NavLink>
               </NavItem>
               <NavItem>
-                <Link spy={true} smooth={true} duration={2000} activeClass="active" activeClassName="selected" to="mijozlar">
-                  <NavLink>Mijozlar</NavLink>
-                </Link>
+                <NavLink href="/">Mijozlar <div></div></NavLink>
               </NavItem>
               <NavItem>
-                <Link spy={true} smooth={true} duration={1000} activeClass="active" activeClassName="selected" to="jamoa">
-                  <NavLink>Jamoa</NavLink>
-                </Link>
+                <NavLink href="/">Jamoa <div></div></NavLink>
               </NavItem>
               <NavItem>
-                <Link spy={true} smooth={true} duration={2000} activeClass="active" activeClassName="selected" to="kontakt">
-                  <NavLink>Kontakt</NavLink>
-                </Link>
-              </NavItem>
-              <NavItem>
-                <NavLink href="/login">Kirish</NavLink>
+                <NavLink href="/">Kontakt <div></div></NavLink>
               </NavItem>
 
               <UncontrolledDropdown nav inNavbar>
@@ -83,10 +71,6 @@ export default class Header extends React.Component {
                   <DropdownItem>
                     RU
                   </DropdownItem>
-                  <DropdownItem>
-                    EN
-                  </DropdownItem>
-                  <DropdownItem />
                   <DropdownItem>
                     UZ
                   </DropdownItem>

@@ -188,73 +188,81 @@
   $black: #131A22;
 
   .header {
-    .rec {
+
+    .rec{
       right: 0;
     }
-
     .navbar {
 
-      padding-top: 53px;
+      padding-top: 35px;
 
-      .nav-item {
+      .navbar-brand{
+        margin-top: -15px;
+      }
+      .nav-item{
+
         font-size: 16px;
         line-height: 19px;
         padding-left: 16px;
-        padding-right: 16px;
-        border-bottom: 1px solid transparent;
-        padding-bottom: 15px;
+        padding-right:16px;
+
+        padding-bottom:15px;
+        div{
+          width: 0px;
+          margin-top: 7px;
+          bottom: 0;
+          border: 1px solid transparent;
+        }
+      }
+      .nav-item:hover{
+        div{
+          width: 100%;
+          border-color: $orange;
+          transition: width 0.5s ease-in;
+        }
       }
 
-      .nav-item:hover {
 
-        border-bottom: 1px solid $orange;
-        transition: 0.5s ease-in !important;
-
-      }
-
-      .nav-item:active {
-
-        border-bottom: 1px solid $orange;
-        transition: border-bottom-width 3s ease-in !important;;
-      }
-
-      .dropdown {
+      .dropdown{
         width: 84px;
         height: 28px;
         border: 1px solid grey;
         box-sizing: border-box;
         border-radius: 100px;
         margin-top: 6px;
-
-        .dropdown-toggle::after {
+        .dropdown-toggle::after{
           display: none;
         }
-
-        .language {
-          padding-left: 0px !important;
-          padding-top: 4px !important;
+        .language{
+          padding-left: 0px!important;
+          padding-top: 4px!important;
+          margin-left: -3px;
+          svg{
+            margin-left: 4px;
+          }
         }
-
-        .dropdown-menu {
+        .dropdown-menu{
+          padding: 0;
+          background: white;
+          height: 55px;
           box-shadow: 2px 2px 2px 2px rgba(169, 163, 142, 0.15);
-          min-width: 80px !important;
-
-          .dropdown-item {
+          min-width: 80px!important;
+          .dropdown-item{
+            margin-top: 2px;
+            margin-bottom: 2px;
             text-align: center;
-            padding: 2px 2px !important;
+            padding: 2px 2px!important;
             font-size: 16px;
             line-height: 19px;
           }
-
-          .dropdown-item:hover {
-            color: #efefef;
-            background: rgba(0, 0, 175, 0.58);
+          .dropdown-item:hover{
+            color:#efefef;
+            background: $orange;
           }
         }
       }
-
-      .dropdown:hover {
-        border-bottom: 1px solid #212529 !important;
+      .dropdown:hover{
+        border-bottom: 1px solid #212529!important;
       }
     }
 
@@ -276,7 +284,6 @@
       padding: 7px 20px !important;
       font-size: 20px;
       line-height: 24px;
-
       &:active {
         border: none;
       }
@@ -287,7 +294,7 @@
     }
 
     .phone-row {
-      padding-top: 165px;
+      padding-top: 104px;
 
       .phone-code {
         font-size: 13px;
@@ -300,6 +307,108 @@
 
     .headerimg {
       padding-top: 120px;
+    }
+
+
+    @media (max-width: 1600px) and (min-width: 1200px) {
+
+    }
+
+    @media (max-width: 1200px) and (min-width: 992px) {
+      .nav-item{
+        a{
+          width: 116px;
+
+        }
+        padding-left: 0px!important;
+        padding-right:0px!important;
+
+      }
+      .language{
+        width: 100px!important;
+        text-align: center;
+      }
+    }
+
+    @media (max-width: 992px) and (min-width: 768px) {
+      .nav-item{
+        a{
+          width: 100%;
+          //transform: translate(15px);
+          padding-left: 0px!important;
+          padding-right:0px!important;
+          margin-left:15px;
+
+        }
+
+        .aboutUs{
+          margin-right: 10px;
+        }
+        padding-left: 0px!important;
+        padding-right:0px!important;
+
+      }
+      .dropdown{
+        margin-left: 10px;
+      }
+      .language{
+        //margin-left: -5px;
+        margin-left: 7px!important;
+        svg{
+          margin-left: 2px;
+        }
+
+      }
+    }
+
+    @media (max-width: 768px) and (min-width: 576px) {
+      .order{
+        width: 80%;
+        margin-left: 10%;
+      }
+      .order-button{
+
+        margin-left: 10%;
+      }
+      .phone-row{
+        padding-top: 64px;
+        .row{
+          padding-left: 10%;
+          p{
+            display: inline-block;
+            /* margin-top: -16px; */
+            transform: translate(10px, 5px);
+          }
+        }
+      }
+    }
+
+    @media only screen and (max-width: 576px)  {
+
+      .order{
+        padding-top:50px!important;
+        width: 80%;
+        margin-left: 10%;
+        font-size: 20px;
+      }
+      .order-button{
+        width: 185px;
+        height: 40px;
+        margin-top: 26px;
+        margin-left: 10%;
+        font-size: 14px;
+      }
+      .phone-row{
+        padding-top: 64px;
+        .row{
+          padding-left: 10%;
+          p{
+            display: inline-block;
+            /* margin-top: -16px; */
+            transform: translate(10px, 5px);
+          }
+        }
+      }
     }
   }
 
@@ -1021,15 +1130,15 @@
     }
   }
 
+
   .section7 {
     margin-top: 308px;
 
-    .rec6 {
+    .rec6{
       top: -30%;
       left: 0;
       width: 18%;
     }
-
     .team_Carousel {
       .team_Title {
         font-size: 46px;
@@ -1038,65 +1147,68 @@
         text-align: center;
       }
 
-      .team_Row {
-        height: 47vh;
+
+
+
+      .team_Card {
+        margin-left:15px;
+        margin-right: 15px;
         margin-top: 146px;
         transform: translate(0, 10px);
+        height: 256px;
+        background: #FFFDF7;
+        border: none !important;
+        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.12);
+        border-radius: 4px;
+        text-align: center;
+        -webkit-transition: 0.5s ease-out;
+        -moz-transition: 0.5s ease-out;
+        -o-transition: 0.5s ease-out;
+        transition: 0.5s ease-out;
 
-        .team_Card {
-          height: 256px;
-          background: #FFFDF7;
-          border: none !important;
-          box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.12);
-          border-radius: 4px;
-          text-align: center;
+        &:hover {
+          box-shadow: 0px 40px 50px rgba(0, 0, 0, 0.1);
           -webkit-transition: 0.5s ease-out;
           -moz-transition: 0.5s ease-out;
           -o-transition: 0.5s ease-out;
           transition: 0.5s ease-out;
+        }
 
-          &:hover {
-            box-shadow: 0px 40px 50px rgba(0, 0, 0, 0.1);
-            -webkit-transition: 0.5s ease-out;
-            -moz-transition: 0.5s ease-out;
-            -o-transition: 0.5s ease-out;
-            transition: 0.5s ease-out;
-          }
+        .img_Round {
+          transform: translate(0, -85px);
+          width: 175px;
+          height: 175px;
+          background: #FFFFFF;
+          border-radius: 50%;
 
-          .img_Round {
-            transform: translate(0, -85px);
-            width: 175px;
-            height: 175px;
-            background: #FFFFFF;
-            border-radius: 50%;
-
-            .user_Img {
-              width: 150px;
-              height: 150px;
-            }
-          }
-
-          .user_Name {
-            font-size: 24px;
-            line-height: 29px;
-            color: #131A22;
-            transform: translate(0, -78px);
-          }
-
-          .user_Profession {
-            width: 164px;
-            font-size: 16px;
-            line-height: 19px;
-            color: #EC681F;
-            transform: translate(0, -78px);
+          .user_Img {
+            width: 150px;
+            height: 150px;
           }
         }
+
+        .user_Name {
+          font-size: 24px;
+          line-height: 29px;
+          color: #131A22;
+          transform: translate(0, -78px);
+        }
+
+        .user_Profession {
+          width: 164px;
+          font-size: 16px;
+          line-height: 19px;
+          color: #EC681F;
+          transform: translate(0, -78px);
+        }
       }
+
     }
   }
 
   .section8 {
     margin-top: 196px;
+    transform: translate(0,40px);
     position: relative;
 
     .rectangle {
@@ -1110,7 +1222,7 @@
 
     .mapYandex {
       width: 70%;
-      height: 569px;
+      height: 501px;
       border-radius: 50%;
 
       .ymaps-2-1-74-map ymaps, .ymaps-2-1-74-map ymaps:after, .ymaps-2-1-74-map ymaps:before {
@@ -1459,20 +1571,22 @@
 
   }
 
-
+  //=================================carusel==================//
   .CaruselContainer {
+    //transform: translate(52px, 0px);
     margin-top: 135px;
-
-    img {
+    img{
       width: 100%;
-      -webkit-touch-callout: none;
-      -webkit-user-select: none;
-      -khtml-user-select: none;
-      -moz-user-select: none;
-      -ms-user-select: none;
-      user-select: none;
+      //object-fit: cover;
+      //overflow: hidden;
+      -webkit-touch-callout: none; /* iOS Safari */
+      -webkit-user-select: none; /* Safari */
+      -khtml-user-select: none; /* Konqueror HTML */
+      -moz-user-select: none; /* Firefox */
+      -ms-user-select: none; /* Internet Explorer/Edge */
+      user-select: none; /* Non-prefixed version, currently
+    supported by Chrome and Opera */
     }
-
     .fill-white1 {
       background-color: transparent;
     }
@@ -1484,9 +1598,8 @@
     .fill-white3 {
       background-color: transparent;
     }
-
-    .homeCircles {
-
+    .homeCircles{
+      margin-left:87%;
       width: 8px;
       height: 8px;
       background: #131A22;
@@ -1495,8 +1608,12 @@
       position: absolute;
       z-index: 60;
     }
-
     .boxs {
+      //display: flex;
+      //flex-direction: row;
+      //align-items: center;
+      //justify-content: center;
+      //position: absolute;
 
       width: 100%;
       -webkit-touch-callout: none; /* iOS Safari */
@@ -1510,12 +1627,20 @@
     }
 
     .box {
+      //display: flex;
+      //
+      //transform-origin: center center;
+
+      //transition-timing-function: cubic-bezier(0.42, 0, 0.58, 1);
+      //transition-duration: 0.5s;
+
 
 
       z-index: 3;
 
 
     }
+
 
 
     .card--left {
@@ -1531,6 +1656,7 @@
       animation: fade-in 1.5s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
 
 
+
       display: inline-block;
 
       z-index: 3;
@@ -1541,8 +1667,13 @@
       display: none;
 
 
+      //transition: 0.5s ease-in ;
       z-index: 1;
     }
+
+
+
+
 
 
     .leftSet {
@@ -1616,356 +1747,85 @@
 
     }
 
-    @media (min-width: 1600px) {
-      .leftSet {
-        transform: translate(-330px, 0px);
-      }
 
-      .rightSet {
-        transform: translate(330px, 0px);
-      }
+
+  }
+  @media (min-width: 1200px) {
+    .CaruselContainer{
+
+      margin-top: 135px;
     }
+  }
 
-    @media (max-width: 1200px) and (min-width: 992px) {
+  @media (max-width: 1200px) and (min-width: 992px) {
 
-      .carouselTitle {
-        font-size: 37px;
-        line-height: 37px;
-        color: #343434;
-      }
+    .CaruselContainer{
+      margin-top: 0px;
+      width: 52%!important;
+      margin-left: 31%!important;
     }
-
-    @media (max-width: 992px) and (min-width: 768px) {
-      .box {
-        width: 440px;
-        height: 250px;
-      }
-
-      .slideUser {
-        border-radius: 50%;
-        transform: translate(150px, -360px);
-      }
-
-      .slideUserTitle {
-        width: 259px;
-        height: 24px;
-        margin-top: -345px;
-        margin-left: 80px;
-      }
-
-      .slideUserText {
-        width: 418px;
-        height: 128px;
-        font-size: 15px;
-        margin-left: -10px;
-        margin-top: -10px;
-      }
-
-      .sign1 {
-        font-size: 100px;
-        transform: translate(5px, -70px);
-      }
-
-      .sign2 {
-        font-size: 100px;
-        margin-top: -30px;
-      }
-
-      .slideUser {
-        width: 80px;
-        height: 80px;
-        background: #f3f3f3 !important;
-        border-radius: 50%;
-        transform: translate(158px, -352px);
-      }
-
-      .slideUser img {
-        width: 70px;
-        height: 70px;
-        margin-left: 5px;
-        margin-top: 5px;
-      }
-
-      .leftSet {
-        transform: translate(-200px, -10px);
-      }
-
-      .rightSet {
-        transform: translate(200px, -10px);
-      }
-
-      .carouselTitle {
-        font-size: 35px;
-        line-height: 35px;
-        color: #343434;
-      }
-
-      .card--left {
-        transform: scale(0.75) translate(-150px, 40px) perspective(750px) rotateY(0deg);
-      }
-      .card--right {
-        transform: scale(0.75) translate(150px, 40px) perspective(750px) rotateY(-0deg);
-      }
-      .homeCircles {
-        margin-top: 3%;
-      }
+    .carouselTitle {
+      font-size: 37px;
+      line-height: 37px;
+      color: #343434;
     }
-
-    @media (max-width: 768px) and (min-width: 576px) {
-      .homeCircles {
-        margin-top: 3%;
-      }
-      .box {
-        width: 440px;
-        height: 250px;
-      }
-
-      .slideUser {
-        border-radius: 50%;
-        transform: translate(150px, -360px);
-      }
-
-      .slideUserTitle {
-        width: 259px;
-        height: 24px;
-        margin-top: -345px;
-        margin-left: 80px;
-      }
-
-      .slideUserText {
-        width: 418px;
-        height: 128px;
-        font-size: 15px;
-        margin-left: -10px;
-        margin-top: -10px;
-      }
-
-      .sign1 {
-        font-size: 100px;
-        transform: translate(5px, -70px);
-      }
-
-      .sign2 {
-        font-size: 100px;
-        margin-top: -30px;
-      }
-
-      .slideUser {
-        width: 80px;
-        height: 80px;
-        background: #f3f3f3 !important;
-        border-radius: 50%;
-        transform: translate(158px, -352px);
-      }
-
-      .slideUser img {
-        width: 70px;
-        height: 70px;
-        margin-left: 5px;
-        margin-top: 5px;
-      }
-
-      .card--right {
-        transform: scale(0.75) translate(0px, 30px) perspective(750px) rotateY(-0deg);
-      }
-
-      .card--left {
-        transform: scale(0.75) translate(0px, 30px) perspective(750px) rotateY(-0deg);
-      }
-
-      .leftSet {
-        transform: translate(-200px, -10px);
-      }
-
-      .rightSet {
-        transform: translate(200px, -10px);
-      }
-
-      .carouselTitle {
-        width: 520px;
-        font-size: 28px;
-        color: #343434;
-        text-align: center;
-      }
+    .homeCircles{
+      margin-left: 44%!important;
     }
+  }
 
-    @media only screen and (max-width: 576px) and (min-width: 450px) {
-      .homeCircles {
-        margin-top: 0%;
-        height: 10px;
-        width: 10px;
-        transform: translateY(-1500%);
-      }
-      .box {
-        width: 300px;
-        height: 150px;
-      }
-      .boxs {
-        transform: translate(0px, -40px);
-      }
-
-      .slideUser {
-        width: 60px;
-        height: 60px;
-        background: #f3f3f3 !important;
-        border-radius: 50%;
-        transform: translate(100px, -255px);
-      }
-      .slideUserTitle {
-        width: 259px;
-        height: 24px;
-        margin-top: -250px;
-        margin-left: 0px;
-        line-height: 13px;
-        font-size: 14px;
-      }
-
-      .slideUserText {
-        width: 260px;
-        height: 76px;
-        line-height: 13px;
-        font-size: 10px;
-        margin-left: 0px;
-        margin-top: -25px;
-        overflow: hidden;
-      }
-
-      .sign1 {
-        font-size: 55px;
-        transform: translate(0px, -80px);
-      }
-
-      .sign2 {
-        font-size: 55px;
-        margin-top: -120px;
-      }
-
-      .slideUser img {
-        border-radius: 50%;
-        width: 55px;
-        height: 55px;
-        margin-left: 2px;
-        margin-top: 2.5px;
-      }
-
-      .card--right {
-        transform: scale(0.75) translate(100px, 45px) perspective(750px) rotateY(-0deg);
-      }
-
-      .card--left {
-        transform: scale(0.75) translate(-100px, 45px) perspective(750px) rotateY(-0deg);
-      }
-
-      .leftSet {
-        width: 25px;
-        height: 25px;
-        transform: translate(-130px, -65px);
-      }
-
-      .rightSet {
-        width: 25px;
-        height: 25px;
-        transform: translate(130px, -65px);
-      }
-      .carouselTitle {
-        width: 100%;
-        height: 100%;
-        font-size: 20px;
-        color: #343434;
-        text-align: center;
-        margin-top: 30px;
-      }
+  @media (max-width: 992px) and (min-width: 768px) {
+    .CaruselContainer{
+      margin-top: 0px;
+      width: 52%!important;
+      margin-left: 31%!important;
     }
-    @media only screen and (max-width: 450px) and (min-width: 320px) {
-      .homeCircles {
-        margin-top: 0%;
-        height: 10px;
-        width: 10px;
-        transform: translateY(-1500%);
-      }
-      .box {
-        width: 300px;
-        height: 150px;
-      }
-      .boxs {
-        transform: translate(0px, -40px);
-      }
+  }
 
-      .slideUser {
-        width: 60px;
-        height: 60px;
-        background: #f3f3f3 !important;
-        border-radius: 50%;
-        transform: translate(100px, -255px);
-      }
-      .slideUserTitle {
-        width: 259px;
-        height: 24px;
-        margin-top: -250px;
-        margin-left: 0px;
-        line-height: 13px;
-        font-size: 14px;
-      }
-
-      .slideUserText {
-        width: 260px;
-        height: 76px;
-        line-height: 13px;
-        font-size: 10px;
-        margin-left: 0px;
-        margin-top: -25px;
-        overflow: hidden;
-      }
-
-      .sign1 {
-        font-size: 55px;
-        transform: translate(0px, -80px);
-      }
-
-      .sign2 {
-        font-size: 55px;
-        margin-top: -120px;
-      }
-
-      .slideUser img {
-        border-radius: 50%;
-        width: 55px;
-        height: 55px;
-        margin-left: 2px;
-        margin-top: 2.5px;
-      }
-
-      .card--right {
-        transform: scale(0.75) translate(0px, 30px) perspective(750px) rotateY(-0deg);
-      }
-
-      .card--left {
-        transform: scale(0.75) translate(0px, 30px) perspective(750px) rotateY(-0deg);
-      }
-
-      .leftSet {
-        width: 25px;
-        height: 25px;
-        transform: translate(-130px, 90px);
-      }
-
-      .rightSet {
-        width: 25px;
-        height: 25px;
-        transform: translate(130px, 90px);
-      }
-      .carouselTitle {
-        width: 100%;
-        height: 100%;
-        font-size: 20px;
-        color: #343434;
-        text-align: center;
-        margin-top: 30px;
-      }
+  @media (max-width: 768px) and (min-width: 576px) {
+    .homeCircles{
+      margin-left: 44%!important;
+    }
+    .CaruselContainer{
+      margin-top: 0px;
+      width: 52%!important;
+      margin-left: 31%!important;
     }
 
   }
 
+  @media only screen and (max-width: 576px) and (min-width: 450px) {
+    .CaruselContainer{
+      margin-top: 0px;
+      width: 52%!important;
+      margin-left: 31%!important;
+    }  .homeCircles{
+         margin-left: 44%!important;
+       }
+
+  }
+  @media only screen and (max-width: 450px) and (min-width: 320px) {
+    .CaruselContainer{
+      margin-top: 0px;
+      width: 52%!important;
+      margin-left: 31%!important;
+    }
+    .homeCircles{
+      margin-left: 44%!important;
+    }
+  }
+  /* ----------------------------------------------
+   * Generated by Animista on 2019-9-20 17:17:9
+   * Licensed under FreeBSD License.
+   * See http://animista.net/license for more info.
+   * w: http://animista.net, t: @cssanimista
+   * ---------------------------------------------- */
+
+  /**
+   * ----------------------------------------
+   * animation fade-in
+   * ----------------------------------------
+   */
   @-webkit-keyframes fade-in {
     0% {
       opacity: 0;
