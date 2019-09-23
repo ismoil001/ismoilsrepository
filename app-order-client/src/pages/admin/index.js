@@ -3,7 +3,17 @@ import PropTypes from 'prop-types';
 import {Button, Col, Container, Nav, NavItem, NavLink, Row, Table} from "reactstrap";
 import {FaEdit, FaRegEdit, FaTrashAlt} from "react-icons/fa";
 
-class Index extends Component {
+class Index extends React.Component {
+  state = {
+    collapsed: false,
+  };
+
+  toggle = () => {
+    this.setState({
+      collapsed: !this.state.collapsed,
+    });
+  };
+
   render() {
 
         const admin= [

@@ -19,6 +19,7 @@ class Carusel extends React.PureComponent {
       touchendX: 0,
       touchendY: 0,
       mouseCliced: false,
+      circleId1: 1,
       circleId: 1
     }
   }
@@ -244,69 +245,81 @@ class Carusel extends React.PureComponent {
   };
   circleAction = (event) => {
     let id = event.target.id
+    this.state.circleId1=id;
+    this.setState(this.state)
     if (id != this.state.circleId) {
       if (id == 2 && this.state.circleId == 0) {
+
         this.setLeft()
         this.setLeft()
+
       }
       if (id == 0 && this.state.circleId == 2) {
 
         this.setLeft()
         this.setLeft()
+
       } else {
+
         if (id > this.state.circleId && id < 3) {
+
           this.setRight()
+
         } else this.setLeft()
+
       }
     }
+
+
   }
 
   render() {
     // const {commentList} = this.props
-
+    console.log(this.state.circleId1  )
     return (<div className='CaruselContainer'>
 
 
-          <div className="boxs" unselectable='on'>
+        <div className="boxs" unselectable='on'>
 
 
-            <div className="box card--left fill-white1" data-card="0" id="0" unselectable='on'
-                  onTouchStart={this.handleTouchStart} onTouchMove={this.handleTouchMove}
-              // onClick={this.mouseCordinate}
-                  onMouseMove={this.mouseMoveCordinate} onBlur={this.mouseCordinateBlur}
-                  onMouseDown={this.mouseCordinate}>
-              <img src="/assets/images/headerimg.png" alt="" />
-
-            </div>
-            <div className="box card--center fill-white2" data-card="1" id="1" unselectable='on'
-                  onTouchStart={this.handleTouchStart}
-                  onTouchMove={this.handleTouchMove}
-              // onClick={this.mouseCordinate}
-                  onMouseDown={this.mouseCordinate} onMouseMove={this.mouseMoveCordinate}
-                  onBlur={this.mouseCordinateBlur}>
-              <img src="/assets/images/headerimg.png"    alt=""/>
-
-            </div>
-            <div className="box card--right fill-white3" data-card="2" id="2" unselectable='on'
-                  onTouchStart={this.handleTouchStart}
-                  onTouchMove={this.handleTouchMove}
-              // onClick={this.mouseCordinate}
-                  onMouseDown={this.mouseCordinate}
-                  onMouseMove={this.mouseMoveCordinate} onBlur={this.mouseCordinateBlur}>
-              <img src="/assets/images/headerimg.png"   alt="" />
+          <div className="box card--left fill-white1" data-card="0" id="0" unselectable='on'
+               onTouchStart={this.handleTouchStart} onTouchMove={this.handleTouchMove}
+            // onClick={this.mouseCordinate}
+               onMouseMove={this.mouseMoveCordinate} onBlur={this.mouseCordinateBlur}
+               onMouseDown={this.mouseCordinate}>
+            <img src="/assets/images/headerimg.png" alt="" />
 
 
-            </div>
+          </div>
+          <div className="box card--center fill-white2" data-card="1" id="1" unselectable='on'
+               onTouchStart={this.handleTouchStart}
+               onTouchMove={this.handleTouchMove}
+            // onClick={this.mouseCordinate}
+               onMouseDown={this.mouseCordinate} onMouseMove={this.mouseMoveCordinate}
+               onBlur={this.mouseCordinateBlur}>
+            <img src="/assets/images/headerimg.png"    alt=""/>
+
+          </div>
+          <div className="box card--right fill-white3" data-card="2" id="2" unselectable='on'
+               onTouchStart={this.handleTouchStart}
+               onTouchMove={this.handleTouchMove}
+            // onClick={this.mouseCordinate}
+               onMouseDown={this.mouseCordinate}
+               onMouseMove={this.mouseMoveCordinate} onBlur={this.mouseCordinateBlur}>
+            <img src="/assets/images/headerimg.png"   alt="" />
 
 
           </div>
 
-              <div className="homeCircles" id="0" style={this.state.circleId == 0 ? {opacity: "1",marginTop:"-65px"} : {marginTop:"-65px"}}
-                   onClick={this.circleAction}></div>
-              <div className="homeCircles" id="1" style={this.state.circleId == 1 ? {opacity: "1",marginTop:"-50px"} : {marginTop:"-50px"}}
-                   onClick={this.circleAction}></div>
-              <div className="homeCircles" id="2" style={this.state.circleId == 2 ? {opacity: "1",marginTop:"-35px"} : {marginTop:"-35px"}}
-                   onClick={this.circleAction}></div>
+
+        </div>
+
+        <div className="homeCircles" id="0" style={this.state.circleId1 == 0 ? {opacity: "1",marginTop:"-318px"} : {marginTop:"-318px"}}
+             onClick={this.circleAction}></div>
+        <div className="homeCircles" id="1" style={this.state.circleId1 == 1 ? {opacity: "1",marginTop:"-303px"} : {marginTop:"-303px"}}
+             onClick={this.circleAction}></div>
+        <div className="homeCircles" id="2" style={this.state.circleId1 == 2 ? {opacity: "1",marginTop:"-288px"} : {marginTop:"-288px"}}
+             onClick={this.circleAction}></div>
 
 
 

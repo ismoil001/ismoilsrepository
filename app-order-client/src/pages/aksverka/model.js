@@ -1,5 +1,5 @@
 import {notification} from "antd";
-import {searchUser, doAksverka} from "../payment/service";
+import {searchUser, doAksverka} from "../admin/payment/service";
 
 export default {
   namespace: 'aksverka',
