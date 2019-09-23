@@ -11,4 +11,6 @@ public interface PaymentRepository extends JpaRepository<Payment, UUID> {
 
     List<Payment> findAllByUserAndLeftoverNotIn(User user,Double leftOver);
 
+    List<Payment> findAllByUser_Id(UUID id);
+
 }

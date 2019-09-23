@@ -35,3 +35,10 @@ export function deletePayment (data) {
     data,
   })
 }
+export function doAksverka (data) {
+  return request({
+    url: '/api/order/aksverka',
+    method: 'get',
+    data,
+  })
+}

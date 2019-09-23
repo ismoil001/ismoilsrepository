@@ -17,15 +17,9 @@ import uz.pdp.apporderservice.entity.TelegramState;
 import uz.pdp.apporderservice.entity.User;
 import uz.pdp.apporderservice.entity.enums.RoleName;
 import uz.pdp.apporderservice.exception.ResourceNotFoundException;
-import uz.pdp.apporderservice.repository.ChatRepository;
-import uz.pdp.apporderservice.repository.RoleRepository;
-import uz.pdp.apporderservice.repository.TelegramStateRepository;
-import uz.pdp.apporderservice.repository.UserRepository;
+import uz.pdp.apporderservice.repository.*;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 
 @Service
 public class StateAction {
@@ -46,6 +40,8 @@ public class StateAction {
     CreateButtonService createButtonService;
     @Autowired
     ChatRepository chatRepository;
+    @Autowired
+    OrderRepository orderRepository;
 
     public void runState(Update update) {
         try {
@@ -79,6 +75,15 @@ public class StateAction {
                     case BotState.REGISTRATION_PATRON:
                         sendMessage = new SendMessage();
                         telegramState.setPatron(update.getMessage().getText());
+                        telegramState.setState(BotState.REGISTRATION_COMPANY);
+                        sendMessage.setText("Kompaniyangiz nomini kiriting:");
+                        sendMessage.setChatId(update.getMessage().getChatId());
+                        telegramStateRepository.save(telegramState);
+                        pdpOrderBot.execute(sendMessage);
+                        break;
+                    case BotState.REGISTRATION_COMPANY:
+                        sendMessage = new SendMessage();
+                        telegramState.setCompanyName(update.getMessage().getText());
                         telegramState.setState(BotState.REGISTRATION_PASSWORD);
                         sendMessage.setText("Parolingizni kiriting:");
                         sendMessage.setChatId(update.getMessage().getChatId());
@@ -124,9 +129,9 @@ public class StateAction {
                         pdpOrderBot.execute(sendMessage);
                         break;
                     case BotState.ADMIN_CUSTOMER_CHAT:
-                        List<User> users = userRepository.findByRolesIn(new HashSet<>(roleRepository.findAllByName(RoleName.ROLE_ADMIN)));
+                        String uuidString = orderRepository.getUserWithLessOrder();
+                        User admin = userRepository.findById(UUID.fromString(uuidString)).orElseThrow(() -> new ResourceNotFoundException("user","id",uuidString));
                         Optional<User> customer = userRepository.findByTelegramId(update.getMessage().getFrom().getId());
-                        for (User admin : users) {
                             if (admin.getChatId() != null) {
                                 Chat chat = new Chat();
                                 chat.setFromClient(customer.get());
@@ -145,7 +150,6 @@ public class StateAction {
                                     e.printStackTrace();
                                 }
                             }
-                        }
                         break;
                     case BotState.REPLY_TO_CUSTOMER:
                         SendMessage sendMessage1 = new SendMessage();

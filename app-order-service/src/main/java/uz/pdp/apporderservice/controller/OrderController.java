@@ -15,6 +15,11 @@ public class OrderController {
     @Autowired
     OrderService orderService;
 
+    @GetMapping("aksverka")
+    public HttpEntity<?> getAksverka(@RequestParam UUID id){
+        return orderService.aksverka(id);
+    }
+
     @GetMapping("active")
     public HttpEntity<?> getActiveOrders(@RequestParam Integer page,@RequestParam Integer size,@RequestParam String name){
         return orderService.getActiveOrders(page,size,name);

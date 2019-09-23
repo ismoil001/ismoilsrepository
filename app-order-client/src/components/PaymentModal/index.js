@@ -4,10 +4,11 @@ import {Modal, Form, InputNumber} from "antd";
 class Index extends Component {
   render() {
   const {modalVisible, onHideModal,onSave,form} =this.props;
-  const {getFieldsValue,getFieldDecorator} =form;
+  const {getFieldsValue,getFieldDecorator,resetFields} =form;
 
   const onSubmit=()=>{
     onSave(getFieldsValue())
+    resetFields();
   }
 
     return (

@@ -2,27 +2,31 @@ package uz.pdp.apporderservice.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import uz.pdp.apporderservice.entity.Order;
+import uz.pdp.apporderservice.entity.Payment;
 import uz.pdp.apporderservice.entity.enums.OrderStatus;
 import uz.pdp.apporderservice.exception.ResourceNotFoundException;
 import uz.pdp.apporderservice.payload.*;
 import uz.pdp.apporderservice.repository.OrderRepository;
+import uz.pdp.apporderservice.repository.PaymentRepository;
 import uz.pdp.apporderservice.repository.UserRepository;
 
-import java.awt.print.Pageable;
-import java.util.UUID;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
-public class OrderService {
+public class OrderService  {
 
     @Autowired
     OrderRepository orderRepository;
     @Autowired
     UserRepository userRepository;
+    @Autowired
+    PaymentRepository paymentRepository;
 
     public HttpEntity<?> saveOrder(ReqOrder reqOrder) {
         try {
@@ -59,36 +63,85 @@ public class OrderService {
         }
     }
 
-    public HttpEntity<?> getActiveOrders(Integer page,Integer size,String name) {
-        PageRequest pageable = PageRequest.of(page,size);
+    public HttpEntity<?> getActiveOrders(Integer page, Integer size, String name) {
+        Pageable pageable = PageRequest.of(page, size);
         return ResponseEntity.ok(new ApiResponseData(true, "success",
-                new PageResponse((int) orderRepository.findAllByStatusAndUser_CompanyNameContainingIgnoreCaseOrStatusAndUser_FirstNameContainingIgnoreCaseOrStatusAndUser_LastNameContainingIgnoreCaseOrStatusAndProductNameContainingIgnoreCase(pageable,OrderStatus.ACTIVE,name,OrderStatus.ACTIVE,name,OrderStatus.ACTIVE,name,OrderStatus.ACTIVE,name).getTotalElements(),page,
-                orderRepository.findAllByStatusAndUser_CompanyNameContainingIgnoreCaseOrStatusAndUser_FirstNameContainingIgnoreCaseOrStatusAndUser_LastNameContainingIgnoreCaseOrStatusAndProductNameContainingIgnoreCase(pageable,OrderStatus.ACTIVE,name,OrderStatus.ACTIVE,name,OrderStatus.ACTIVE,name,OrderStatus.ACTIVE,name).getContent().stream().map(order -> {
-                    return new OrdersResponse(
-                            order.getId(),
-                            order.getOrderedDate(),
-                            order.getUser().getLastName()+" "+order.getUser().getFirstName(),
-                            order.getStatus().name(),
-                            order.getUser().getId(),
-                            order.getProductName(),
-                            order.getUser().getCompanyName(),
-                            order.getCount(),
-                            order.getPrice(),
-                            order.getPrice() * order.getCount(),
-                            order.getOrderPayments().stream().map(orderPayment -> new ResPayment(orderPayment.getAmount(), orderPayment.getCreatedAt(), orderPayment.getPayment().getPayType().getName())).collect(Collectors.toList())
-                    );
-                }).collect(Collectors.toList())
-        )));
+                new PageResponse((int) orderRepository.findAllByStatusAndUser_CompanyNameContainingIgnoreCaseOrStatusAndUser_FirstNameContainingIgnoreCaseOrStatusAndUser_LastNameContainingIgnoreCaseOrStatusAndProductNameContainingIgnoreCase(pageable, OrderStatus.ACTIVE, name, OrderStatus.ACTIVE, name, OrderStatus.ACTIVE, name, OrderStatus.ACTIVE, name).getTotalElements(), page,
+                        orderRepository.findAllByStatusAndUser_CompanyNameContainingIgnoreCaseOrStatusAndUser_FirstNameContainingIgnoreCaseOrStatusAndUser_LastNameContainingIgnoreCaseOrStatusAndProductNameContainingIgnoreCase(pageable, OrderStatus.ACTIVE, name, OrderStatus.ACTIVE, name, OrderStatus.ACTIVE, name, OrderStatus.ACTIVE, name).getContent().stream().map(order -> {
+                            return new OrdersResponse(
+                                    order.getId(),
+                                    order.getOrderedDate(),
+                                    order.getUser().getLastName() + " " + order.getUser().getFirstName(),
+                                    order.getStatus().name(),
+                                    order.getUser().getId(),
+                                    order.getProductName(),
+                                    order.getUser().getCompanyName(),
+                                    order.getCount(),
+                                    order.getPrice(),
+                                    order.getPrice() * order.getCount(),
+                                    order.getOrderPayments().stream().map(orderPayment -> new ResPayment(orderPayment.getAmount(), orderPayment.getCreatedAt(), orderPayment.getPayment().getPayType().getName())).collect(Collectors.toList())
+                            );
+                        }).collect(Collectors.toList())
+                )));
     }
 
     public HttpEntity delete(UUID id) {
         try {
             orderRepository.deleteById(id);
-            return ResponseEntity.ok(new ApiResponse("deleted",true));
-        }catch (Exception e){
+            return ResponseEntity.ok(new ApiResponse("deleted", true));
+        } catch (Exception e) {
             e.printStackTrace();
-            return ResponseEntity.ok(new ApiResponse("error",false));
+            return ResponseEntity.ok(new ApiResponse("error", false));
         }
 
     }
+
+    public HttpEntity<?> aksverka(UUID id) {
+        try {
+            List<Order> orderList = orderRepository.findAllByUser_Id(id);
+            List<Payment> paymentList = paymentRepository.findAllByUser_Id(id);
+            List<Aksverka> aksverkaList = new ArrayList<>();
+            Double sumOrderCost = 0.0;
+            Double sumPayment = 0.0;
+            Integer sumCount = 0;
+            for (Order order : orderList) {
+                sumOrderCost+=order.getPrice();
+                sumCount+=order.getCount();
+                aksverkaList.add(new Aksverka(
+                        order.getOrderedDate(),
+                        order.getProductName(),
+                        order.getCount(),
+                        order.getPrice(),
+                        order.getPrice() * order.getCount(),
+                        null
+                ));
+            }
+            for (Payment payment : paymentList) {
+                sumPayment+=payment.getPaySum();
+                aksverkaList.add(new Aksverka(
+                        payment.getPayDate(),
+                        null,
+                        null,
+                        null,
+                        null,
+                        payment.getPaySum()
+                ));
+            }
+
+            aksverkaList.sort(new Comparator<Aksverka>() {
+                @Override
+                public int compare(Aksverka u1, Aksverka u2) {
+                    return u2.getDate().compareTo(u1.getDate());
+                }
+            });
+           Double saldo = sumPayment-sumOrderCost;
+
+            return ResponseEntity.ok(new ApiResponseData(true,"success",new ResAksverka(saldo,sumPayment,sumOrderCost,sumCount,aksverkaList)));
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.ok(new ApiResponse("error", false));
+        }
+    }
+
 }

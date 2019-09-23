@@ -98,11 +98,6 @@ class Index extends PureComponent {
           <Col span={6} offset={2}>
             <Button onClick={onShowPaymentModal}>Add payment</Button>
           </Col>
-          <Col span={6} offset={10}>
-            <Link to={"/dashboard"}>
-              <Button>Admin page</Button>
-            </Link>
-          </Col>
         </Row>
         <Row>
           <Col span={20} offset={2}>

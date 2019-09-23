@@ -109,7 +109,7 @@ public class BotMainService {
         SendMessage sendMessage = new SendMessage();
         User user = userRepository.findByTelegramId(update.getMessage().getFrom().getId()).orElseThrow(() -> new ResourceNotFoundException("user","id",update));
         if(passwordEncoder.matches(update.getMessage().getText(), user.getPassword())){
-            if (user.getRoles().stream().anyMatch(item -> item.getName().equals(RoleName.ROLE_ADMIN))){
+            if (user.getRoles().stream().anyMatch(item -> item.getName().equals(RoleName.ROLE_MANAGER))){
                 lastState.setState(BotState.ADMIN_CABINET);
                 telegramStateRepository.save(lastState);
                 user.setChatId(update.getMessage().getChatId());

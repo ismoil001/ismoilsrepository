@@ -39,6 +39,25 @@ export default {
   effects: {
     *saveOrderPayment({payload},{call,put,select}){
       const data = yield call(saveOrderPayment,payload)
+      if(data.success){
+        yield put({
+          type:'updateState',
+          payload:{
+            paymentModalVisible: false
+          }
+        })
+        notification['success']({
+          message:'added'
+        })
+        yield put({
+          type:'getOrders',
+          payload:{
+            page:0,
+            size:10,
+            name:''
+          }
+        })
+      }
     },
 
     *deleteOrder({payload},{call,put,select}){

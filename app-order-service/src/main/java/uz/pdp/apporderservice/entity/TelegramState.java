@@ -29,6 +29,8 @@ public class TelegramState extends AbsEntity {
 
     private String patron;
 
+    private String companyName;
+
     private Long customerChatId;
 
 }

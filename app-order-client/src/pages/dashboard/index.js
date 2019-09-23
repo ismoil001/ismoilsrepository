@@ -224,7 +224,6 @@ class Index extends PureComponent {
 
     return (
       <div className="admin">
-        <Link to={"/payment"}><Button>Payment</Button></Link>
         <Card>
           <Row>
             <Col span={6} offset={2}>
