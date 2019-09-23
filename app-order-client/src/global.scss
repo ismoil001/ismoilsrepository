@@ -1153,7 +1153,6 @@
       .link-menu {
         margin-top: 8px;
         margin-bottom: 0;
-
         a {
           color: #FFFDF7;
           font-size: 14px;
@@ -1299,6 +1298,31 @@
       display: none;
     }
 
+  }
+  #login{
+    height: 100vh;
+    .ant-row{
+      .text-center{
+        padding-right: 80px;
+      }
+      .ant-col{
+        .ant-btn{
+          width: 300px;
+          height: 44px;
+        }
+        .ant-input{
+          width: 300px!important;
+          height: 44px;
+          background-color: rgba(196, 196, 196, 0.2);
+          border: 0;
+
+        }
+        .ant-btn{
+          background-color: $orange!important;
+          border-color: #a23e00;
+        }
+      }
+    }
   }
 
 

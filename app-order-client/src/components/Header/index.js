@@ -1,5 +1,6 @@
 import React from 'react';
 import '../../global.scss'
+import {Link, animateScroll as scroll} from "react-scroll";
 import {
   Container,
   Collapse,
@@ -37,22 +38,34 @@ export default class Header extends React.Component {
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
-                <NavLink href="/header">Biz haqimizda</NavLink>
+                <Link spy={true} smooth={true} duration={1000} activeClass="active" activeClassName="selected" to="bizhaqimizda">
+                  <NavLink>Biz haqimizda</NavLink>
+                </Link>
               </NavItem>
               <NavItem>
-                <NavLink href="/">Xizmatlar</NavLink>
+                <Link spy={true} smooth={true} duration={1500} activeClass="active" activeClassName="selected" to="xizmatlar">
+                  <NavLink>Xizmatlar</NavLink>
+                </Link>
               </NavItem>
               <NavItem>
-                <NavLink href="/">Portfolio</NavLink>
+                <Link spy={true} smooth={true} duration={1800} activeClass="active" activeClassName="selected" to="portfolio">
+                  <NavLink>Portfolio</NavLink>
+                </Link>
               </NavItem>
               <NavItem>
-                <NavLink href="/">Mijozlar</NavLink>
+                <Link spy={true} smooth={true} duration={2000} activeClass="active" activeClassName="selected" to="mijozlar">
+                  <NavLink>Mijozlar</NavLink>
+                </Link>
               </NavItem>
               <NavItem>
-                <NavLink href="/">Jamoa</NavLink>
+                <Link spy={true} smooth={true} duration={1000} activeClass="active" activeClassName="selected" to="jamoa">
+                  <NavLink>Jamoa</NavLink>
+                </Link>
               </NavItem>
               <NavItem>
-                <NavLink href="/">Kontakt</NavLink>
+                <Link spy={true} smooth={true} duration={2000} activeClass="active" activeClassName="selected" to="kontakt">
+                  <NavLink>Kontakt</NavLink>
+                </Link>
               </NavItem>
               <NavItem>
                 <NavLink href="/login">Kirish</NavLink>
@@ -61,9 +74,9 @@ export default class Header extends React.Component {
               <UncontrolledDropdown nav inNavbar>
                 <DropdownToggle nav caret className="language">
                   Uzbek
-                    <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M1 1L5 5L9 1" stroke="grey" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
+                  <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M1 1L5 5L9 1" stroke="grey" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
 
                 </DropdownToggle>
                 <DropdownMenu right>
