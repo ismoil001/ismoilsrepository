@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'dva'
-import {Button, Row, Form, Input, Icon} from 'antd'
+import {Button, Row, Form, Input, Col, Icon} from 'antd'
 import { config } from 'utils'
 import styles from './index.less'
 // import {FormattedMessage, formatMessage} from 'umi/locale'
@@ -26,42 +26,50 @@ const Login = ({
   }
 
   return (
-    <div>
-      <div className={styles.left}>
-        <div className={styles.logo}>
-          <span>{config.name}</span>
-        </div>
-      </div>
-      <div className={styles.form}>
-        <form>
-          <h1 className={styles.title}>Phone number</h1>
-          <FormItem hasFeedback>
-            {getFieldDecorator('username', {
-              rules: [
-                {
-                  required: true,
-                },
-              ],
-            })(<Input autocomplete="off" addonBefore={<Icon type="user" />} className={styles.oms_input} onPressEnter={handleOk} placeholder={"Phone number"} />)}
-          </FormItem>
-          <FormItem hasFeedback>
-            {getFieldDecorator('password', {
-              rules: [
-                {
-                  required: true,
-                },
-              ],
-            })(<Input  addonBefore={<Icon type="lock" />} className={styles.oms_input} type="password" onPressEnter={handleOk} placeholder={"Password"} />)}
-          </FormItem>
-          <Row>
-            <Button type="primary" onClick={handleOk} loading={loading.effects.login}>
-              Sign in
-            </Button>
-          </Row>
 
-        </form>
-      </div>
+    <div id="login">
+      <form>
+        <Row>
+          <Col span='24'>
+            <img src="/assets/images/logo.png" className='pl-3 mt-4' alt="wrk"/>
+          </Col>
+        </Row>
+        <Row className='mt-5 pt-4'>
+          <Col span={8} className=' offset-2 text-center mt-5' >
+            <Row>
+                <h4 className=' text-center mb-5 ml-5 pl-4' >Tizimga kirish</h4>
+                <FormItem hasFeedback>
+                  {getFieldDecorator('username', {
+                    rules: [
+                      {
+                        required: true,
+                      },
+                    ],
+                  })(<Input autocomplete="off" addonBefore={<Icon type="user" />} onPressEnter={handleOk} placeholder={"Phone number"} />)}
+                </FormItem>
+                <FormItem hasFeedback>
+                  {getFieldDecorator('password', {
+                    rules: [
+                      {
+                        required: true,
+                      },
+                    ],
+                  })(<Input  className="mt-2 mb-2"  addonBefore={<Icon type="lock" />} type="password" onPressEnter={handleOk} placeholder={"Password"} />)}
+                </FormItem>
+                <Button type="primary" onClick={handleOk} loading={loading.effects.login}>
+                  Sign in
+                </Button>
+            </Row>
+          </Col>
+          <Col span='10' className="ml-5 pl-5">
+            <img src="assets/images/loginimg.png"  className='img-fluid' alt="pie"/>
+          </Col>
+        </Row>
+      </form>
     </div>
+
+
+
 
   )
 }

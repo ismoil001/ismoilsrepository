@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="032519d3-807f-40a5-92f3-af300c883d63" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app-order-client/public/assets/images/loginimg.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__antlr_antlr_2_7_7.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__antlr_antlr_2_7_7.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__aopalliance_aopalliance_1_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__aopalliance_aopalliance_1_0.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__ch_qos_logback_logback_classic_1_2_3.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__ch_qos_logback_logback_classic_1_2_3.xml" afterDir="false" />
@@ -130,11 +131,12 @@
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_unbescape_unbescape_1_1_6_RELEASE.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_unbescape_unbescape_1_1_6_RELEASE.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_xmlunit_xmlunit_core_2_6_3.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_xmlunit_xmlunit_core_2_6_3.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_yaml_snakeyaml_1_23.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_yaml_snakeyaml_1_23.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-order-client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/app-order-client/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-order-client/src/components/Header/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/app-order-client/src/components/Header/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app-order-client/src/global.scss" beforeDir="false" afterPath="$PROJECT_DIR$/app-order-client/src/global.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-order-client/src/pages/home/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/app-order-client/src/pages/home/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app-order-client/src/pages/login/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/app-order-client/src/pages/login/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app-order-client/src/pages/login/index.less" beforeDir="false" afterPath="$PROJECT_DIR$/app-order-client/src/pages/login/index.less" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app-order-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/app-order-service/src/main/resources/application.properties" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/app-order-service/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -203,11 +205,62 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app-order-client/src/pages/home/index.js">
           <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="200">
+              <caret line="994" column="32" selection-start-line="994" selection-start-column="32" selection-end-line="994" selection-end-column="32" />
+              <folding>
+                <element signature="e#0#25#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app-order-client/src/pages/login/index.js">
+          <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="175">
-              <caret line="993" column="20" lean-forward="true" selection-start-line="993" selection-start-column="20" selection-end-line="993" selection-end-column="20" />
+              <caret line="61" column="18" selection-start-line="61" selection-start-column="18" selection-end-line="61" selection-end-column="18" />
+              <folding>
+                <element signature="e#0#25#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app-order-service/src/main/resources/application.properties">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="175">
+              <caret line="7" column="41" selection-start-line="7" selection-start-column="41" selection-end-line="7" selection-end-column="41" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app-order-service/src/main/java/uz/pdp/apporderservice/AppOrderServiceApplication.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-46">
+              <caret column="9" selection-start-column="9" selection-end-column="9" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app-order-client/src/pages/login/index.less">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="50">
+              <caret line="88" column="21" selection-start-line="88" selection-start-column="21" selection-end-line="88" selection-end-column="21" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../app-workflow/app-workflow-client/src/pages/login/index.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="219">
+              <caret line="48" column="73" selection-start-line="48" selection-start-column="59" selection-end-line="48" selection-end-column="73" />
               <folding>
                 <element signature="e#0#25#0" expanded="true" />
               </folding>
@@ -218,8 +271,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app-order-client/src/global.scss">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="1027" column="25" selection-start-line="1027" selection-start-column="25" selection-end-line="1027" selection-end-column="25" />
+            <state relative-caret-position="70">
+              <caret line="1172" selection-start-line="1172" selection-end-line="1172" />
             </state>
           </provider>
         </entry>
@@ -246,6 +299,9 @@
       <find>footer</find>
       <find>mijoz</find>
       <find>link</find>
+      <find>foo</find>
+      <find>icon</find>
+      <find>ico</find>
     </findStrings>
     <replaceStrings>
       <replace>/assets/fonts/Lato/La</replace>
@@ -253,6 +309,9 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="PUSH_TAGS">
+      <GitPushTagMode />
+    </option>
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -268,7 +327,6 @@
         <option value="$PROJECT_DIR$/app-order-client/src/pages/payment/servicec.js" />
         <option value="$PROJECT_DIR$/app-order-service/src/main/java/uz/pdp/apporderservice/repository/UserRepository.java" />
         <option value="$PROJECT_DIR$/app-order-service/src/main/resources/data.sql" />
-        <option value="$PROJECT_DIR$/app-order-service/src/main/resources/application.properties" />
         <option value="$PROJECT_DIR$/app-order-service/pom.xml" />
         <option value="$PROJECT_DIR$/app-order-service/src/main/java/uz/pdp/apporderservice/controller/UserController.java" />
         <option value="$PROJECT_DIR$/app-order-service/src/main/java/uz/pdp/apporderservice/repository/PayTypeRepository.java" />
@@ -291,15 +349,19 @@
         <option value="$PROJECT_DIR$/app-order-client/.umirc.js" />
         <option value="$PROJECT_DIR$/app-order-client/src/pages/dashboard/index.less" />
         <option value="$PROJECT_DIR$/app-order-client/package.json" />
-        <option value="$PROJECT_DIR$/app-order-client/src/global.scss" />
         <option value="$PROJECT_DIR$/app-order-client/src/components/Header/index.js" />
         <option value="$PROJECT_DIR$/app-order-client/src/pages/home/index.js" />
+        <option value="$PROJECT_DIR$/../app-workflow/app-workflow-client/src/pages/login/index.less" />
+        <option value="$PROJECT_DIR$/app-order-client/src/pages/login/index.less" />
+        <option value="$PROJECT_DIR$/app-order-client/src/global.scss" />
+        <option value="$PROJECT_DIR$/app-order-client/src/pages/login/index.js" />
+        <option value="$PROJECT_DIR$/app-order-service/src/main/resources/application.properties" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="240" />
-    <option name="y" value="135" />
+    <option name="x" value="773" />
+    <option name="y" value="27" />
     <option name="width" value="1440" />
     <option name="height" value="810" />
   </component>
@@ -333,7 +395,63 @@
               <item name="app-order-client" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="pages" type="462c0819:PsiDirectoryNode" />
-              <item name="home" type="462c0819:PsiDirectoryNode" />
+              <item name="login" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="euro-print" type="b2602c69:ProjectViewProjectNode" />
+              <item name="app-order-service" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="euro-print" type="b2602c69:ProjectViewProjectNode" />
+              <item name="app-order-service" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="euro-print" type="b2602c69:ProjectViewProjectNode" />
+              <item name="app-order-service" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="euro-print" type="b2602c69:ProjectViewProjectNode" />
+              <item name="app-order-service" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="euro-print" type="b2602c69:ProjectViewProjectNode" />
+              <item name="app-order-service" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="uz" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="euro-print" type="b2602c69:ProjectViewProjectNode" />
+              <item name="app-order-service" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="uz" type="462c0819:PsiDirectoryNode" />
+              <item name="pdp" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="euro-print" type="b2602c69:ProjectViewProjectNode" />
+              <item name="app-order-service" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="uz" type="462c0819:PsiDirectoryNode" />
+              <item name="pdp" type="462c0819:PsiDirectoryNode" />
+              <item name="apporderservice" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="euro-print" type="b2602c69:ProjectViewProjectNode" />
+              <item name="app-order-service" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -353,7 +471,7 @@
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1569074662145" />
     <property name="database.console.LAST_STATE" value="false" />
     <property name="editor.config.ad.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/app-order-service" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.selected.package.eslint" value="D:/WEBPROJECTS/EUROPRINT/app-order-client/node_modules/eslint" />
@@ -365,15 +483,16 @@
     <property name="project.structure.side.proportion" value="0.2" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\WEBPROJECTS\EUROPRINT\app-order-client\public\assets\images" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\WEBPROJECTS\EUROPRINT\app-order-client\src\components\Header" />
+      <recent name="D:\WEBPROJECTS\EUROPRINT\app-order-client\src\components" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="uz.pdp.apporderservice.projection" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\WEBPROJECTS\EUROPRINT\app-order-client\src\components\Header" />
-      <recent name="D:\WEBPROJECTS\EUROPRINT\app-order-client\src\components" />
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Ismoil Anvarov\Desktop\euro-print\app-order-client\public\assets\images" />
+      <recent name="D:\WEBPROJECTS\EUROPRINT\app-order-client\public\assets\images" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -388,7 +507,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="npm.start">
+  <component name="RunManager" selected="Spring Boot.AppOrderServiceApplication">
     <configuration name="AppOrderServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="app-order-service" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="uz.pdp.apporderservice.AppOrderServiceApplication" />
@@ -426,18 +545,26 @@
       <workItem from="1569039750315" duration="13719000" />
       <workItem from="1569059611652" duration="9371000" />
       <workItem from="1569090439480" duration="58000" />
-      <workItem from="1569213261840" duration="5856000" />
+      <workItem from="1569213261840" duration="11779000" />
     </task>
+    <task id="LOCAL-00001" summary="nav link scroll">
+      <created>1569219280014</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1569219280014</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="30836000" />
+    <option name="totallyTimeSpent" value="36759000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="878" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49321267" visible="true" weight="0.25637585" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49321267" visible="true" weight="0.15771812" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -449,7 +576,7 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.7922252" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.43909347" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.4383378" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -457,10 +584,10 @@
       <window_info anchor="bottom" id="Terminal" order="8" weight="0.21581769" />
       <window_info anchor="bottom" id="Docker" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info anchor="bottom" id="Messages" order="11" weight="0.3286119" />
+      <window_info anchor="bottom" id="Messages" order="11" weight="0.32841823" />
       <window_info anchor="bottom" id="Java Enterprise" order="12" />
       <window_info anchor="bottom" id="Database Changes" order="13" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="14" />
+      <window_info anchor="bottom" id="Version Control" order="14" weight="0.3297587" />
       <window_info anchor="bottom" id="Duplicate detector" order="15" weight="0.3286119" />
       <window_info anchor="bottom" id="Database Console" order="16" weight="0.3286119" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -478,49 +605,12 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="nav link scroll" />
+    <option name="LAST_COMMIT_MESSAGE" value="nav link scroll" />
+  </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app-order-client/src/pages/dashboard/model.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="10" column="17" selection-end-line="150" />
-          <folding>
-            <element signature="e#0#103#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app-order-client/src/pages/payment/servicec.js" />
-    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/1832e56e-a5b0-4b25-a8e4-ba1ff2c52d1e/console.sql" />
-    <entry file="das://1832e56e-a5b0-4b25-a8e4-ba1ff2c52d1e/database/orderdb/schema/public/table/user_role" />
-    <entry file="file://$PROJECT_DIR$/app-order-service/src/main/java/uz/pdp/apporderservice/component/DataLoader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="371">
-          <caret line="32" column="182" selection-start-line="32" selection-start-column="182" selection-end-line="32" selection-end-column="182" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app-order-service/src/main/java/uz/pdp/apporderservice/repository/UserRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="355">
-          <caret line="23" column="332" selection-start-line="23" selection-start-column="332" selection-end-line="23" selection-end-column="332" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app-order-service/src/main/resources/data.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="69" selection-start-column="69" selection-end-column="69" />
-        </state>
-      </provider>
-    </entry>
     <entry file="das://1832e56e-a5b0-4b25-a8e4-ba1ff2c52d1e/database/orderdb/schema/public/table/pay_type" />
-    <entry file="file://$PROJECT_DIR$/app-order-service/src/main/resources/application.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="7" column="36" selection-start-line="7" selection-start-column="36" selection-end-line="7" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app-order-service/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="251">
@@ -754,13 +844,6 @@
     <entry file="file://$PROJECT_DIR$/app-order-client/src/pages/index.js">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/app-order-client/src/global.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="1027" column="25" selection-start-line="1027" selection-start-column="25" selection-end-line="1027" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app-order-client/src/components/Header/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1200">
@@ -770,11 +853,78 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app-order-client/src/pages/home/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
-          <caret line="993" column="20" lean-forward="true" selection-start-line="993" selection-start-column="20" selection-end-line="993" selection-end-column="20" />
+        <state relative-caret-position="200">
+          <caret line="994" column="32" selection-start-line="994" selection-start-column="32" selection-end-line="994" selection-end-column="32" />
           <folding>
             <element signature="e#0#25#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../app-workflow/app-workflow-client/src/pages/login/index.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="50">
+          <caret line="2" selection-start-line="2" selection-end-line="23" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app-order-client/src/pages/login/service.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app-order-client/src/pages/login/model.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-27">
+          <folding>
+            <element signature="e#0#38#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app-order-client/src/pages/login/index.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="50">
+          <caret line="88" column="21" selection-start-line="88" selection-start-column="21" selection-end-line="88" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../app-workflow/app-workflow-client/src/pages/login/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="219">
+          <caret line="48" column="73" selection-start-line="48" selection-start-column="59" selection-end-line="48" selection-end-column="73" />
+          <folding>
+            <element signature="e#0#25#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app-order-client/src/global.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="70">
+          <caret line="1172" selection-start-line="1172" selection-end-line="1172" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app-order-client/src/pages/login/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="175">
+          <caret line="61" column="18" selection-start-line="61" selection-start-column="18" selection-end-line="61" selection-end-column="18" />
+          <folding>
+            <element signature="e#0#25#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app-order-service/src/main/resources/application.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="175">
+          <caret line="7" column="41" selection-start-line="7" selection-start-column="41" selection-end-line="7" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app-order-service/src/main/java/uz/pdp/apporderservice/AppOrderServiceApplication.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-46">
+          <caret column="9" selection-start-column="9" selection-end-column="9" />
         </state>
       </provider>
     </entry>
@@ -835,7 +985,6 @@
             <option name="proportions">
               <list>
                 <option value="0.2" />
-                <option value="0.6" />
               </list>
             </option>
           </splitter-proportions>
