@@ -2,6 +2,7 @@ import React from "react"
 import '../../global.scss'
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import {Link, animateScroll as scroll} from "react-scroll";
 import {
   Button,
   Card,
@@ -131,7 +132,7 @@ export default class A extends React.PureComponent {
           </Container>
         </div>
 
-        <section className="section-one">
+        <section className="section-one"  id="bizhaqimizda">
           <Container fluid={1}>
             <Row>
               <Col xs={12} sm={12} md={6} lg={6} xl={6}>
@@ -244,7 +245,7 @@ export default class A extends React.PureComponent {
           </Container>
         </section>
 
-        <section className="section3">
+        <section className="section3" id="xizmatlar">
           <p className="text-center service lato-bold">Bizning xizmatlar</p>
           <Container className="mahsulotlar">
 
@@ -362,7 +363,7 @@ export default class A extends React.PureComponent {
           </Container>
         </section>
 
-        <section className='section4'>
+        <section className='section4' id='portfolio'>
           <Container fluid={1}>
             <Row className='p-0'>
               <Col xs={12} sm={12} md={6} lg={6} xl={6} className='p-md-0 p-lg-0 p-xl-0'>
@@ -393,7 +394,7 @@ export default class A extends React.PureComponent {
           </Container>
         </section>
 
-        <section className="section5">
+        <section className="section5" >
           <p className="lato-bold text-center we-price">Bizning yutuqlarimiz</p>
           <div className="bg-image">
             <Container className="pt-5 pb-5">
@@ -426,7 +427,7 @@ export default class A extends React.PureComponent {
           </div>
         </section>
 
-        <section className="section6">
+        <section className="section6" id="mijozlar">
           <Container fluid={true} className='position-relative'>
             <div className="bg-1 position-absolute"></div>
             <div className="bg-2 position-absolute"></div>
@@ -862,7 +863,7 @@ export default class A extends React.PureComponent {
         {/*  <Container className='team_Carousel'>*/}
 
 
-        <section className="section7 position-relative">
+        <section className="section7 position-relative" id="jamoa">
           <img src="/assets/images/Rectangle6.png" className='rec6 img-fluid position-absolute' alt=""/>
           <Container className='team_Carousel '>
             <p className='team_Title'>Bizning jamoa</p>
@@ -980,19 +981,18 @@ export default class A extends React.PureComponent {
           </Container>
         </section>
 
-        <footer className="footer">
+        <footer className="footer" id="kontakt">
           <Container>
             <Row>
-              <Col md={2} xs={6}>
+              <Col md={2} xs={6} className="mt-2">
                 <p className="lato-bold company">Kompaniya</p>
-                <p className="mt-3 link-menu"><a className="lato-light" href="#">Biz haqimizda</a></p>
-                <p className="link-menu"><a className="lato-light" href="#">Mahsulotlar</a></p>
-                <p className="link-menu"><a className="lato-light" href="#">Xizmatlar</a></p>
-                <p className="link-menu"><a className="lato-light" href="#">Bizning mijozlar</a></p>
-                <p className="link-menu"><a className="lato-light" href="#">Biz haqimizda</a></p>
-
+                <Link className="lato-light link-menu" spy={true} smooth={true} duration={1500} activeClass="active" activeClassName="selected" to="bizhaqimizda"><p className="mt-3"><a> Biz haqimizda</a></p></Link>
+                <Link className="lato-light link-menu" spy={true} smooth={true} duration={1300} activeClass="active" activeClassName="selected" to="xizmatlar"><p className="mt-3"><a> Bizning xizmatlar</a></p></Link>
+                <Link className="lato-light link-menu" spy={true} smooth={true} duration={1200} activeClass="active" activeClassName="selected" to="portfolio"><p className="mt-3"><a> Portfolio</a></p></Link>
+                <Link className="lato-light link-menu" spy={true} smooth={true} duration={1000} activeClass="active" activeClassName="selected" to="mijozlar"><p className="mt-3"><a> Bizning Mijozlar</a></p></Link>
+                <Link className="lato-light link-menu" spy={true} smooth={true} duration={700} activeClass="active" activeClassName="selected" to="jamoa"><p className="mt-3"><a> Bizning Jamoa</a></p></Link>
               </Col>
-              <Col md={2} xs={6} className="ml-md-5">
+              <Col md={2} xs={6} className="ml-md-5 mt-2">
                 <p className="lato-bold company">Xizmatlar</p>
                 <p className="mt-3 link-menu"><a className="lato-light" href="#">Ipakli bosma</a></p>
                 <p className="link-menu"><a className="lato-light" href="#">Ofset bosma</a></p>
@@ -1003,7 +1003,7 @@ export default class A extends React.PureComponent {
                 <p className="link-menu"><a className="lato-light" href="#">Qog'oz lashirovka</a></p>
                 <p className="link-menu"><a className="lato-light" href="#">O'yib olish</a></p>
               </Col>
-              <Col md={2} xs={6} className="ml-md-5 mt-sm-2">
+              <Col md={2} xs={6} className="ml-md-5 mt-2">
                 <p className="lato-bold company">Xizmatlar</p>
                 <p className="mt-3 link-menu"><a className="lato-light" href="#">Rahbariyat</a></p>
                 <p className="link-menu"><a className="lato-light" href="#">Tarix</a></p>
@@ -1011,7 +1011,7 @@ export default class A extends React.PureComponent {
                 <p className="link-menu"><a className="lato-light" href="#">Maketlar uchun talab</a></p>
                 <p className="link-menu"><a className="lato-light" href="#">Aloqa</a></p>
               </Col>
-              <Col md={2}  xs={6} className="offset-md-2 mt-sm-2">
+              <Col md={2}  xs={6} className="offset-md-2 mt-2">
                 <p className="lato-bold aloqa">Aloqa</p>
 
                 <div>
