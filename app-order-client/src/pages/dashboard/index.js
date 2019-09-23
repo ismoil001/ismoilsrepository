@@ -235,16 +235,12 @@ class Index extends PureComponent {
             </Col>
           </Row>
           <Row>
-            <Col span={6} offset={12}>
-              <h2>Admin page</h2>
-            </Col>
-          </Row>
-          <Row>
-            <Col span={20} offset={2}>
-              <Button onClick={handleOpenModal}>Add Order</Button>
-            </Col>
-          </Row>
+            <Col offset={2}>
+              <Button onClick={handleOpenModal} className="btn-dark mt-3">Add Order</Button></Col>
 
+              <h2 className="text-center my-3">Dashboard</h2>
+
+          </Row>
           <Row>
             <Col span={20} offset={2}>
               <Table dataSource={orderLists} columns={visibleColumns}/>

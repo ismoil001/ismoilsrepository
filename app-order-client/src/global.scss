@@ -970,6 +970,7 @@
 
   .section8 {
     margin-top: 196px;
+    transform: translate(0,40px);
     position: relative;
 
     .rectangle {
@@ -983,7 +984,7 @@
 
     .mapYandex {
       width: 70%;
-      height: 569px;
+      height: 501px;
       border-radius: 50%;
 
       .ymaps-2-1-74-map ymaps, .ymaps-2-1-74-map ymaps:after, .ymaps-2-1-74-map ymaps:before {
