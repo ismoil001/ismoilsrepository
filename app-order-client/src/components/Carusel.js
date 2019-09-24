@@ -10,7 +10,7 @@ import Container from "reactstrap/es/Container";
 
 
 
-class Carusel extends React.PureComponent {
+class Carusel extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -73,7 +73,7 @@ class Carusel extends React.PureComponent {
       }
     };
     Cards();
-
+setInterval(this.setLeft,9000,true)
   }
 
   getTouches = (event) => {
@@ -144,6 +144,8 @@ class Carusel extends React.PureComponent {
   };
   rearrange = (card) => {
     let cards = document.querySelectorAll(".boxs .box");
+    this.state.circleId1=card;
+    this.setState(this.state)
     for (let n = 0; n < cards.length; n++) {
       cards[n].classList.remove("card--left");
       cards[n].classList.remove("card--center");
