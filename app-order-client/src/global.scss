@@ -1473,8 +1473,9 @@ body{
           font-size: 35px;
         }
       }
-      .pdp-link{
-        margin-left: 5px!important;
+      #address{
+        margin-left: 15px!important;
+        width: 300px!important;
       }
     }
   }
@@ -1554,11 +1555,11 @@ body{
         .phone-number {
           font-size: 20px;
         }
-        .pdp-link{
-          margin-left: 5px!important;
-        }
       }
-
+      .address{
+        margin-left: 15px!important;
+        width: 300px!important;
+      }
       .link-pdp {
         a {
           font-size: 10px;
