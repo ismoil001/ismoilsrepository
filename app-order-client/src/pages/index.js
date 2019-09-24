@@ -34,7 +34,8 @@ export default class A extends React.Component {
       windowHeight: undefined,
       windowWidth: undefined,
       scrolled:false,
-      count:false
+      count:false,
+
     };
   }
 
@@ -147,7 +148,7 @@ export default class A extends React.Component {
           <div className="header position-relative" >
             <Container fluid={1} >
               <img src="/assets/images/headerborder.png" className='rec position-absolute' alt=""/>
-              <div  style={this.state.scrolled?{background:"white",position:"fixed",zIndex:"999",  marginLeft: "-1.1%",width:"100%",}:null}> <Header/></div>
+              <div  className={this.state.scrolled?"headerback":null} style={this.state.scrolled?{background:"white",position:"fixed",zIndex:"999",  marginLeft: "-1.1%",width:"100%",}:null}> <Header/></div>
               <Row className='p-0' >
                 <Col xs={12} sm={12} md={12} lg={12} xl={7} className='p-0 ' style={this.state.scrolled?{marginTop:"102px"}:null}>
                   <Row className="mr-0">
@@ -457,20 +458,20 @@ export default class A extends React.Component {
                   <Row>
                     <Col md={4} id="count" className="text-center">
 
-                      {this.state.count?  <CountTo className="lato-bold text-center number d-inline-block" to={628} speed={1000}/>: <CountTo className="lato-bold text-center number d-inline-block" to={0} speed={1000}/>}
+                      {this.state.count?  <CountTo className="lato-bold text-center number d-inline-block" to={628} speed={3000}/>: <CountTo className="lato-bold text-center number d-inline-block" to={0} speed={1000}/>}
                       <span className="lato-bold number">+</span>
                       <p className="lato-regular text-center number-com">Bizning mijozlarimiz <br/>
                         soni</p>
                     </Col>
 
                     <Col md={4} className="text-center">
-                      {this.state.count? <CountTo className="lato-bold text-center number" to={1500} speed={1000}/>:<CountTo className="lato-bold text-center number d-inline-block" to={0} speed={1000}/>}
+                      {this.state.count? <CountTo className="lato-bold text-center number" to={1500} speed={3000}/>:<CountTo className="lato-bold text-center number d-inline-block" to={0} speed={1000}/>}
                       <span className="lato-bold number">+</span>
                       <p className="lato-regular  number-com">Bajarilgan buyurtmalar <br/>
                         soni</p>
                     </Col>
                     <Col md={4} className="text-center">
-                      {this.state.count?  <CountTo className="lato-bold text-center number" to={254} speed={1000}/>:<CountTo className="lato-bold text-center number d-inline-block" to={0} speed={1000}/>}
+                      {this.state.count?  <CountTo className="lato-bold text-center number" to={254} speed={3000}/>:<CountTo className="lato-bold text-center number d-inline-block" to={0} speed={1000}/>}
                       <span className="lato-bold number">+</span>
                       <p className="lato-regular text-center number-com">Bizning <br/>
                         mutaxasislarimiz</p>
@@ -1125,7 +1126,7 @@ export default class A extends React.Component {
                   <a href=""> <img src="/assets/images/004-youtube.png" alt=""/></a>
                 </div>
               </Col>
-              <Col md={2} xs={12} className="offset-md-3 offset-1" >
+              <Col md={2} xs={12} className="offset-md-3  pdp-link offset-1" >
               <span>
                 <img className="phone-img" src="/assets/images/map-pin.png" alt=""/>
               </span>
@@ -1133,7 +1134,7 @@ export default class A extends React.Component {
                 </span>
               </Col>
             </Row>
-            <Row className=" mt-3">
+            <Row className=" mt-3 p-1">
               <p className="lato-regular link-pdp">
                 <a href="https://pdp.uz">© 2005 - 2019 europrint.uz tipografiyasi | Personal Development Process</a></p>
             </Row>
