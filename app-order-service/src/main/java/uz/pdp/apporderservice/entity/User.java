@@ -67,6 +67,18 @@ public class User extends AbsEntity implements UserDetails {
         this.telegramId = telegramId;
     }
 
+    public User(String phoneNumber, String password, String firstName, String lastName, String patron, String companyName, Integer telegramId, Set<Role> roles, Long chatId) {
+        this.phoneNumber = phoneNumber;
+        this.password = password;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.patron = patron;
+        this.companyName = companyName;
+        this.telegramId = telegramId;
+        this.roles = roles;
+        this.chatId = chatId;
+    }
+
     private boolean accountNonExpired = true;
     private boolean accountNonLocked = true;
     private boolean credentialsNonExpired = true;

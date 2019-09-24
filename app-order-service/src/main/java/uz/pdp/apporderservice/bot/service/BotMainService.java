@@ -4,22 +4,30 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
+import org.telegram.telegrambots.meta.api.methods.updatingmessages.DeleteMessage;
+import org.telegram.telegrambots.meta.api.methods.updatingmessages.EditMessageText;
 import org.telegram.telegrambots.meta.api.objects.Contact;
 import org.telegram.telegrambots.meta.api.objects.Update;
+import org.telegram.telegrambots.meta.api.objects.replykeyboard.InlineKeyboardMarkup;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.ReplyKeyboardRemove;
+import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.InlineKeyboardButton;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 import uz.pdp.apporderservice.bot.PdpOrderBot;
 import uz.pdp.apporderservice.bot.actions.CreateButtonService;
 import uz.pdp.apporderservice.bot.utils.BotConstant;
 import uz.pdp.apporderservice.bot.utils.BotState;
+import uz.pdp.apporderservice.entity.Order;
 import uz.pdp.apporderservice.entity.TelegramState;
 import uz.pdp.apporderservice.entity.User;
 import uz.pdp.apporderservice.entity.enums.RoleName;
 import uz.pdp.apporderservice.exception.ResourceNotFoundException;
+import uz.pdp.apporderservice.repository.OrderRepository;
 import uz.pdp.apporderservice.repository.RoleRepository;
 import uz.pdp.apporderservice.repository.TelegramStateRepository;
 import uz.pdp.apporderservice.repository.UserRepository;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -38,6 +46,8 @@ public class BotMainService {
     RoleRepository roleRepository;
     @Autowired
     CreateButtonService createButtonService;
+    @Autowired
+    OrderRepository orderRepository;
 
     public Optional<TelegramState> getLastState(Update update) {
         return telegramStateRepository.findByTgUserId(update.hasCallbackQuery()?update.getCallbackQuery().getFrom().getId():update.getMessage().getFrom().getId());
@@ -110,6 +120,7 @@ public class BotMainService {
         User user = userRepository.findByTelegramId(update.getMessage().getFrom().getId()).orElseThrow(() -> new ResourceNotFoundException("user","id",update));
         if(passwordEncoder.matches(update.getMessage().getText(), user.getPassword())){
             if (user.getRoles().stream().anyMatch(item -> item.getName().equals(RoleName.ROLE_MANAGER))){
+                pdpOrderBot.execute(new DeleteMessage().setChatId(update.getMessage().getChatId()).setMessageId(update.getMessage().getMessageId()));
                 lastState.setState(BotState.ADMIN_CABINET);
                 telegramStateRepository.save(lastState);
                 user.setChatId(update.getMessage().getChatId());
@@ -119,6 +130,7 @@ public class BotMainService {
             else{
                 lastState.setState(BotState.CABINET_PAGE);
                 telegramStateRepository.save(lastState);
+                pdpOrderBot.execute(new DeleteMessage().setMessageId(update.getMessage().getMessageId()).setChatId(update.getMessage().getChatId()));
                 cabinetPage(update);
             }
 
@@ -130,12 +142,27 @@ public class BotMainService {
     }
 
     public void cabinetPage(Update update) throws TelegramApiException {
+        TelegramState telegramState = getLastState(update).get();
+        telegramState.setState(BotState.ENTERED_CABINET_PAGE);
+        telegramStateRepository.save(telegramState);
         SendMessage sendMessage = new SendMessage();
-        sendMessage.setText("Cabinetga hush keldiz\n" +
-                "order\norder\norder\norder\norder\n");
-        sendMessage.setChatId(update.getMessage().getChatId());
-        sendMessage.setReplyMarkup(createButtonService.createInlineButton("Yangi buyurtma", BotConstant.NEW_ORDER));
+        User user = userRepository.findByTelegramId(update.hasCallbackQuery()?update.getCallbackQuery().getMessage().getChatId().intValue():update.getMessage().getFrom().getId()).orElseThrow(() -> new ResourceNotFoundException("user","id",update));
+        List<Order> allOrdersByUser_id = orderRepository.findAllByUser_Id1(user.getId());
+        InlineKeyboardMarkup inlineKeyboardMarkup = new InlineKeyboardMarkup();
+        List<List<InlineKeyboardButton>> rows = new ArrayList<>();
 
+        for (Order order : allOrdersByUser_id) {
+            rows.add(createButtonService.createRowWithOneButton(
+                    order.getProductName()+" "+order.getCount()+"ta "+order.getOrderedDate(),
+                    "existingOrder/"+order.getId()
+            ));
+        }
+        rows.add(createButtonService.createRowWithOneButton("Yangi buyurtma", BotConstant.NEW_ORDER));
+        rows.add(createButtonService.createRowWithOneButton("\uD83D\uDD04", BotConstant.REFRESH_CABINET_PAGE));
+        sendMessage.setText("Shaxsiy kabinet");
+        sendMessage.setChatId(update.hasCallbackQuery()?update.getCallbackQuery().getMessage().getChatId():update.getMessage().getChatId());
+        inlineKeyboardMarkup.setKeyboard(rows);
+        sendMessage.setReplyMarkup(inlineKeyboardMarkup);
         pdpOrderBot.execute(sendMessage);
     }
 
@@ -160,7 +187,7 @@ public class BotMainService {
     public void adminCabinetPage(Update update) throws TelegramApiException {
         SendMessage sendMessage = new SendMessage();
         sendMessage.setText("Admin kabinetga xush kelibsiz!");
-        sendMessage.setChatId(update.getMessage().getChatId());
+        sendMessage.setChatId(update.hasCallbackQuery()?update.getCallbackQuery().getMessage().getChatId(): update.getMessage().getChatId());
         pdpOrderBot.execute(sendMessage);
     }
 }

@@ -7,6 +7,7 @@ import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.InlineKe
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.KeyboardButton;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.KeyboardRow;
 import uz.pdp.apporderservice.bot.utils.BotConstant;
+import uz.pdp.apporderservice.payload.ReqInlineButton;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,6 +26,24 @@ public class CreateButtonService {
         rows.add(row);
         inlineKeyboardMarkup.setKeyboard(rows);
         return inlineKeyboardMarkup;
+    }
+    public List<InlineKeyboardButton> createRowWithOneButton(String text, String query) {
+        List<InlineKeyboardButton> row = new ArrayList<>();
+        InlineKeyboardButton button = new InlineKeyboardButton();
+        button.setText(text);
+        button.setCallbackData(query);
+        row.add(button);
+        return row;
+    }
+    public List<InlineKeyboardButton> createOneRowButtons(List<ReqInlineButton> req) {
+        List<InlineKeyboardButton> row = new ArrayList<>();
+        for (ReqInlineButton reqInlineButton : req) {
+            InlineKeyboardButton button = new InlineKeyboardButton();
+            button.setText(reqInlineButton.getText());
+            button.setCallbackData(reqInlineButton.getQuery());
+            row.add(button);
+        }
+        return row;
     }
 
     public ReplyKeyboardMarkup createReplyButton(String text){

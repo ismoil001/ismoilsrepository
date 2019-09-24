@@ -3,7 +3,9 @@ package uz.pdp.apporderservice.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.web.bind.annotation.*;
+import uz.pdp.apporderservice.entity.User;
 import uz.pdp.apporderservice.payload.ReqOrder;
+import uz.pdp.apporderservice.security.CurrentUser;
 import uz.pdp.apporderservice.service.OrderService;
 
 import java.util.UUID;
@@ -21,9 +23,12 @@ public class OrderController {
     }
 
     @GetMapping("active")
-    public HttpEntity<?> getActiveOrders(@RequestParam Integer page,@RequestParam Integer size,@RequestParam String name){
-        return orderService.getActiveOrders(page,size,name);
+    public HttpEntity<?> getActiveOrders(@RequestParam Integer page, @RequestParam Integer size, @RequestParam String name, @RequestParam String status, @RequestParam boolean ismine, @CurrentUser User currentUser){
+        return orderService.getActiveOrders(page,size,name,status,ismine,currentUser);
     }
+
+
+
 
     @PostMapping
     public HttpEntity<?> saveOrder(@RequestBody ReqOrder reqOrder) {

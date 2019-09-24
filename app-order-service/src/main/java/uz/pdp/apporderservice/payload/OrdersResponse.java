@@ -3,6 +3,7 @@ package uz.pdp.apporderservice.payload;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import uz.pdp.apporderservice.entity.User;
 
 import java.sql.Timestamp;
 import java.util.List;
@@ -34,4 +35,6 @@ public class OrdersResponse {
     private Double sum;
 
     private List<ResPayment> payments;
+
+    private String managerFullName;
 }

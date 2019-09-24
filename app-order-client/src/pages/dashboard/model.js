@@ -12,6 +12,8 @@ export default {
     paymentModalVisible:false,
     page:0,
     totalElements:0,
+    ismine:false,
+    archiveData:[],
   },
 
   subscriptions: {
@@ -28,7 +30,9 @@ export default {
             payload:{
               page:0,
               size:10,
-              name:''
+              name:'',
+              ismine:false,
+              status:'active'
             }
           })
         }
@@ -148,7 +152,7 @@ export default {
           payload:{
             orderLists:data.object.object,
             totalElements:data.object.totalElements,
-            page:data.object.currentPage,
+            page:data.object.currentPage+1,
           }
         })
       }

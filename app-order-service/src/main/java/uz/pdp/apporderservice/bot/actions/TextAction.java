@@ -3,6 +3,7 @@ package uz.pdp.apporderservice.bot.actions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
+import org.telegram.telegrambots.meta.api.methods.updatingmessages.DeleteMessage;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 import uz.pdp.apporderservice.bot.PdpOrderBot;
@@ -39,13 +40,22 @@ public class TextAction {
     public void runText(String text, Update update) {
         switch (text) {
             case "/start":
+                try {
+                    pdpOrderBot.execute(new DeleteMessage().setChatId(update.getMessage().getChatId()).setMessageId(update.getMessage().getMessageId()));
+                } catch (TelegramApiException e) {
+                    e.printStackTrace();
+                }
                 botMainService.startPage(update);
                 break;
             /////////////////////////////////
 
 
             default:
-                stateAction.runState(update);
+                try {
+                    stateAction.runState(update);
+                } catch (TelegramApiException e) {
+                    e.printStackTrace();
+                }
         }
     }
 }

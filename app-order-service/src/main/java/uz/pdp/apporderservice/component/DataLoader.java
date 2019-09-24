@@ -30,9 +30,9 @@ public class DataLoader implements CommandLineRunner {
     public void run(String... args) throws Exception {
         if (initializationMode.equalsIgnoreCase("always")) {
             User user = new User("+998941211112", passwordEncoder.encode("root123"), "Sobir", "Xalimov", "Botirovich", new HashSet<>(roleRepository.findAllByName(RoleName.ROLE_MANAGER)),"Europrint");
-            User user1 = new User("+998944155945", passwordEncoder.encode("root123"), "Aziz", "Mirzaahmatov", "Komil o'g'li", new HashSet<>(roleRepository.findAllByName(RoleName.ROLE_MANAGER)),"PDP");
+//            User user1 = new User("+998944155945", passwordEncoder.encode("root123"), "Aziz", "Mirzaahmatov", "Komil o'g'li", new HashSet<>(roleRepository.findAllByName(RoleName.ROLE_MANAGER)),"PDP");
             userRepository.save(user);
-            userRepository.save(user1);
+//            userRepository.save(user1);
         }
     }
 }

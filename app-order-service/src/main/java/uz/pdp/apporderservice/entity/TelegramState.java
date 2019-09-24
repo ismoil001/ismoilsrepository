@@ -4,10 +4,15 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Type;
 import uz.pdp.apporderservice.entity.template.AbsEntity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.ManyToOne;
+import java.util.List;
+import java.util.UUID;
 
 @EqualsAndHashCode(callSuper = true)
 @Entity
@@ -32,5 +37,11 @@ public class TelegramState extends AbsEntity {
     private String companyName;
 
     private Long customerChatId;
+
+    private UUID orderId;
+
+    private Integer count;
+
+    private Double newPrice;
 
 }
