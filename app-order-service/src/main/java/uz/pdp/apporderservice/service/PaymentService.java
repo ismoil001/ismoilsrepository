@@ -1,6 +1,9 @@
 package uz.pdp.apporderservice.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -12,11 +15,9 @@ import uz.pdp.apporderservice.entity.enums.OrderStatus;
 import uz.pdp.apporderservice.exception.ResourceNotFoundException;
 import uz.pdp.apporderservice.payload.ApiResponse;
 import uz.pdp.apporderservice.payload.ApiResponseData;
+import uz.pdp.apporderservice.payload.PageResponse;
 import uz.pdp.apporderservice.payload.ReqPayment;
-import uz.pdp.apporderservice.repository.OrderRepository;
-import uz.pdp.apporderservice.repository.PayTypeRepository;
-import uz.pdp.apporderservice.repository.PaymentRepository;
-import uz.pdp.apporderservice.repository.UserRepository;
+import uz.pdp.apporderservice.repository.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,6 +34,8 @@ public class PaymentService {
     PayTypeRepository payTypeRepository;
     @Autowired
     OrderRepository orderRepository;
+    @Autowired
+    OrderPaymentRepository orderPaymentRepository;
 
     public HttpEntity<?> savePayment(ReqPayment reqPayment) {
         try {
@@ -70,19 +73,29 @@ public class PaymentService {
         }
     }
 
-    public HttpEntity<?> getAll() {
+    public HttpEntity<?> getPayments(Integer page,Integer size,String name,Boolean isArchive) {
         try {
-            return ResponseEntity.ok(new ApiResponseData(true, "success", paymentRepository.findAll()));
+            Pageable pageable = PageRequest.of(page,size);
+            Page<Payment> paymentList;
+            if(isArchive){
+                paymentList = paymentRepository.findAllByLeftoverAndUser_FirstNameContainingIgnoreCaseOrLeftoverAndUser_LastNameContainingIgnoreCaseOrLeftoverAndUser_PhoneNumberContainingOrLeftoverAndUser_CompanyNameContainingIgnoreCase(pageable,0.0, name,0.0, name, 0.0,name,0.0, name);
+            }else{
+                paymentList= paymentRepository.findAllByLeftoverNotInAndUser_FirstNameContainingIgnoreCaseOrLeftoverNotInAndUser_LastNameContainingIgnoreCaseOrLeftoverNotInAndUser_PhoneNumberContainingOrLeftoverNotInAndUser_CompanyNameContainingIgnoreCase(pageable,0.0, name,0.0, name, 0.0,name,0.0, name);
+            }
+            return ResponseEntity.ok(new PageResponse((int)paymentList.getTotalElements(),page,paymentList.getContent()));
         } catch (Exception e) {
             e.printStackTrace();
-            return ResponseEntity.ok(new ApiResponse("success", true));
+            return ResponseEntity.ok(new ApiResponse("error", false));
         }
 
     }
 
     public HttpEntity<?> deletePayment(UUID id) {
         try {
+            List<OrderPayment> payments = orderPaymentRepository.findAllByPayment_Id(id);
+            orderPaymentRepository.deleteAll(payments);
             paymentRepository.deleteById(id);
+
             return ResponseEntity.ok(new ApiResponse("success", true));
         } catch (Exception e) {
             e.printStackTrace();

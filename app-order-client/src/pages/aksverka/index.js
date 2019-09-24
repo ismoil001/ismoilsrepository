@@ -85,7 +85,7 @@ class Index extends Component {
           <Col span={5} className="aksverka-header ml-4">
             <div className="bg-white border-1" >
               <h3 className="text-center font-weight-bold">{sumPayment}</h3>
-              <p className="text-center">Payment</p>
+              <p className="text-center">To'lov</p>
             </div>
           </Col>
           <Col span={5} className="aksverka-header ml-4">

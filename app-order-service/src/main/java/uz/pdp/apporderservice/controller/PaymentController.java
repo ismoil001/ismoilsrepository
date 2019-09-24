@@ -17,8 +17,8 @@ public class PaymentController {
 
 
     @GetMapping
-    public HttpEntity<?> getPayment(){
-        return paymentService.getAll();
+    public HttpEntity<?> getPayment(@RequestParam Integer page,@RequestParam Integer size,@RequestParam String name,@RequestParam Boolean isArchive){
+        return paymentService.getPayments(page,size,name,isArchive);
     }
 
     @PostMapping
