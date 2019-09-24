@@ -146,14 +146,18 @@ class Index extends PureComponent {
     return (
       <div>
         <Row>
-          <Checkbox onChange={handleArchive} checked={isArchive}>Yechilgan to'lovlar</Checkbox>
+
         </Row>
         <Row>
           <h2 className="text-center mb-4 mt-5"><b>To'lovlar</b></h2>
-          <Col span={6} offset={2}>
+          <Col span={4} offset={18}>
+            <span className='ml-5 mr-3'>Yechilgan to'lovlar</span>
+            <Checkbox onChange={handleArchive} checked={isArchive}></Checkbox>
+          </Col>
+          <Col offset={2} span={5} className="mr-4">
             <Button onClick={onShowPaymentModal} className="btn-dark my-3 mb-2">Add payment</Button>
           </Col>
-          <Col span={5} className="mt-3 pl-3" offset={8}>
+          <Col span={5} className="mt-3  pl-3" offset={8}>
             <Input className="ml-5" onChange={handleSearch}/>
           </Col>
           <Col span={2} className="mt-3">
