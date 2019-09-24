@@ -264,28 +264,27 @@ class Index extends PureComponent {
 
     return (
       <div className="admin">
-        <Tabs onChange={handleTab}>
+        <Tabs onChange={handleTab} className="pb-5 pt-1">
           <Tabs.TabPane tab="All orders" key="1">
-            <Card>
+            <div>
+              <h2 className="text-center my-3"><b>Buyurtmalar</b></h2>
               <Row>
-                <Col span={6} offset={2}>
-                  <Input onChange={handleSearch}/>
-                </Col>
-                <Col span={2}>
-                  <Button onClick={searchButton}>Search</Button>
-                </Col>
-                <Col span={2}>
-                  <Checkbox onChange={handleIsMine} checked={ismine}>Checkbox</Checkbox>
-                </Col>
-              </Row>
-              <h2 className="text-center my-3">Dashboard</h2>
-              <Row>
-                <Col offset={2}>
+                <Col span={4} offset={18}>
+                  <span className='ml-5 mr-3'>Menin buyurmalarim</span>
+                <Checkbox onChange={handleIsMine} checked={ismine}></Checkbox>
+              </Col>
+                <Col offset={2} span={5} className="mr-4">
                   <Button onClick={handleOpenModal} className="btn-dark mt-3">Add Order</Button>
+                </Col>
+                <Col span={5} className="mt-3  pl-3" offset={8}>
+                  <Input className="ml-5" onChange={handleSearch}/>
+                </Col>
+                <Col span={2} className="mt-3">
+                  <Button className="btn-dark" onClick={searchButton}>Search</Button>
                 </Col>
               </Row>
 
-              <Row>
+              <Row className="my-4">
                 <Col span={20} offset={2}>
                   <Table dataSource={orderLists} columns={visibleColumns}/>
                   <Pagination style={{position: "relative", top: "20px", left: "45%", marginBottom: "200px"}}
@@ -370,13 +369,16 @@ class Index extends PureComponent {
 
 
                 </Modal>
-              </Card>
+              </div>
           </Tabs.TabPane>
           <Tabs.TabPane tab="Archive" key="2">
-            <Table dataSource={archiveData} columns={visibleColumns}/>
-            <Pagination style={{position: "relative", top: "20px", left: "45%", marginBottom: "200px"}}
-                        current={page}
-                        onChange={onChangePage} pageSize={10} total={totalElements} pagination={false}/>
+            <Col span={20} offset={2}>
+              <Table dataSource={archiveData} columns={visibleColumns}/>
+              <Pagination style={{position: "relative", top: "20px", left: "45%", marginBottom: "200px"}}
+                          current={page}
+                          onChange={onChangePage} pageSize={10} total={totalElements} pagination={false}/>
+            </Col>
+
           </Tabs.TabPane>
         </Tabs>
       </div>

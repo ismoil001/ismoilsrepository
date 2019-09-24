@@ -1,4 +1,12 @@
-
+#aksverka{
+  .aksverka-header{
+    background: #FFFFFF;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.12);
+    border-radius: 4px;
+    padding: 10px 0 0 0 ;
+    margin: 20px 0 15px 0;
+  }
+}
 
   @font-face {
     font-family: 'Lato-Black';
@@ -24,6 +32,7 @@
     font-family: 'Lato-RegularItalic';
     src: url("../public/assets/fonts/Lato/Lato-RegularItalic.ttf") format("truetype");
   }
+
 
 
   .lato-black {
@@ -1230,6 +1239,7 @@
         border-radius: 0px 214.5px 0px 0px;
       }
     }
+
 
     @media (max-width: 992px) and (min-width: 765px) {
 
