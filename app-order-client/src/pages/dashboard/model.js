@@ -1,5 +1,6 @@
-import {saveOrder,getCustomers,getActiveOrders,editOrder,deleteOrder,saveOrderPayment} from './service'
+import {saveOrder,getCustomers,changeStatusOrder,getActiveOrders,editOrder,deleteOrder,saveOrderPayment} from './service'
 import {notification} from "antd";
+import {searchUser} from "../payment/service";
 export default {
   namespace: 'dashboard',
   state: {
@@ -170,6 +171,38 @@ export default {
             totalElements:data.object.totalElements,
             page:data.object.currentPage+1,
           }
+        })
+      }
+    },
+
+    * searchUser({payload}, {call, put, select}) {
+      const data = yield call(searchUser, {name: payload})
+      if (data.success) {
+        yield put({
+          type: 'updateState',
+          payload: {
+            customerList: data.object
+          }
+        })
+      }
+    },
+    *setStatusOfOrder({payload},{call,put,select}){
+      const {ismine} = yield select(_=>_.dashboard)
+
+      const data = yield call(changeStatusOrder,payload)
+      if(data.success){
+        yield put({
+          type:'getOrders',
+          payload:{
+            page:0,
+            size:10,
+            name:'',
+            ismine:ismine,
+            status:'active'
+          }
+        })
+        notification['success']({
+          message:'archived'
         })
       }
     }

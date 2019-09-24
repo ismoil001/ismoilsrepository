@@ -137,6 +137,8 @@ class Index extends PureComponent {
                         cancelText="No">
               <Button>delete</Button>
             </Popconfirm>
+            <Button onClick={() => onClickMenu(3, record)}>Archive</Button>
+
 
           </div>
       },
@@ -164,12 +166,8 @@ class Index extends PureComponent {
       }
       if (key === 3) {
         dispatch({
-          type: 'dashboard/updateState',
-          payload: {
-            paymentModalVisible: true,
-            currentItem: item,
-            currentItemPaymentSum: s
-          }
+          type: 'dashboard/setStatusOfOrder',
+          payload: item.id
         })
 
       }
@@ -276,6 +274,22 @@ class Index extends PureComponent {
       }
     }
 
+    const onSearchCompany=(val)=>{
+        if(val===''){
+          dispatch({
+            type:'dashboard/updateState',
+            payload:{
+              customerList:[]
+            }
+          })
+        }else{
+          dispatch({
+            type:'dashboard/searchUser',
+            payload:val
+          })
+      }
+    }
+
     return (
       <div className="admin">
         <Tabs onChange={handleTab} className="pb-5 pt-1">
@@ -342,7 +356,7 @@ class Index extends PureComponent {
                       initialValue: currentItem && currentItem.userId,
                       rules: [{required: true, message: 'Please select company!'}],
                     })(
-                      <Select placeholder="Select company">
+                      <Select placeholder="Select company" onSearch={onSearchCompany} showSearch  optionFilterProp="children">
                         {customerList.map(item =>
                           <Option value={item.id}
                                   key={item.id}>{item.lastName + " " + item.firstName + " " + item.companyName + " " + item.phoneNumber}</Option>

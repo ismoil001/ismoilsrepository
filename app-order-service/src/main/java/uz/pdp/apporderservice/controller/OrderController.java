@@ -8,6 +8,7 @@ import uz.pdp.apporderservice.payload.ReqOrder;
 import uz.pdp.apporderservice.security.CurrentUser;
 import uz.pdp.apporderservice.service.OrderService;
 
+import javax.ws.rs.Path;
 import java.util.UUID;
 
 @RestController
@@ -27,6 +28,10 @@ public class OrderController {
         return orderService.getActiveOrders(page,size,name,status,ismine,currentUser);
     }
 
+    @PostMapping("changeStatus/{id}")
+    public HttpEntity<?> changeStatus(@PathVariable UUID id){
+        return orderService.archiveOrder(id);
+    }
 
 
 
