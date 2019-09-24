@@ -35,7 +35,9 @@ body{
     src: url("../public/assets/fonts/Lato/Lato-RegularItalic.ttf") format("truetype");
   }
 
-
+.headerback{
+  transition: 0.6s ease;
+}
 
   .lato-black {
     font: {
@@ -144,6 +146,7 @@ body{
               color: #242424;
             }
           }
+
           .tableHover {
             background: #ffffff;
             td {
@@ -1410,6 +1413,7 @@ body{
     }
 
     .link-pdp {
+      padding-right: 5px!important;
       font-size: 14px;
 
       a {
@@ -1468,6 +1472,9 @@ body{
         .phone-number {
           font-size: 35px;
         }
+      }
+      .pdp-link{
+        margin-left: 5px!important;
       }
     }
   }
@@ -1547,6 +1554,9 @@ body{
         .phone-number {
           font-size: 20px;
         }
+        .pdp-link{
+          margin-left: 5px!important;
+        }
       }
 
       .link-pdp {
@@ -1556,31 +1566,6 @@ body{
         }
       }
     }
-  }
-
-
-  @media (min-width: 1600px) {
-
-  }
-
-  @media (max-width: 1600px) and (min-width: 1200px) {
-
-  }
-
-  @media (max-width: 1200px) and (min-width: 992px) {
-
-  }
-
-  @media (max-width: 992px) and (min-width: 765px) {
-
-  }
-
-  @media (max-width: 765px) and (min-width: 576px) {
-
-  }
-
-  @media only screen and (max-width: 576px) and (min-width: 320px) {
-
   }
 
   //=================================carusel==================//
@@ -1770,7 +1755,9 @@ body{
   }
 
   @media (max-width: 1200px) and (min-width: 992px) {
-
+    .headerback{
+      margin-left: -15px!important;
+    }
     .CaruselContainer{
       margin-top: 0px;
       width: 52%!important;
@@ -1788,6 +1775,9 @@ body{
   }
 
   @media (max-width: 992px) and (min-width: 768px) {
+    .headerback{
+      margin-left: -15px!important;
+    }
     .CaruselContainer{
       margin-top: 0px;
       width: 52%!important;
@@ -1800,6 +1790,9 @@ body{
   }
 
   @media (max-width: 768px) and (min-width: 576px) {
+    .headerback{
+      margin-left: -15px!important;
+    }
     .homeCircles{
 
       transform: translate(0px, 134px);
@@ -1814,6 +1807,9 @@ body{
   }
 
   @media only screen and (max-width: 576px) and (min-width: 450px) {
+    .headerback{
+      margin-left: -15px!important;
+    }
     .CaruselContainer{
       margin-top: 0px;
       width: 52%!important;
@@ -1825,6 +1821,9 @@ body{
 
   }
   @media only screen and (max-width: 450px) and (min-width: 320px) {
+    .headerback{
+      margin-left: -15px!important;
+    }
     .CaruselContainer{
       margin-top: 0px;
       width: 52%!important;
