@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import {Button, Col, Input, Row, Select, Table} from "antd";
+import {Button, Card, Col, Input, Row, Select, Table} from "antd";
 import {connect} from "dva"
 
 @connect(({aksverka}) => ({aksverka}))
@@ -61,7 +61,7 @@ class Index extends Component {
     ]
 
     return (
-      <div>
+      <div className="my-5">
         <Row>
           <Col span={12} offset={2}>
             <Select style={{width:"300px"}} placeholder={"User"} onSearch={onSearch} showSearch  optionFilterProp="children" onChange={handleSelect}>
@@ -69,11 +69,31 @@ class Index extends Component {
             </Select>
           </Col>
         </Row>
-        <Row className="mb-3 mt-3">
-          <Col span={5} offset={4}>count: {sumCount}</Col>
-          <Col span={5}>sum order price: {sumOrderCost}</Col>
-          <Col span={5}>payment: {sumPayment}</Col>
-          <Col span={5}>saldo: {saldo}</Col>
+        <Row id="aksverka" className="mb-3 mt-3 offset-1 p-1">
+          <Col span={5} className="aksverka-header ml-1">
+          <div className="bg-white border-1" >
+            <h3 className="text-center font-weight-bold">{sumCount}</h3>
+            <p className="text-center">Soni</p>
+          </div>
+        </Col>
+          <Col span={5} className="aksverka-header ml-4">
+            <div className="bg-white border-1" >
+              <h3 className="text-center font-weight-bold">{sumOrderCost}</h3>
+              <p className="text-center">Summasi</p>
+            </div>
+          </Col>
+          <Col span={5} className="aksverka-header ml-4">
+            <div className="bg-white border-1" >
+              <h3 className="text-center font-weight-bold">{sumPayment}</h3>
+              <p className="text-center">Payment</p>
+            </div>
+          </Col>
+          <Col span={5} className="aksverka-header ml-4">
+            <div className="bg-white border-1" >
+              <h3 className="text-center font-weight-bold">{saldo}</h3>
+              <p className="text-center">Saldo</p>
+            </div>
+          </Col>
         </Row>
         <Row>
           <Col span={20} offset={2}>
