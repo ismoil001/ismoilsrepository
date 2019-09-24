@@ -1,8 +1,8 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
-import {connect} from'dva'
-import {Button, Form, Col, DatePicker, Modal, Row, Select, Table, Input, InputNumber, Icon, Popconfirm} from "antd";
-import moment from "moment";
+import {connect} from 'dva'
+import {Button, Form, Col, DatePicker, Modal, Row, Select, Table, Input, InputNumber, Icon, Popconfirm} from "antd/lib/index";
+import moment from "moment/moment";
 import {Link} from "react-router-dom";
 
 @connect(({payment}) => ({payment}))
@@ -96,10 +96,11 @@ class Index extends PureComponent {
       <div>
         <Row>
           <Col span={6} offset={2}>
-            <Button onClick={onShowPaymentModal}>Add payment</Button>
+            <Button onClick={onShowPaymentModal} className="btn-dark mt-5">Add payment</Button>
           </Col>
         </Row>
         <Row>
+          <h2 className="text-center my-3">Payment</h2>
           <Col span={20} offset={2}>
             <Table dataSource={paymentList} columns={visibleColumns}/>
           </Col>
