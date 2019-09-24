@@ -25,7 +25,7 @@ import './index.less'
 class Index extends PureComponent {
   render() {
     const {dashboard, dispatch, form} = this.props;
-    const {modalVisible, modalType, currentItem, customerList, ismine, archiveData, orderLists, page, totalElements, searchValue, paymentModalVisible} = dashboard;
+    const {modalVisible, modalType, currentItem, customerList,currentItemPaymentSum, ismine, archiveData, orderLists, page, totalElements, searchValue, paymentModalVisible} = dashboard;
     const {getFieldDecorator, getFieldsValue, resetFields} = form;
     const {Option} = Select;
     const handleOpenModal = () => {
@@ -138,13 +138,15 @@ class Index extends PureComponent {
                         cancelText="No">
               <Button>delete</Button>
             </Popconfirm>
-            <Button onClick={() => onClickMenu(3, record)}>addpayment</Button>
+
           </div>
-
-
       },
     ]
     const onClickMenu = (key, item) => {
+      let s=0;
+      item.payments.map(i=>{
+        s+=i.amount
+      })
       if (key === 1) {
         dispatch({
           type: 'dashboard/updateState',
@@ -166,7 +168,8 @@ class Index extends PureComponent {
           type: 'dashboard/updateState',
           payload: {
             paymentModalVisible: true,
-            currentItem: item
+            currentItem: item,
+            currentItemPaymentSum:s
           }
         })
 
@@ -248,7 +251,7 @@ class Index extends PureComponent {
     }
 
     const handleTab = (key) => {
-      if (key === 2) {
+      if (key === 2+'') {
         dispatch({
           type: 'dashboard/getOrders',
           payload: {
@@ -257,6 +260,17 @@ class Index extends PureComponent {
             name: searchValue,
             status: 'notactive',
             ismine: false
+          }
+        })
+      }if (key === 1+'') {
+        dispatch({
+          type: 'dashboard/getOrders',
+          payload: {
+            page: 0,
+            size: 10,
+            name: searchValue,
+            status: 'active',
+            ismine: ismine
           }
         })
       }
@@ -294,7 +308,7 @@ class Index extends PureComponent {
                 </Col>
               </Row>
 
-                <PaymentModal modalVisible={paymentModalVisible} onHideModal={hidePaymentModal}
+                <PaymentModal modalVisible={paymentModalVisible} item={currentItem} itemPaySum={currentItemPaymentSum} onHideModal={hidePaymentModal}
                               onSave={saveOrderPayment}/>
                 <Modal
                   title="Add order"
@@ -373,7 +387,7 @@ class Index extends PureComponent {
               </Card>
           </Tabs.TabPane>
           <Tabs.TabPane tab="Archive" key="2">
-            <Table dataSource={archiveData} columns={visibleColumns}/>
+            <Table dataSource={orderLists} columns={visibleColumns}/>
             <Pagination style={{position: "relative", top: "20px", left: "45%", marginBottom: "200px"}}
                         current={page}
                         onChange={onChangePage} pageSize={10} total={totalElements} pagination={false}/>

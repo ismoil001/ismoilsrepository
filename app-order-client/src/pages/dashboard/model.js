@@ -14,6 +14,7 @@ export default {
     totalElements:0,
     ismine:false,
     archiveData:[],
+    currentItemPaymentSum:[],
   },
 
   subscriptions: {
@@ -42,6 +43,8 @@ export default {
 
   effects: {
     *saveOrderPayment({payload},{call,put,select}){
+      const {ismine} = yield select(_=>_.dashboard)
+
       const data = yield call(saveOrderPayment,payload)
       if(data.success){
         yield put({
@@ -58,13 +61,17 @@ export default {
           payload:{
             page:0,
             size:10,
-            name:''
+            name:'',
+            ismine:ismine,
+            status:'active'
           }
         })
       }
     },
 
     *deleteOrder({payload},{call,put,select}){
+      const {ismine} = yield select(_=>_.dashboard)
+
       const data = yield call(deleteOrder,{id:payload})
       if(data.success){
         notification['success']({
@@ -75,12 +82,16 @@ export default {
           payload:{
             page:0,
             size:10,
-            name:''
+            name:'',
+            ismine:ismine,
+            status:'active'
           }
         })
       }
     },
     * saveOrder({payload}, {call, put, select}) {
+      const {ismine} = yield select(_=>_.dashboard)
+
       payload.orderedDate = new Date(payload.orderedDate).getTime()
       const data = yield call(saveOrder,payload);
       if(data.success){
@@ -92,7 +103,9 @@ export default {
           payload:{
             page:0,
             size:10,
-            name:''
+            name:'',
+            ismine:ismine,
+            status:'active'
           }
         })
         yield put({
@@ -105,6 +118,7 @@ export default {
 
     },
     * editOrder({payload}, {call, put, select}) {
+      const {ismine} = yield select(_=>_.dashboard)
       payload.orderedDate = new Date(payload.orderedDate).getTime()
       const data = yield call(editOrder,payload);
       if(data.success){
@@ -116,7 +130,9 @@ export default {
           payload:{
             page:0,
             size:10,
-            name:''
+            name:'',
+            ismine:ismine,
+            status:'active'
           }
         })
         yield put({

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import uz.pdp.apporderservice.entity.Order;
 import uz.pdp.apporderservice.entity.OrderPayment;
 import uz.pdp.apporderservice.entity.Payment;
+import uz.pdp.apporderservice.entity.enums.OrderStatus;
 import uz.pdp.apporderservice.exception.ResourceNotFoundException;
 import uz.pdp.apporderservice.payload.ApiResponse;
 import uz.pdp.apporderservice.payload.ReqOrderPayment;
@@ -30,6 +31,10 @@ public class OrderPaymentService {
     public HttpEntity<?> saveOrderPayment(ReqOrderPayment reqOrderPayment) {
         try {
             Order order = orderRepository.findById(reqOrderPayment.getOrderId()).orElseThrow(() -> new ResourceNotFoundException("orderpayment", "id", reqOrderPayment));
+            if(order.getPrice()*order.getCount()==reqOrderPayment.getAmount()){
+                order.setStatus(OrderStatus.CLOSED);
+                orderRepository.save(order);
+            }
             List<Payment> payments = paymentRepository.findAllByUserAndLeftoverNotIn(order.getUser(), 0.0);
             Double p = reqOrderPayment.getAmount();
             List<OrderPayment> orderPayments = new ArrayList<>();
