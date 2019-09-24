@@ -95,12 +95,13 @@ class Index extends PureComponent {
     return (
       <div>
         <Row>
-          <Col span={6} offset={2}>
-            <Button onClick={onShowPaymentModal} className="btn-dark mt-5">Add payment</Button>
-          </Col>
+
         </Row>
         <Row>
-          <h2 className="text-center my-3">Payment</h2>
+          <h2 className="text-center mb-4 mt-5"><b>To'lovlar</b></h2>
+          <Col span={6} offset={2}>
+            <Button onClick={onShowPaymentModal} className="btn-dark my-3 mb-2">Add payment</Button>
+          </Col>
           <Col span={20} offset={2}>
             <Table dataSource={paymentList} columns={visibleColumns}/>
           </Col>

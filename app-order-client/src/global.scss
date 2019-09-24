@@ -1,5 +1,15 @@
-
-
+#aksverka{
+  .aksverka-header{
+    background: #FFFFFF;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.12);
+    border-radius: 4px;
+    padding: 10px 0 0 0 ;
+    margin: 20px 0 15px 0;
+  }
+}
+body{
+  background-color: #FFFFFF!important;
+}
   @font-face {
     font-family: 'Lato-Black';
     src: url("../public/assets/fonts/Lato/Lato-Black.ttf") format("truetype");
@@ -24,6 +34,7 @@
     font-family: 'Lato-RegularItalic';
     src: url("../public/assets/fonts/Lato/Lato-RegularItalic.ttf") format("truetype");
   }
+
 
 
   .lato-black {
@@ -1231,6 +1242,7 @@
       }
     }
 
+
     @media (max-width: 992px) and (min-width: 765px) {
 
     }
@@ -1770,6 +1782,7 @@
       color: #343434;
     }
     .homeCircles{
+      transform: translate(0px, -15px);
       margin-left: 44%!important;
     }
   }
@@ -1779,11 +1792,17 @@
       margin-top: 0px;
       width: 52%!important;
       margin-left: 31%!important;
-    }
+    } .homeCircles{
+
+        transform: translate(0px, 44px);
+        margin-left: 44%!important;
+      }
   }
 
   @media (max-width: 768px) and (min-width: 576px) {
     .homeCircles{
+
+      transform: translate(0px, 134px);
       margin-left: 44%!important;
     }
     .CaruselContainer{
@@ -1800,6 +1819,7 @@
       width: 52%!important;
       margin-left: 31%!important;
     }  .homeCircles{
+             transform: translate(0px, 134px);
          margin-left: 44%!important;
        }
 
@@ -1811,6 +1831,7 @@
       margin-left: 31%!important;
     }
     .homeCircles{
+      transform: translate(0px, 134px);
       margin-left: 44%!important;
     }
   }

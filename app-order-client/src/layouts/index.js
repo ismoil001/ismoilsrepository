@@ -13,7 +13,7 @@ function BasicLayout(props) {
         <Sider trigger={null} collapsible   >
           <div className="logo"/>
           <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']}>
-            <h4 className="text-white text-center my-3">Europrint</h4>
+            <h4 className="text-white text-center my-3 mb-3">Europrint</h4>
             <Menu.Item key="1">
               <Link to="/dashboard">
                 <span>Buyurtmalar</span>

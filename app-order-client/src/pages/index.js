@@ -143,51 +143,48 @@ export default class A extends React.Component {
     ];
 
     return (
-      <div>
-        <div className="header position-relative" onWheel={this.scrolled} onMouseMove={this.scrolled} onTouchStart={this.scrolled}>
+        <div className="header position-relative" onWheel={this.scrolled} onMouseMove={this.scrolled} onTouchStart={this.scrolled} onTouchMove={this.scrolled}>
           <div className="header position-relative" >
-          <Container fluid={1}>
-            <img src="/assets/images/headerborder.png" className='rec position-absolute' alt="" style={this.state.scrolled?{background:"white",position:"fixed",zIndex:"999",  marginLeft: "-1.1%",width:"100%",}:null}/>
-
-            <div style={this.state.scrolled?{background:"white",position:"fixed",zIndex:"999",  marginLeft: "-1.1%",width:"100%",}:null}>  <Header/></div>
-            <Row className='p-0'>
-              <Col xs={12} sm={12} md={7} lg={7} xl={7} className='p-0'>
-                <Row>
-                  <Col xs={12} sm={12} md={10} lg={10} xl={10} className='offset-md-2 offset-lg-2 offset-xl-2'>
-                    <p className="order lato-regular">
-                      Nega mijozlar bizni tanlashadi?
-                      So‘ngi texnologiyalar sifati,
-                      <span className="lato-black"> hoziroq buyurtma bering!</span>
-                    </p>
-                    <Button color="danger" className="order-button">
-                      <span> Buyurtma berish</span>
-                      <span className="ml-3"><img src="/assets/images/arrow-right.png" alt="#"/></span>
-                    </Button>
-                  </Col>
-                  <Col xs={12} sm={12} md={10} lg={10} xl={10} className="offset-md-2 offset-lg-2 offset-xl-2 phone-row">
-                    <Row>
-                      <Col md={6}>
-                        <span><img src="/assets/images/phone.png" alt=""/></span>
-                        <span className="phone-code  lato-regular ml-2">(+99894)</span>
-                        <p className="pnone-number lato-black">222-19-98</p>
-                      </Col>
-                      <Col md={6}>
-                        <span><img src="/assets/images/phone.png" alt=""/></span>
-                        <span className="phone-code lato-regular ml-2">(+99894)</span>
-                        <p className="pnone-number lato-black">222-19-98</p>
-                      </Col>
-                    </Row>
-                  </Col>
-                </Row>
-              </Col>
-              <Col xs={12} sm={12} md={5} lg={5} xl={5} className='p-0'>
-                <Carusel/>
-              </Col>
-            </Row>
-
-          </Container>
+            <Container fluid={1} >
+              <img src="/assets/images/headerborder.png" className='rec position-absolute' alt=""/>
+              <div  style={this.state.scrolled?{background:"white",position:"fixed",zIndex:"999",  marginLeft: "-1.1%",width:"100%",}:null}> <Header/></div>
+              <Row className='p-0' >
+                <Col xs={12} sm={12} md={12} lg={12} xl={7} className='p-0 ' style={this.state.scrolled?{marginTop:"102px"}:null}>
+                  <Row className="mr-0">
+                    <Col xs={12} sm={12} md={10} lg={10} xl={10} className='offset-md-2 offset-lg-2 offset-xl-2'>
+                      <p className="order lato-regular">
+                        Nega mijozlar bizni tanlashadi?
+                        So‘ngi texnologiyalar sifati,
+                        <span className="lato-black"> hoziroq buyurtma bering!</span>
+                      </p>
+                      <Button color="danger" className="order-button">
+                        <span> Buyurtma berish</span>
+                        <span className="ml-3"><img src="/assets/images/arrow-right.png" alt="#"/></span>
+                      </Button>
+                    </Col>
+                    <Col xs={12} sm={12} md={10} lg={10} xl={10}
+                         className="offset-md-2 offset-lg-2 offset-xl-2 phone-row">
+                      <Row>
+                        <Col md={6}>
+                          <span><img src="/assets/images/phone.png" alt=""/></span>
+                          <span className="phone-code  lato-regular ml-2">(+99894)</span>
+                          <p className="pnone-number lato-black">222-19-98</p>
+                        </Col>
+                        <Col md={6}>
+                          <span><img src="/assets/images/phone.png" alt=""/></span>
+                          <span className="phone-code lato-regular ml-2">(+99894)</span>
+                          <p className="pnone-number lato-black">222-19-98</p>
+                        </Col>
+                      </Row>
+                    </Col>
+                  </Row>
+                </Col>
+                <Col xs={12} sm={12} md={12} lg={12} xl={5} className='p-0' style={this.state.scrolled?{marginTop:"102px"}:null}>
+                  <Carusel/>
+                </Col>
+              </Row>
+            </Container>
           </div>
-        </div>
 
         <section className="section-one"  id="bizhaqimizda">
           <Container fluid={1}>
@@ -460,20 +457,20 @@ export default class A extends React.Component {
                   <Row>
                     <Col md={4} id="count" className="text-center">
 
-                      {this.state.count?  <CountTo className="lato-bold text-center number d-inline-block" to={628} speed={1000}/>:""}
+                      {this.state.count?  <CountTo className="lato-bold text-center number d-inline-block" to={628} speed={1000}/>: <CountTo className="lato-bold text-center number d-inline-block" to={0} speed={1000}/>}
                       <span className="lato-bold number">+</span>
                       <p className="lato-regular text-center number-com">Bizning mijozlarimiz <br/>
                         soni</p>
                     </Col>
 
                     <Col md={4} className="text-center">
-                      {this.state.count? <CountTo className="lato-bold text-center number" to={1500} speed={1000}/>:""}
+                      {this.state.count? <CountTo className="lato-bold text-center number" to={1500} speed={1000}/>:<CountTo className="lato-bold text-center number d-inline-block" to={0} speed={1000}/>}
                       <span className="lato-bold number">+</span>
                       <p className="lato-regular  number-com">Bajarilgan buyurtmalar <br/>
                         soni</p>
                     </Col>
                     <Col md={4} className="text-center">
-                      {this.state.count?  <CountTo className="lato-bold text-center number" to={254} speed={1000}/>:""}
+                      {this.state.count?  <CountTo className="lato-bold text-center number" to={254} speed={1000}/>:<CountTo className="lato-bold text-center number d-inline-block" to={0} speed={1000}/>}
                       <span className="lato-bold number">+</span>
                       <p className="lato-regular text-center number-com">Bizning <br/>
                         mutaxasislarimiz</p>

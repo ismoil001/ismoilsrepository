@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dataSource name="orderdb@localhost">
-  <database-model serializer="dbm" dbms="POSTGRES" family-id="POSTGRES" format-version="4.14">
+  <database-model serializer="dbm" dbms="POSTGRES" family-id="POSTGRES" format-version="4.15">
     <root id="1">
       <ServerVersion>11.1</ServerVersion>
     </root>
@@ -90,8 +90,8 @@
       <CreateRole>1</CreateRole>
       <CreateDb>1</CreateDb>
       <CanLogin>1</CanLogin>
-      <Replication>1</Replication>
       <ConnectionLimit>-1</ConnectionLimit>
+      <Replication>1</Replication>
       <BypassRls>1</BypassRls>
     </role>
     <schema id="18" parent="5" name="information_schema">
@@ -315,8 +315,8 @@
       <ObjectId>65298</ObjectId>
       <StateNumber>18052</StateNumber>
       <ColNames>id</ColNames>
-      <UnderlyingIndexName>anons_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
+      <UnderlyingIndexName>anons_pkey</UnderlyingIndexName>
     </key>
     <foreign-key id="55" parent="31" name="fk9x4ayampw3o5sfqm37c8av505">
       <ObjectId>65382</ObjectId>
@@ -417,8 +417,8 @@
       <ObjectId>65306</ObjectId>
       <StateNumber>18053</StateNumber>
       <ColNames>id</ColNames>
-      <UnderlyingIndexName>attachment_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
+      <UnderlyingIndexName>attachment_pkey</UnderlyingIndexName>
     </key>
     <foreign-key id="69" parent="32" name="fkdf0u658qu633k06xeoap240av">
       <ObjectId>65397</ObjectId>
@@ -500,8 +500,8 @@
       <ObjectId>65314</ObjectId>
       <StateNumber>18054</StateNumber>
       <ColNames>id</ColNames>
-      <UnderlyingIndexName>attachment_content_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
+      <UnderlyingIndexName>attachment_content_pkey</UnderlyingIndexName>
     </key>
     <key id="81" parent="33" name="uk_8wkbbuq1ta5xy4rf0o5jv20ea">
       <ObjectId>65373</ObjectId>
@@ -598,8 +598,8 @@
       <ObjectId>65319</ObjectId>
       <StateNumber>18055</StateNumber>
       <ColNames>id</ColNames>
-      <UnderlyingIndexName>chat_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
+      <UnderlyingIndexName>chat_pkey</UnderlyingIndexName>
     </key>
     <foreign-key id="95" parent="34" name="fkt81f71677wt15aepkbt69r68">
       <ObjectId>65422</ObjectId>
@@ -694,8 +694,8 @@
       <ObjectId>58065</ObjectId>
       <StateNumber>17275</StateNumber>
       <ColNames>id</ColNames>
-      <UnderlyingIndexName>company_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
+      <UnderlyingIndexName>company_pkey</UnderlyingIndexName>
     </key>
     <column id="108" parent="36" name="id">
       <Position>1</Position>
@@ -758,8 +758,8 @@
       <ObjectId>65324</ObjectId>
       <StateNumber>18056</StateNumber>
       <ColNames>id</ColNames>
-      <UnderlyingIndexName>order_payment_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
+      <UnderlyingIndexName>order_payment_pkey</UnderlyingIndexName>
     </key>
     <foreign-key id="118" parent="36" name="fk9x5iy3p8pvbyk88qom2fc5aum">
       <ObjectId>65442</ObjectId>
@@ -824,8 +824,8 @@
       <ObjectId>57332</ObjectId>
       <StateNumber>16983</StateNumber>
       <ColNames>id</ColNames>
-      <UnderlyingIndexName>order_status_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
+      <UnderlyingIndexName>order_status_pkey</UnderlyingIndexName>
     </key>
     <column id="126" parent="38" name="id">
       <Position>1</Position>
@@ -905,8 +905,8 @@
       <ObjectId>65332</ObjectId>
       <StateNumber>18057</StateNumber>
       <ColNames>id</ColNames>
-      <UnderlyingIndexName>orders_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
+      <UnderlyingIndexName>orders_pkey</UnderlyingIndexName>
     </key>
     <foreign-key id="139" parent="38" name="fk2fw0iiauv5pgvxmw31vf38dqt">
       <ObjectId>65462</ObjectId>
@@ -961,8 +961,8 @@
       <ObjectId>65342</ObjectId>
       <StateNumber>18059</StateNumber>
       <ColNames>id</ColNames>
-      <UnderlyingIndexName>pay_type_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
+      <UnderlyingIndexName>pay_type_pkey</UnderlyingIndexName>
     </key>
     <column id="146" parent="40" name="id">
       <Position>1</Position>
@@ -1037,8 +1037,8 @@
       <ObjectId>65337</ObjectId>
       <StateNumber>18058</StateNumber>
       <ColNames>id</ColNames>
-      <UnderlyingIndexName>payment_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
+      <UnderlyingIndexName>payment_pkey</UnderlyingIndexName>
     </key>
     <foreign-key id="158" parent="40" name="fkgni3nne56xg1ed2ur73hy1k05">
       <ObjectId>65477</ObjectId>
@@ -1110,8 +1110,8 @@
       <ObjectId>65350</ObjectId>
       <StateNumber>18060</StateNumber>
       <ColNames>id</ColNames>
-      <UnderlyingIndexName>role_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
+      <UnderlyingIndexName>role_pkey</UnderlyingIndexName>
     </key>
     <column id="167" parent="42" name="id">
       <Position>1</Position>
@@ -1226,8 +1226,8 @@
       <ObjectId>65358</ObjectId>
       <StateNumber>18061</StateNumber>
       <ColNames>id</ColNames>
-      <UnderlyingIndexName>telegram_state_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
+      <UnderlyingIndexName>telegram_state_pkey</UnderlyingIndexName>
     </key>
     <key id="186" parent="42" name="uk_ekfmt2x0vf045h4fgyernu9dw">
       <ObjectId>65375</ObjectId>
@@ -1287,8 +1287,8 @@ role_id</ColNames>
       <StateNumber>18062</StateNumber>
       <ColNames>user_id
 role_id</ColNames>
-      <UnderlyingIndexName>user_role_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
+      <UnderlyingIndexName>user_role_pkey</UnderlyingIndexName>
     </key>
     <foreign-key id="194" parent="43" name="fkj345gk1bovqvfame88rcx7yyx">
       <ObjectId>65512</ObjectId>
@@ -1441,8 +1441,8 @@ role_id</ColNames>
       <ObjectId>65371</ObjectId>
       <StateNumber>18063</StateNumber>
       <ColNames>id</ColNames>
-      <UnderlyingIndexName>users_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
+      <UnderlyingIndexName>users_pkey</UnderlyingIndexName>
     </key>
     <key id="217" parent="44" name="uk_9q63snka3mdh91as4io72espi">
       <ObjectId>65379</ObjectId>
