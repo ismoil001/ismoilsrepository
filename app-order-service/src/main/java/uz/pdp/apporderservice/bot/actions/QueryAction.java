@@ -1,7 +1,5 @@
 package uz.pdp.apporderservice.bot.actions;
 
-import com.itextpdf.text.*;
-import com.itextpdf.text.pdf.PdfWriter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.telegram.telegrambots.meta.api.methods.ParseMode;
@@ -24,6 +22,7 @@ import uz.pdp.apporderservice.repository.OrderRepository;
 import uz.pdp.apporderservice.repository.RoleRepository;
 import uz.pdp.apporderservice.repository.TelegramStateRepository;
 import uz.pdp.apporderservice.repository.UserRepository;
+import uz.pdp.apporderservice.service.PdfService;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -48,6 +47,8 @@ public class QueryAction {
     OrderRepository orderRepository;
     @Autowired
     CreateButtonService createButtonService;
+    @Autowired
+    PdfService pdfService;
 
     public void runQuery(Update update) {
         String query = update.getCallbackQuery().getData();
@@ -175,9 +176,8 @@ public class QueryAction {
         }
         if (query.startsWith("PdfSend#")) {
             try {
+                File file = pdfService.createPdfFile();
                 String clientChatId = query.split("#")[1];
-                Document document = new Document();
-                File file = new File("shartnoma.pdf");
                 SendDocument sendDocumentRequest = new SendDocument();
                 sendDocumentRequest.setChatId(clientChatId);
                 sendDocumentRequest.setDocument(file);
