@@ -22,11 +22,8 @@ import uz.pdp.apporderservice.repository.OrderRepository;
 import uz.pdp.apporderservice.repository.RoleRepository;
 import uz.pdp.apporderservice.repository.TelegramStateRepository;
 import uz.pdp.apporderservice.repository.UserRepository;
-import uz.pdp.apporderservice.service.PdfService;
 
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.sql.Timestamp;
 import java.util.*;
 
