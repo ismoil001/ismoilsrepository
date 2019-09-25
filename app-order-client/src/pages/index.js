@@ -137,12 +137,12 @@ export default class A extends React.Component {
     const mapData = {
       center: [41.330832, 69.247452],
       zoom: 17,
+
     };
 
     const coordinates = [
-      [41.330832, 69.247452]
+      [41.330832, 69.247452],
     ];
-
     return (
         <div className="header position-relative" onWheel={this.scrolled} onMouseMove={this.scrolled} onTouchStart={this.scrolled} onTouchMove={this.scrolled}>
           <div className="header position-relative" >
@@ -1026,7 +1026,7 @@ export default class A extends React.Component {
             <img className="rectangle" src="/assets/images/Rectangle 6.7.png" alt=""/>
             <YMaps>
               <Map defaultState={mapData} className='mapYandex'>
-                {coordinates.map(coordinate => <Placemark geometry={coordinate}/>)}
+                {coordinates.map(coordinate => <Placemark  geometry={coordinate}/>)}
               </Map>
             </YMaps>
           </Container>
@@ -1126,17 +1126,17 @@ export default class A extends React.Component {
                   <a href=""> <img src="/assets/images/004-youtube.png" alt=""/></a>
                 </div>
               </Col>
-              <Col md={2} xs={12} className="offset-md-3  pdp-link offset-1" >
+              <Col md={2} xs={12} className="offset-lg-3 ml-2 ml-lg-0 offset-sm-0 offset-0" id="address" >
               <span>
                 <img className="phone-img" src="/assets/images/map-pin.png" alt=""/>
               </span>
-                <span className="lato-regular addres">140100. <br/> O'zbekiston R,  Farg'ona viloyati, Qo'qon sh. Usta bozor k, 1B uy.
+                <span className="lato-regular">140100. <br/> O'zbekiston R,  Farg'ona viloyati, Qo'qon sh. Usta bozor k, 1B uy.
                 </span>
               </Col>
             </Row>
             <Row className=" mt-3 p-1">
               <p className="lato-regular link-pdp">
-                <a href="https://pdp.uz">© 2005 - 2019 europrint.uz tipografiyasi | Personal Development Process</a></p>
+                <a className="text-white" href="https://pdp.uz">© 2005 - 2019 europrint.uz tipografiyasi | Personal Development Process</a></p>
             </Row>
           </Container>
         </footer>

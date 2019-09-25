@@ -1,1 +1,41 @@
+<<<<<<< HEAD
+HELP.md
+target/
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**
+!**/src/test/**
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+### IntelliJ IDEA ###
 .idea
+*.iws
+*.iml
+*.ipr
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+build/
+
+### VS Code ###
+.vscode/
+'.idea' 
+'*.mvn' 
+app-mfaktor-server/.mvn
+app-mfaktor-server/mvnw
+app-mfaktor-server/mvnw.cmd
+node_modules/**
+=======
+.idea
+>>>>>>> ab874c724edfec9a35db5178f1dc53c6fcf88ed9
