@@ -7,6 +7,28 @@
     margin: 20px 0 15px 0;
   }
 }
+#soni{
+   width: 6px;
+   height: 6px;
+   border-radius: 50%;
+   background-color: #32b1ff;
+   margin-right: 5px;
+ }
+#summasi{
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #24ce0a;
+  margin-right: 5px;
+}
+#tolov{
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #fffa06;
+  margin-right: 5px;
+}
+
 body{
   background-color: #FFFFFF!important;
 }
@@ -1427,6 +1449,7 @@ body{
     }
 
   }
+
   #login{
     height: 100vh;
     .ant-row{
@@ -1473,8 +1496,9 @@ body{
           font-size: 35px;
         }
       }
-      .pdp-link{
-        margin-left: 5px!important;
+      #address{
+        margin-left: 15px!important;
+        width: 300px!important;
       }
     }
   }
@@ -1554,11 +1578,11 @@ body{
         .phone-number {
           font-size: 20px;
         }
-        .pdp-link{
-          margin-left: 5px!important;
-        }
       }
-
+      .address{
+        margin-left: 15px!important;
+        width: 300px!important;
+      }
       .link-pdp {
         a {
           font-size: 10px;
