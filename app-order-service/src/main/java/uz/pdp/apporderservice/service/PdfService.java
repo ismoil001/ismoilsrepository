@@ -36,12 +36,12 @@ public class PdfService {
             paragraphTop.setTextAlignment(TextAlignment.CENTER);
             Text textTop = new Text("ДОГОВОР №");
             PdfFont font = PdfFontFactory.createFont("C:\\\\WINDOWS\\\\Fonts\\\\ARIAL.TTF", PdfEncodings.IDENTITY_H, true);
-            textTop.setFont(font);
+            textTop.setFont(font).setBold();
             textTop.setFontSize(10f);
             paragraphTop.setFixedLeading(6f);
             paragraphTop.add(textTop);
             Text text1 = new Text("г. Коканд");
-            text1.setFont(font);
+            text1.setFont(font).setBold();
             text1.setFontSize(6f);
             Paragraph paragraph1 = new Paragraph();
             paragraph1.setTextAlignment(TextAlignment.RIGHT);
@@ -58,7 +58,7 @@ public class PdfService {
             paragraph2.add(text2);
 
             Text text3=new Text("1. Предмет Договора");
-            text3.setFont(font);
+            text3.setFont(font).setBold();
             text3.setFontSize(8f);
             Paragraph paragraph3 = new Paragraph();
             paragraph3.setTextAlignment(TextAlignment.CENTER);
@@ -75,7 +75,7 @@ public class PdfService {
             paragraph4.add(text4);
 
             Text text5=new Text("2. Сроки и порядок поставки Товаров");
-            text5.setFont(font);
+            text5.setFont(font).setBold();
             text5.setFontSize(8f);
             Paragraph paragraph5 = new Paragraph();
             paragraph5.setTextAlignment(TextAlignment.CENTER);
@@ -97,7 +97,7 @@ public class PdfService {
             paragraph6.add(text6);
 
             Text text7=new Text("3. Порядок оплаты");
-            text7.setFont(font);
+            text7.setFont(font).setBold();
             text7.setFontSize(8f);
             Paragraph paragraph7 = new Paragraph();
             paragraph7.setTextAlignment(TextAlignment.CENTER);
@@ -116,7 +116,7 @@ public class PdfService {
             paragraph8.add(text8);
 
             Text text9=new Text("4. Срок действия Договора");
-            text9.setFont(font);
+            text9.setFont(font).setBold();
             text9.setFontSize(8f);
             Paragraph paragraph9 = new Paragraph();
             paragraph9.setTextAlignment(TextAlignment.CENTER);
@@ -129,7 +129,7 @@ public class PdfService {
             paragraph10.add(text10);
 
             Text text11=new Text("5. Ответственность сторон");
-            text11.setFont(font);
+            text11.setFont(font).setBold();
             text11.setFontSize(8f);
             Paragraph paragraph11 = new Paragraph();
             paragraph11.setTextAlignment(TextAlignment.CENTER);
@@ -150,154 +150,175 @@ public class PdfService {
             Paragraph paragraph12 = new Paragraph();
             paragraph12.add(text12);
 
-            Text text13=new Text("2. Сроки и порядок поставки Товаров");
-            text13.setFont(font);
+            Text text13=new Text("6. Форс-мажорные обстоятельства");
+            text13.setFont(font).setBold();
             text13.setFontSize(8f);
             Paragraph paragraph13 = new Paragraph();
             paragraph13.setTextAlignment(TextAlignment.CENTER);
             paragraph13.add(text13);
 
-            Text text14=new Text("2. Сроки и порядок поставки Товаров");
+            Text text14=new Text("6.1. Стороны не несут ответственности за неисполнение, либо ненадлежащее исполнение обязательств по настоящему Договору, если\n" +
+                    "докажут, что это произошло вследствие наступления обстоятельств непреодолимой силы (форс- мажор), возникших после заключения\n" +
+                    "настоящего Договора в результате событий чрезвычайного характера, которые Стороны не могли ни предвидеть, ни предотвратить\n" +
+                    "разумными мерами, и Стороны предприняли все возможные и зависящие от них меры по надлежащему исполнению своих обязанностей.\n" +
+                    "К форс-мажорным обстоятельствам относятся, в частности: военные действия, воздействие сил природы (землетрясение, наводнение и т.д.),\n" +
+                    "решения государственных органов.\n" +
+                    "6.2. О наступлении форс-мажорных обстоятельств, Стороны должны уведомить друг друга в течение трех рабочих дней с момента\n" +
+                    "их наступления.\n" +
+                    "6.3. В случае возникновения форс-мажорных обстоятельств, срок выполнения обязательств по настоящему Договору переносится на период,\n" +
+                    "в течение которого действуют такие обстоятельства и их последствия.\n" +
+                    "\n\n\n\n\n");
             text14.setFont(font);
-            text14.setFontSize(8f);
+            text14.setFontSize(7f);
             Paragraph paragraph14 = new Paragraph();
-            paragraph14.setTextAlignment(TextAlignment.CENTER);
             paragraph14.add(text14);
 
+            Text text15=new Text("7. Порядок разрешения споров");
+            text15.setFont(font).setBold();
+            text15.setFontSize(8f);
+            Paragraph paragraph15 = new Paragraph();
+            paragraph15.setTextAlignment(TextAlignment.CENTER);
+            paragraph15.add(text15);
+
+            Text text16=new Text("7.1. Все споры и разногласия, возникшие, в процессе исполнения настоящего Договора решаются путем двустороннего урегулирования\n" +
+                    "их путем переговоров.\n" +
+                    "7.2. В случае невозможности разрешения разногласий путем переговоров, они подлежат рассмотрению в Экономическом суде в установленном\n" +
+                    "законодательством порядке.");
+            text16.setFont(font);
+            text16.setFontSize(7f);
+            Paragraph paragraph16 = new Paragraph();
+            paragraph16.add(text16);
+
+            Text text17=new Text("8. Прочие условия");
+            text17.setFont(font).setBold();
+            text17.setFontSize(8f);
+            Paragraph paragraph17 = new Paragraph();
+            paragraph17.setTextAlignment(TextAlignment.CENTER);
+            paragraph17.add(text17);
+
+            Text text18=new Text("8.1. Любые изменения и дополнения к настоящему Договору имеют силу только в том случае, если они оформлены в письменном\n" +
+                    "виде и они подписаны обеими сторонами\n" +
+                    "8.2. Настоящий Договор вступает в силу с момента подписания его уполномоченными представителями сторон.\n" +
+                    "8.3. Настоящий Договор составлен в двух экземплярах, имеющих одинаковую юридическую силу, по одному для каждой из сторон.");
+            text18.setFont(font);
+            text18.setFontSize(8f);
+            Paragraph paragraph18 = new Paragraph();
+            paragraph18.add(text18);
+
+            Text text19=new Text("9. Реквизиты сторон");
+            text19.setFont(font).setBold();
+            text19.setFontSize(8f);
+            Paragraph paragraph19 = new Paragraph();
+            paragraph19.setTextAlignment(TextAlignment.CENTER);
+            paragraph19.add(text19);
+
+            Text text20=new Text("               Продавец                                                                                                                         Покупатель");
+            text20.setFont(font);
+            text20.setFontSize(8f);
+            Paragraph paragraph20 = new Paragraph();
+            paragraph20.add(text20);
+
+            Text text21=new Text("ООО «EURO PRINT KOKAND»\n" +
+                    "г.Коканд, ул А.Т.Хукандий 130 «Б»\n" +
+                    "ОАТБ «Узсаноаткурилиш Банк», Кокандский филиал\n" +
+                    "МФО 00531. ИНН:301678745. ОКОНХ 19400.\n" +
+                    "ОКЭД: 17210.\n" +
+                    "Р/с: 20208000504864923001\n" +
+                    "Тел: +998 90 567 60 33");
+            text21.setFont(font);
+            text21.setFontSize(8f);
+            Paragraph paragraph21 = new Paragraph();
+            paragraph21.setTextAlignment(TextAlignment.LEFT);
+            paragraph21.add(text21);
+
+            Text text22=new Text("Директор:                                                     A.A.ПОЗИЛОВ                                    Директор:                                                  "+reqPdf.getCustomerCompanyDirector().toUpperCase());
+            text22.setFont(font);
+            text22.setFontSize(8f);
+            Paragraph paragraph22 = new Paragraph();
+            paragraph22.add(text22);
+
+            Text text23=new Text("        М.П.                                                                                                                                                      М.П.\n" +
+                    "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+            text23.setFont(font);
+            text23.setFontSize(8f);
+            Paragraph paragraph23 = new Paragraph();
+            paragraph23.add(text23);
+
+            Text text24=new Text("Спецификация-Приложение к Договору                0 00.01.1900");
+            text24.setFont(font);
+            text24.setFontSize(8f);
+            Paragraph paragraph24 = new Paragraph();
+            paragraph24.add(text24);
+
+            float[] floats = {10f, 300f,80f,80f,80f,150f};
+            Table table1 = new Table(floats).setFont(font).setFontSize(10f);
+            Border border = new SolidBorder(ColorConstants.BLACK,2f);
+            //LastName
+            Cell cell1 = new Cell();
+            cell1.setBorder(border);
+            cell1.setFont(font);
+            cell1.add(new Paragraph("№"));
+            table1.addCell(cell1);
+            //LastName
+            Cell cell2 = new Cell();
+            cell2.setBorder(border);
+            cell2.setFont(font);
+            cell2.add(new Paragraph("Наименование"));
+            table1.addCell(cell2);
+            //FirstName
+            Cell cell3 = new Cell();
+            cell3.setBorder(border);
+            cell3.add(new Paragraph("Ед. изм."));
+            table1.addCell(cell3);
+            //FirstName
+            Cell cell4 = new Cell();
+            cell4.setBorder(border);
+            cell4.add(new Paragraph("Кол-во"));
+            table1.addCell(cell4);
+            //MiddleName
+            Cell cell5 = new Cell();
+            cell5.setBorder(border);
+            cell5.add(new Paragraph("Цена за единицу"));
+            table1.addCell(cell5);
+            //MiddleName
+            Cell cell6 = new Cell();
+            cell6.setBorder(border);
+            cell6.add(new Paragraph("Общая стоимость"));
+            table1.addCell(cell6);
+
+            Cell cell11 = new Cell();
+            cell11.setBorder(border);
+            cell11.setFont(font);
+            cell11.add(new Paragraph("1"));
+            table1.addCell(cell11);
+            //LastName
+            Cell cell22 = new Cell();
+            cell22.setBorder(border);
+            cell22.setFont(font);
+            cell22.add(new Paragraph(""));
+            table1.addCell(cell22);
+            //FirstName
+            Cell cell33 = new Cell();
+            cell33.setBorder(border);
+            cell33.add(new Paragraph(""));
+            table1.addCell(cell33);
+            //FirstName
+            Cell cell44 = new Cell();
+            cell44.setBorder(border);
+            cell44.add(new Paragraph(""));
+            table1.addCell(cell44);
+            //MiddleName
+            Cell cell55 = new Cell();
+            cell55.setBorder(border);
+            cell55.add(new Paragraph(""));
+            table1.addCell(cell55);
+            //MiddleName
+            Cell cell66 = new Cell();
+            cell66.setBorder(border);
+            cell66.add(new Paragraph(""));
+            table1.addCell(cell66);
 
 
-//            Text text9 = new Text("");
-//            text9.setFont(font);
-//            text9.setFontSize(10f);
-//            Paragraph paragraph9 = new Paragraph();
-//            paragraph9.setMarginTop(0);
-//            paragraph9.setPaddingTop(0);
-//            paragraph9.add(text9);
-//            Text text10 = new Text("");
-//            text10.setFont(font);
-//            text10.setFontSize(10f);
-//            Paragraph paragraph10 = new Paragraph();
-//            paragraph10.setMarginBottom(0);
-//            paragraph10.setPaddingBottom(0);
-//            paragraph10.add(text10);
-//            Text text11 = new Text("");
-//            text11.setFont(font);
-//            text11.setFontSize(10f);
-//            Paragraph paragraph11 = new Paragraph();
-//            paragraph11.setMarginTop(0);
-//            paragraph11.setPaddingTop(0);
-//            paragraph11.add(text11);
-//            Text text12 = new Text("");
-//            text12.setFont(font);
-//            text12.setFontSize(10f);
-//            Paragraph paragraph12 = new Paragraph();
-//            paragraph12.setMarginBottom(0);
-//            paragraph12.setPaddingBottom(0);
-//            paragraph12.add(text12);
-//            Text text13 = new Text("");
-//            text13.setFont(font);
-//            text13.setFontSize(10f);
-//            Paragraph paragraph13 = new Paragraph();
-//            paragraph13.setMarginTop(0);
-//            paragraph13.setPaddingTop(0);
-//            paragraph13.add(text13);
-//            float[] pointColumnWidths = {300f, 300f};
-//            Table table = new Table(pointColumnWidths);
-//            Border border = new DashedBorder(ColorConstants.WHITE, 2f);
-//            //LastName
-//            Cell cell1 = new Cell();
-//            cell1.setBorder(border);
-//            cell1.setFont(font);
-//            cell1.add(paragraph2);
-//            table.addCell(cell1);
-//            //LastName
-//            Cell cell2 = new Cell();
-//            cell2.setBorder(border);
-//            cell2.setFont(font);
-//            cell2.add(paragraph9);
-//            table.addCell(cell2);
-//            //FirstName
-//            Cell cell3 = new Cell();
-//            cell3.setBorder(border);
-//            cell3.add(paragraph10);
-//            table.addCell(cell3);
-//            //FirstName
-//            Cell cell4 = new Cell();
-//            cell4.setBorder(border);
-//            cell4.add(paragraph11);
-//            table.addCell(cell4);
-//            //MiddleName
-//            Cell cell5 = new Cell();
-//            cell5.setBorder(border);
-//            cell5.add(paragraph12);
-//            table.addCell(cell5);
-//            //MiddleName
-//            Cell cell6 = new Cell();
-//            cell6.setBorder(border);
-//            cell6.add(paragraph13);
-//            table.addCell(cell6);
-//            Text text14 = new Text("");
-//            text14.setFont(font);
-//            text14.setFontSize(10f);
-//            Paragraph paragraph14 = new Paragraph();
-//            paragraph14.setTextAlignment(TextAlignment.CENTER);
-//            paragraph14.add(text14);
-//
-//            float[] floats = {300f, 300f, 300f, 300f};
-//            Table table1 = new Table(floats);
-//            Cell cell16 = new Cell();
-//            Paragraph paragraph16 = new Paragraph();
-//            paragraph16.add(reqPdf.getCustomerCompanyName());
-//            paragraph16.setMarginTop(6f);
-//            paragraph16.setBold();
-//            cell16.setBorderRight(new SolidBorder(ColorConstants.BLACK, 1f));
-//            cell16.setTextAlignment(TextAlignment.CENTER);
-//            paragraph16.setFixedLeading(9f);
-//            cell16.add(paragraph16);
-//            table1.addCell(cell16);
-//            Cell cellPustoy = new Cell();
-//
-//            cellPustoy.setBorder(border);
-//            cellPustoy.setBorderLeft(new SolidBorder(ColorConstants.BLACK, 1f));
-//            table1.addCell(cellPustoy);
-//            Cell cell17 = new Cell();
-//            Paragraph paragraph17 = new Paragraph();
-//            paragraph17.setFixedLeading(9f);
-//            Text text17 = new Text("");
-//            text17.setFont(font);
-//            text17.setFontSize(10f);
-//            paragraph17.add(text17);
-//            cell17.add(paragraph17);
-//            cell17.setBorder(border);
-//            table1.addCell(cell17);
-//            float[] floats1={150,200,200};
-//            Table table2 = new Table(floats1).setFont(font).setMarginTop(10f);
-//            Cell cell = new Cell();
-//            cell.add(new Paragraph("").setFixedLeading(10f).setFontSize(10f)).setBorder(border);
-//            table2.addCell(cell);
-//            cell = new Cell();
-//            cell.setBorder(border);
-//            table2.addCell(cell);
-//            cell = new Cell();
-//            cell.add(new Paragraph(reqPdf.getCustomerCompanyName().toUpperCase()+"  TUMANI").setFixedLeading(10f).setFontSize(10f))
-//                    .setBorder(border);
-//            table2.addCell(cell);
-//
-//            Paragraph paragraph=new Paragraph("").setFont(font).setTextAlignment(TextAlignment.CENTER);
-//
-//            Table table3=new Table(2).setFont(font).setFontSize(10f);
-//            Cell cell9=new Cell();
-//            cell9.add(new Paragraph("")).setBorder(border).setTextAlignment(TextAlignment.CENTER);
-//            table3.addCell(cell9);
-//            cell9=new Cell();
-//            cell9.add(new Paragraph("")).setBorder(border).setTextAlignment(TextAlignment.CENTER);
-//            table3.addCell(cell9);
-//            float[] floats2={400f,400f};
-//            Table table4=new Table(floats2).setFont(font).setFontSize(10f);
-//            cell9=new Cell();
-//            cell9.add(new Paragraph("").setFixedLeading(10f)).setBorder(border);
-//            table4.addCell(cell9);
-//            table4.addCell(cell9);
 
             document.add(paragraphTop);
             document.add(paragraph1);
@@ -312,6 +333,23 @@ public class PdfService {
             document.add(paragraph10);
             document.add(paragraph11);
             document.add(paragraph12);
+            document.add(paragraph13);
+            document.add(paragraph14);
+            document.add(paragraph15);
+            document.add(paragraph16);
+            document.add(paragraph17);
+            document.add(paragraph18);
+            document.add(paragraph19);
+            document.add(paragraph20);
+            document.add(paragraph21);
+            document.add(paragraph22);
+            document.add(paragraph23);
+            document.add(paragraph24);
+            document.add(table1);
+            document.add(paragraph20);
+            document.add(paragraph21);
+            document.add(paragraph22);
+            document.add(paragraph23);
             document.close();
 
 
