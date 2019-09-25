@@ -7,8 +7,10 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 import uz.pdp.apporderservice.entity.User;
 import uz.pdp.apporderservice.entity.enums.RoleName;
+import uz.pdp.apporderservice.payload.ReqPdf;
 import uz.pdp.apporderservice.repository.RoleRepository;
 import uz.pdp.apporderservice.repository.UserRepository;
+import uz.pdp.apporderservice.service.PdfService;
 
 import java.util.HashSet;
 
@@ -22,6 +24,8 @@ public class DataLoader implements CommandLineRunner {
 
     @Autowired
     PasswordEncoder passwordEncoder;
+    @Autowired
+    PdfService pdfService;
 
     @Value("${spring.datasource.initialization-mode}")
     private String initializationMode;
@@ -33,6 +37,7 @@ public class DataLoader implements CommandLineRunner {
 //            User user1 = new User("+998944155945", passwordEncoder.encode("root123"), "Aziz", "Mirzaahmatov", "Komil o'g'li", new HashSet<>(roleRepository.findAllByName(RoleName.ROLE_MANAGER)),"PDP");
             userRepository.save(user);
 //            userRepository.save(user1);
+            pdfService.readPdf(new ReqPdf("OOO PDP","Odilbek Mirzaev"));
         }
     }
 }
