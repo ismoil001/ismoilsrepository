@@ -15,6 +15,7 @@ import com.itextpdf.layout.property.TextAlignment;
 import org.springframework.stereotype.Service;
 import uz.pdp.apporderservice.payload.ReqPdf;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.text.DateFormat;
@@ -26,9 +27,9 @@ import java.util.Date;
 
 @Service
 public class PdfService {
-    public void readPdf(ReqPdf reqPdf){
+    public File readPdf(ReqPdf reqPdf){
         try {
-            PdfWriter writer = new PdfWriter("D://" + reqPdf.getCustomerCompanyName() + ".pdf");
+            PdfWriter writer = new PdfWriter(reqPdf.getCustomerCompanyName() + ".pdf");
             PdfDocument pdfDocument = new PdfDocument(writer);
             Document document = new Document(pdfDocument);
             Paragraph paragraphTop = new Paragraph();
@@ -312,8 +313,14 @@ public class PdfService {
             document.add(paragraph11);
             document.add(paragraph12);
             document.close();
+
+
+            return new File(reqPdf.getCustomerCompanyName() + ".pdf");
+
+
         } catch (IOException e) {
             e.printStackTrace();
+            return null;
         }
     }
     }

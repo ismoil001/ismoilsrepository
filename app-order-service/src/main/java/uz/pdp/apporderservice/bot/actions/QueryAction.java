@@ -18,10 +18,12 @@ import uz.pdp.apporderservice.entity.TelegramState;
 import uz.pdp.apporderservice.entity.User;
 import uz.pdp.apporderservice.entity.enums.OrderStatus;
 import uz.pdp.apporderservice.exception.ResourceNotFoundException;
+import uz.pdp.apporderservice.payload.ReqPdf;
 import uz.pdp.apporderservice.repository.OrderRepository;
 import uz.pdp.apporderservice.repository.RoleRepository;
 import uz.pdp.apporderservice.repository.TelegramStateRepository;
 import uz.pdp.apporderservice.repository.UserRepository;
+import uz.pdp.apporderservice.service.PdfService;
 
 import java.io.File;
 import java.sql.Timestamp;
@@ -170,16 +172,82 @@ public class QueryAction {
             } catch (TelegramApiException e) {
                 e.printStackTrace();
             }
-        }
-        if (query.startsWith("PdfSend#")) {
+        } else if (query.startsWith("ActivateOrder/")) {
+            UUID orderId = UUID.fromString(query.split("/")[1]);
+            Order order = orderRepository.findById(orderId).orElseThrow(() -> new ResourceNotFoundException("order", "id", query));
+            order.setStatus(OrderStatus.ACTIVE);
+            orderRepository.save(order);
+            SendMessage sendMessage = new SendMessage();
+            sendMessage.setChatId(order.getCreatedBy().getTelegramId().longValue());
+            sendMessage.setText("<b>Buyurtma</b>\n" +
+                    "<b>Maxsulot nomi:</b> "+order.getProductName()+"\n" +
+                    "<b>Narxi:</b> "+order.getPrice()+"\n" +
+                    "<b>Soni:</b> "+order.getCount()+"\n" +
+                    "<b>Xolati:</b> **Tasdiqlandi**");
             try {
-                File file = pdfService.createPdfFile();
-                String clientChatId = query.split("#")[1];
-                SendDocument sendDocumentRequest = new SendDocument();
-                sendDocumentRequest.setChatId(clientChatId);
-                sendDocumentRequest.setDocument(file);
-                sendDocumentRequest.setCaption("s");
-                pdpOrderBot.execute(sendDocumentRequest);
+                pdpOrderBot.execute(sendMessage);
+                SendMessage sendMessage1 = new SendMessage();
+                sendMessage1.setChatId(update.getCallbackQuery().getMessage().getChatId());
+                sendMessage1.setText("Buyurtmangiz rasmiylashtirildi");
+                sendMessage1.setParseMode(ParseMode.HTML);
+                botMainService.cabinetPage(update);
+
+            } catch (TelegramApiException e) {
+                e.printStackTrace();
+            }
+
+        }  else if (query.startsWith("DeactivateOrder/")) {
+            UUID orderId = UUID.fromString(query.split("/")[1]);
+            Order order = orderRepository.findById(orderId).orElseThrow(() -> new ResourceNotFoundException("order", "id", query));
+            SendMessage sendMessage = new SendMessage();
+            sendMessage.setChatId(order.getCreatedBy().getTelegramId().longValue());
+            sendMessage.setText("<b>Buyurtma</b>\n" +
+                    "<b>Maxsulot nomi:</b> "+order.getProductName()+"\n" +
+                    "<b>Narxi:</b> "+order.getPrice()+"\n" +
+                    "<b>Soni:</b> "+order.getCount()+"\n" +
+                    "<b>Xolati:</b> **Bekor qilindi**");
+            try {
+                pdpOrderBot.execute(sendMessage);
+                SendMessage sendMessage1 = new SendMessage();
+                sendMessage1.setChatId(update.getCallbackQuery().getMessage().getChatId());
+                sendMessage1.setText("Buyurtma bekor qilindi");
+                pdpOrderBot.execute(sendMessage1);
+                botMainService.cabinetPage(update);
+            } catch (TelegramApiException e) {
+                e.printStackTrace();
+            }
+
+
+
+        } else if (query.startsWith("PdfSend#")) {
+            try {
+                SendMessage sendMessage = new SendMessage();
+                sendMessage.setChatId(update.getCallbackQuery().getFrom().getId().longValue());
+                sendMessage.setText("Quyidagi tartibda ma'lumotlarni kiriting\n" +
+                        "Maxsulot nomi/1ta maxsulot narxi/Soni");
+                TelegramState telegramState = telegramStateRepository.findByTgUserId(update.getCallbackQuery().getFrom().getId()).orElseThrow(() -> new ResourceNotFoundException("state", "id", update));
+                telegramState.setState(BotState.GENERATE_ORDER);
+                telegramState.setCustomerChatId(Long.parseLong(query.split("#")[1]));
+                telegramStateRepository.save(telegramState);
+                pdpOrderBot.execute(sendMessage);
+
+//                TelegramState clientState= telegramStateRepository.findByTgUserId(update.getCallbackQuery().getMessage().getChatId().intValue()).orElseThrow(new ResourceNotFoundException("clientstate","chatid",update));
+//                clientState.setState(BotState.DIRECTOR_NAME);
+//                telegramStateRepository.save(clientState);
+//                SendMessage sendMessage1 = new SendMessage();
+//                sendMessage1.setText("Rahbar nomini kiriting!");
+//                sendMessage1.setChatId(update.getCallbackQuery().getMessage().getChatId());
+//                pdpOrderBot.execute(sendMessage1);
+//                SendMessage sendMessage1 = new SendMessage();
+//                sendMessage.setChatId(update.getCallbackQuery().getFrom().getId().longValue());
+//                sendMessage.setText();
+//                File file = pdfService.readPdf(new ReqPdf());
+//                String clientChatId = query.split("#")[1];
+//                SendDocument sendDocumentRequest = new SendDocument();
+//                sendDocumentRequest.setChatId(clientChatId);
+//                sendDocumentRequest.setDocument(file);
+//                sendDocumentRequest.setCaption("s");
+//                pdpOrderBot.execute(sendDocumentRequest);
 
             } catch (Exception e) {
                 e.printStackTrace();
