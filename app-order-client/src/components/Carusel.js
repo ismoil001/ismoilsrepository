@@ -281,7 +281,7 @@ setInterval(this.setLeft,9000,true)
     return (<div className='CaruselContainer'>
 
 
-        <div className="boxs" unselectable='on'>
+        <div className="d-flex justify-content-center justify-content-lg-end justify-content-xl-end boxs" unselectable='on'>
 
 
           <div className="box card--left fill-white1" data-card="0" id="0" unselectable='on'
@@ -289,7 +289,7 @@ setInterval(this.setLeft,9000,true)
             // onClick={this.mouseCordinate}
                onMouseMove={this.mouseMoveCordinate} onBlur={this.mouseCordinateBlur}
                onMouseDown={this.mouseCordinate}>
-            <img src="/assets/images/headerimg.png" alt="" />
+            <img src="/assets/images/headerimg.png"  alt="" />
 
 
           </div>

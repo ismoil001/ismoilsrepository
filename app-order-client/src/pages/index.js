@@ -33,8 +33,8 @@ export default class A extends React.Component {
       dropdownOpen: false,
       windowHeight: undefined,
       windowWidth: undefined,
-      scrolled:false,
-      count:false,
+      scrolled: false,
+      count: false,
 
     };
   }
@@ -44,6 +44,7 @@ export default class A extends React.Component {
       dropdownOpen: !prevState.dropdownOpen
     }));
   }
+
   componentDidMount() {
     this.handleResize();
     window.addEventListener('resize', this.handleResize)
@@ -53,6 +54,7 @@ export default class A extends React.Component {
   componentWillUnmount() {
     window.removeEventListener('resize', this.handleResize)
   }
+
   resize = () => {
     return window.innerWidth;
   }
@@ -60,30 +62,26 @@ export default class A extends React.Component {
     windowHeight: window.innerHeight,
     windowWidth: window.innerWidth
   });
-  scrolled=()=>{
-    console.log(window.visualViewport.pageTop)
-    var testDiv = document.getElementById("section5");
-    console.log("dsdasdasd")
-    console.log(testDiv.offsetTop)
-    console.log(window.visualViewport.pageTop)
-
-    if ( window.visualViewport.pageTop < testDiv.offsetTop+50 && window.visualViewport.pageTop >  testDiv.offsetTop-500) {
-
-      this.state.count=true;
-
-      this.setState(this.state)
-    }
-    if(window.visualViewport.pageTop!=0){
-      this.state.scrolled=true;
-      this.setState(this.state)
-    }
-    else{
-      this.state.scrolled=false;
-      this.setState(this.state)
-    }
-    console.log("state")
-    console.log(  this.state.count)
-  }
+  // scrolled=()=>{
+  //   var testDiv = document.getElementById("section5");
+  //
+  //   if ( window.visualViewport.pageTop < testDiv.offsetTop+50 && window.visualViewport.pageTop >  testDiv.offsetTop-500) {
+  //
+  //     this.state.count=true;
+  //
+  //     this.setState(this.state)
+  //   }
+  //   if(window.visualViewport.pageTop!=0){
+  //     this.state.scrolled=true;
+  //     this.setState(this.state)
+  //   }
+  //   else{
+  //     this.state.scrolled=false;
+  //     this.setState(this.state)
+  //   }
+  //   console.log("state")
+  //   console.log(  this.state.count)
+  // }
 
   render() {
     let settings = {
@@ -144,16 +142,24 @@ export default class A extends React.Component {
     ];
 
     return (
-        <div className="header position-relative" onWheel={this.scrolled} onMouseMove={this.scrolled} onTouchStart={this.scrolled} onTouchMove={this.scrolled}>
-          <div className="header position-relative" >
-            <Container fluid={1} >
-              <img src="/assets/images/headerborder.png" className='rec position-absolute' alt=""/>
-              <div  className={this.state.scrolled?"headerback":null} style={this.state.scrolled?{background:"white",position:"fixed",zIndex:"999",  marginLeft: "-1.1%",width:"100%",}:null}> <Header/></div>
-              <Row className='p-0' >
-                <Col xs={12} sm={12} md={12} lg={12} xl={7} className='p-0 ' style={this.state.scrolled?{marginTop:"102px"}:null}>
-                  <Row className="mr-0">
-                    <Col xs={12} sm={12} md={10} lg={10} xl={10} className='offset-md-2 offset-lg-2 offset-xl-2'>
-                      <p className="order lato-regular">
+      <div className="header position-relative" onWheel={this.scrolled} onMouseMove={this.scrolled}
+           onTouchStart={this.scrolled} onTouchMove={this.scrolled}>
+        <div className="header position-relative">
+          <Container fluid={1}>
+            <img src="/assets/images/headerborder.png" className='rec position-absolute' alt=""/>
+            <div className={this.state.scrolled ? "headerback" : null} style={this.state.scrolled ? {
+              background: "white",
+              position: "fixed",
+              zIndex: "999",
+              marginLeft: "-1.1%",
+              width: "100%",
+            } : null}><Header/></div>
+            <Row className='p-0'>
+              <Col xs={12} sm={12} md={12} lg={7} xl={7} className='p-md-0 p-lg-0 p-xl-0'
+                   style={this.state.scrolled ? {marginTop: "102px"} : null}>
+                  <div className="d-flex justify-content-center justify-content-lg-end justify-content-xl-end">
+                    <div className="contents">
+                      <p className="order lato-regular mb-0">
                         Nega mijozlar bizni tanlashadi?
                         So‘ngi texnologiyalar sifati,
                         <span className="lato-black"> hoziroq buyurtma bering!</span>
@@ -162,30 +168,29 @@ export default class A extends React.Component {
                         <span> Buyurtma berish</span>
                         <span className="ml-3"><img src="/assets/images/arrow-right.png" alt="#"/></span>
                       </Button>
-                    </Col>
-                    <Col xs={12} sm={12} md={10} lg={10} xl={10}
-                         className="offset-md-2 offset-lg-2 offset-xl-2 phone-row">
-                      <Row>
-                        <Col md={6}>
+                      <Row className='contact ml-0 mr-0'>
+                        <Col xs={5} sm={4} md={3} lg={4} xl={3} className='p-0'>
                           <span><img src="/assets/images/phone.png" alt=""/></span>
                           <span className="phone-code  lato-regular ml-2">(+99894)</span>
-                          <p className="pnone-number lato-black">222-19-98</p>
+                          <p className="pnone-number lato-black">360-77-00</p>
                         </Col>
-                        <Col md={6}>
+                        <Col xs={5} sm={4} md={3} lg={4} xl={3} className='p-0'>
                           <span><img src="/assets/images/phone.png" alt=""/></span>
                           <span className="phone-code lato-regular ml-2">(+99894)</span>
-                          <p className="pnone-number lato-black">222-19-98</p>
+                          <p className="pnone-number lato-black">204-11-00</p>
                         </Col>
                       </Row>
-                    </Col>
-                  </Row>
-                </Col>
-                <Col xs={12} sm={12} md={12} lg={12} xl={5} className='p-0' style={this.state.scrolled?{marginTop:"102px"}:null}>
-                  <Carusel/>
-                </Col>
-              </Row>
-            </Container>
-          </div>
+                    </div>
+
+                  </div>
+              </Col>
+              <Col xs={12} sm={12} md={12} lg={5} xl={5} className='p-0'
+                   style={this.state.scrolled ? {marginTop: "102px"} : null}>
+                <Carusel/>
+              </Col>
+            </Row>
+          </Container>
+        </div>
 
         <section className="section-one"  id="bizhaqimizda">
           <Container fluid={1}>
@@ -225,8 +230,8 @@ export default class A extends React.Component {
                 </Row>
               </Col>
               <Col xs={12} sm={12} md={6} lg={6} xl={6} className='p-0 pt-5 pt-md-0 pt-lg-0 pt-xl-0'>
-                <div className="timer_Main d-flex align-items-end flex-column">
-                  <img className="section1img1 position-relative" src="/assets/images/Subtract.png" alt=""/>
+                <div className="d-flex align-items-end flex-column">
+                  <img className="section1img1" src="/assets/images/Subtract.png" alt=""/>
                 </div>
                 <img className="section1img2 position-absolute" src="/assets/images/section1.png" alt=""/>
               </Col>
@@ -915,9 +920,6 @@ export default class A extends React.Component {
           </Container>
         </section>
 
-        {/*<section className="section7">*/}
-        {/*  <Container className='team_Carousel'>*/}
-
 
         <section className="section7 position-relative">
           <img src="/assets/images/Rectangle6.png" className='rec6 img-fluid position-absolute' alt=""/>
@@ -1032,114 +1034,114 @@ export default class A extends React.Component {
           </Container>
         </section>
 
-        <footer className="footer" id="kontakt">
-          <Container>
-            <Row>
-              <Col md={2} xs={6} className="mt-2">
-                <p className="lato-bold company">Kompaniya</p>
-                <Link className="lato-light link-menu" spy={true} smooth={true} duration={1500} activeClass="active" activeClassName="selected" to="bizhaqimizda"><p className="mt-3"><a> Biz haqimizda</a></p></Link>
-                <Link className="lato-light link-menu" spy={true} smooth={true} duration={1300} activeClass="active" activeClassName="selected" to="xizmatlar"><p className="mt-3"><a> Bizning xizmatlar</a></p></Link>
-                <Link className="lato-light link-menu" spy={true} smooth={true} duration={1200} activeClass="active" activeClassName="selected" to="portfolio"><p className="mt-3"><a> Portfolio</a></p></Link>
-                <Link className="lato-light link-menu" spy={true} smooth={true} duration={1000} activeClass="active" activeClassName="selected" to="mijozlar"><p className="mt-3"><a> Bizning Mijozlar</a></p></Link>
-                <Link className="lato-light link-menu" spy={true} smooth={true} duration={700} activeClass="active" activeClassName="selected" to="jamoa"><p className="mt-3"><a> Bizning Jamoa</a></p></Link>
-              </Col>
-              <Col md={2} xs={6} className="ml-md-5 mt-2">
-                <p className="lato-bold company">Xizmatlar</p>
-                <p className="mt-3 link-menu"><a className="lato-light" href="#">Ipakli bosma</a></p>
-                <p className="link-menu"><a className="lato-light" href="#">Ofset bosma</a></p>
-                <p className="link-menu"><a className="lato-light" href="#">Kesish</a></p>
-                <p className="link-menu"><a className="lato-light" href="#">Ultra-binafsha rang</a></p>
-                <p className="link-menu"><a className="lato-light" href="#">Bo'rttirish</a></p>
-                <p className="link-menu"><a className="lato-light" href="#">Laminatsiya</a></p>
-                <p className="link-menu"><a className="lato-light" href="#">Qog'oz lashirovka</a></p>
-                <p className="link-menu"><a className="lato-light" href="#">O'yib olish</a></p>
-              </Col>
-              <Col md={2} xs={6} className="ml-md-5 mt-2">
-                <p className="lato-bold company">Xizmatlar</p>
-                <p className="mt-3 link-menu"><a className="lato-light" href="#">Rahbariyat</a></p>
-                <p className="link-menu"><a className="lato-light" href="#">Tarix</a></p>
-                <p className="link-menu"><a className="lato-light" href="#">Yangiliklar</a></p>
-                <p className="link-menu"><a className="lato-light" href="#">Maketlar uchun talab</a></p>
-                <p className="link-menu"><a className="lato-light" href="#">Aloqa</a></p>
-              </Col>
-              <Col md={2}  xs={6} className="offset-md-2 mt-2">
-                <p className="lato-bold aloqa">Aloqa</p>
+          <footer className="footer" id="kontakt">
+            <Container>
+              <Row>
+                <Col md={2} xs={6} className="mt-2">
+                  <p className="lato-bold company">Kompaniya</p>
+                  <Link className="lato-light link-menu" spy={true} smooth={true} duration={1500} activeClass="active" activeClassName="selected" to="bizhaqimizda"><p className="mt-3"><a> Biz haqimizda</a></p></Link>
+                  <Link className="lato-light link-menu" spy={true} smooth={true} duration={1300} activeClass="active" activeClassName="selected" to="xizmatlar"><p className="mt-3"><a> Bizning xizmatlar</a></p></Link>
+                  <Link className="lato-light link-menu" spy={true} smooth={true} duration={1200} activeClass="active" activeClassName="selected" to="portfolio"><p className="mt-3"><a> Portfolio</a></p></Link>
+                  <Link className="lato-light link-menu" spy={true} smooth={true} duration={1000} activeClass="active" activeClassName="selected" to="mijozlar"><p className="mt-3"><a> Bizning Mijozlar</a></p></Link>
+                  <Link className="lato-light link-menu" spy={true} smooth={true} duration={700} activeClass="active" activeClassName="selected" to="jamoa"><p className="mt-3"><a> Bizning Jamoa</a></p></Link>
+                </Col>
+                <Col md={2} xs={6} className="ml-md-5 mt-2">
+                  <p className="lato-bold company">Xizmatlar</p>
+                  <p className="mt-3 link-menu"><a className="lato-light" href="#">Ipakli bosma</a></p>
+                  <p className="link-menu"><a className="lato-light" href="#">Ofset bosma</a></p>
+                  <p className="link-menu"><a className="lato-light" href="#">Kesish</a></p>
+                  <p className="link-menu"><a className="lato-light" href="#">Ultra-binafsha rang</a></p>
+                  <p className="link-menu"><a className="lato-light" href="#">Bo'rttirish</a></p>
+                  <p className="link-menu"><a className="lato-light" href="#">Laminatsiya</a></p>
+                  <p className="link-menu"><a className="lato-light" href="#">Qog'oz lashirovka</a></p>
+                  <p className="link-menu"><a className="lato-light" href="#">O'yib olish</a></p>
+                </Col>
+                <Col md={2} xs={6} className="ml-md-5 mt-2">
+                  <p className="lato-bold company">Xizmatlar</p>
+                  <p className="mt-3 link-menu"><a className="lato-light" href="#">Rahbariyat</a></p>
+                  <p className="link-menu"><a className="lato-light" href="#">Tarix</a></p>
+                  <p className="link-menu"><a className="lato-light" href="#">Yangiliklar</a></p>
+                  <p className="link-menu"><a className="lato-light" href="#">Maketlar uchun talab</a></p>
+                  <p className="link-menu"><a className="lato-light" href="#">Aloqa</a></p>
+                </Col>
+                <Col md={2}  xs={6} className="offset-md-2 mt-2">
+                  <p className="lato-bold aloqa">Aloqa</p>
 
-                <div>
-                  <p className="phone-num" style={{marginTop: "20px"}}>
-                    <img className="phone-img" src="/assets/images/phone.png" alt=""/>
-                    <span className="phone-code lato-regular">(+99891)</span>
-                  </p>
-                  <p className="phone-number lato-black mb-0">204-11-00</p>
-                </div>
+                  <div>
+                    <p className="phone-num" style={{marginTop: "20px"}}>
+                      <img className="phone-img" src="/assets/images/phone.png" alt=""/>
+                      <span className="phone-code lato-regular">(+99891)</span>
+                    </p>
+                    <p className="phone-number lato-black mb-0">204-11-00</p>
+                  </div>
 
-                <div>
-                  <p className="phone-num mt-3">
-                    <span className="phone-code lato-regular">(+99891)</span>
-                  </p>
-                  <p className="phone-number lato-black mb-0">360-77-00</p>
+                  <div>
+                    <p className="phone-num mt-3">
+                      <span className="phone-code lato-regular">(+99891)</span>
+                    </p>
+                    <p className="phone-number lato-black mb-0">360-77-00</p>
 
-                </div>
+                  </div>
 
-                <div>
-                  <p className="phone-num mt-3">
-                    <span className="phone-code lato-regular">(+99873)</span>
-                  </p>
-                  <p className="phone-number lato-black mb-0">543-55-55</p>
-                </div>
-              </Col>
-            </Row>
+                  <div>
+                    <p className="phone-num mt-3">
+                      <span className="phone-code lato-regular">(+99873)</span>
+                    </p>
+                    <p className="phone-number lato-black mb-0">543-55-55</p>
+                  </div>
+                </Col>
+              </Row>
 
-            <Row className="mt-md-5">
-              <Col md={2} className="mb-3">
-                <UncontrolledDropdown>
-                  <DropdownToggle caret className="language">
-                    <span className="mb-2 ml-2 ">
-                      Uzbek
-                    </span>
-                    <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M1 1L5 5L9 1" stroke="grey" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
+              <Row className="mt-md-5">
+                <Col md={2} className="mb-3">
+                  <UncontrolledDropdown>
+                    <DropdownToggle caret className="language">
+                      <span className="mb-2 ml-2 ">
+                        Uzbek
+                      </span>
+                      <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M1 1L5 5L9 1" stroke="grey" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
 
-                  </DropdownToggle>
-                  <DropdownMenu right className="p-0">
-                    <DropdownItem>
-                      RU
-                    </DropdownItem>
-                    <DropdownItem>
-                      UZ
-                    </DropdownItem>
-                  </DropdownMenu>
-                </UncontrolledDropdown>
-              </Col>
-              <Col md={4} xs={7}>
-                <div className="telegram d-inline-block">
-                  <a href=""><img className="text-center" src="/assets/images/002-telegram.png" alt=""/></a>
-                </div>
-                <div className="telegram ml-md-3 ml-1 d-inline-block">
-                  <a href=""><img src="/assets/images/003-instagram.png" alt=""/></a>
-                </div>
-                <div className="telegram ml-md-3 ml-1 d-inline-block">
-                  <a href=""><img src="/assets/images/001-facebook-logo.png" alt=""/></a>
-                </div>
-                <div className="telegram ml-md-3 ml-1 d-inline-block">
-                  <a href=""> <img src="/assets/images/004-youtube.png" alt=""/></a>
-                </div>
-              </Col>
-              <Col md={2} xs={12} className="offset-md-3  pdp-link offset-1" >
-              <span>
-                <img className="phone-img" src="/assets/images/map-pin.png" alt=""/>
-              </span>
-                <span className="lato-regular addres">140100. <br/> O'zbekiston R,  Farg'ona viloyati, Qo'qon sh. Usta bozor k, 1B uy.
+                    </DropdownToggle>
+                    <DropdownMenu right className="p-0">
+                      <DropdownItem>
+                        RU
+                      </DropdownItem>
+                      <DropdownItem>
+                        UZ
+                      </DropdownItem>
+                    </DropdownMenu>
+                  </UncontrolledDropdown>
+                </Col>
+                <Col md={4} xs={7}>
+                  <div className="telegram d-inline-block">
+                    <a href=""><img className="text-center" src="/assets/images/002-telegram.png" alt=""/></a>
+                  </div>
+                  <div className="telegram ml-md-3 ml-1 d-inline-block">
+                    <a href=""><img src="/assets/images/003-instagram.png" alt=""/></a>
+                  </div>
+                  <div className="telegram ml-md-3 ml-1 d-inline-block">
+                    <a href=""><img src="/assets/images/001-facebook-logo.png" alt=""/></a>
+                  </div>
+                  <div className="telegram ml-md-3 ml-1 d-inline-block">
+                    <a href=""> <img src="/assets/images/004-youtube.png" alt=""/></a>
+                  </div>
+                </Col>
+                <Col md={2} xs={12} className="offset-md-3  pdp-link offset-1" >
+                <span>
+                  <img className="phone-img" src="/assets/images/map-pin.png" alt=""/>
                 </span>
-              </Col>
-            </Row>
-            <Row className=" mt-3 p-1">
-              <p className="lato-regular link-pdp">
-                <a href="https://pdp.uz">© 2005 - 2019 europrint.uz tipografiyasi | Personal Development Process</a></p>
-            </Row>
-          </Container>
-        </footer>
+                  <span className="lato-regular addres">140100. <br/> O'zbekiston R,  Farg'ona viloyati, Qo'qon sh. Usta bozor k, 1B uy.
+                  </span>
+                </Col>
+              </Row>
+              <Row className=" mt-3 p-1">
+                <p className="lato-regular link-pdp">
+                  <a href="https://pdp.uz">© 2005 - 2019 europrint.uz tipografiyasi | Personal Development Process</a></p>
+              </Row>
+            </Container>
+          </footer>
       </div>
     );
   }

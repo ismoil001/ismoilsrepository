@@ -13,6 +13,7 @@ import {
   DropdownToggle,
   DropdownMenu,
   DropdownItem } from 'reactstrap';
+import {FaAngleDown} from "react-icons/fa";
 
 export default class Header extends React.Component {
   constructor(props) {
@@ -32,51 +33,41 @@ export default class Header extends React.Component {
   render() {
     return (
 
-      <Container>
-        <Navbar  light expand="md" className="lato-bold " >
+      <Container className='p-0'>
+        <Navbar  light expand="md" className="lato-bold p-0">
           <NavbarBrand href="/"><img src="/assets/images/logo.png" alt="salom"/></NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
-                <NavLink href="/" className="aboutUs">Biz haqimizda <div></div></NavLink>
+                <NavLink href="/" className="aboutUs">Biz haqimizda</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="/">Xizmatlar
-                  <div></div></NavLink>
+                <NavLink href="/">Xizmatlar</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="/">Portfolio
-                  <div></div></NavLink>
+                <NavLink href="/">Portfolio</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="/">Mijozlar <div></div></NavLink>
+                <NavLink href="/">Mijozlar</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="/">Jamoa <div></div></NavLink>
+                <NavLink href="/">Jamoa</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="/">Kontakt <div></div></NavLink>
+                <NavLink href="/">Kontakt</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="/dashboard">Admin <div></div></NavLink>
+                <NavLink href="/dashboard">Admin</NavLink>
               </NavItem>
 
-              <UncontrolledDropdown nav inNavbar>
-                <DropdownToggle nav caret className="language">
-                  Uzbek
-                  <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M1 1L5 5L9 1" stroke="grey" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                  </svg>
-
+              <UncontrolledDropdown>
+                <DropdownToggle caret className="dropdownMain">
+                  Uzbek <FaAngleDown/>
                 </DropdownToggle>
-                <DropdownMenu right>
-                  <DropdownItem>
-                    RU
-                  </DropdownItem>
-                  <DropdownItem>
-                    UZ
-                  </DropdownItem>
+                <DropdownMenu>
+                  <DropdownItem>Uzbek</DropdownItem>
+                  <DropdownItem>Russian</DropdownItem>
                 </DropdownMenu>
               </UncontrolledDropdown>
             </Nav>
