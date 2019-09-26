@@ -14,9 +14,5 @@ public class ReqPdf {
     private String customerCompanyName;
     private String customerCompanyDirector;
 
-    public ReqPdf(String customerCompanyName, String customerCompanyDirector) {
-        this.customerCompanyName = customerCompanyName;
-        this.customerCompanyDirector = customerCompanyDirector;
-    }
 }
 

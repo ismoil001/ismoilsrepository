@@ -19,8 +19,10 @@ import uz.pdp.apporderservice.bot.utils.BotState;
 import uz.pdp.apporderservice.entity.Order;
 import uz.pdp.apporderservice.entity.TelegramState;
 import uz.pdp.apporderservice.entity.User;
+import uz.pdp.apporderservice.entity.enums.OrderStatus;
 import uz.pdp.apporderservice.entity.enums.RoleName;
 import uz.pdp.apporderservice.exception.ResourceNotFoundException;
+import uz.pdp.apporderservice.payload.ReqInlineButton;
 import uz.pdp.apporderservice.repository.OrderRepository;
 import uz.pdp.apporderservice.repository.RoleRepository;
 import uz.pdp.apporderservice.repository.TelegramStateRepository;
@@ -159,6 +161,10 @@ public class BotMainService {
         }
         rows.add(createButtonService.createRowWithOneButton("Yangi buyurtma", BotConstant.NEW_ORDER));
         rows.add(createButtonService.createRowWithOneButton("\uD83D\uDD04", BotConstant.REFRESH_CABINET_PAGE));
+        List<ReqInlineButton> buttons = new ArrayList<>();
+        buttons.add(new ReqInlineButton("Active Buyurtmalar",BotConstant.ACTIVE_ORDER_PAGE));
+        buttons.add(new ReqInlineButton("? Yordam",BotConstant.HELP));
+        rows.add(createButtonService.createOneRowButtons(buttons));
         sendMessage.setText("Shaxsiy kabinet");
         sendMessage.setChatId(update.hasCallbackQuery()?update.getCallbackQuery().getMessage().getChatId():update.getMessage().getChatId());
         inlineKeyboardMarkup.setKeyboard(rows);
@@ -189,5 +195,37 @@ public class BotMainService {
         sendMessage.setText("Admin kabinetga xush kelibsiz!");
         sendMessage.setChatId(update.hasCallbackQuery()?update.getCallbackQuery().getMessage().getChatId(): update.getMessage().getChatId());
         pdpOrderBot.execute(sendMessage);
+    }
+
+    public void activeOrderPage(Update update) {
+        User user = userRepository.findByTelegramId(update.getCallbackQuery().getMessage().getChatId().intValue()).orElseThrow(() -> new ResourceNotFoundException("user", "id", update));
+        List<Order> orderList= orderRepository.findAllByUserAndStatusOrderByCreatedAtDesc(user, OrderStatus.ACTIVE);
+        SendMessage sendMessage = new SendMessage();
+        sendMessage.setChatId(update.getCallbackQuery().getMessage().getChatId());
+        sendMessage.setText("Active buyurtmalaringiz");
+        InlineKeyboardMarkup inlineKeyboardMarkup = new InlineKeyboardMarkup();
+        List<List<InlineKeyboardButton>> rows = new ArrayList<>();
+        for (Order order : orderList) {
+            InlineKeyboardButton button = new InlineKeyboardButton();
+            button.setText("❌");
+            button.setCallbackData(BotConstant.IGNORE_ORDER+"/"+order.getId());
+            InlineKeyboardButton button1 =new InlineKeyboardButton();
+            button1.setText(order.getProductName()+" "+order.getCount()+"ta "+order.getOrderedDate());
+            button1.setCallbackData("#");
+            List<InlineKeyboardButton> buttons =new ArrayList<>();
+            buttons.add(button);
+            buttons.add(button1);
+            rows.add(buttons);
+        }
+        rows.add(createButtonService.createRowWithOneButton("Orqaga",BotState.BACK_TO_CABINET));
+        inlineKeyboardMarkup.setKeyboard(rows);
+        sendMessage.setReplyMarkup(inlineKeyboardMarkup);
+        try {
+            pdpOrderBot.execute(sendMessage);
+        } catch (TelegramApiException e) {
+            e.printStackTrace();
+        }
+
+
     }
 }

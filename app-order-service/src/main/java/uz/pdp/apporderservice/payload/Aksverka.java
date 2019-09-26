@@ -15,7 +15,7 @@ public class Aksverka implements Comparable<Aksverka>{
 
     private String productName;
 
-    private Integer productCount;
+    private Double productCount;
 
     private Double productPrice;
 
