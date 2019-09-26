@@ -318,7 +318,7 @@ class Index extends PureComponent {
               <h2 className="text-center my-3"><b>Buyurtmalar</b></h2>
               <Row>
                 <Col span={4} offset={18}>
-                  <span className='ml-5 mr-3'>Menin buyurmalarim</span>
+                  <span className='ml-5 mr-3'>Mening buyurtmalarim</span>
                   <Checkbox onChange={handleIsMine} checked={ismine}></Checkbox>
                 </Col>
                 <Col offset={2} span={5} className="mr-4">

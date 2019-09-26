@@ -59,7 +59,7 @@ export default class Header extends React.Component {
                 <NavLink href="/">Kontakt <div></div></NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="/dashboard">Admin <div></div></NavLink>
+                <NavLink href="/login">Admin <div></div></NavLink>
               </NavItem>
 
               <UncontrolledDropdown nav inNavbar>

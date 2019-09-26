@@ -7,6 +7,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 import uz.pdp.apporderservice.entity.User;
 import uz.pdp.apporderservice.entity.enums.RoleName;
+import uz.pdp.apporderservice.payload.ReqPdf;
 import uz.pdp.apporderservice.repository.*;
 import uz.pdp.apporderservice.service.PdfService;
 
@@ -41,10 +42,11 @@ public class DataLoader implements CommandLineRunner {
 //        PhoneNumber phone = phoneNumberRepository.save(new PhoneNumber("+7777777"));
 //        companyRepository.save(new Company(1,"Qoqon","sss@mail.ru","facebook","insta","youtube","tg"));
         if (initializationMode.equalsIgnoreCase("always")) {
-            User user = new User("+998941211112", passwordEncoder.encode("root123"), "Sobir", "Xalimov", "Botirovich", new HashSet<>(roleRepository.findAllByName(RoleName.ROLE_MANAGER)), "Europrint");
-//            User user1 = new User("+998944155945", passwordEncoder.encode("root123"), "Aziz", "Mirzaahmatov", "Komil o'g'li", new HashSet<>(roleRepository.findAllByName(RoleName.ROLE_MANAGER)),"PDP");
+
+            User user = new User("+998941211112", passwordEncoder.encode("root123"), "Sobir", "Xalimov", "Botirovich", new HashSet<>(roleRepository.findAllByName(RoleName.ROLE_MANAGER)),"Europrint");
             userRepository.save(user);
-//            userRepository.save(user1);
+            User user1=new User("+998993632587",passwordEncoder.encode("asd"),"Alisher","Atadjanov","Baxramovich",new HashSet<>(roleRepository.findAllByName(RoleName.ROLE_ADMIN)),"PDP");
+            userRepository.save(user1);
         }
     }
 }
