@@ -16,6 +16,9 @@ function BasicLayout(props) {
     if (props.location.pathname.includes("aksverka")) {
       pageId = 3
     }
+    if (props.location.pathname.includes("settings")) {
+      pageId = 6
+    }
 
 
   const { Content, Sider } = Layout;
@@ -42,6 +45,15 @@ function BasicLayout(props) {
             <Menu.Item key="3">
               <Link to="/aksverka">
                 <span>Aksverka</span>
+              </Link>
+            </Menu.Item>
+
+
+
+
+            <Menu.Item key="6">
+              <Link to="/settings">
+                <span>Settings</span>
               </Link>
             </Menu.Item>
           </Menu>

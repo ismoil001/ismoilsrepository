@@ -57,7 +57,7 @@ public class GenericArrayUUIDType<T extends Serializable> implements UserType {
         } else {
             @SuppressWarnings("unchecked")
             T castObject = (T) o;
-            Array array = connection.createArrayOf("UUID", (Object[]) castObject);
+            Array array = connection.createArrayOf("String", (Object[]) castObject);
             preparedStatement.setArray(i, array);
         }
     }
