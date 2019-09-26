@@ -91,7 +91,7 @@ class Index extends Component {
                 <div className="d-inline-block" id="tolov" ></div>To'lov</p>
             </div>
           </Col>
-          <Col span={5} className="aksverka-header ml-4" style={{background: 'rgba(255,65,1,0.13)'}}>
+          <Col span={5} className={saldo>=0?"aksverka-header ml-4 bg-plus":"aksverka-header ml-4 bg-minus"}>
             <div className="border-1" >
               <h3 className="text-center font-weight-bold">{saldo}</h3>
               <p className="text-center">Saldo</p>

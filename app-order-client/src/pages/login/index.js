@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import MaskedInput from 'react-text-mask'
 import { connect } from 'dva'
 import {Button, Row, Form, Input, Col, Icon} from 'antd'
 import { config } from 'utils'
@@ -38,15 +39,33 @@ const Login = ({
           <Col span={8} className=' offset-2 text-center mt-5' >
             <Row>
                 <h4 className=' text-center mb-5 ml-5 pl-4' >Tizimga kirish</h4>
-                <FormItem hasFeedback>
-                  {getFieldDecorator('username', {
-                    rules: [
-                      {
-                        required: true,
-                      },
-                    ],
-                  })(<Input autocomplete="off" addonBefore={<Icon type="user" />} onPressEnter={handleOk} placeholder={"Phone number"} />)}
-                </FormItem>
+              <div className="row pl-5 mb-3 text-left">
+                <div className="col-md-1 p-0 userr">
+                  <span id="nma"><Icon type="user" /></span>
+                </div>
+                <div className="col-md-10 userrr pl-0">
+                  <FormItem hasFeedback>
+                    {getFieldDecorator('username', {
+                      rules: [
+                        {
+                          required: true,
+                        },
+                      ],
+                    })(<MaskedInput
+                      id="user"
+                      autocomplete="off"
+                      addonBefore={<Icon type="user" />}
+                      onPressEnter={handleOk}
+                      placeholder={"+998"}
+                      mask={["+", "9", "9", "8", /\d/, /\d/, /\d/, /\d/, /\d/, /\d/, /\d/, /\d/, /\d/]}
+                      maskChar={null}
+                    />)}
+                  </FormItem>
+              </div>
+
+              </div>
+
+
                 <FormItem hasFeedback>
                   {getFieldDecorator('password', {
                     rules: [
@@ -54,7 +73,12 @@ const Login = ({
                         required: true,
                       },
                     ],
-                  })(<Input  className="mt-2 mb-2"  addonBefore={<Icon type="lock" />} type="password" onPressEnter={handleOk} placeholder={"Password"} />)}
+                  })(<Input
+                    className="mt-2 mb-2"
+                    addonBefore={<Icon type="lock" />}
+                    type="password" onPressEnter={handleOk}
+                    placeholder={"Password"}
+                  />)}
                 </FormItem>
                 <Button type="primary" onClick={handleOk} loading={loading.effects.login}>
                   Sign in
