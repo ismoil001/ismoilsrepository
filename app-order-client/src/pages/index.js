@@ -118,7 +118,6 @@ export default class A extends React.Component {
           }
         }
       ]
-
     };
 
     let portfolio = {
@@ -142,7 +141,8 @@ export default class A extends React.Component {
     ];
 
     return (
-      <div className="header position-relative" onWheel={this.scrolled} onMouseMove={this.scrolled}
+      <div className="fullScreen">
+      <div className="header" onWheel={this.scrolled} onMouseMove={this.scrolled}
            onTouchStart={this.scrolled} onTouchMove={this.scrolled}>
         <div className="header position-relative">
           <Container fluid={1}>
@@ -488,660 +488,661 @@ export default class A extends React.Component {
           </div>
         </section>
 
-        <section className="section6" id="mijozlar">
-          <Container fluid={true} className='position-relative'>
-            <div className="bg-1 position-absolute"></div>
-            <div className="bg-2 position-absolute"></div>
-            <h1 className='text-center my-4 lato-bold mb-3'>Bizning mijozlar</h1>
-            <div className="tech-slideshow">
-              <div className="mover-1">
-                <div className="carusel  position-relative d-flex img-fluid">
-                  <div className="d-block">
-                    <div className="our-product py-2 px-1 ml-0">
-                      <img src="/assets/images/deya.png" className='img-fluid' alt="d"/>
-                    </div>
-                    <div className="our-product p-2 ml-0">
-                      <img src="/assets/images/nmedov.png" className='img-fluid' alt="d"/>
-                    </div>
-                  </div>
-                  <div className="d-block">
-                    <div className="our-product-2 ">
-                      <img src="/assets/images/indorama.png" className='img-fluid mb-1' alt="d"/>
-                    </div>
-                    <div className="our-product-2 ">
-                      <img src="/assets/images/euromed.png" className='img-fluid mb-1' alt="d"/>
-                    </div>
-                    <div className="our-product-2 ">
-                      <img src="/assets/images/andelai.png" className='img-fluid mb-1' alt="d"/>
-                    </div>
-                  </div>
-                  <div className="d-block">
-                    <div className="our-product p-2">
-                      <img src="/assets/images/panda.png" className='img-fluid' alt="d"/>
-                    </div>
-                    <div className="our-product p-2">
-                      <img src="/assets/images/asmald.png" className='img-fluid' alt="d"/>
-                    </div>
-                  </div>
-                  <div className="d-block">
-                    <div className="our-product-2 ">
-                      <img src="/assets/images/filtruz.png" className='img-fluid mb-1' alt="d"/>
-                    </div>
-                    <div className="our-product-2 ">
-                      <img src="/assets/images/krember.png" className='img-fluid mb-1' alt="d"/>
-                    </div>
-                    <div className="our-product-2 ">
-                      <img src="/assets/images/pokiza.png" className='img-fluid mb-1' alt="d"/>
-                    </div>
-                  </div>
-                  <div className="d-block">
-                    <div className="our-product p-2">
-                      <img src="/assets/images/meva.png" className='img-fluid' alt="d"/>
-                    </div>
-                    <div className="our-product p-2">
-                      <img src="/assets/images/bliss.png" className='img-fluid' alt="d"/>
-                    </div>
-                  </div>
-                  <div className="d-block">
-                    <div className="our-product-2 ">
-                      <img src="/assets/images/nmedov.png" className='img-fluid mb-1' alt="d"/>
-                    </div>
-                    <div className="our-product-2 ">
-                      <img src="/assets/images/sfad.png" className='img-fluid mb-1' alt="d"/>
-                    </div>
-                    <div className="our-product-2 ">
-                      <img src="/assets/images/umr.png" className='img-fluid mb-1' alt="d"/>
-                    </div>
-                  </div>
-                  <div className="d-block">
-                    <div className="our-product p-2">
-                      <img src="/assets/images/nur.png" className='img-fluid' alt="d"/>
-                    </div>
-                    <div className="our-product px-1">
-                      <img src="/assets/images/zebuz.png" className='img-fluid' alt="d"/>
-                    </div>
-                  </div>
-                  <div className="d-block">
-                    <div className="our-product-2 ">
-                      <img src="/assets/images/umr.png" className='img-fluid mb-1' alt="d"/>
-                    </div>
-                    <div className="our-product-2 ">
-                      <img src="/assets/images/meva.png" className='img-fluid mb-1' alt="d"/>
-                    </div>
-                    <div className="our-product-2 ">
-                      <img src="/assets/images/deya.png" className='img-fluid mb-1' alt="d"/>
-                    </div>
-                  </div>
-                  <div className="d-block">
-                    <div className="our-product p-2">
-                      <img src="/assets/images/andelai.png" className='img-fluid' alt="d"/>
-                    </div>
-                    <div className="our-product p-2">
-                      <img src="/assets/images/pokiza.png" className='img-fluid' alt="d"/>
-                    </div>
-                  </div>
-                  <div className="d-block">
-                    <div className="our-product-2  ">
-                      <img src="/assets/images/asmald.png" className='img-fluid mb-1' alt="d"/>
-                    </div>
-                    <div className="our-product-2 ">
-                      <img src="/assets/images/euromed.png" className='img-fluid mb-1' alt="d"/>
-                    </div>
-                    <div className="our-product-2 ">
-                      <img src="/assets/images/umr.png" className='img-fluid mb-1' alt="d"/>
-                    </div>
-                  </div>
-                  <div className="d-block">
-                    <div className="our-product p-2">
-                      <img src="/assets/images/sfad.png" className='img-fluid' alt="d"/>
-                    </div>
-                    <div className="our-product p-2">
-                      <img src="/assets/images/filtruz.png" className='img-fluid' alt="d"/>
-                    </div>
-                  </div>
-                  <div className="d-block">
-                    <div className="our-product-2 ">
-                      <img src="/assets/images/deya.png" className='img-fluid mb-1' alt="d"/>
-                    </div>
-                    <div className="our-product-2 ">
-                      <img src="/assets/images/krember.png" className='img-fluid mb-1' alt="d"/>
-                    </div>
-                    <div className="our-product-2 ">
-                      <img src="/assets/images/nmedov.png" className='img-fluid mb-1' alt="d"/>
-                    </div>
-                  </div>
-                  <div className="d-block">
-                    <div className="our-product p-2">
-                      <img src="/assets/images/bliss.png" className='img-fluid' alt="d"/>
-                    </div>
-                    <div className="our-product p-2">
-                      <img src="/assets/images/panda.png" className='img-fluid' alt="d"/>
-                    </div>
-                  </div>
-                  <div className="d-block">
-                    <div className="our-product-2 ">
-                      <img src="/assets/images/nmedov.png" className='img-fluid mb-1' alt="d"/>
-                    </div>
-                    <div className="our-product-2 ">
-                      <img src="/assets/images/sfad.png" className='img-fluid mb-1' alt="d"/>
-                    </div>
-                    <div className="our-product-2 ">
-                      <img src="/assets/images/umr.png" className='img-fluid mb-1' alt="d"/>
-                    </div>
-                  </div>
-                  <div className="d-block">
-                    <div className="our-product p-2">
-                      <img src="/assets/images/asmald.png" className='img-fluid' alt="d"/>
-                    </div>
-                    <div className="our-product p-2">
-                      <img src="/assets/images/meva.png" className='img-fluid' alt="d"/>
-                    </div>
-                  </div>
-                  <div className="d-block">
-                    <div className="our-product-2 ">
-                      <img src="/assets/images/umr.png" className='img-fluid mb-1' alt="d"/>
-                    </div>
-                    <div className="our-product-2 ">
-                      <img src="/assets/images/meva.png" className='img-fluid mb-1' alt="d"/>
-                    </div>
-                    <div className="our-product-2 ">
-                      <img src="/assets/images/deya.png" className='img-fluid mb-1' alt="d"/>
-                    </div>
-                  </div>
-                  <div className="d-block">
-                    <div className="our-product py-2 px-1">
-                      <img src="/assets/images/deya.png" className='img-fluid' alt="d"/>
-                    </div>
-                    <div className="our-product p-2">
-                      <img src="/assets/images/nmedov.png" className='img-fluid' alt="d"/>
-                    </div>
-                  </div>
-                  <div className="d-block">
-                    <div className="our-product-2 ">
-                      <img src="/assets/images/indorama.png" className='img-fluid mb-1' alt="d"/>
-                    </div>
-                    <div className="our-product-2 ">
-                      <img src="/assets/images/euromed.png" className='img-fluid mb-1' alt="d"/>
-                    </div>
-                    <div className="our-product-2 ">
-                      <img src="/assets/images/andelai.png" className='img-fluid mb-1' alt="d"/>
-                    </div>
-                  </div>
-                  <div className="d-block">
-                    <div className="our-product p-2">
-                      <img src="/assets/images/panda.png" className='img-fluid' alt="d"/>
-                    </div>
-                    <div className="our-product p-2">
-                      <img src="/assets/images/asmald.png" className='img-fluid' alt="d"/>
-                    </div>
-                  </div>
-                  <div className="d-block">
-                    <div className="our-product-2 ">
-                      <img src="/assets/images/filtruz.png" className='img-fluid mb-1' alt="d"/>
-                    </div>
-                    <div className="our-product-2 ">
-                      <img src="/assets/images/krember.png" className='img-fluid mb-1' alt="d"/>
-                    </div>
-                    <div className="our-product-2 ">
-                      <img src="/assets/images/pokiza.png" className='img-fluid mb-1' alt="d"/>
-                    </div>
-                  </div>
-                  <div className="d-block">
-                    <div className="our-product p-2">
-                      <img src="/assets/images/meva.png" className='img-fluid' alt="d"/>
-                    </div>
-                    <div className="our-product p-2">
-                      <img src="/assets/images/bliss.png" className='img-fluid' alt="d"/>
-                    </div>
-                  </div>
-                  <div className="d-block">
-                    <div className="our-product-2 ">
-                      <img src="/assets/images/nmedov.png" className='img-fluid mb-1' alt="d"/>
-                    </div>
-                    <div className="our-product-2 ">
-                      <img src="/assets/images/sfad.png" className='img-fluid mb-1' alt="d"/>
-                    </div>
-                    <div className="our-product-2 ">
-                      <img src="/assets/images/umr.png" className='img-fluid mb-1' alt="d"/>
-                    </div>
-                  </div>
-                  <div className="d-block">
-                    <div className="our-product p-2">
-                      <img src="/assets/images/nur.png" className='img-fluid' alt="d"/>
-                    </div>
-                    <div className="our-product px-1">
-                      <img src="/assets/images/zebuz.png" className='img-fluid' alt="d"/>
-                    </div>
-                  </div>
-                  <div className="d-block">
-                    <div className="our-product-2 ">
-                      <img src="/assets/images/umr.png" className='img-fluid mb-1' alt="d"/>
-                    </div>
-                    <div className="our-product-2 ">
-                      <img src="/assets/images/meva.png" className='img-fluid mb-1' alt="d"/>
-                    </div>
-                    <div className="our-product-2 ">
-                      <img src="/assets/images/deya.png" className='img-fluid mb-1' alt="d"/>
-                    </div>
-                  </div>
-                  <div className="d-block">
-                    <div className="our-product p-2">
-                      <img src="/assets/images/andelai.png" className='img-fluid' alt="d"/>
-                    </div>
-                    <div className="our-product p-2">
-                      <img src="/assets/images/pokiza.png" className='img-fluid' alt="d"/>
-                    </div>
-                  </div>
-                  <div className="d-block">
-                    <div className="our-product-2  ">
-                      <img src="/assets/images/asmald.png" className='img-fluid mb-1' alt="d"/>
-                    </div>
-                    <div className="our-product-2 ">
-                      <img src="/assets/images/euromed.png" className='img-fluid mb-1' alt="d"/>
-                    </div>
-                    <div className="our-product-2 ">
-                      <img src="/assets/images/umr.png" className='img-fluid mb-1' alt="d"/>
-                    </div>
-                  </div>
-                  <div className="d-block">
-                    <div className="our-product p-2">
-                      <img src="/assets/images/sfad.png" className='img-fluid' alt="d"/>
-                    </div>
-                    <div className="our-product p-2">
-                      <img src="/assets/images/filtruz.png" className='img-fluid' alt="d"/>
-                    </div>
-                  </div>
-                  <div className="d-block">
-                    <div className="our-product-2 " >
-                      <img src="/assets/images/deya.png" className='img-fluid mb-1' alt="d"/>
-                    </div>
-                    <div className="our-product-2 ">
-                      <img src="/assets/images/krember.png" className='img-fluid mb-1' alt="d"/>
-                    </div>
-                    <div className="our-product-2 ">
-                      <img src="/assets/images/nmedov.png" className='img-fluid mb-1' alt="d"/>
-                    </div>
-                  </div>
-                  <div className="d-block">
-                    <div className="our-product p-2">
-                      <img src="/assets/images/bliss.png" className='img-fluid' alt="d"/>
-                    </div>
-                    <div className="our-product p-2">
-                      <img src="/assets/images/panda.png" className='img-fluid' alt="d"/>
-                    </div>
-                  </div>
-                  <div className="d-block">
-                    <div className="our-product-2 ">
-                      <img src="/assets/images/nmedov.png" className='img-fluid mb-1' alt="d"/>
-                    </div>
-                    <div className="our-product-2 ">
-                      <img src="/assets/images/sfad.png" className='img-fluid mb-1' alt="d"/>
-                    </div>
-                    <div className="our-product-2 ">
-                      <img src="/assets/images/umr.png" className='img-fluid mb-1' alt="d"/>
-                    </div>
-                  </div>
-                  <div className="d-block">
-                    <div className="our-product p-2">
-                      <img src="/assets/images/asmald.png" className='img-fluid' alt="d"/>
-                    </div>
-                    <div className="our-product p-2">
-                      <img src="/assets/images/meva.png" className='img-fluid' alt="d"/>
-                    </div>
-                  </div>
-                  <div className="d-block">
-                    <div className="our-product-2 ">
-                      <img src="/assets/images/deya.png" className='img-fluid mb-1' alt="d"/>
-                    </div>
-                    <div className="our-product-2 ">
-                      <img src="/assets/images/krember.png" className='img-fluid mb-1' alt="d"/>
-                    </div>
-                    <div className="our-product-2 ">
-                      <img src="/assets/images/nmedov.png" className='img-fluid mb-1' alt="d"/>
-                    </div>
-                  </div>
-                  <div className="d-block">
-                    <div className="our-product py-2 px-1 ">
-                      <img src="/assets/images/deya.png" className='img-fluid' alt="d"/>
-                    </div>
-                    <div className="our-product p-2 ">
-                      <img src="/assets/images/nmedov.png" className='img-fluid' alt="d"/>
-                    </div>
-                  </div>
-                  <div className="d-block">
-                    <div className="our-product-2 ">
-                      <img src="/assets/images/indorama.png" className='img-fluid mb-1' alt="d"/>
-                    </div>
-                    <div className="our-product-2 ">
-                      <img src="/assets/images/euromed.png" className='img-fluid mb-1' alt="d"/>
-                    </div>
-                    <div className="our-product-2 ">
-                      <img src="/assets/images/andelai.png" className='img-fluid mb-1' alt="d"/>
-                    </div>
-                  </div>
-                  <div className="d-block">
-                    <div className="our-product p-2">
-                      <img src="/assets/images/panda.png" className='img-fluid' alt="d"/>
-                    </div>
-                    <div className="our-product p-2">
-                      <img src="/assets/images/asmald.png" className='img-fluid' alt="d"/>
-                    </div>
-                  </div>
-                  <div className="d-block">
-                    <div className="our-product-2 ">
-                      <img src="/assets/images/filtruz.png" className='img-fluid mb-1' alt="d"/>
-                    </div>
-                    <div className="our-product-2 ">
-                      <img src="/assets/images/krember.png" className='img-fluid mb-1' alt="d"/>
-                    </div>
-                    <div className="our-product-2 ">
-                      <img src="/assets/images/pokiza.png" className='img-fluid mb-1' alt="d"/>
-                    </div>
-                  </div>
-                  <div className="d-block">
-                    <div className="our-product p-2">
-                      <img src="/assets/images/meva.png" className='img-fluid' alt="d"/>
-                    </div>
-                    <div className="our-product p-2">
-                      <img src="/assets/images/bliss.png" className='img-fluid' alt="d"/>
-                    </div>
-                  </div>
-                  <div className="d-block">
-                    <div className="our-product-2 ">
-                      <img src="/assets/images/nmedov.png" className='img-fluid mb-1' alt="d"/>
-                    </div>
-                    <div className="our-product-2 ">
-                      <img src="/assets/images/sfad.png" className='img-fluid mb-1' alt="d"/>
-                    </div>
-                    <div className="our-product-2 ">
-                      <img src="/assets/images/umr.png" className='img-fluid mb-1' alt="d"/>
-                    </div>
-                  </div>
-                  <div className="d-block">
-                    <div className="our-product p-2">
-                      <img src="/assets/images/nur.png" className='img-fluid' alt="d"/>
-                    </div>
-                    <div className="our-product px-1">
-                      <img src="/assets/images/zebuz.png" className='img-fluid' alt="d"/>
-                    </div>
-                  </div>
-                  <div className="d-block">
-                    <div className="our-product-2 ">
-                      <img src="/assets/images/umr.png" className='img-fluid mb-1' alt="d"/>
-                    </div>
-                    <div className="our-product-2 ">
-                      <img src="/assets/images/meva.png" className='img-fluid mb-1' alt="d"/>
-                    </div>
-                    <div className="our-product-2 ">
-                      <img src="/assets/images/deya.png" className='img-fluid mb-1' alt="d"/>
-                    </div>
-                  </div>
-                  <div className="d-block">
-                    <div className="our-product p-2">
-                      <img src="/assets/images/andelai.png" className='img-fluid' alt="d"/>
-                    </div>
-                    <div className="our-product p-2">
-                      <img src="/assets/images/pokiza.png" className='img-fluid' alt="d"/>
-                    </div>
-                  </div>
-                  <div className="d-block">
-                    <div className="our-product-2  ">
-                      <img src="/assets/images/asmald.png" className='img-fluid mb-1' alt="d"/>
-                    </div>
-                    <div className="our-product-2 ">
-                      <img src="/assets/images/euromed.png" className='img-fluid mb-1' alt="d"/>
-                    </div>
-                    <div className="our-product-2 ">
-                      <img src="/assets/images/umr.png" className='img-fluid mb-1' alt="d"/>
-                    </div>
-                  </div>
-                  <div className="d-block">
-                    <div className="our-product p-2">
-                      <img src="/assets/images/sfad.png" className='img-fluid' alt="d"/>
-                    </div>
-                    <div className="our-product p-2">
-                      <img src="/assets/images/filtruz.png" className='img-fluid' alt="d"/>
-                    </div>
-                  </div>
-                  <div className="d-block">
-                    <div className="our-product-2 ">
-                      <img src="/assets/images/deya.png" className='img-fluid mb-1' alt="d"/>
-                    </div>
-                    <div className="our-product-2 ">
-                      <img src="/assets/images/krember.png" className='img-fluid mb-1' alt="d"/>
-                    </div>
-                    <div className="our-product-2 ">
-                      <img src="/assets/images/nmedov.png" className='img-fluid mb-1' alt="d"/>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </Container>
-        </section>
+        {/*<section className="section6" id="mijozlar">*/}
+        {/*  <Container fluid={true} className='position-relative'>*/}
+        {/*    <div className="bg-1 position-absolute"></div>*/}
+        {/*    <div className="bg-2 position-absolute"></div>*/}
+        {/*    <h1 className='text-center my-4 lato-bold mb-3'>Bizning mijozlar</h1>*/}
+        {/*    <div className="tech-slideshow">*/}
+        {/*      <div className="mover-1">*/}
+        {/*        <div className="carusel  position-relative d-flex img-fluid">*/}
+        {/*          <div className="d-block">*/}
+        {/*            <div className="our-product py-2 px-1 ml-0">*/}
+        {/*              <img src="/assets/images/deya.png" className='img-fluid' alt="d"/>*/}
+        {/*            </div>*/}
+        {/*            <div className="our-product p-2 ml-0">*/}
+        {/*              <img src="/assets/images/nmedov.png" className='img-fluid' alt="d"/>*/}
+        {/*            </div>*/}
+        {/*          </div>*/}
+        {/*          <div className="d-block">*/}
+        {/*            <div className="our-product-2 ">*/}
+        {/*              <img src="/assets/images/indorama.png" className='img-fluid mb-1' alt="d"/>*/}
+        {/*            </div>*/}
+        {/*            <div className="our-product-2 ">*/}
+        {/*              <img src="/assets/images/euromed.png" className='img-fluid mb-1' alt="d"/>*/}
+        {/*            </div>*/}
+        {/*            <div className="our-product-2 ">*/}
+        {/*              <img src="/assets/images/andelai.png" className='img-fluid mb-1' alt="d"/>*/}
+        {/*            </div>*/}
+        {/*          </div>*/}
+        {/*          <div className="d-block">*/}
+        {/*            <div className="our-product p-2">*/}
+        {/*              <img src="/assets/images/panda.png" className='img-fluid' alt="d"/>*/}
+        {/*            </div>*/}
+        {/*            <div className="our-product p-2">*/}
+        {/*              <img src="/assets/images/asmald.png" className='img-fluid' alt="d"/>*/}
+        {/*            </div>*/}
+        {/*          </div>*/}
+        {/*          <div className="d-block">*/}
+        {/*            <div className="our-product-2 ">*/}
+        {/*              <img src="/assets/images/filtruz.png" className='img-fluid mb-1' alt="d"/>*/}
+        {/*            </div>*/}
+        {/*            <div className="our-product-2 ">*/}
+        {/*              <img src="/assets/images/krember.png" className='img-fluid mb-1' alt="d"/>*/}
+        {/*            </div>*/}
+        {/*            <div className="our-product-2 ">*/}
+        {/*              <img src="/assets/images/pokiza.png" className='img-fluid mb-1' alt="d"/>*/}
+        {/*            </div>*/}
+        {/*          </div>*/}
+        {/*          <div className="d-block">*/}
+        {/*            <div className="our-product p-2">*/}
+        {/*              <img src="/assets/images/meva.png" className='img-fluid' alt="d"/>*/}
+        {/*            </div>*/}
+        {/*            <div className="our-product p-2">*/}
+        {/*              <img src="/assets/images/bliss.png" className='img-fluid' alt="d"/>*/}
+        {/*            </div>*/}
+        {/*          </div>*/}
+        {/*          <div className="d-block">*/}
+        {/*            <div className="our-product-2 ">*/}
+        {/*              <img src="/assets/images/nmedov.png" className='img-fluid mb-1' alt="d"/>*/}
+        {/*            </div>*/}
+        {/*            <div className="our-product-2 ">*/}
+        {/*              <img src="/assets/images/sfad.png" className='img-fluid mb-1' alt="d"/>*/}
+        {/*            </div>*/}
+        {/*            <div className="our-product-2 ">*/}
+        {/*              <img src="/assets/images/umr.png" className='img-fluid mb-1' alt="d"/>*/}
+        {/*            </div>*/}
+        {/*          </div>*/}
+        {/*          <div className="d-block">*/}
+        {/*            <div className="our-product p-2">*/}
+        {/*              <img src="/assets/images/nur.png" className='img-fluid' alt="d"/>*/}
+        {/*            </div>*/}
+        {/*            <div className="our-product px-1">*/}
+        {/*              <img src="/assets/images/zebuz.png" className='img-fluid' alt="d"/>*/}
+        {/*            </div>*/}
+        {/*          </div>*/}
+        {/*          <div className="d-block">*/}
+        {/*            <div className="our-product-2 ">*/}
+        {/*              <img src="/assets/images/umr.png" className='img-fluid mb-1' alt="d"/>*/}
+        {/*            </div>*/}
+        {/*            <div className="our-product-2 ">*/}
+        {/*              <img src="/assets/images/meva.png" className='img-fluid mb-1' alt="d"/>*/}
+        {/*            </div>*/}
+        {/*            <div className="our-product-2 ">*/}
+        {/*              <img src="/assets/images/deya.png" className='img-fluid mb-1' alt="d"/>*/}
+        {/*            </div>*/}
+        {/*          </div>*/}
+        {/*          <div className="d-block">*/}
+        {/*            <div className="our-product p-2">*/}
+        {/*              <img src="/assets/images/andelai.png" className='img-fluid' alt="d"/>*/}
+        {/*            </div>*/}
+        {/*            <div className="our-product p-2">*/}
+        {/*              <img src="/assets/images/pokiza.png" className='img-fluid' alt="d"/>*/}
+        {/*            </div>*/}
+        {/*          </div>*/}
+        {/*          <div className="d-block">*/}
+        {/*            <div className="our-product-2  ">*/}
+        {/*              <img src="/assets/images/asmald.png" className='img-fluid mb-1' alt="d"/>*/}
+        {/*            </div>*/}
+        {/*            <div className="our-product-2 ">*/}
+        {/*              <img src="/assets/images/euromed.png" className='img-fluid mb-1' alt="d"/>*/}
+        {/*            </div>*/}
+        {/*            <div className="our-product-2 ">*/}
+        {/*              <img src="/assets/images/umr.png" className='img-fluid mb-1' alt="d"/>*/}
+        {/*            </div>*/}
+        {/*          </div>*/}
+        {/*          <div className="d-block">*/}
+        {/*            <div className="our-product p-2">*/}
+        {/*              <img src="/assets/images/sfad.png" className='img-fluid' alt="d"/>*/}
+        {/*            </div>*/}
+        {/*            <div className="our-product p-2">*/}
+        {/*              <img src="/assets/images/filtruz.png" className='img-fluid' alt="d"/>*/}
+        {/*            </div>*/}
+        {/*          </div>*/}
+        {/*          <div className="d-block">*/}
+        {/*            <div className="our-product-2 ">*/}
+        {/*              <img src="/assets/images/deya.png" className='img-fluid mb-1' alt="d"/>*/}
+        {/*            </div>*/}
+        {/*            <div className="our-product-2 ">*/}
+        {/*              <img src="/assets/images/krember.png" className='img-fluid mb-1' alt="d"/>*/}
+        {/*            </div>*/}
+        {/*            <div className="our-product-2 ">*/}
+        {/*              <img src="/assets/images/nmedov.png" className='img-fluid mb-1' alt="d"/>*/}
+        {/*            </div>*/}
+        {/*          </div>*/}
+        {/*          <div className="d-block">*/}
+        {/*            <div className="our-product p-2">*/}
+        {/*              <img src="/assets/images/bliss.png" className='img-fluid' alt="d"/>*/}
+        {/*            </div>*/}
+        {/*            <div className="our-product p-2">*/}
+        {/*              <img src="/assets/images/panda.png" className='img-fluid' alt="d"/>*/}
+        {/*            </div>*/}
+        {/*          </div>*/}
+        {/*          <div className="d-block">*/}
+        {/*            <div className="our-product-2 ">*/}
+        {/*              <img src="/assets/images/nmedov.png" className='img-fluid mb-1' alt="d"/>*/}
+        {/*            </div>*/}
+        {/*            <div className="our-product-2 ">*/}
+        {/*              <img src="/assets/images/sfad.png" className='img-fluid mb-1' alt="d"/>*/}
+        {/*            </div>*/}
+        {/*            <div className="our-product-2 ">*/}
+        {/*              <img src="/assets/images/umr.png" className='img-fluid mb-1' alt="d"/>*/}
+        {/*            </div>*/}
+        {/*          </div>*/}
+        {/*          <div className="d-block">*/}
+        {/*            <div className="our-product p-2">*/}
+        {/*              <img src="/assets/images/asmald.png" className='img-fluid' alt="d"/>*/}
+        {/*            </div>*/}
+        {/*            <div className="our-product p-2">*/}
+        {/*              <img src="/assets/images/meva.png" className='img-fluid' alt="d"/>*/}
+        {/*            </div>*/}
+        {/*          </div>*/}
+        {/*          <div className="d-block">*/}
+        {/*            <div className="our-product-2 ">*/}
+        {/*              <img src="/assets/images/umr.png" className='img-fluid mb-1' alt="d"/>*/}
+        {/*            </div>*/}
+        {/*            <div className="our-product-2 ">*/}
+        {/*              <img src="/assets/images/meva.png" className='img-fluid mb-1' alt="d"/>*/}
+        {/*            </div>*/}
+        {/*            <div className="our-product-2 ">*/}
+        {/*              <img src="/assets/images/deya.png" className='img-fluid mb-1' alt="d"/>*/}
+        {/*            </div>*/}
+        {/*          </div>*/}
+        {/*          <div className="d-block">*/}
+        {/*            <div className="our-product py-2 px-1">*/}
+        {/*              <img src="/assets/images/deya.png" className='img-fluid' alt="d"/>*/}
+        {/*            </div>*/}
+        {/*            <div className="our-product p-2">*/}
+        {/*              <img src="/assets/images/nmedov.png" className='img-fluid' alt="d"/>*/}
+        {/*            </div>*/}
+        {/*          </div>*/}
+        {/*          <div className="d-block">*/}
+        {/*            <div className="our-product-2 ">*/}
+        {/*              <img src="/assets/images/indorama.png" className='img-fluid mb-1' alt="d"/>*/}
+        {/*            </div>*/}
+        {/*            <div className="our-product-2 ">*/}
+        {/*              <img src="/assets/images/euromed.png" className='img-fluid mb-1' alt="d"/>*/}
+        {/*            </div>*/}
+        {/*            <div className="our-product-2 ">*/}
+        {/*              <img src="/assets/images/andelai.png" className='img-fluid mb-1' alt="d"/>*/}
+        {/*            </div>*/}
+        {/*          </div>*/}
+        {/*          <div className="d-block">*/}
+        {/*            <div className="our-product p-2">*/}
+        {/*              <img src="/assets/images/panda.png" className='img-fluid' alt="d"/>*/}
+        {/*            </div>*/}
+        {/*            <div className="our-product p-2">*/}
+        {/*              <img src="/assets/images/asmald.png" className='img-fluid' alt="d"/>*/}
+        {/*            </div>*/}
+        {/*          </div>*/}
+        {/*          <div className="d-block">*/}
+        {/*            <div className="our-product-2 ">*/}
+        {/*              <img src="/assets/images/filtruz.png" className='img-fluid mb-1' alt="d"/>*/}
+        {/*            </div>*/}
+        {/*            <div className="our-product-2 ">*/}
+        {/*              <img src="/assets/images/krember.png" className='img-fluid mb-1' alt="d"/>*/}
+        {/*            </div>*/}
+        {/*            <div className="our-product-2 ">*/}
+        {/*              <img src="/assets/images/pokiza.png" className='img-fluid mb-1' alt="d"/>*/}
+        {/*            </div>*/}
+        {/*          </div>*/}
+        {/*          <div className="d-block">*/}
+        {/*            <div className="our-product p-2">*/}
+        {/*              <img src="/assets/images/meva.png" className='img-fluid' alt="d"/>*/}
+        {/*            </div>*/}
+        {/*            <div className="our-product p-2">*/}
+        {/*              <img src="/assets/images/bliss.png" className='img-fluid' alt="d"/>*/}
+        {/*            </div>*/}
+        {/*          </div>*/}
+        {/*          <div className="d-block">*/}
+        {/*            <div className="our-product-2 ">*/}
+        {/*              <img src="/assets/images/nmedov.png" className='img-fluid mb-1' alt="d"/>*/}
+        {/*            </div>*/}
+        {/*            <div className="our-product-2 ">*/}
+        {/*              <img src="/assets/images/sfad.png" className='img-fluid mb-1' alt="d"/>*/}
+        {/*            </div>*/}
+        {/*            <div className="our-product-2 ">*/}
+        {/*              <img src="/assets/images/umr.png" className='img-fluid mb-1' alt="d"/>*/}
+        {/*            </div>*/}
+        {/*          </div>*/}
+        {/*          <div className="d-block">*/}
+        {/*            <div className="our-product p-2">*/}
+        {/*              <img src="/assets/images/nur.png" className='img-fluid' alt="d"/>*/}
+        {/*            </div>*/}
+        {/*            <div className="our-product px-1">*/}
+        {/*              <img src="/assets/images/zebuz.png" className='img-fluid' alt="d"/>*/}
+        {/*            </div>*/}
+        {/*          </div>*/}
+        {/*          <div className="d-block">*/}
+        {/*            <div className="our-product-2 ">*/}
+        {/*              <img src="/assets/images/umr.png" className='img-fluid mb-1' alt="d"/>*/}
+        {/*            </div>*/}
+        {/*            <div className="our-product-2 ">*/}
+        {/*              <img src="/assets/images/meva.png" className='img-fluid mb-1' alt="d"/>*/}
+        {/*            </div>*/}
+        {/*            <div className="our-product-2 ">*/}
+        {/*              <img src="/assets/images/deya.png" className='img-fluid mb-1' alt="d"/>*/}
+        {/*            </div>*/}
+        {/*          </div>*/}
+        {/*          <div className="d-block">*/}
+        {/*            <div className="our-product p-2">*/}
+        {/*              <img src="/assets/images/andelai.png" className='img-fluid' alt="d"/>*/}
+        {/*            </div>*/}
+        {/*            <div className="our-product p-2">*/}
+        {/*              <img src="/assets/images/pokiza.png" className='img-fluid' alt="d"/>*/}
+        {/*            </div>*/}
+        {/*          </div>*/}
+        {/*          <div className="d-block">*/}
+        {/*            <div className="our-product-2  ">*/}
+        {/*              <img src="/assets/images/asmald.png" className='img-fluid mb-1' alt="d"/>*/}
+        {/*            </div>*/}
+        {/*            <div className="our-product-2 ">*/}
+        {/*              <img src="/assets/images/euromed.png" className='img-fluid mb-1' alt="d"/>*/}
+        {/*            </div>*/}
+        {/*            <div className="our-product-2 ">*/}
+        {/*              <img src="/assets/images/umr.png" className='img-fluid mb-1' alt="d"/>*/}
+        {/*            </div>*/}
+        {/*          </div>*/}
+        {/*          <div className="d-block">*/}
+        {/*            <div className="our-product p-2">*/}
+        {/*              <img src="/assets/images/sfad.png" className='img-fluid' alt="d"/>*/}
+        {/*            </div>*/}
+        {/*            <div className="our-product p-2">*/}
+        {/*              <img src="/assets/images/filtruz.png" className='img-fluid' alt="d"/>*/}
+        {/*            </div>*/}
+        {/*          </div>*/}
+        {/*          <div className="d-block">*/}
+        {/*            <div className="our-product-2 " >*/}
+        {/*              <img src="/assets/images/deya.png" className='img-fluid mb-1' alt="d"/>*/}
+        {/*            </div>*/}
+        {/*            <div className="our-product-2 ">*/}
+        {/*              <img src="/assets/images/krember.png" className='img-fluid mb-1' alt="d"/>*/}
+        {/*            </div>*/}
+        {/*            <div className="our-product-2 ">*/}
+        {/*              <img src="/assets/images/nmedov.png" className='img-fluid mb-1' alt="d"/>*/}
+        {/*            </div>*/}
+        {/*          </div>*/}
+        {/*          <div className="d-block">*/}
+        {/*            <div className="our-product p-2">*/}
+        {/*              <img src="/assets/images/bliss.png" className='img-fluid' alt="d"/>*/}
+        {/*            </div>*/}
+        {/*            <div className="our-product p-2">*/}
+        {/*              <img src="/assets/images/panda.png" className='img-fluid' alt="d"/>*/}
+        {/*            </div>*/}
+        {/*          </div>*/}
+        {/*          <div className="d-block">*/}
+        {/*            <div className="our-product-2 ">*/}
+        {/*              <img src="/assets/images/nmedov.png" className='img-fluid mb-1' alt="d"/>*/}
+        {/*            </div>*/}
+        {/*            <div className="our-product-2 ">*/}
+        {/*              <img src="/assets/images/sfad.png" className='img-fluid mb-1' alt="d"/>*/}
+        {/*            </div>*/}
+        {/*            <div className="our-product-2 ">*/}
+        {/*              <img src="/assets/images/umr.png" className='img-fluid mb-1' alt="d"/>*/}
+        {/*            </div>*/}
+        {/*          </div>*/}
+        {/*          <div className="d-block">*/}
+        {/*            <div className="our-product p-2">*/}
+        {/*              <img src="/assets/images/asmald.png" className='img-fluid' alt="d"/>*/}
+        {/*            </div>*/}
+        {/*            <div className="our-product p-2">*/}
+        {/*              <img src="/assets/images/meva.png" className='img-fluid' alt="d"/>*/}
+        {/*            </div>*/}
+        {/*          </div>*/}
+        {/*          <div className="d-block">*/}
+        {/*            <div className="our-product-2 ">*/}
+        {/*              <img src="/assets/images/deya.png" className='img-fluid mb-1' alt="d"/>*/}
+        {/*            </div>*/}
+        {/*            <div className="our-product-2 ">*/}
+        {/*              <img src="/assets/images/krember.png" className='img-fluid mb-1' alt="d"/>*/}
+        {/*            </div>*/}
+        {/*            <div className="our-product-2 ">*/}
+        {/*              <img src="/assets/images/nmedov.png" className='img-fluid mb-1' alt="d"/>*/}
+        {/*            </div>*/}
+        {/*          </div>*/}
+        {/*          <div className="d-block">*/}
+        {/*            <div className="our-product py-2 px-1 ">*/}
+        {/*              <img src="/assets/images/deya.png" className='img-fluid' alt="d"/>*/}
+        {/*            </div>*/}
+        {/*            <div className="our-product p-2 ">*/}
+        {/*              <img src="/assets/images/nmedov.png" className='img-fluid' alt="d"/>*/}
+        {/*            </div>*/}
+        {/*          </div>*/}
+        {/*          <div className="d-block">*/}
+        {/*            <div className="our-product-2 ">*/}
+        {/*              <img src="/assets/images/indorama.png" className='img-fluid mb-1' alt="d"/>*/}
+        {/*            </div>*/}
+        {/*            <div className="our-product-2 ">*/}
+        {/*              <img src="/assets/images/euromed.png" className='img-fluid mb-1' alt="d"/>*/}
+        {/*            </div>*/}
+        {/*            <div className="our-product-2 ">*/}
+        {/*              <img src="/assets/images/andelai.png" className='img-fluid mb-1' alt="d"/>*/}
+        {/*            </div>*/}
+        {/*          </div>*/}
+        {/*          <div className="d-block">*/}
+        {/*            <div className="our-product p-2">*/}
+        {/*              <img src="/assets/images/panda.png" className='img-fluid' alt="d"/>*/}
+        {/*            </div>*/}
+        {/*            <div className="our-product p-2">*/}
+        {/*              <img src="/assets/images/asmald.png" className='img-fluid' alt="d"/>*/}
+        {/*            </div>*/}
+        {/*          </div>*/}
+        {/*          <div className="d-block">*/}
+        {/*            <div className="our-product-2 ">*/}
+        {/*              <img src="/assets/images/filtruz.png" className='img-fluid mb-1' alt="d"/>*/}
+        {/*            </div>*/}
+        {/*            <div className="our-product-2 ">*/}
+        {/*              <img src="/assets/images/krember.png" className='img-fluid mb-1' alt="d"/>*/}
+        {/*            </div>*/}
+        {/*            <div className="our-product-2 ">*/}
+        {/*              <img src="/assets/images/pokiza.png" className='img-fluid mb-1' alt="d"/>*/}
+        {/*            </div>*/}
+        {/*          </div>*/}
+        {/*          <div className="d-block">*/}
+        {/*            <div className="our-product p-2">*/}
+        {/*              <img src="/assets/images/meva.png" className='img-fluid' alt="d"/>*/}
+        {/*            </div>*/}
+        {/*            <div className="our-product p-2">*/}
+        {/*              <img src="/assets/images/bliss.png" className='img-fluid' alt="d"/>*/}
+        {/*            </div>*/}
+        {/*          </div>*/}
+        {/*          <div className="d-block">*/}
+        {/*            <div className="our-product-2 ">*/}
+        {/*              <img src="/assets/images/nmedov.png" className='img-fluid mb-1' alt="d"/>*/}
+        {/*            </div>*/}
+        {/*            <div className="our-product-2 ">*/}
+        {/*              <img src="/assets/images/sfad.png" className='img-fluid mb-1' alt="d"/>*/}
+        {/*            </div>*/}
+        {/*            <div className="our-product-2 ">*/}
+        {/*              <img src="/assets/images/umr.png" className='img-fluid mb-1' alt="d"/>*/}
+        {/*            </div>*/}
+        {/*          </div>*/}
+        {/*          <div className="d-block">*/}
+        {/*            <div className="our-product p-2">*/}
+        {/*              <img src="/assets/images/nur.png" className='img-fluid' alt="d"/>*/}
+        {/*            </div>*/}
+        {/*            <div className="our-product px-1">*/}
+        {/*              <img src="/assets/images/zebuz.png" className='img-fluid' alt="d"/>*/}
+        {/*            </div>*/}
+        {/*          </div>*/}
+        {/*          <div className="d-block">*/}
+        {/*            <div className="our-product-2 ">*/}
+        {/*              <img src="/assets/images/umr.png" className='img-fluid mb-1' alt="d"/>*/}
+        {/*            </div>*/}
+        {/*            <div className="our-product-2 ">*/}
+        {/*              <img src="/assets/images/meva.png" className='img-fluid mb-1' alt="d"/>*/}
+        {/*            </div>*/}
+        {/*            <div className="our-product-2 ">*/}
+        {/*              <img src="/assets/images/deya.png" className='img-fluid mb-1' alt="d"/>*/}
+        {/*            </div>*/}
+        {/*          </div>*/}
+        {/*          <div className="d-block">*/}
+        {/*            <div className="our-product p-2">*/}
+        {/*              <img src="/assets/images/andelai.png" className='img-fluid' alt="d"/>*/}
+        {/*            </div>*/}
+        {/*            <div className="our-product p-2">*/}
+        {/*              <img src="/assets/images/pokiza.png" className='img-fluid' alt="d"/>*/}
+        {/*            </div>*/}
+        {/*          </div>*/}
+        {/*          <div className="d-block">*/}
+        {/*            <div className="our-product-2  ">*/}
+        {/*              <img src="/assets/images/asmald.png" className='img-fluid mb-1' alt="d"/>*/}
+        {/*            </div>*/}
+        {/*            <div className="our-product-2 ">*/}
+        {/*              <img src="/assets/images/euromed.png" className='img-fluid mb-1' alt="d"/>*/}
+        {/*            </div>*/}
+        {/*            <div className="our-product-2 ">*/}
+        {/*              <img src="/assets/images/umr.png" className='img-fluid mb-1' alt="d"/>*/}
+        {/*            </div>*/}
+        {/*          </div>*/}
+        {/*          <div className="d-block">*/}
+        {/*            <div className="our-product p-2">*/}
+        {/*              <img src="/assets/images/sfad.png" className='img-fluid' alt="d"/>*/}
+        {/*            </div>*/}
+        {/*            <div className="our-product p-2">*/}
+        {/*              <img src="/assets/images/filtruz.png" className='img-fluid' alt="d"/>*/}
+        {/*            </div>*/}
+        {/*          </div>*/}
+        {/*          <div className="d-block">*/}
+        {/*            <div className="our-product-2 ">*/}
+        {/*              <img src="/assets/images/deya.png" className='img-fluid mb-1' alt="d"/>*/}
+        {/*            </div>*/}
+        {/*            <div className="our-product-2 ">*/}
+        {/*              <img src="/assets/images/krember.png" className='img-fluid mb-1' alt="d"/>*/}
+        {/*            </div>*/}
+        {/*            <div className="our-product-2 ">*/}
+        {/*              <img src="/assets/images/nmedov.png" className='img-fluid mb-1' alt="d"/>*/}
+        {/*            </div>*/}
+        {/*          </div>*/}
+        {/*        </div>*/}
+        {/*      </div>*/}
+        {/*    </div>*/}
+        {/*  </Container>*/}
+        {/*</section>*/}
 
 
-        <section className="section7 position-relative">
-          <img src="/assets/images/Rectangle6.png" className='rec6 img-fluid position-absolute' alt=""/>
-          <Container className='team_Carousel '>
-            <p className='team_Title'>Bizning jamoa</p>
-            <Slider {...settings}>
+        {/*<section className="section7 position-relative">*/}
+        {/*  <img src="/assets/images/Rectangle6.png" className='rec6 img-fluid position-absolute' alt=""/>*/}
+        {/*  <Container className='team_Carousel '>*/}
+        {/*    <p className='team_Title'>Bizning jamoa</p>*/}
+        {/*    <Slider {...settings}>*/}
 
-              <div className='mx-2'>
-                <Card className='team_Card'>
-                  <p className="d-flex align-items-center flex-column">
-                    <p className='d-flex justify-content-center align-items-center img_Round'>
-                      <CardImg className='user_Img' src="/assets/images/user1.png" alt=""/>
-                    </p>
-                  </p>
-                  <CardBody>
-                    <CardTitle className='user_Name'>Brandon Richards</CardTitle>
-                    <p className="d-flex align-items-center flex-column">
-                      <CardText className='user_Profession'>Fotograf, Bosh dizayner</CardText>
-                    </p>
-                  </CardBody>
-                </Card>
-              </div>
-              <div className='mx-2'>
-                <Card className='team_Card'>
-                  <p className="d-flex align-items-center flex-column">
-                    <p className='d-flex justify-content-center align-items-center img_Round'>
-                      <CardImg className='user_Img' src="/assets/images/user2.png" alt=""/>
-                    </p>
-                  </p>
-                  <CardBody>
-                    <CardTitle className='user_Name'>Beth Mckinney</CardTitle>
-                    <p className="d-flex align-items-center flex-column">
-                      <CardText className='user_Profession'>Mizlar bilan ishlash bo’lim boshlig’i</CardText>
-                    </p>
-                  </CardBody>
-                </Card>
-              </div>
-              <Card className='team_Card'>
-                <p className="d-flex align-items-center flex-column">
-                  <p className='d-flex justify-content-center align-items-center img_Round'>
-                    <CardImg className='user_Img' src="/assets/images/user3.png" alt=""/>
-                  </p>
-                </p>
-                <CardBody>
-                  <CardTitle className='user_Name'>Dianne Fisher</CardTitle>
-                  <p className="d-flex align-items-center flex-column">
-                    <CardText className='user_Profession'>Mizlar bilan ishlash meneger</CardText>
-                  </p>
-                </CardBody>
-              </Card>
-
-
-              <div>
-                <Card className='team_Card'>
-                  <p className="d-flex align-items-center flex-column">
-                    <p className='d-flex justify-content-center align-items-center img_Round'>
-                      <CardImg className='user_Img' src="/assets/images/user2.png" alt=""/>
-                    </p>
-                  </p>
-                  <CardBody>
-                    <CardTitle className='user_Name'>Beth Mckinney</CardTitle>
-                    <p className="d-flex align-items-center flex-column">
-                      <CardText className='user_Profession'>Mizlar bilan ishlash bo’lim boshlig’i</CardText>
-                    </p>
-                  </CardBody>
-                </Card>
-              </div>
-              <div >
-                <Card className='team_Card'>
-                  <p className="d-flex align-items-center flex-column">
-                    <p className='d-flex justify-content-center align-items-center img_Round'>
-                      <CardImg className='user_Img' src="/assets/images/user3.png" alt=""/>
-                    </p>
-                  </p>
-                  <CardBody>
-                    <CardTitle className='user_Name'>Dianne Fisher</CardTitle>
-                    <p className="d-flex align-items-center flex-column">
-                      <CardText className='user_Profession'>Mizlar bilan ishlash meneger</CardText>
-                    </p>
-                  </CardBody>
-                </Card>
-              </div>
-              <div >
-                <Card className='team_Card'>
-                  <p className="d-flex align-items-center flex-column">
-                    <p className='d-flex justify-content-center align-items-center img_Round'>
-                      <CardImg className='user_Img' src="/assets/images/user1.png" alt=""/>
-                    </p>
-                  </p>
-                  <CardBody>
-                    <CardTitle className='user_Name'>Brandon Richards</CardTitle>
-                    <p className="d-flex align-items-center flex-column">
-                      <CardText className='user_Profession'>Fotograf, Bosh dizayner</CardText>
-                    </p>
-                  </CardBody>
-                </Card>
-              </div>
+        {/*      <div className='mx-2'>*/}
+        {/*        <Card className='team_Card'>*/}
+        {/*          <p className="d-flex align-items-center flex-column">*/}
+        {/*            <p className='d-flex justify-content-center align-items-center img_Round'>*/}
+        {/*              <CardImg className='user_Img' src="/assets/images/user1.png" alt=""/>*/}
+        {/*            </p>*/}
+        {/*          </p>*/}
+        {/*          <CardBody>*/}
+        {/*            <CardTitle className='user_Name'>Brandon Richards</CardTitle>*/}
+        {/*            <p className="d-flex align-items-center flex-column">*/}
+        {/*              <CardText className='user_Profession'>Fotograf, Bosh dizayner</CardText>*/}
+        {/*            </p>*/}
+        {/*          </CardBody>*/}
+        {/*        </Card>*/}
+        {/*      </div>*/}
+        {/*      <div className='mx-2'>*/}
+        {/*        <Card className='team_Card'>*/}
+        {/*          <p className="d-flex align-items-center flex-column">*/}
+        {/*            <p className='d-flex justify-content-center align-items-center img_Round'>*/}
+        {/*              <CardImg className='user_Img' src="/assets/images/user2.png" alt=""/>*/}
+        {/*            </p>*/}
+        {/*          </p>*/}
+        {/*          <CardBody>*/}
+        {/*            <CardTitle className='user_Name'>Beth Mckinney</CardTitle>*/}
+        {/*            <p className="d-flex align-items-center flex-column">*/}
+        {/*              <CardText className='user_Profession'>Mizlar bilan ishlash bo’lim boshlig’i</CardText>*/}
+        {/*            </p>*/}
+        {/*          </CardBody>*/}
+        {/*        </Card>*/}
+        {/*      </div>*/}
+        {/*      <Card className='team_Card'>*/}
+        {/*        <p className="d-flex align-items-center flex-column">*/}
+        {/*          <p className='d-flex justify-content-center align-items-center img_Round'>*/}
+        {/*            <CardImg className='user_Img' src="/assets/images/user3.png" alt=""/>*/}
+        {/*          </p>*/}
+        {/*        </p>*/}
+        {/*        <CardBody>*/}
+        {/*          <CardTitle className='user_Name'>Dianne Fisher</CardTitle>*/}
+        {/*          <p className="d-flex align-items-center flex-column">*/}
+        {/*            <CardText className='user_Profession'>Mizlar bilan ishlash meneger</CardText>*/}
+        {/*          </p>*/}
+        {/*        </CardBody>*/}
+        {/*      </Card>*/}
 
 
-            </Slider>
-          </Container>
-        </section>
+        {/*      <div>*/}
+        {/*        <Card className='team_Card'>*/}
+        {/*          <p className="d-flex align-items-center flex-column">*/}
+        {/*            <p className='d-flex justify-content-center align-items-center img_Round'>*/}
+        {/*              <CardImg className='user_Img' src="/assets/images/user2.png" alt=""/>*/}
+        {/*            </p>*/}
+        {/*          </p>*/}
+        {/*          <CardBody>*/}
+        {/*            <CardTitle className='user_Name'>Beth Mckinney</CardTitle>*/}
+        {/*            <p className="d-flex align-items-center flex-column">*/}
+        {/*              <CardText className='user_Profession'>Mizlar bilan ishlash bo’lim boshlig’i</CardText>*/}
+        {/*            </p>*/}
+        {/*          </CardBody>*/}
+        {/*        </Card>*/}
+        {/*      </div>*/}
+        {/*      <div >*/}
+        {/*        <Card className='team_Card'>*/}
+        {/*          <p className="d-flex align-items-center flex-column">*/}
+        {/*            <p className='d-flex justify-content-center align-items-center img_Round'>*/}
+        {/*              <CardImg className='user_Img' src="/assets/images/user3.png" alt=""/>*/}
+        {/*            </p>*/}
+        {/*          </p>*/}
+        {/*          <CardBody>*/}
+        {/*            <CardTitle className='user_Name'>Dianne Fisher</CardTitle>*/}
+        {/*            <p className="d-flex align-items-center flex-column">*/}
+        {/*              <CardText className='user_Profession'>Mizlar bilan ishlash meneger</CardText>*/}
+        {/*            </p>*/}
+        {/*          </CardBody>*/}
+        {/*        </Card>*/}
+        {/*      </div>*/}
+        {/*      <div >*/}
+        {/*        <Card className='team_Card'>*/}
+        {/*          <p className="d-flex align-items-center flex-column">*/}
+        {/*            <p className='d-flex justify-content-center align-items-center img_Round'>*/}
+        {/*              <CardImg className='user_Img' src="/assets/images/user1.png" alt=""/>*/}
+        {/*            </p>*/}
+        {/*          </p>*/}
+        {/*          <CardBody>*/}
+        {/*            <CardTitle className='user_Name'>Brandon Richards</CardTitle>*/}
+        {/*            <p className="d-flex align-items-center flex-column">*/}
+        {/*              <CardText className='user_Profession'>Fotograf, Bosh dizayner</CardText>*/}
+        {/*            </p>*/}
+        {/*          </CardBody>*/}
+        {/*        </Card>*/}
+        {/*      </div>*/}
 
-        <section className='section8'>
-          <Container fluid={1} className="mt-5 p-0">
-            <img className="rectangle" src="/assets/images/Rectangle 6.7.png" alt=""/>
-            <YMaps>
-              <Map defaultState={mapData} className='mapYandex'>
-                {coordinates.map(coordinate => <Placemark geometry={coordinate}/>)}
-              </Map>
-            </YMaps>
-          </Container>
-        </section>
 
-          <footer className="footer" id="kontakt">
-            <Container>
-              <Row>
-                <Col md={2} xs={6} className="mt-2">
-                  <p className="lato-bold company">Kompaniya</p>
-                  <Link className="lato-light link-menu" spy={true} smooth={true} duration={1500} activeClass="active" activeClassName="selected" to="bizhaqimizda"><p className="mt-3"><a> Biz haqimizda</a></p></Link>
-                  <Link className="lato-light link-menu" spy={true} smooth={true} duration={1300} activeClass="active" activeClassName="selected" to="xizmatlar"><p className="mt-3"><a> Bizning xizmatlar</a></p></Link>
-                  <Link className="lato-light link-menu" spy={true} smooth={true} duration={1200} activeClass="active" activeClassName="selected" to="portfolio"><p className="mt-3"><a> Portfolio</a></p></Link>
-                  <Link className="lato-light link-menu" spy={true} smooth={true} duration={1000} activeClass="active" activeClassName="selected" to="mijozlar"><p className="mt-3"><a> Bizning Mijozlar</a></p></Link>
-                  <Link className="lato-light link-menu" spy={true} smooth={true} duration={700} activeClass="active" activeClassName="selected" to="jamoa"><p className="mt-3"><a> Bizning Jamoa</a></p></Link>
-                </Col>
-                <Col md={2} xs={6} className="ml-md-5 mt-2">
-                  <p className="lato-bold company">Xizmatlar</p>
-                  <p className="mt-3 link-menu"><a className="lato-light" href="#">Ipakli bosma</a></p>
-                  <p className="link-menu"><a className="lato-light" href="#">Ofset bosma</a></p>
-                  <p className="link-menu"><a className="lato-light" href="#">Kesish</a></p>
-                  <p className="link-menu"><a className="lato-light" href="#">Ultra-binafsha rang</a></p>
-                  <p className="link-menu"><a className="lato-light" href="#">Bo'rttirish</a></p>
-                  <p className="link-menu"><a className="lato-light" href="#">Laminatsiya</a></p>
-                  <p className="link-menu"><a className="lato-light" href="#">Qog'oz lashirovka</a></p>
-                  <p className="link-menu"><a className="lato-light" href="#">O'yib olish</a></p>
-                </Col>
-                <Col md={2} xs={6} className="ml-md-5 mt-2">
-                  <p className="lato-bold company">Xizmatlar</p>
-                  <p className="mt-3 link-menu"><a className="lato-light" href="#">Rahbariyat</a></p>
-                  <p className="link-menu"><a className="lato-light" href="#">Tarix</a></p>
-                  <p className="link-menu"><a className="lato-light" href="#">Yangiliklar</a></p>
-                  <p className="link-menu"><a className="lato-light" href="#">Maketlar uchun talab</a></p>
-                  <p className="link-menu"><a className="lato-light" href="#">Aloqa</a></p>
-                </Col>
-                <Col md={2}  xs={6} className="offset-md-2 mt-2">
-                  <p className="lato-bold aloqa">Aloqa</p>
+        {/*    </Slider>*/}
+        {/*  </Container>*/}
+        {/*</section>*/}
 
-                  <div>
-                    <p className="phone-num" style={{marginTop: "20px"}}>
-                      <img className="phone-img" src="/assets/images/phone.png" alt=""/>
-                      <span className="phone-code lato-regular">(+99891)</span>
-                    </p>
-                    <p className="phone-number lato-black mb-0">204-11-00</p>
-                  </div>
+        {/*<section className='section8'>*/}
+        {/*  <Container fluid={1} className="mt-5 p-0">*/}
+        {/*    <img className="rectangle" src="/assets/images/Rectangle 6.7.png" alt=""/>*/}
+        {/*    <YMaps>*/}
+        {/*      <Map defaultState={mapData} className='mapYandex'>*/}
+        {/*        {coordinates.map(coordinate => <Placemark geometry={coordinate}/>)}*/}
+        {/*      </Map>*/}
+        {/*    </YMaps>*/}
+        {/*  </Container>*/}
+        {/*</section>*/}
 
-                  <div>
-                    <p className="phone-num mt-3">
-                      <span className="phone-code lato-regular">(+99891)</span>
-                    </p>
-                    <p className="phone-number lato-black mb-0">360-77-00</p>
+          {/*<footer className="footer" id="kontakt">*/}
+          {/*  <Container>*/}
+          {/*    <Row>*/}
+          {/*      <Col md={2} xs={6} className="mt-2">*/}
+          {/*        <p className="lato-bold company">Kompaniya</p>*/}
+          {/*        <Link className="lato-light link-menu" spy={true} smooth={true} duration={1500} activeClass="active" activeClassName="selected" to="bizhaqimizda"><p className="mt-3"><a> Biz haqimizda</a></p></Link>*/}
+          {/*        <Link className="lato-light link-menu" spy={true} smooth={true} duration={1300} activeClass="active" activeClassName="selected" to="xizmatlar"><p className="mt-3"><a> Bizning xizmatlar</a></p></Link>*/}
+          {/*        <Link className="lato-light link-menu" spy={true} smooth={true} duration={1200} activeClass="active" activeClassName="selected" to="portfolio"><p className="mt-3"><a> Portfolio</a></p></Link>*/}
+          {/*        <Link className="lato-light link-menu" spy={true} smooth={true} duration={1000} activeClass="active" activeClassName="selected" to="mijozlar"><p className="mt-3"><a> Bizning Mijozlar</a></p></Link>*/}
+          {/*        <Link className="lato-light link-menu" spy={true} smooth={true} duration={700} activeClass="active" activeClassName="selected" to="jamoa"><p className="mt-3"><a> Bizning Jamoa</a></p></Link>*/}
+          {/*      </Col>*/}
+          {/*      <Col md={2} xs={6} className="ml-md-5 mt-2">*/}
+          {/*        <p className="lato-bold company">Xizmatlar</p>*/}
+          {/*        <p className="mt-3 link-menu"><a className="lato-light" href="#">Ipakli bosma</a></p>*/}
+          {/*        <p className="link-menu"><a className="lato-light" href="#">Ofset bosma</a></p>*/}
+          {/*        <p className="link-menu"><a className="lato-light" href="#">Kesish</a></p>*/}
+          {/*        <p className="link-menu"><a className="lato-light" href="#">Ultra-binafsha rang</a></p>*/}
+          {/*        <p className="link-menu"><a className="lato-light" href="#">Bo'rttirish</a></p>*/}
+          {/*        <p className="link-menu"><a className="lato-light" href="#">Laminatsiya</a></p>*/}
+          {/*        <p className="link-menu"><a className="lato-light" href="#">Qog'oz lashirovka</a></p>*/}
+          {/*        <p className="link-menu"><a className="lato-light" href="#">O'yib olish</a></p>*/}
+          {/*      </Col>*/}
+          {/*      <Col md={2} xs={6} className="ml-md-5 mt-2">*/}
+          {/*        <p className="lato-bold company">Xizmatlar</p>*/}
+          {/*        <p className="mt-3 link-menu"><a className="lato-light" href="#">Rahbariyat</a></p>*/}
+          {/*        <p className="link-menu"><a className="lato-light" href="#">Tarix</a></p>*/}
+          {/*        <p className="link-menu"><a className="lato-light" href="#">Yangiliklar</a></p>*/}
+          {/*        <p className="link-menu"><a className="lato-light" href="#">Maketlar uchun talab</a></p>*/}
+          {/*        <p className="link-menu"><a className="lato-light" href="#">Aloqa</a></p>*/}
+          {/*      </Col>*/}
+          {/*      <Col md={2}  xs={6} className="offset-md-2 mt-2">*/}
+          {/*        <p className="lato-bold aloqa">Aloqa</p>*/}
 
-                  </div>
+          {/*        <div>*/}
+          {/*          <p className="phone-num" style={{marginTop: "20px"}}>*/}
+          {/*            <img className="phone-img" src="/assets/images/phone.png" alt=""/>*/}
+          {/*            <span className="phone-code lato-regular">(+99891)</span>*/}
+          {/*          </p>*/}
+          {/*          <p className="phone-number lato-black mb-0">204-11-00</p>*/}
+          {/*        </div>*/}
 
-                  <div>
-                    <p className="phone-num mt-3">
-                      <span className="phone-code lato-regular">(+99873)</span>
-                    </p>
-                    <p className="phone-number lato-black mb-0">543-55-55</p>
-                  </div>
-                </Col>
-              </Row>
+          {/*        <div>*/}
+          {/*          <p className="phone-num mt-3">*/}
+          {/*            <span className="phone-code lato-regular">(+99891)</span>*/}
+          {/*          </p>*/}
+          {/*          <p className="phone-number lato-black mb-0">360-77-00</p>*/}
 
-              <Row className="mt-md-5">
-                <Col md={2} className="mb-3">
-                  <UncontrolledDropdown>
-                    <DropdownToggle caret className="language">
-                      <span className="mb-2 ml-2 ">
-                        Uzbek
-                      </span>
-                      <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M1 1L5 5L9 1" stroke="grey" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                      </svg>
+          {/*        </div>*/}
 
-                    </DropdownToggle>
-                    <DropdownMenu right className="p-0">
-                      <DropdownItem>
-                        RU
-                      </DropdownItem>
-                      <DropdownItem>
-                        UZ
-                      </DropdownItem>
-                    </DropdownMenu>
-                  </UncontrolledDropdown>
-                </Col>
-                <Col md={4} xs={7}>
-                  <div className="telegram d-inline-block">
-                    <a href=""><img className="text-center" src="/assets/images/002-telegram.png" alt=""/></a>
-                  </div>
-                  <div className="telegram ml-md-3 ml-1 d-inline-block">
-                    <a href=""><img src="/assets/images/003-instagram.png" alt=""/></a>
-                  </div>
-                  <div className="telegram ml-md-3 ml-1 d-inline-block">
-                    <a href=""><img src="/assets/images/001-facebook-logo.png" alt=""/></a>
-                  </div>
-                  <div className="telegram ml-md-3 ml-1 d-inline-block">
-                    <a href=""> <img src="/assets/images/004-youtube.png" alt=""/></a>
-                  </div>
-                </Col>
-                <Col md={2} xs={12} className="offset-md-3  pdp-link offset-1" >
-                <span>
-                  <img className="phone-img" src="/assets/images/map-pin.png" alt=""/>
-                </span>
-                  <span className="lato-regular addres">140100. <br/> O'zbekiston R,  Farg'ona viloyati, Qo'qon sh. Usta bozor k, 1B uy.
-                  </span>
-                </Col>
-              </Row>
-              <Row className=" mt-3 p-1">
-                <p className="lato-regular link-pdp">
-                  <a href="https://pdp.uz">© 2005 - 2019 europrint.uz tipografiyasi | Personal Development Process</a></p>
-              </Row>
-            </Container>
-          </footer>
+          {/*        <div>*/}
+          {/*          <p className="phone-num mt-3">*/}
+          {/*            <span className="phone-code lato-regular">(+99873)</span>*/}
+          {/*          </p>*/}
+          {/*          <p className="phone-number lato-black mb-0">543-55-55</p>*/}
+          {/*        </div>*/}
+          {/*      </Col>*/}
+          {/*    </Row>*/}
+
+          {/*    <Row className="mt-md-5">*/}
+          {/*      <Col md={2} className="mb-3">*/}
+          {/*        <UncontrolledDropdown>*/}
+          {/*          <DropdownToggle caret className="language">*/}
+          {/*            <span className="mb-2 ml-2 ">*/}
+          {/*              Uzbek*/}
+          {/*            </span>*/}
+          {/*            <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">*/}
+          {/*              <path d="M1 1L5 5L9 1" stroke="grey" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>*/}
+          {/*            </svg>*/}
+
+          {/*          </DropdownToggle>*/}
+          {/*          <DropdownMenu right className="p-0">*/}
+          {/*            <DropdownItem>*/}
+          {/*              RU*/}
+          {/*            </DropdownItem>*/}
+          {/*            <DropdownItem>*/}
+          {/*              UZ*/}
+          {/*            </DropdownItem>*/}
+          {/*          </DropdownMenu>*/}
+          {/*        </UncontrolledDropdown>*/}
+          {/*      </Col>*/}
+          {/*      <Col md={4} xs={7}>*/}
+          {/*        <div className="telegram d-inline-block">*/}
+          {/*          <a href=""><img className="text-center" src="/assets/images/002-telegram.png" alt=""/></a>*/}
+          {/*        </div>*/}
+          {/*        <div className="telegram ml-md-3 ml-1 d-inline-block">*/}
+          {/*          <a href=""><img src="/assets/images/003-instagram.png" alt=""/></a>*/}
+          {/*        </div>*/}
+          {/*        <div className="telegram ml-md-3 ml-1 d-inline-block">*/}
+          {/*          <a href=""><img src="/assets/images/001-facebook-logo.png" alt=""/></a>*/}
+          {/*        </div>*/}
+          {/*        <div className="telegram ml-md-3 ml-1 d-inline-block">*/}
+          {/*          <a href=""> <img src="/assets/images/004-youtube.png" alt=""/></a>*/}
+          {/*        </div>*/}
+          {/*      </Col>*/}
+          {/*      <Col md={2} xs={12} className="offset-md-3  pdp-link offset-1" >*/}
+          {/*      <span>*/}
+          {/*        <img className="phone-img" src="/assets/images/map-pin.png" alt=""/>*/}
+          {/*      </span>*/}
+          {/*        <span className="lato-regular addres">140100. <br/> O'zbekiston R,  Farg'ona viloyati, Qo'qon sh. Usta bozor k, 1B uy.*/}
+          {/*        </span>*/}
+          {/*      </Col>*/}
+          {/*    </Row>*/}
+          {/*    <Row className=" mt-3 p-1">*/}
+          {/*      <p className="lato-regular link-pdp">*/}
+          {/*        <a href="https://pdp.uz">© 2005 - 2019 europrint.uz tipografiyasi | Personal Development Process</a></p>*/}
+          {/*    </Row>*/}
+          {/*  </Container>*/}
+          {/*</footer>*/}
+      </div>
       </div>
     );
   }

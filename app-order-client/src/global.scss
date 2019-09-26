@@ -1784,7 +1784,15 @@ $black: #131A22;
 
 }
 
+
 @media (min-width: 1200px) {
+  .fullScreen{
+    .header{
+      max-width:1600px;
+      margin: 0 auto;
+    }
+  }
+
   .CaruselContainer {
     img {
       width: 100%;
