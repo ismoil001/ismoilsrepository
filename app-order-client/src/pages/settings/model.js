@@ -89,7 +89,8 @@ export default {
           type:'getCompany'
         })
       }
-    }
+    },
+
 
   },
 

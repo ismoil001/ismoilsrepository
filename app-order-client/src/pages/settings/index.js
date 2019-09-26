@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import PropTypes from 'prop-types';
 import {connect} from "dva"
 import {Button, Col, Form, Input, Row} from "antd";
 
@@ -9,37 +8,37 @@ class Index extends Component {
 
   render() {
     const {dispatch, settings, form} = this.props;
-    const {company,numbers,phoneNumberValue} = settings;
-    const {getFieldDecorator, getFieldsError,getFieldsValue, getFieldError, isFieldTouched} = form;
-    const deleteNumber=(id)=>{
+    const {company, numbers, phoneNumberValue} = settings;
+    const {getFieldDecorator, getFieldsError, getFieldsValue, getFieldError, isFieldTouched} = form;
+    const deleteNumber = (id) => {
       dispatch({
-        type:'settings/deleteNumber',
-        payload:{
+        type: 'settings/deleteNumber',
+        payload: {
           id,
         }
       })
     }
-    const handlePhoneNumberValue=(event)=>{
+    const handlePhoneNumberValue = (event) => {
       dispatch({
-        type:'settings/updateState',
-        payload:{
-          phoneNumberValue:event.target.value
+        type: 'settings/updateState',
+        payload: {
+          phoneNumberValue: event.target.value
         }
       })
     }
-    const addPhoneNumber=()=>{
+    const addPhoneNumber = () => {
       dispatch({
-        type:'settings/addPhoneNumber',
-        payload:{
-          number:phoneNumberValue
+        type: 'settings/addPhoneNumber',
+        payload: {
+          number: phoneNumberValue
         }
       })
     }
 
-    const submitForm=()=>{
+    const submitForm = () => {
       dispatch({
-        type:'settings/saveCompany',
-        payload:getFieldsValue()
+        type: 'settings/saveCompany',
+        payload: getFieldsValue()
       })
     }
 
@@ -51,42 +50,42 @@ class Index extends Component {
             <Form>
               <Form.Item label={"Address"}>
                 {getFieldDecorator('address', {
-                  initialValue:company&& company.address
+                  initialValue: company && company.address
                 })(
                   <Input placeholder="Address"/>,
                 )}
               </Form.Item>
               <Form.Item label={"Email"}>
                 {getFieldDecorator('email', {
-                  initialValue: company&&company.email
+                  initialValue: company && company.email
                 })(
                   <Input placeholder="Email"/>,
                 )}
               </Form.Item>
               <Form.Item label={"facebook"}>
                 {getFieldDecorator('facebook', {
-                  initialValue:company&& company.facebook
+                  initialValue: company && company.facebook
                 })(
                   <Input placeholder="facebook"/>,
                 )}
               </Form.Item>
               <Form.Item label={"instagram"}>
                 {getFieldDecorator('instagram', {
-                  initialValue:company&& company.instagram
+                  initialValue: company && company.instagram
                 })(
                   <Input placeholder="instagram"/>,
                 )}
               </Form.Item>
               <Form.Item label={"youtube"}>
                 {getFieldDecorator('youtube', {
-                  initialValue:company&& company.youtube
+                  initialValue: company && company.youtube
                 })(
                   <Input placeholder="youtube"/>,
                 )}
               </Form.Item>
               <Form.Item label={"telegram"}>
                 {getFieldDecorator('telegram', {
-                  initialValue:company&& company.telegram
+                  initialValue: company && company.telegram
                 })(
                   <Input placeholder="telegram"/>,
                 )}
@@ -98,14 +97,20 @@ class Index extends Component {
         <Row>
           <Col span={6} offset={6}>
             Phone numbers of company:
-            <Input onChange={handlePhoneNumberValue} value={phoneNumberValue}/><Button onClick={addPhoneNumber}>+ Add</Button>
+            <Input onChange={handlePhoneNumberValue} value={phoneNumberValue}/><Button onClick={addPhoneNumber}>+
+            Add</Button>
             <ul>
               {
-                numbers.map(item=><li>
-                  {item.number} <Button onClick={()=>deleteNumber(item.id)}>x</Button>
+                numbers.map(item => <li>
+                  {item.number} <Button onClick={() => deleteNumber(item.id)}>x</Button>
                 </li>)
               }
             </ul>
+          </Col>
+        </Row>
+        <Row>
+          <Col span={6} offset={6}>
+
           </Col>
         </Row>
       </div>
