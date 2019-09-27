@@ -187,12 +187,12 @@ export default class A extends React.Component {
             </Container>
           </div>
 
-        <section className="section-one"  id="bizhaqimizda">
+        <section className="section-one pt-lg-5"  id="bizhaqimizda">
           <Container fluid={1}>
             <Row>
               <Col xs={12} sm={12} md={6} lg={6} xl={6}>
                 <Row>
-                  <Col xs={12} sm={12} md={9} lg={9} xl={9} className='ml-auto'>
+                  <Col xs={12} sm={12} md={9} lg={9} xl={9} className='mt-lg-5 ml-auto'>
                     <p className="tipography lato-black">«EUROPRINT»
                       tipografiyasi haqida</p>
                     <p className="tipography-text lato-regular">"EUROPRINT" o'zbek bosmaxonasi - bu sizning biznesingizga
@@ -300,7 +300,7 @@ export default class A extends React.Component {
           </Container>
         </section>
 
-        <section className="section3" id="xizmatlar">
+        <section className="section3 pt-lg-5" id="xizmatlar">
           <p className="text-center service lato-bold">Bizning xizmatlar</p>
           <Container className="mahsulotlar">
 
@@ -480,14 +480,14 @@ export default class A extends React.Component {
                 </Col>
               </Row>
             </Container>
-          </div>
+          </div>    
         </section>
 
-        <section className="section6" id="mijozlar">
-          <Container fluid={true} className='position-relative'>
+        <section className="section6 pt-lg-5" id="mijozlar">
+          <Container fluid={true} className='position-relative mt-lg-4'>
             <div className="bg-1 position-absolute"></div>
             <div className="bg-2 position-absolute"></div>
-            <h1 className='text-center my-4 lato-bold mb-3'>Bizning mijozlar</h1>
+            <h1 className='text-center mb-4 pt-lg-4 lato-bold mb-3'>Bizning mijozlar</h1>
             <div className="tech-slideshow">
               <div className="mover-1">
                 <div className="carusel  position-relative d-flex img-fluid">
@@ -919,7 +919,7 @@ export default class A extends React.Component {
         {/*  <Container className='team_Carousel'>*/}
 
 
-        <section className="section7 position-relative">
+        <section className="section7 position-relative" id='jamoa'>
           <img src="/assets/images/Rectangle6.png" className='rec6 img-fluid position-absolute' alt=""/>
           <Container className='team_Carousel '>
             <p className='team_Title'>Bizning jamoa</p>
