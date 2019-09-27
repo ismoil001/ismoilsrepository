@@ -30,7 +30,6 @@ import './index.less'
 class Index extends PureComponent {
 
   render() {
-
     const {dashboard, dispatch, form} = this.props;
     const {modalVisible, modalType, currentItem, customerList, currentItemPaymentSum, ismine, archiveData, orderLists, page, totalElements, searchValue, paymentModalVisible} = dashboard;
     const {getFieldDecorator, getFieldsValue, resetFields} = form;
