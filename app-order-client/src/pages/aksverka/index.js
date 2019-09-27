@@ -36,27 +36,27 @@ class Index extends Component {
       {
         title: 'Sana',
         dataIndex:'date',
-        ket:'date'
+        key:'date'
       },{
         title:'Maxsulot nomi',
         dataIndex:'productName',
-        ket:'productName'
+        key:'productName'
       },{
         title:<div><div className="d-inline-block" id="soni" ></div> Soni</div> ,
         dataIndex:'productCount',
-        ket:'count'
+        key:'count'
       },{
         title:'Narxi',
         dataIndex:'productPrice',
-        ket:'price'
+        key:'price'
       },{
         title:<div><div className="d-inline-block" id="summasi" ></div> Summasi</div>,
         dataIndex:'sum',
-        ket:'price'
+        key:'price'
       },{
         title:<div><div className="d-inline-block" id="tolov" ></div> To'lov</div>,
         dataIndex:'paymentSum',
-        ket:'payment'
+        key:'payment'
       }
     ]
 
