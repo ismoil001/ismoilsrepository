@@ -131,11 +131,11 @@ export default class A extends React.Component {
       cssEase: "linear"
     };
     const mapData = {
-      center: [41.330832, 69.247452],
+      center: [40.539137, 70.940434],
       zoom: 17,
     };
     const coordinates = [
-      [41.330832, 69.247452]
+      [40.539137, 70.940434]
     ];
     const slideUsers = [
       {
