@@ -17,16 +17,14 @@ import uz.pdp.apporderservice.bot.actions.CreateButtonService;
 import uz.pdp.apporderservice.bot.utils.BotConstant;
 import uz.pdp.apporderservice.bot.utils.BotState;
 import uz.pdp.apporderservice.entity.Order;
+import uz.pdp.apporderservice.entity.Payment;
 import uz.pdp.apporderservice.entity.TelegramState;
 import uz.pdp.apporderservice.entity.User;
 import uz.pdp.apporderservice.entity.enums.OrderStatus;
 import uz.pdp.apporderservice.entity.enums.RoleName;
 import uz.pdp.apporderservice.exception.ResourceNotFoundException;
 import uz.pdp.apporderservice.payload.ReqInlineButton;
-import uz.pdp.apporderservice.repository.OrderRepository;
-import uz.pdp.apporderservice.repository.RoleRepository;
-import uz.pdp.apporderservice.repository.TelegramStateRepository;
-import uz.pdp.apporderservice.repository.UserRepository;
+import uz.pdp.apporderservice.repository.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -50,6 +48,8 @@ public class BotMainService {
     CreateButtonService createButtonService;
     @Autowired
     OrderRepository orderRepository;
+    @Autowired
+    PaymentRepository paymentRepository;
 
     public Optional<TelegramState> getLastState(Update update) {
         return telegramStateRepository.findByTgUserId(update.hasCallbackQuery()?update.getCallbackQuery().getFrom().getId():update.getMessage().getFrom().getId());
@@ -163,6 +163,7 @@ public class BotMainService {
         rows.add(createButtonService.createRowWithOneButton("\uD83D\uDD04", BotConstant.REFRESH_CABINET_PAGE));
         List<ReqInlineButton> buttons = new ArrayList<>();
         buttons.add(new ReqInlineButton("Active Buyurtmalar",BotConstant.ACTIVE_ORDER_PAGE));
+        buttons.add(new ReqInlineButton("\uD83D\uDCB5 Balance",BotConstant.BALANCE));
         buttons.add(new ReqInlineButton("? Yordam",BotConstant.HELP));
         rows.add(createButtonService.createOneRowButtons(buttons));
         sendMessage.setText("Shaxsiy kabinet");
@@ -222,6 +223,16 @@ public class BotMainService {
         sendMessage.setReplyMarkup(inlineKeyboardMarkup);
         try {
             pdpOrderBot.execute(sendMessage);
+        } catch (TelegramApiException e) {
+            e.printStackTrace();
+        }
+
+
+    }
+
+    public void getCustomerBalance(Update update) {
+        try {
+            pdpOrderBot.execute(new SendMessage(update.getCallbackQuery().getMessage().getChatId(),paymentRepository.getCustomerBalance(update.getCallbackQuery().getMessage().getChatId().intValue())+" sum"));
         } catch (TelegramApiException e) {
             e.printStackTrace();
         }

@@ -72,8 +72,7 @@ public class QueryAction {
             } else {
                 botMainService.startPage(update);
             }
-        }
-        if (query.startsWith("FromAdmin#")) {
+        } else if (query.startsWith("FromAdmin#")) {
             SendMessage sendMessage = new SendMessage();
             Optional<User> user = userRepository.findByTelegramId(Integer.parseInt(query.split("#")[1]));
             sendMessage.setText("<b>Javob berish:</b>\n" +
@@ -92,8 +91,7 @@ public class QueryAction {
             }
 
 
-        }
-        if (query.startsWith("existingOrder/")) {
+        } else if (query.startsWith("existingOrder/")) {
             TelegramState lastState = botMainService.getLastState(update).get();
             Order order = orderRepository.findById(UUID.fromString(query.split("/")[1])).orElseThrow(() -> new ResourceNotFoundException("order", "id", update));
             EditMessageText sendMessage = new EditMessageText();
@@ -112,8 +110,7 @@ public class QueryAction {
             } catch (TelegramApiException e) {
                 e.printStackTrace();
             }
-        }
-        if (query.startsWith("Apply/")) {
+        } else if (query.startsWith("Apply/")) {
             try {
                 pdpOrderBot.execute(new DeleteMessage().setMessageId(update.getCallbackQuery().getMessage().getMessageId()).setChatId(update.getCallbackQuery().getMessage().getChatId()));
             } catch (TelegramApiException e) {
@@ -162,8 +159,7 @@ public class QueryAction {
             } catch (TelegramApiException e) {
                 e.printStackTrace();
             }
-        }
-        if (query.equals(BotConstant.REFRESH_CABINET_PAGE)) {
+        } else if (query.equals(BotConstant.REFRESH_CABINET_PAGE)) {
             TelegramState lastState = botMainService.getLastState(update).orElseThrow(() -> new ResourceNotFoundException("laststate", "state", update));
             lastState.setState(BotState.CABINET_PAGE);
             try {
@@ -172,8 +168,7 @@ public class QueryAction {
             } catch (TelegramApiException e) {
                 e.printStackTrace();
             }
-        }
-        if (query.equals(BotState.BACK_TO_CABINET)) {
+        } else if (query.equals(BotState.BACK_TO_CABINET)) {
             try {
                 DeleteMessage deleteMessage = new DeleteMessage().setMessageId(update.getCallbackQuery().getMessage().getMessageId()).setChatId(update.getCallbackQuery().getMessage().getChatId());
                 pdpOrderBot.execute(deleteMessage);
@@ -181,8 +176,7 @@ public class QueryAction {
             } catch (TelegramApiException e) {
                 e.printStackTrace();
             }
-        }
-        if (query.equals(BotConstant.ACTIVE_ORDER_PAGE)) {
+        } else if (query.equals(BotConstant.ACTIVE_ORDER_PAGE)) {
             try {
                 DeleteMessage deleteMessage = new DeleteMessage().setMessageId(update.getCallbackQuery().getMessage().getMessageId()).setChatId(update.getCallbackQuery().getMessage().getChatId());
                 pdpOrderBot.execute(deleteMessage);
@@ -190,14 +184,14 @@ public class QueryAction {
             } catch (TelegramApiException e) {
                 e.printStackTrace();
             }
-        }
-        if (query.equals(BotConstant.CUSTOMER_IGNORE_ORDER_IGNORE)) {
+        } else if (query.equals(BotConstant.CUSTOMER_IGNORE_ORDER_IGNORE)) {
             botMainService.activeOrderPage(update);
-        }
-        if (query.startsWith(BotConstant.NOT_ALLOW_IGNORE_ORDER)) {
+        } else if (query.equals(BotConstant.BALANCE)) {
+            botMainService.getCustomerBalance(update);
+        } else if (query.startsWith(BotConstant.NOT_ALLOW_IGNORE_ORDER)) {
             Order order = orderRepository.findById(UUID.fromString(query.split("/")[1])).orElseThrow(() -> new ResourceNotFoundException("order", "id", update));
-            SendMessage sendMessage =new SendMessage();
-            sendMessage.setText("So'rovingiz rad etildi. Murojaat uchun tel: "+order.getCreatedBy().getPhoneNumber());
+            SendMessage sendMessage = new SendMessage();
+            sendMessage.setText("So'rovingiz rad etildi. Murojaat uchun tel: " + order.getCreatedBy().getPhoneNumber());
             sendMessage.setChatId(order.getUser().getTelegramId().longValue());
             try {
                 pdpOrderBot.execute(sendMessage);
@@ -208,11 +202,10 @@ public class QueryAction {
                 e.printStackTrace();
             }
 
-        }
-        if (query.startsWith(BotConstant.CUSTOMER_IGNORE_ALLOW)) {
+        } else if (query.startsWith(BotConstant.CUSTOMER_IGNORE_ALLOW)) {
             Order order = orderRepository.findById(UUID.fromString(query.split("/")[1])).orElseThrow(() -> new ResourceNotFoundException("order", "id", update));
             try {
-                pdpOrderBot.execute(new SendMessage(order.getUser().getTelegramId().longValue(),"Admin javobini kuting"));
+                pdpOrderBot.execute(new SendMessage(order.getUser().getTelegramId().longValue(), "Admin javobini kuting"));
             } catch (TelegramApiException e) {
                 e.printStackTrace();
             }
@@ -281,7 +274,7 @@ public class QueryAction {
                 List<InlineKeyboardButton> row = new ArrayList<>();
                 InlineKeyboardButton button = new InlineKeyboardButton();
                 button.setText("\uD83C\uDFE0Bosh sahifaga qaytish");
-                button.setCallbackData(BotState.CABINET_PAGE);
+                button.setCallbackData(BotState.BACK_TO_CABINET);
                 row.add(button);
                 rows.add(row);
                 InlineKeyboardMarkup inlineKeyboardMarkup = new InlineKeyboardMarkup();

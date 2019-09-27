@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import uz.pdp.apporderservice.entity.Role;
 import uz.pdp.apporderservice.entity.User;
+import uz.pdp.apporderservice.entity.enums.RoleName;
 import uz.pdp.apporderservice.payload.ApiResponse;
 import uz.pdp.apporderservice.payload.JwtAuthenticationResponse;
 import uz.pdp.apporderservice.payload.ReqSignIn;
@@ -26,6 +27,7 @@ import javax.validation.Valid;
 import java.util.HashSet;
 import java.util.Optional;
 
+import static uz.pdp.apporderservice.entity.enums.RoleName.ROLE_ADMIN;
 import static uz.pdp.apporderservice.entity.enums.RoleName.ROLE_CUSTOMER;
 
 @RestController
@@ -36,7 +38,7 @@ AuthController {
     JwtTokenProvider tokenProvider;
     @Autowired
     AuthenticationManager authenticationManager;
-//    @Autowired
+    //    @Autowired
 //    UserService userService;
     @Autowired
     UserRepository userRepository;
@@ -51,13 +53,19 @@ AuthController {
 
         Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(reqSignIn.getUsername(), reqSignIn.getPassword()));
 
-        SecurityContextHolder.getContext().setAuthentication(authentication);
-
-        String jwt = tokenProvider.generateToken(authentication);
-
-        return ResponseEntity.ok(new JwtAuthenticationResponse(jwt));
-
-
+        Optional<User> byPhoneNumber = userRepository.findByPhoneNumber(reqSignIn.getUsername());
+        if (byPhoneNumber.isPresent()) {
+            if(byPhoneNumber.get().getRoles().stream().anyMatch(item -> item.getName().equals(ROLE_ADMIN) || item.getName().equals(RoleName.ROLE_MANAGER))){
+                SecurityContextHolder.getContext().setAuthentication(authentication);
+                String jwt = tokenProvider.generateToken(authentication);
+                return ResponseEntity.ok(new JwtAuthenticationResponse(jwt));
+            }
+            else{
+                return null;
+            }
+        }else{
+            return null;
+        }
     }
 
     @PostMapping("/signUp")
@@ -66,7 +74,7 @@ AuthController {
         if (optionalUser.isPresent()) {
             return ResponseEntity
                     .status(HttpStatus.CONFLICT)
-                    .body(new ApiResponse("User is exist.",false));
+                    .body(new ApiResponse("User is exist.", false));
         } else {
             User user = new User(
                     reqSignUp.getPhoneNumber(),
@@ -80,7 +88,7 @@ AuthController {
             userRepository.save(user);
             return ResponseEntity
                     .status(HttpStatus.CREATED)
-                    .body(new ApiResponse("User successfully created!",true));
+                    .body(new ApiResponse("User successfully created!", true));
         }
     }
 //

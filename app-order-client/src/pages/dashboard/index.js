@@ -318,7 +318,7 @@ class Index extends PureComponent {
               <h2 className="text-center my-3"><b>Buyurtmalar</b></h2>
               <Row>
                 <Col span={4} offset={18}>
-                  <span className='ml-5 mr-3'>Menin buyurmalarim</span>
+                  <span className='ml-5 mr-3'>Mening buyurtmalarim</span>
                   <Checkbox onChange={handleIsMine} checked={ismine}></Checkbox>
                 </Col>
                 <Col offset={2} span={5} className="mr-4">
@@ -334,7 +334,7 @@ class Index extends PureComponent {
 
               <Row className="my-4">
                 <Col span={20} offset={2}>
-                  <Table dataSource={orderLists} columns={visibleColumns}/>
+                  <Table dataSource={orderLists} columns={visibleColumns} pagination={false}/>
                   <Pagination style={{position: "relative", top: "20px", left: "45%", marginBottom: "200px"}}
                               current={page}
                               onChange={onChangePage} pageSize={10} total={totalElements} pagination={false}/>
@@ -430,7 +430,7 @@ class Index extends PureComponent {
           <Tabs.TabPane tab="Archive" key="2">
             <Col span={20} offset={2}>
 
-              <Table dataSource={orderLists} columns={visibleColumns}/>
+              <Table dataSource={orderLists} columns={visibleColumns} pagination={false}/>
               <Pagination style={{position: "relative", top: "20px", left: "45%", marginBottom: "200px"}}
                           current={page}
                           onChange={onChangePage} pageSize={10} total={totalElements} pagination={false}/>

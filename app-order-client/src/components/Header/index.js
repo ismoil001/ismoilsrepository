@@ -76,7 +76,7 @@ export default class Header extends React.Component {
                 </Link>
               </NavItem>
               <NavItem>
-                <NavLink href="/dashboard">Admin <div></div></NavLink>
+                <NavLink href="/login">Admin <div></div></NavLink>
               </NavItem>
               <UncontrolledDropdown nav inNavbar>
                 <DropdownToggle nav caret className="language">
