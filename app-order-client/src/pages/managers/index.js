@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from "react-redux";
+import MaskedInput from 'react-text-mask'
 import {Button, Col, Form, Icon, Input, Modal, Row, Table} from "antd";
 import {Container} from "reactstrap";
 
@@ -15,8 +16,10 @@ class Index extends Component {
 
   render() {
     const {dispatch, manager} = this.props;
-    const {allManagers, record, isEdit,
-      recordId, openDeleteModal, openAddModal} = manager;
+    const {
+      allManagers, record, isEdit,
+      recordId, openDeleteModal, openAddModal
+    } = manager;
     const {getFieldDecorator, getFieldsError, getFieldError, isFieldTouched} = this.props.form;
     const columns = [
       {
@@ -69,16 +72,16 @@ class Index extends Component {
         payload: {
           record,
           openAddModal: !openAddModal,
-          isEdit:!isEdit,
+          isEdit: !isEdit,
         }
       })
     };
     const addManager = () => {
       dispatch({
-        type:'manager/updateState',
-        payload:{
-          openAddModal:!openAddModal,
-          isEdit:false
+        type: 'manager/updateState',
+        payload: {
+          openAddModal: !openAddModal,
+          isEdit: false
         }
       })
     };
@@ -87,15 +90,15 @@ class Index extends Component {
       this.props.form.validateFields((err, values) => {
         if (!err) {
           console.log(values);
-          if (isEdit){
+          if (isEdit) {
             dispatch({
               type: 'manager/editingManager',
               payload: {
-                id:record.id,
-                data:values
+                id: record.id,
+                data: values
               }
             });
-          }else {
+          } else {
             dispatch({
               type: 'manager/saveManager',
               payload: values
@@ -110,8 +113,8 @@ class Index extends Component {
         type: 'manager/updateState',
         payload: {
           openAddModal: !openAddModal,
-          record:{},
-          recordId:''
+          record: {},
+          recordId: ''
         }
       })
     };
@@ -120,25 +123,26 @@ class Index extends Component {
         type: 'manager/updateState',
         payload: {
           openDeleteModal: !openDeleteModal,
-          record:{},
-          recordId:''
+          record: {},
+          recordId: ''
         }
       })
     };
-    const deletingManager=()=>{
+    const deletingManager = () => {
       dispatch({
-        type:'manager/delManager',
-        payload:{
-          path:recordId
+        type: 'manager/delManager',
+        payload: {
+          path: recordId
         }
       })
     }
     return (
       <div>
         <Container>
-          <Row className="mt-3">
-            <Col span={24}>
-              <Button type="primary" onClick={addManager} className="float-right">Qo'shish</Button>
+          <h2 className="text-center mt-5"><b>Menejerlar</b></h2>
+          <Row className="my-4">
+            <Col span={20}>
+              <Button  onClick={addManager} className=" btn-dark mb-4">Qo'shish</Button>
             </Col>
           </Row>
           <Row className="mt-3">
@@ -192,9 +196,11 @@ class Index extends Component {
                 initialValue: record.phoneNumber,
                 rules: [{required: true, message: 'Iltimos, manager telefon raqamini kiriting!'}],
               })(
-                <Input
-                  type="text"
-                  placeholder="Telefon raqamini kiriting"
+                <MaskedInput
+                  className="form-control"
+                  placeholder="+ 998"
+                  mask={["+", "9", "9", "8", /\d/, /\d/, /\d/, /\d/, /\d/, /\d/, /\d/, /\d/, /\d/]}
+                  maskChar={null}
                 />,
               )}
             </Form.Item>
