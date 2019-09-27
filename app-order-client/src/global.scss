@@ -1,4 +1,11 @@
 #aksverka {
+  .bg-minus{
+    background-color: rgba(255, 2, 0, 0.06) !important;
+  }
+  .bg-plus{
+    background-color: rgba(15, 255, 0, 0.11) !important;
+  }
+
   .aksverka-header {
     background: #FFFFFF;
     box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.12);
@@ -32,73 +39,71 @@
   margin-right: 5px;
 }
 
-body {
-  background-color: #FFFFFF !important;
+body{
+  background-color: #FFFFFF!important;
 }
+  @font-face {
+    font-family: 'Lato-Black';
+    src: url("../public/assets/fonts/Lato/Lato-Black.ttf") format("truetype");
+  }
 
-@font-face {
-  font-family: 'Lato-Black';
-  src: url("../public/assets/fonts/Lato/Lato-Black.ttf") format("truetype");
-}
+  @font-face {
+    font-family: 'Lato-Bold';
+    src: url("../public/assets/fonts/Lato/Lato-Bold.ttf") format("truetype");
+  }
 
-@font-face {
-  font-family: 'Lato-Bold';
-  src: url("../public/assets/fonts/Lato/Lato-Bold.ttf") format("truetype");
-}
+  @font-face {
+    font-family: 'Lato-Light';
+    src: url("../public/assets/fonts/Lato/Lato-Light.ttf") format("truetype");
+  }
 
-@font-face {
-  font-family: 'Lato-Light';
-  src: url("../public/assets/fonts/Lato/Lato-Light.ttf") format("truetype");
-}
+  @font-face {
+    font-family: 'Lato-Regular';
+    src: url("../public/assets/fonts/Lato/Lato-Regular.ttf") format("truetype");
+  }
 
-@font-face {
-  font-family: 'Lato-Regular';
-  src: url("../public/assets/fonts/Lato/Lato-Regular.ttf") format("truetype");
-}
+  @font-face {
+    font-family: 'Lato-RegularItalic';
+    src: url("../public/assets/fonts/Lato/Lato-RegularItalic.ttf") format("truetype");
+  }
 
-@font-face {
-  font-family: 'Lato-RegularItalic';
-  src: url("../public/assets/fonts/Lato/Lato-RegularItalic.ttf") format("truetype");
-}
-
-.headerback {
+.headerback{
   transition: 0.6s ease;
 }
 
-.lato-black {
-  font: {
-    family: 'Lato-Black', sans-serif !important;
+  .lato-black {
+    font: {
+      family: 'Lato-Black', sans-serif !important;
+    }
   }
-}
 
-.lato-bold {
-  font: {
-    family: 'Lato-Bold', sans-serif !important;
+  .lato-bold {
+    font: {
+      family: 'Lato-Bold', sans-serif !important;
+    }
   }
-}
 
-.lato-light {
-  font: {
-    family: 'Lato-Light', sans-serif !important;
+  .lato-light {
+    font: {
+      family: 'Lato-Light', sans-serif !important;
+    }
   }
-}
 
-.lato-regular {
-  font: {
-    family: 'Lato-Regular', sans-serif !important;
+  .lato-regular {
+    font: {
+      family: 'Lato-Regular', sans-serif !important;
+    }
   }
-}
 
-.lato-regularitalic {
-  font: {
-    family: 'Lato-RegularItalic', sans-serif !important;
+  .lato-regularitalic {
+    font: {
+      family: 'Lato-RegularItalic', sans-serif !important;
+    }
   }
-}
-
-.dashboardSection {
-  @mixin searchSystem() {
-    .mainSearch {
-      border-radius: 4px;
+  .dashboardSection {
+    @mixin searchSystem(){
+      .mainSearch {
+        border-radius: 4px;
 
       .search {
         padding: 8px 0 8px 1rem;
@@ -141,106 +146,94 @@ body {
     @include searchSystem;
   }
 
-  .row2 {
-    .menuLists {
-      height: 90vh;
-      background: #ffffff;
-
-      .nav {
-        .navItem {
-          padding-top: 0.3rem;
-          padding-bottom: 0.3rem;
-          text-align: center;
-          border-bottom: 1.5px solid #eff0f3;
-
-          .navLink {
-            text-decoration: none !important;
-            color: #000000;
-          }
-        }
-      }
-    }
-
-    .mainContent {
-      .tableBtn {
-        width: 15%;
-        color: #ffffff;
-        background: #cacaca;
-        border: none !important;
-      }
-
-      .tables {
-        margin-top: 40px;
-
-        .tableRowMain {
-          background: #ffffff;
-
-          th {
-            font-size: 16px;
-            line-height: 12px;
-            color: #242424;
-          }
-        }
-
-        .tableHover {
-          background: #ffffff;
-
-          td {
-            align-items: center;
-            padding-top: 1rem;
-            padding-bottom: 1rem;
-            font-size: 13px;
-            line-height: 12px;
-            color: #B0B0B0;
-          }
-
-          .mainRound {
-            .round {
-              display: inline-block;
-              padding-left: .5rem;
-              padding-right: .5rem;
-            }
-
-            .round3 {
-              display: inline-block;
-            }
-          }
-
-          .icons {
-            color: #000000;
-            visibility: hidden;
-            font-size: 14px;
-
-            &:hover {
-              color: #ffffff;
-            }
-          }
-
-          &:hover {
-            background: rgba(208, 204, 210, 0.53);
-
-            .icons {
-              visibility: visible;
-            }
-
-            td {
+    .row2 {
+      .menuLists {
+        height: 90vh;
+        background: #ffffff;
+        .nav {
+          .navItem {
+            padding-top: 0.3rem;
+            padding-bottom: 0.3rem;
+            text-align: center;
+            border-bottom: 1.5px solid #eff0f3;
+            .navLink {
+              text-decoration: none !important;
               color: #000000;
             }
           }
         }
       }
+      .mainContent{
+        .tableBtn{
+          width: 15%;
+          color: #ffffff;
+          background: #cacaca;
+          border: none!important;
+        }
+        .tables{
+          margin-top: 40px;
+          .tableRowMain {
+            background: #ffffff;
+            th{
+              font-size: 16px;
+              line-height: 12px;
+              color: #242424;
+            }
+          }
 
-      .mainContentSub {
-        margin-top: 30px;
-        @include searchSystem;
+          .tableHover {
+            background: #ffffff;
+            td {
+              align-items: center;
+              padding-top: 1rem;
+              padding-bottom: 1rem;
+              font-size: 13px;
+              line-height: 12px;
+              color: #B0B0B0;
+            }
+            .mainRound {
+              .round {
+                display: inline-block;
+                padding-left: .5rem;
+                padding-right: .5rem;
+              }
+
+              .round3 {
+                display: inline-block;
+              }
+            }
+
+            .icons {
+              color: #000000;
+              visibility: hidden;
+              font-size: 14px;
+              &:hover{
+                color: #ffffff;
+              }
+            }
+            &:hover{
+              background: rgba(208, 204, 210, 0.53);
+
+              .icons {
+                visibility: visible;
+              }
+              td{
+                color: #000000;
+              }
+            }
+          }
+        }
+        .mainContentSub{
+          margin-top: 30px;
+          @include searchSystem;
+        }
       }
     }
   }
-}
 
 
-$orange: #EC681F;
-$black: #131A22;
+  $orange: #EC681F;
+  $black: #131A22;
 
 .header {
   .rec {

@@ -1,6 +1,7 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'dva'
+import MaskedInput from 'react-text-mask'
 import {
   Button,
   Form,
@@ -203,7 +204,12 @@ class Index extends PureComponent {
                 initialValue:currentItem!==''?currentItem.paySum:0,
                 rules: [{required: true, message: 'Please input sum!'}],
               })(
-                <InputNumber placeholder={"Amount"}/>,
+                <MaskedInput
+                  className="form-control"
+                  placeholder="Amount"
+                  mask={[/\d/, /\d/, /\d/," ", /\d/, /\d/, /\d/," ", /\d/, /\d/, /\d/," ",/\d/, /\d/, /\d/," ",/\d/, /\d/, /\d/," ",/\d/, /\d/, /\d/," ",/\d/, /\d/, /\d/," ",/\d/, /\d/, /\d/," ",/\d/, /\d/, /\d/," ",/\d/, /\d/, /\d/]}
+                  maskChar={null}
+                />,
               )}
             </Form.Item>
           </Form>

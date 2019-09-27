@@ -36,27 +36,27 @@ class Index extends Component {
       {
         title: 'Sana',
         dataIndex:'date',
-        ket:'date'
+        key:'date'
       },{
         title:'Maxsulot nomi',
         dataIndex:'productName',
-        ket:'productName'
+        key:'productName'
       },{
         title:<div><div className="d-inline-block" id="soni" ></div> Soni</div> ,
         dataIndex:'productCount',
-        ket:'count'
+        key:'count'
       },{
         title:'Narxi',
         dataIndex:'productPrice',
-        ket:'price'
+        key:'price'
       },{
         title:<div><div className="d-inline-block" id="summasi" ></div> Summasi</div>,
         dataIndex:'sum',
-        ket:'price'
+        key:'price'
       },{
         title:<div><div className="d-inline-block" id="tolov" ></div> To'lov</div>,
         dataIndex:'paymentSum',
-        ket:'payment'
+        key:'payment'
       }
     ]
 
@@ -91,7 +91,7 @@ class Index extends Component {
                 <div className="d-inline-block" id="tolov" ></div>To'lov</p>
             </div>
           </Col>
-          <Col span={5} className="aksverka-header ml-4" style={{background: 'rgba(255,65,1,0.13)'}}>
+          <Col span={5} className={saldo>=0?"aksverka-header ml-4 bg-plus":"aksverka-header ml-4 bg-minus"}>
             <div className="border-1" >
               <h3 className="text-center font-weight-bold">{saldo}</h3>
               <p className="text-center">Saldo</p>

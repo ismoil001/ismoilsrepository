@@ -23,8 +23,10 @@ import Slider from "react-slick";
 import Header from "../components/Header/index";
 import Carusel from "../components/Carusel";
 import {FaAngleDown} from "react-icons/fa";
+import {connect} from "dva";
 
-export default class A extends React.Component {
+@connect(({app}) => ({app}))
+class A extends React.Component {
 
   constructor(props) {
     super(props);
@@ -44,7 +46,6 @@ export default class A extends React.Component {
       dropdownOpen: !prevState.dropdownOpen
     }));
   }
-
   componentDidMount() {
     this.handleResize();
     window.addEventListener('resize', this.handleResize)
@@ -54,7 +55,6 @@ export default class A extends React.Component {
   componentWillUnmount() {
     window.removeEventListener('resize', this.handleResize)
   }
-
   resize = () => {
     return window.innerWidth;
   }
@@ -1082,3 +1082,5 @@ export default class A extends React.Component {
     );
   }
 }
+
+export default A;

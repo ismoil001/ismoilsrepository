@@ -21,7 +21,12 @@ public interface UserRepository extends JpaRepository<User, UUID> {
 
     List<User> findByRolesIn(Set<Role> roles);
 
+    @Query(value = "select * from users u where u.id in (select user_id from user_role r where r.role_id=30)",nativeQuery = true)
+    List<User> getManagers();
+
     @Query(value = "select * from users where id in (select t.user_id from user_role t where t.role_id=20) and (lower (first_name) like lower(concat('%',:name,'%')) or lower (last_name) like lower(concat('%',:name,'%'))or lower (phone_number) like lower(concat('%',:name,'%')) or lower (company_name) like lower(concat('%',:name,'%')))",nativeQuery = true)
     List<User> searchCustomers(@Param("name") String name);
+
+    Integer countAllByRolesIn(Set<Role> roles);
 
 }

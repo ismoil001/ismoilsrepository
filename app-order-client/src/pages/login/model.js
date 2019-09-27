@@ -18,6 +18,7 @@ export default {
             }, {put, call, select}) {
 
       const data = yield call(login, payload);
+      console.log(data)
       const {locationQuery} = yield select(_ => _.app);
       if (typeof data !== 'undefined') {
         localStorage.setItem(TOKEN_NAME, JSON.stringify(data));

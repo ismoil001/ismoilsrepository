@@ -12,8 +12,10 @@ import {
   UncontrolledDropdown,
   DropdownToggle,
   DropdownMenu,
-  DropdownItem } from 'reactstrap';
+  DropdownItem, Col
+} from 'reactstrap';
 import {FaAngleDown} from "react-icons/fa";
+import {Link} from "react-scroll/modules";
 
 export default class Header extends React.Component {
   constructor(props) {
@@ -33,32 +35,49 @@ export default class Header extends React.Component {
   render() {
     return (
 
-      <Container className='p-0'>
-        <Navbar light expand="md" className="lato-bold p-0">
+      <Container>
+        <Navbar  light expand="md" className="lato-bold " >
           <NavbarBrand href="/"><img src="/assets/images/logo.png" alt="salom"/></NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
-                <NavLink href="/" className="aboutUs">Biz haqimizda</NavLink>
+                <Link  spy={true} smooth={true} duration={1500}  to="bizhaqimizda">
+                  <NavLink href="/" className="aboutUs">
+                  Biz haqimizda
+                  <div></div>
+                  </NavLink>
+                </Link>
               </NavItem>
               <NavItem>
-                <NavLink href="/">Xizmatlar</NavLink>
+                <Link  spy={true} smooth={true} duration={1500}  to="xizmatlar">
+                <NavLink href="/">Xizmatlar
+                  <div></div></NavLink>
+                </Link>
               </NavItem>
               <NavItem>
-                <NavLink href="/">Portfolio</NavLink>
+                <Link  spy={true} smooth={true} duration={1500}  to="portfolio">
+                <NavLink href="/">Portfolio
+                  <div></div></NavLink>
+                </Link>
               </NavItem>
               <NavItem>
-                <NavLink href="/">Mijozlar</NavLink>
+                <Link  spy={true} smooth={true} duration={1500}  to="mijozlar">
+                <NavLink href="/">Mijozlar <div></div></NavLink>
+                </Link>
               </NavItem>
               <NavItem>
-                <NavLink href="/">Jamoa</NavLink>
+                <Link  spy={true} smooth={true} duration={1500}  to="jamoa">
+                <NavLink href="/">Jamoa <div></div></NavLink>
+                </Link>
               </NavItem>
               <NavItem>
-                <NavLink href="/">Kontakt</NavLink>
+                <Link  spy={true} smooth={true} duration={1500}  to="kontakt">
+                <NavLink href="/">Kontakt <div></div></NavLink>
+                </Link>
               </NavItem>
               <NavItem>
-                <NavLink href="/dashboard">Admin</NavLink>
+                <NavLink href="/dashboard">Admin <div></div></NavLink>
               </NavItem>
 
               <UncontrolledDropdown>

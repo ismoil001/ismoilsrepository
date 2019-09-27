@@ -7,7 +7,7 @@ import {routerRedux} from 'dva/router'
 import {parse} from 'qs'
 import config from 'config'
 import {EnumRoleType} from 'enums'
-import {query, logout} from 'services/app'
+import {query, logout,getPhoneNumber} from 'services/app'
 import * as menusService from 'services/menus'
 import queryString from 'query-string'
 import {TOKEN_NAME} from "../constants";
@@ -19,7 +19,7 @@ export default {
   state: {
     apiPath: '',
     childModel: '',
-    user: '',
+    user: {},
     permissions: {
       visit: [],
     },
@@ -58,6 +58,12 @@ export default {
       history.listen(({ pathname }) => {
           if (!config.openPages.includes(pathname)){
             dispatch({type: 'query'});
+
+          }
+          if(pathname==="/"){
+            dispatch({
+              type:'homePageData'
+            })
           }
       });
 
@@ -66,17 +72,31 @@ export default {
   },
   effects: {
 
+    *homePageData({payload},{call,put,select}){
+      alert("s")
+      const data = yield call(getPhoneNumber);
+      console.log(data)
+    },
+
     * query({
               payload,
             }, {call, put, select}) {
 
       const user = yield call(query, payload);
+      console.log(user);
       const {locationPathname} = yield select(_ => _.app);
       if (typeof user !== 'undefined') {
+        yield put({
+          type:'updateState',
+          payload:{
+            user:user
+          }
+        });
         if (location.pathname === '/login') {
           yield put(routerRedux.push({
             pathname: '/dashboard',
-          }))
+          }));
+
         }
       } else if (config.openPages && config.openPages.indexOf(locationPathname) < 0) {
         yield put(routerRedux.push({
