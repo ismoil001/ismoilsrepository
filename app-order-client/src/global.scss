@@ -8,6 +8,30 @@
   }
 }
 
+#soni {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #32b1ff;
+  margin-right: 5px;
+}
+
+#summasi {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #24ce0a;
+  margin-right: 5px;
+}
+
+#tolov {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #fffa06;
+  margin-right: 5px;
+}
+
 body {
   background-color: #FFFFFF !important;
 }
@@ -366,6 +390,7 @@ $black: #131A22;
     .header {
       .contents {
         width: 685px;
+
         .order {
           margin-top: 145px;
         }
@@ -377,6 +402,7 @@ $black: #131A22;
     .header {
       .contents {
         width: 685px;
+
         .order {
           margin-top: 145px;
         }
@@ -388,6 +414,7 @@ $black: #131A22;
     .header {
       .contents {
         width: 570px;
+
         .order {
           margin-top: 100px;
           font-size: 39px;
@@ -413,6 +440,7 @@ $black: #131A22;
 
       .contents {
         width: 707px;
+
         .order {
           margin-top: 100px;
           font-size: 39px;
@@ -457,6 +485,7 @@ $black: #131A22;
 
       .contents {
         width: 532px;
+
         .order {
           margin-top: 100px;
           font-size: 35px;
@@ -501,6 +530,7 @@ $black: #131A22;
 
       .contents {
         width: 471px;
+
         .order {
           margin-top: 50px;
           font-size: 19px;
@@ -777,9 +807,8 @@ $black: #131A22;
   .mahsulotlar {
     .bg-color-2 {
       bottom: -110px;
-      left: -185px;
+      //left: -185px;
       z-index: 33;
-
     }
 
     .card-style {
@@ -798,41 +827,46 @@ $black: #131A22;
         bottom: 0;
         z-index: 999;
         transition: 0.5s ease;
+        font-size: 18px;
+        line-height: 22px;
 
-        h5, a, .card-btn {
+        p, a, .card-btn {
           transition: 0.5s ease;
         }
 
-        h5 {
+        p {
           color: white;
           opacity: 0;
           margin-top: 40%;
         }
 
         .card-btn {
-          margin-left: 20%;
           margin-top: 10%;
           background-color: $orange;
           border-radius: 100px;
           border: none;
           padding: 5px 22px;
           opacity: 0;
+          font-size: 14px;
+          line-height: 17px;
 
           &:hover {
             box-shadow: none;
           }
+
+          &:focus {
+            outline: 0;
+            -webkit-appearance: none;
+            box-shadow: none;
+            -moz-box-shadow: none;
+            -webkit-box-shadow: none;
+          }
         }
-
-
       }
 
       img {
-
         transition: 0.5s ease;
-        width: 255px;
-        height: 255px;
         z-index: -1;
-
       }
 
       &:hover {
@@ -844,7 +878,7 @@ $black: #131A22;
           transform: scale(1.25);
         }
 
-        h5, a, .card-btn {
+        p, a, .card-btn {
           opacity: 1;
         }
       }
@@ -944,172 +978,22 @@ $black: #131A22;
     background: #FFFFFF;
     z-index: 22;
   }
-
-
-  @media (max-width: 1600px) and (min-width: 1200px) {
-    .portfolio_Img {
-      position: relative;
-    }
-    .portfolio_Card {
-      position: absolute;
-      transform: translate(24%, 150px);
-      padding-bottom: 8rem;
-    }
-  }
-
-  @media (max-width: 1200px) and (min-width: 992px) {
-    .portfolio_Card {
-      position: absolute;
-      width: 80%;
-      transform: translate(195px, 150px);
-
-      .portfolio_Title {
-        font-size: 30px;
-        line-height: 20px;
-      }
-
-      .portfolio_Text {
-        font-size: 16px;
-        line-height: 20px;
-      }
-    }
-    .portfolio_Img {
-      position: relative;
-    }
-    .shape_Carousel2 {
-      width: 120px;
-      background: #FFFFFF;
-    }
-
-    .slick-prev {
-      left: 40px;
-      top: 92.1% !important;
-    }
-
-    .slick-next {
-      left: 120px;
-      top: 92.1% !important;
-    }
-  }
-
-  @media (max-width: 992px) and (min-width: 765px) {
-    .portfolio_Card {
-      position: absolute;
-      width: 100%;
-      transform: translate(100px, 95px);
-
-      .portfolio_Title {
-        font-size: 30px;
-        line-height: 20px;
-      }
-
-      .portfolio_Text {
-        font-size: 12px;
-        line-height: 20px;
-      }
-    }
-    .portfolio_Img {
-      position: relative;
-    }
-    .shape_Carousel2 {
-      width: 120px;
-      background: #FFFFFF;
-    }
-    .slick-prev {
-      left: 40px;
-      top: 90.4% !important;
-    }
-
-    .slick-next {
-      left: 120px;
-      top: 90.4% !important;
-    }
-  }
-
-  @media (max-width: 765px) and (min-width: 576px) {
-    .portfolio_Card {
-      .portfolio_Title {
-        font-size: 40px;
-        text-align: center;
-      }
-
-      .portfolio_Text {
-        font-size: 20px;
-      }
-    }
-    .shape_Carousel2 {
-      background: transparent;
-    }
-    .slick-prev {
-      left: 0px;
-      top: 94% !important;
-    }
-
-    .slick-next {
-      left: 81px;
-      top: 94% !important;
-    }
-  }
-
-  @media only screen and (max-width: 576px) and (min-width: 450px) {
-    .portfolio_Card {
-      .portfolio_Title {
-        font-size: 30px;
-        text-align: center;
-      }
-
-      .portfolio_Text {
-        font-size: 18px;
-      }
-    }
-    .shape_Carousel2 {
-      background: transparent;
-    }
-    .slick-prev {
-      left: 0px;
-      top: 92% !important;
-    }
-
-    .slick-next {
-      left: 81px;
-      top: 92% !important;
-    }
-  }
-  @media only screen and (max-width: 450px) and (min-width: 320px) {
-    .portfolio_Card {
-      .portfolio_Title {
-        font-size: 30px;
-        text-align: center;
-      }
-
-      .portfolio_Text {
-        font-size: 16px;
-      }
-    }
-    .shape_Carousel2 {
-      background: transparent;
-    }
-    .slick-prev {
-      left: 0px;
-      top: 90% !important;
-    }
-
-    .slick-next {
-      left: 81px;
-      top: 90% !important;
-    }
-  }
 }
 
 .section5 {
   margin-top: 237px;
-  .bg-image {
-    background-image: url("../public/assets/images/section5.png");
-    background-position-y: top;
-    background-repeat: no-repeat;
-    background-position-x: left;
+  position: relative;
+
+  .bg-img {
+    position: absolute;
+    background: rgb(235, 237, 239);
+    border-radius: 0px 214.5px 0px 0px;
   }
 
+  .bgBox {
+    position: absolute;
+    background: rgb(235, 237, 239);
+  }
 
   .we-price {
     font-size: 50px;
@@ -1222,6 +1106,20 @@ $black: #131A22;
     top: -30%;
     left: 0;
     width: 18%;
+  }
+
+  .slick-list{
+    padding-bottom: 92px;
+  }
+  .slick-prev {
+    background: #EC681F!important;
+    right: 25px;
+    display: none!important;
+  }
+  .slick-next {
+    background: #EC681F!important;
+    right: -25px;
+    display: none!important;
   }
 
   .team_Carousel {
@@ -1340,9 +1238,8 @@ $black: #131A22;
   padding-top: 50px;
   color: #FFFFFF;
 
-  .col-md-2 {
+  .footerLinks {
     .company {
-
       font-size: 18px;
     }
 
@@ -1370,9 +1267,6 @@ $black: #131A22;
   }
 
   .phone-img {
-    position: absolute;
-    left: -8px;
-    margin-top: 5px;
     cursor: pointer;
   }
 
@@ -1390,74 +1284,48 @@ $black: #131A22;
     line-height: 28px;
   }
 
-  .col-md-2 {
-    .dropdown {
-      .dropdown-toggle {
-        background-color: $black;
-        width: 87px;
-        border: 1px solid grey;
-        box-sizing: border-box;
-        border-radius: 100px;
-        margin-top: 6px;
-        padding: 0 7px 2px 5px;
+  .dropdownMenu {
+    .dropdownMain {
+      background: none !important;
+      border: 1px solid #ffffff;
+      box-sizing: border-box;
+      border-radius: 100px;
+      color: #ffffff!important;
+
+      &:focus {
+        color: #ffffff!important;
+        outline: 0;
+        -webkit-appearance: none;
+        box-shadow: none;
+        -moz-box-shadow: none;
+        -webkit-box-shadow: none;
+      }
+    }
+
+    .dropdown-menu {
+      padding: 0;
+      text-align: center;
+      min-width: 0;
+      margin-left: -14px;
+      margin-top: 5px;
+
+      &:hover {
+        box-shadow: 2px 2px 2px 2px rgba(169, 163, 142, 0.15);
+      }
+
+      button {
+        width: 120px;
 
         &:hover {
-          transition: 0.5s;
-          box-shadow: 0px 0px 15px 4px rgba(186, 45, 12, 0.56);
-        }
-
-        &:focus, :active {
-          background-color: $orange;
-          box-shadow: none;
-
-          span {
-            color: #FFFFFF;
-          }
-
-          svg {
-            path {
-              transition: 0.6s;
-              stroke: #FFFFFF;
-            }
-          }
-        }
-
-        svg {
-          margin-left: 7px;
-        }
-
-        span {
-          transition: 0.6s;
-          color: #757575;
-        }
-      }
-
-      .dropdown-toggle::after {
-        display: none;
-      }
-
-      .language {
-        padding-left: 0px !important;
-        padding-top: 4px !important;
-      }
-
-      .dropdown-menu {
-        box-shadow: 0 2px 3px 2px rgba(210, 46, 10, 0.26);
-        min-width: 85px !important;
-
-        .dropdown-item {
-          text-align: center;
-          padding: 2px 2px !important;
-          font-size: 16px;
-          line-height: 19px;
-        }
-
-        .dropdown-item:hover {
-          color: #efefef;
-          transition: 0.3s ease-in;
           background: $orange;
+          color: #ffffff;
         }
       }
+    }
+
+    .dropdown-toggle::after {
+      display: block;
+      border: none !important;
     }
   }
 
@@ -1479,7 +1347,8 @@ $black: #131A22;
   }
 
   .addres {
-    font-size: 14px;
+    transform: translate(2px, 5px);
+    font-size: 12px;
   }
 
   .link-pdp {
@@ -1531,19 +1400,42 @@ $black: #131A22;
 
 @media screen and(min-width: 600px) and (max-width: 992px) {
   .section3 {
-    margin: 0 auto;
+    margin-top: 75px;
 
-    .mahsulotlar {
-      .col-md-3 {
-        max-width: max-content;
-      }
+    .service {
+      font-size: 30px;
     }
 
+    .mahsulotlar {
+
+      .card-style {
+        .cart-hover {
+          font-size: 14px;
+          line-height: 16px;
+
+          .card-btn {
+            margin-top: 10%;
+            background-color: $orange;
+            border-radius: 100px;
+            border: none;
+            padding: 5px 14px;
+            font-size: 12px;
+            line-height: 17px;
+          }
+        }
+      }
+    }
   }
   .footer {
-    .col-md-2 {
-      margin-top: 20px;
+    .row1 {
+      padding-top: 20px;
+    }
 
+    .row2 {
+      padding-top: 20px;
+    }
+
+    .dropdownMenu {
       .phone-number {
         font-size: 35px;
       }
@@ -1552,15 +1444,21 @@ $black: #131A22;
     .pdp-link {
       margin-left: 5px !important;
     }
+
+    .addres {
+      transform: translate(5px, 5px);
+      font-size: 12px;
+    }
   }
 }
 
 @media screen and(max-width: 600px) {
   .section3 {
     background-size: 220px;
+    margin-top: 75px;
 
     .service {
-      font-size: 40px;
+      font-size: 30px;
     }
 
     .mahsulotlar {
@@ -1624,22 +1522,21 @@ $black: #131A22;
     }
   }
   .footer {
-    .col-md-2 {
-      margin-top: 20px;
+    .row1 {
+      padding-top: 20px;
+      padding-bottom: 20px;
+    }
+
+    .dropdownMenu {
 
       .phone-number {
         font-size: 20px;
-      }
-
-      .pdp-link {
-        margin-left: 5px !important;
       }
     }
 
     .link-pdp {
       a {
         font-size: 10px;
-        margin-left: 14px;
       }
     }
   }
@@ -1778,17 +1675,15 @@ $black: #131A22;
     text-align: center;
     color: #000000;
     margin-left: 50px;
-
   }
 
 
 }
 
-
 @media (min-width: 1200px) {
-  .fullScreen{
-    .header{
-      max-width:1600px;
+  .fullScreen {
+    .header {
+      max-width: 1600px;
       margin: 0 auto;
     }
   }
@@ -1797,6 +1692,34 @@ $black: #131A22;
     img {
       width: 100%;
       height: 464px;
+    }
+  }
+  .section4 {
+    .portfolio_Img {
+      position: relative;
+    }
+
+    .portfolio_Card {
+      position: absolute;
+      transform: translate(24%, 150px);
+      padding-bottom: 8rem;
+    }
+  }
+  .section5 {
+    .bg-img {
+      width: 1160px;
+      height: 282px;
+      position: absolute;
+    }
+
+    .bgBox {
+      width: 270px;
+      height: 282px;
+      top: 45%;
+    }
+
+    .counters {
+      top: 80px;
     }
   }
 }
@@ -1809,17 +1732,223 @@ $black: #131A22;
       height: 400px;
     }
   }
+  .section4 {
+    .portfolio_Card {
+      position: absolute;
+      width: 80%;
+      transform: translate(195px, 150px);
+
+      .portfolio_Title {
+        font-size: 30px;
+        line-height: 20px;
+      }
+
+      .portfolio_Text {
+        font-size: 16px;
+        line-height: 20px;
+      }
+    }
+
+    .portfolio_Img {
+      position: relative;
+    }
+
+    .shape_Carousel2 {
+      width: 120px;
+      background: #FFFFFF;
+    }
+
+    .slick-prev {
+      left: 40px;
+      top: 92.1% !important;
+    }
+
+    .slick-next {
+      left: 120px;
+      top: 92.1% !important;
+    }
+  }
+  .section5 {
+    .bg-img {
+      width: 960px;
+      height: 240px;
+      position: absolute;
+    }
+
+    .bgBox {
+      width: 270px;
+      height: 240px;
+      top: 124px;
+    }
+
+    .counters {
+      top: 80px;
+    }
+
+    .we-price {
+      font-size: 40px;
+    }
+
+    .number {
+      font-size: 40px;
+    }
+
+    .numbers {
+      font-size: 40px;
+    }
+
+    .number-com {
+      font-size: 18px;
+      line-height: 18px;
+    }
+  }
 }
 
 @media (max-width: 992px) and (min-width: 768px) {
   .CaruselContainer {
     margin-top: 45px;
   }
+  .section4 {
+    margin-top: 188px;
+
+    .portfolio_Card {
+      position: absolute;
+      width: 100%;
+      transform: translate(100px, 95px);
+
+      .portfolio_Title {
+        font-size: 30px;
+        line-height: 20px;
+      }
+
+      .portfolio_Text {
+        font-size: 12px;
+        line-height: 20px;
+      }
+    }
+
+    .portfolio_Img {
+      position: relative;
+    }
+
+    .shape_Carousel2 {
+      width: 120px;
+      background: #FFFFFF;
+    }
+
+    .slick-prev {
+      left: 40px;
+      top: 90.4% !important;
+    }
+
+    .slick-next {
+      left: 120px;
+      top: 90.4% !important;
+    }
+  }
+  .section5 {
+    margin-top: 100px;
+    .bg-img {
+      width: 720px;
+      height: 240px;
+      position: absolute;
+    }
+
+    .bgBox {
+      width: 270px;
+      height: 240px;
+      top: 124px;
+    }
+
+    .counters {
+      top: 80px;
+    }
+
+    .we-price {
+      font-size: 40px;
+    }
+
+    .number {
+      font-size: 40px;
+    }
+
+    .numbers {
+      font-size: 40px;
+    }
+
+    .number-com {
+      font-size: 18px;
+      line-height: 18px;
+    }
+  }
 }
 
-@media (max-width: 768px) and (min-width: 576px) {
+@media (max-width: 765px) and (min-width: 576px) {
   .CaruselContainer {
     margin-top: 45px;
+  }
+  .section4 {
+    margin-top: 188px;
+
+    .portfolio_Card {
+      .portfolio_Title {
+        font-size: 40px;
+        text-align: center;
+      }
+
+      .portfolio_Text {
+        font-size: 20px;
+      }
+    }
+
+    .shape_Carousel2 {
+      background: transparent;
+    }
+
+    .slick-prev {
+      left: 0px;
+      top: 94% !important;
+    }
+
+    .slick-next {
+      left: 81px;
+      top: 94% !important;
+    }
+  }
+  .section5 {
+    margin-top: 100px;
+    .bg-img {
+      width: 540px;
+      height: 130px;
+      position: absolute;
+    }
+
+    .bgBox {
+      width: 270px;
+      height: 130px;
+      top: 60.9px;
+    }
+
+    .counters {
+      top: 30px;
+    }
+
+    .we-price {
+      font-size: 30px;
+    }
+
+    .number {
+      font-size: 30px;
+    }
+
+    .numbers {
+      font-size: 30px;
+    }
+
+    .number-com {
+      font-size: 14px;
+      line-height: 16px;
+    }
   }
 }
 
@@ -1827,26 +1956,131 @@ $black: #131A22;
   .CaruselContainer {
     margin-top: 45px;
   }
+  .section4 {
+    margin-top: 188px;
+
+    .portfolio_Card {
+      .portfolio_Title {
+        font-size: 30px;
+        text-align: center;
+      }
+
+      .portfolio_Text {
+        font-size: 18px;
+      }
+    }
+
+    .shape_Carousel2 {
+      background: transparent;
+    }
+
+    .slick-prev {
+      left: 0px;
+      top: 92% !important;
+    }
+
+    .slick-next {
+      left: 81px;
+      top: 92% !important;
+    }
+  }
+  .section5 {
+    margin-top: 100px;
+
+    .bg-img {
+      display: none !important;
+    }
+
+    .counters {
+      padding-top: 20px;
+      padding-bottom: 20px;
+      background: rgb(235, 237, 239);
+    }
+
+    .we-price {
+      font-size: 30px;
+    }
+
+    .number {
+      font-size: 30px;
+    }
+
+    .numbers {
+      font-size: 30px;
+    }
+
+    .number-com {
+      font-size: 18px;
+      line-height: 24px;
+    }
+  }
 }
 
 @media only screen and (max-width: 450px) and (min-width: 320px) {
   .CaruselContainer {
     margin-top: 45px;
   }
+  .section4 {
+    margin-top: 188px;
+
+    .portfolio_Card {
+      .portfolio_Title {
+        font-size: 30px;
+        text-align: center;
+      }
+
+      .portfolio_Text {
+        font-size: 16px;
+      }
+    }
+
+    .shape_Carousel2 {
+      background: transparent;
+    }
+
+    .slick-prev {
+      left: 0px;
+      top: 90% !important;
+    }
+
+    .slick-next {
+      left: 81px;
+      top: 90% !important;
+    }
+  }
+  .section5 {
+    margin-top: 100px;
+
+    .bg-img {
+      display: none !important;
+    }
+
+    .counters {
+      padding-top: 20px;
+      padding-bottom: 20px;
+      background: rgb(235, 237, 239);
+    }
+
+    .we-price {
+      font-size: 20px;
+    }
+
+    .number {
+      font-size: 30px;
+    }
+
+    .numbers {
+      font-size: 30px;
+    }
+
+    .number-com {
+      font-size: 18px;
+      line-height: 24px;
+    }
+  }
 }
 
-/* ----------------------------------------------
- * Generated by Animista on 2019-9-20 17:17:9
- * Licensed under FreeBSD License.
- * See http://animista.net/license for more info.
- * w: http://animista.net, t: @cssanimista
- * ---------------------------------------------- */
 
-/**
- * ----------------------------------------
- * animation fade-in
- * ----------------------------------------
- */
 @-webkit-keyframes fade-in {
   0% {
     opacity: 0;

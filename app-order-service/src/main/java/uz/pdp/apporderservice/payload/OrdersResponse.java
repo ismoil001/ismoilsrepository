@@ -28,7 +28,7 @@ public class OrdersResponse {
 
     private String companyName;
 
-    private Integer count;
+    private Double count;
 
     private Double price;
 

@@ -34,7 +34,7 @@ class Index extends Component {
     }
     const visibleColumns = [
       {
-        title:'Sana',
+        title: 'Sana',
         dataIndex:'date',
         ket:'date'
       },{
@@ -42,7 +42,7 @@ class Index extends Component {
         dataIndex:'productName',
         ket:'productName'
       },{
-        title:'Soni',
+        title:<div><div className="d-inline-block" id="soni" ></div> Soni</div> ,
         dataIndex:'productCount',
         ket:'count'
       },{
@@ -50,11 +50,11 @@ class Index extends Component {
         dataIndex:'productPrice',
         ket:'price'
       },{
-        title:'Narxi',
+        title:<div><div className="d-inline-block" id="summasi" ></div> Summasi</div>,
         dataIndex:'sum',
         ket:'price'
       },{
-        title:"To'lov",
+        title:<div><div className="d-inline-block" id="tolov" ></div> To'lov</div>,
         dataIndex:'paymentSum',
         ket:'payment'
       }
@@ -72,24 +72,27 @@ class Index extends Component {
         <Row id="aksverka" className="mb-3 mt-3 offset-1 p-1">
           <Col span={5} className="aksverka-header ml-1">
           <div className="bg-white border-1" >
-            <h3 className="text-center font-weight-bold">{sumCount}</h3>
-            <p className="text-center">Soni</p>
+            <h3 className=" text-center font-weight-bold">{sumCount}</h3>
+            <p className=" text-center">
+            <div className="d-inline-block" id="soni" ></div>Soni</p>
           </div>
         </Col>
           <Col span={5} className="aksverka-header ml-4">
             <div className="bg-white border-1" >
               <h3 className="text-center font-weight-bold">{sumOrderCost}</h3>
-              <p className="text-center">Summasi</p>
+              <p className="text-center">
+                <div className="d-inline-block" id="summasi" ></div>Summasi</p>
             </div>
           </Col>
           <Col span={5} className="aksverka-header ml-4">
             <div className="bg-white border-1" >
               <h3 className="text-center font-weight-bold">{sumPayment}</h3>
-              <p className="text-center">Payment</p>
+              <p className="text-center">
+                <div className="d-inline-block" id="tolov" ></div>To'lov</p>
             </div>
           </Col>
-          <Col span={5} className="aksverka-header ml-4">
-            <div className="bg-white border-1" >
+          <Col span={5} className="aksverka-header ml-4" style={{background: 'rgba(255,65,1,0.13)'}}>
+            <div className="border-1" >
               <h3 className="text-center font-weight-bold">{saldo}</h3>
               <p className="text-center">Saldo</p>
             </div>

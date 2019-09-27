@@ -21,6 +21,6 @@ public class ReqOrder {
 
     private Double price;
 
-    private Integer count;
+    private Double count;
 
 }

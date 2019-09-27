@@ -7,8 +7,10 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 import uz.pdp.apporderservice.entity.User;
 import uz.pdp.apporderservice.entity.enums.RoleName;
+import uz.pdp.apporderservice.payload.ReqPdf;
 import uz.pdp.apporderservice.repository.RoleRepository;
 import uz.pdp.apporderservice.repository.UserRepository;
+import uz.pdp.apporderservice.service.PdfService;
 
 import java.util.HashSet;
 
@@ -22,12 +24,15 @@ public class DataLoader implements CommandLineRunner {
 
     @Autowired
     PasswordEncoder passwordEncoder;
+    @Autowired
+    PdfService pdfService;
 
     @Value("${spring.datasource.initialization-mode}")
     private String initializationMode;
 
     @Override
     public void run(String... args) throws Exception {
+
         if (initializationMode.equalsIgnoreCase("always")) {
             User user = new User("+998941211112", passwordEncoder.encode("root123"), "Sobir", "Xalimov", "Botirovich", new HashSet<>(roleRepository.findAllByName(RoleName.ROLE_MANAGER)),"Europrint");
 //            User user1 = new User("+998944155945", passwordEncoder.encode("root123"), "Aziz", "Mirzaahmatov", "Komil o'g'li", new HashSet<>(roleRepository.findAllByName(RoleName.ROLE_MANAGER)),"PDP");

@@ -1,7 +1,21 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'dva'
-import {Button, Form, Col, DatePicker, Modal, Row, Select, Table, Input, InputNumber, Icon, Popconfirm} from "antd/lib/index";
+import {
+  Button,
+  Form,
+  Col,
+  DatePicker,
+  Modal,
+  Row,
+  Select,
+  Table,
+  Input,
+  InputNumber,
+  Icon,
+  Popconfirm,
+  Checkbox
+} from "antd/lib/index";
 import moment from "moment/moment";
 import {Link} from "react-router-dom";
 
@@ -9,7 +23,7 @@ import {Link} from "react-router-dom";
 class Index extends PureComponent {
   render() {
     const {payment,dispatch,form} = this.props
-    const {modalVisible,modalType,currentItem,userList,selectedUser,payTypes,paymentList} = payment
+    const {modalVisible,modalType,isArchive,searchValue,currentItem,userList,selectedUser,payTypes,paymentList} = payment
     const {getFieldsValue,getFieldDecorator} = form
     const onShowPaymentModal=()=>{
       dispatch({
@@ -92,6 +106,43 @@ class Index extends PureComponent {
       })
     }
 
+
+    const handleSearch = (event) => {
+      dispatch({
+        type: 'payment/updateState',
+        payload: {
+          searchValue: event.target.value
+        }
+      })
+    }
+    const searchButton = () => {
+      dispatch({
+        type: 'payment/queryPayment',
+        payload: {
+          page: 0,
+          size: 10,
+          name: searchValue,
+        }
+      })
+    }
+    const handleArchive = (event) => {
+      dispatch({
+        type: 'payment/updateState',
+        payload: {
+          isArchive: event.target.checked
+        }
+      })
+      dispatch({
+        type: 'payment/queryPayment',
+        payload: {
+          page: 0,
+          size: 10,
+          name: searchValue,
+          isArchive: event.target.checked
+        }
+      })
+    }
+
     return (
       <div>
         <Row>
@@ -99,8 +150,18 @@ class Index extends PureComponent {
         </Row>
         <Row>
           <h2 className="text-center mb-4 mt-5"><b>To'lovlar</b></h2>
-          <Col span={6} offset={2}>
+          <Col span={4} offset={18}>
+            <span className='ml-5 mr-3'>Yechilgan to'lovlar</span>
+            <Checkbox onChange={handleArchive} checked={isArchive}></Checkbox>
+          </Col>
+          <Col offset={2} span={5} className="mr-4">
             <Button onClick={onShowPaymentModal} className="btn-dark my-3 mb-2">Add payment</Button>
+          </Col>
+          <Col span={5} className="mt-3  pl-3" offset={8}>
+            <Input className="ml-5" onChange={handleSearch}/>
+          </Col>
+          <Col span={2} className="mt-3">
+            <Button className="btn-dark" onClick={searchButton}>Search</Button>
           </Col>
           <Col span={20} offset={2}>
             <Table dataSource={paymentList} columns={visibleColumns}/>
