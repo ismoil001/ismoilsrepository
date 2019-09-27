@@ -480,7 +480,7 @@ export default class A extends React.Component {
                 </Col>
               </Row>
             </Container>
-          </div>    
+          </div>
         </section>
 
         <section className="section6 pt-lg-5" id="mijozlar">
