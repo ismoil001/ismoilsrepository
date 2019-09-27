@@ -1,4 +1,4 @@
-import {Col, Layout, Menu} from "antd";
+import {Col, Layout, Icon, Menu} from "antd";
 import {Link} from "react-router-dom";
 import {LocaleProvider} from 'antd'
 
@@ -11,6 +11,7 @@ import { formatMessage, setLocale, getLocale, FormattedMessage } from 'umi-plugi
 @connect(({app})=>({app}))
 class BasicLayout extends React.Component {
   render() {
+    const { SubMenu } = Menu;
     const props = this.props;
     const {app}=this.props;
     const {user}=app;
@@ -28,11 +29,17 @@ class BasicLayout extends React.Component {
     if (props.location.pathname.includes("aksverka")) {
       pageId = 3
     }
-    if (props.location.pathname.includes("settings")) {
-      pageId = 6
-    }
     if (props.location.pathname.includes("managers")) {
       pageId = 4
+    }
+    if (props.location.pathname.includes("settings/ourteam")) {
+      pageId = 6
+    }
+    if (props.location.pathname.includes("settings/portfolio")) {
+      pageId = 7
+    }
+    if (props.location.pathname.includes("settings/address")) {
+      pageId = 8
     }
 
     const {Content, Sider} = Layout;
@@ -61,6 +68,31 @@ class BasicLayout extends React.Component {
                   <span>Aksverka</span>
                 </Link>
               </Menu.Item>
+              <SubMenu
+                key="5"
+                title={
+                  <span>
+                  Sozlamalar
+                </span>
+                }
+              > <Menu.Item key="6">
+                <Link to="/settings/ourteam">
+                  <span>Bizning jamoa</span>
+                </Link>
+              </Menu.Item>
+                <Menu.Item key="7">
+                  <Link to="/settings/portfolio">
+                    <span>Portfolio</span>
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="8">
+                  <Link to="/settings/address">
+                    <span>Manzil</span>
+                  </Link>
+                </Menu.Item>
+              </SubMenu>
+
+
               {user.roles?user.roles.filter(item =>item.name==="ROLE_ADMIN").length===1?
                 <Menu.Item key="4">
                 <Link to="/managers">

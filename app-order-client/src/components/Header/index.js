@@ -14,7 +14,7 @@ import {
   DropdownMenu,
   DropdownItem } from 'reactstrap';
 import { formatMessage, setLocale, getLocale, FormattedMessage } from 'umi-plugin-locale';
-
+import {Link} from "react-scroll/modules";
 
 export default class Header extends React.Component {
   constructor(props) {
@@ -49,29 +49,43 @@ export default class Header extends React.Component {
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
-                <NavLink href="/" className="aboutUs">Biz haqimizda <div></div></NavLink>
+                <Link  spy={true} smooth={true} duration={1500}  to="bizhaqimizda">
+                  <NavLink href="/" className="aboutUs">
+                  Biz haqimizda
+                  <div></div>
+                  </NavLink>
+                </Link>
               </NavItem>
               <NavItem>
+                <Link  spy={true} smooth={true} duration={1500}  to="xizmatlar">
                 <NavLink href="/">Xizmatlar
                   <div></div></NavLink>
+                </Link>
               </NavItem>
               <NavItem>
+                <Link  spy={true} smooth={true} duration={1500}  to="portfolio">
                 <NavLink href="/">Portfolio
                   <div></div></NavLink>
+                </Link>
               </NavItem>
               <NavItem>
+                <Link  spy={true} smooth={true} duration={1500}  to="mijozlar">
                 <NavLink href="/">Mijozlar <div></div></NavLink>
+                </Link>
               </NavItem>
               <NavItem>
+                <Link  spy={true} smooth={true} duration={1500}  to="jamoa">
                 <NavLink href="/">Jamoa <div></div></NavLink>
+                </Link>
               </NavItem>
               <NavItem>
+                <Link  spy={true} smooth={true} duration={1500}  to="kontakt">
                 <NavLink href="/">Kontakt <div></div></NavLink>
+                </Link>
               </NavItem>
               <NavItem>
                 <NavLink href="/login">Admin <div></div></NavLink>
               </NavItem>
-
               <UncontrolledDropdown nav inNavbar>
                 <DropdownToggle nav caret className="language">
                   Uzbek
