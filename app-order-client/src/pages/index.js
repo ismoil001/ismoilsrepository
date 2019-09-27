@@ -22,8 +22,10 @@ import {YMaps, Map, Placemark} from "react-yandex-maps";
 import Slider from "react-slick";
 import Header from "../components/Header/index";
 import Carusel from "../components/Carusel";
+import {connect} from "dva";
 
-export default class A extends React.Component {
+@connect(({app}) => ({app}))
+class A extends React.Component {
 
   constructor(props) {
     super(props);
@@ -1144,3 +1146,5 @@ export default class A extends React.Component {
     );
   }
 }
+
+export default A;

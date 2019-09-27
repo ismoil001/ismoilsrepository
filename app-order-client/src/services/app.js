@@ -27,6 +27,12 @@ export function managers() {
     method: 'get'
   })
 }
+export function getPhoneNumber() {
+  return request({
+    url: '/api/phonenumber',
+    method: 'get'
+  })
+}
 
 export function deleteManager(id) {
   return request({

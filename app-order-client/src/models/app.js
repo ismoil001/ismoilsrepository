@@ -7,7 +7,7 @@ import {routerRedux} from 'dva/router'
 import {parse} from 'qs'
 import config from 'config'
 import {EnumRoleType} from 'enums'
-import {query, logout} from 'services/app'
+import {query, logout,getPhoneNumber} from 'services/app'
 import * as menusService from 'services/menus'
 import queryString from 'query-string'
 import {TOKEN_NAME} from "../constants";
@@ -58,6 +58,12 @@ export default {
       history.listen(({ pathname }) => {
           if (!config.openPages.includes(pathname)){
             dispatch({type: 'query'});
+
+          }
+          if(pathname==="/"){
+            dispatch({
+              type:'homePageData'
+            })
           }
       });
 
@@ -65,6 +71,12 @@ export default {
 
   },
   effects: {
+
+    *homePageData({payload},{call,put,select}){
+      alert("s")
+      const data = yield call(getPhoneNumber);
+      console.log(data)
+    },
 
     * query({
               payload,
