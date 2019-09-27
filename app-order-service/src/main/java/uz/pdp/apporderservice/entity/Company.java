@@ -29,4 +29,8 @@ public class Company {
 
     private String telegram;
 
+    private String phoneNumber1;
+    private String phoneNumber2;
+    private String phoneNumber3;
+
 }

@@ -13,6 +13,8 @@ import {
   DropdownToggle,
   DropdownMenu,
   DropdownItem } from 'reactstrap';
+import { formatMessage, setLocale, getLocale, FormattedMessage } from 'umi-plugin-locale';
+
 
 export default class Header extends React.Component {
   constructor(props) {
@@ -30,6 +32,14 @@ export default class Header extends React.Component {
     });
   }
   render() {
+
+    const handleLang=(key)=>{
+      if(key===1){
+        setLocale("en-US")
+      }else{
+        setLocale("en-RU")
+      }
+    }
     return (
 
       <Container>
@@ -70,11 +80,11 @@ export default class Header extends React.Component {
                   </svg>
 
                 </DropdownToggle>
-                <DropdownMenu right>
-                  <DropdownItem>
+                <DropdownMenu right >
+                  <DropdownItem onClick={()=>handleLang(1)} key={1}>
                     RU
                   </DropdownItem>
-                  <DropdownItem>
+                  <DropdownItem onClick={()=>handleLang(2)} key={2}>
                     UZ
                   </DropdownItem>
                 </DropdownMenu>

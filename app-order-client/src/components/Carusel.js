@@ -277,7 +277,6 @@ setInterval(this.setLeft,9000,true)
 
   render() {
     // const {commentList} = this.props
-    console.log(this.state.circleId1  )
     return (<div className='CaruselContainer'>
 
 

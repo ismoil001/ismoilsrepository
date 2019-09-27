@@ -3,6 +3,7 @@ import '../global.scss'
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import {Link, animateScroll as scroll} from "react-scroll";
+import { formatMessage, setLocale, getLocale, FormattedMessage } from 'umi-plugin-locale';
 import {
   Button,
   Card,
@@ -63,11 +64,7 @@ class A extends React.Component {
     windowWidth: window.innerWidth
   });
   scrolled=()=>{
-    console.log(window.visualViewport.pageTop)
     var testDiv = document.getElementById("section5");
-    console.log("dsdasdasd")
-    console.log(testDiv.offsetTop)
-    console.log(window.visualViewport.pageTop)
 
     if ( window.visualViewport.pageTop < testDiv.offsetTop+50 && window.visualViewport.pageTop >  testDiv.offsetTop-500) {
 
@@ -83,12 +80,15 @@ class A extends React.Component {
       this.state.scrolled=false;
       this.setState(this.state)
     }
-    console.log("state")
-    console.log(  this.state.count)
   }
 
-  render() {
-    let settings = {
+
+render() {
+  const {app} =this.props;
+  const {company} =app;
+
+
+  let settings = {
       dots: true,
       infinite: true,
       slidesToShow: 3,
@@ -158,7 +158,7 @@ class A extends React.Component {
                       <p className="order lato-regular">
                         Nega mijozlar bizni tanlashadi?
                         So‘ngi texnologiyalar sifati,
-                        <span className="lato-black"> hoziroq buyurtma bering!</span>
+                        <span className="lato-black"><FormattedMessage id="ORDER_NOW"/> </span>
                       </p>
                       <Button color="danger" className="order-button">
                         <span> Buyurtma berish</span>
@@ -170,13 +170,13 @@ class A extends React.Component {
                       <Row>
                         <Col md={6}>
                           <span><img src="/assets/images/phone.png" alt=""/></span>
-                          <span className="phone-code  lato-regular ml-2">(+99894)</span>
-                          <p className="pnone-number lato-black">222-19-98</p>
+                          <span className="phone-code  lato-regular ml-2">({company&& company.phoneNumber1.substring(0,6)})</span>
+                          <p className="pnone-number lato-black">{company&&company.phoneNumber1.substring(6)}</p>
                         </Col>
                         <Col md={6}>
                           <span><img src="/assets/images/phone.png" alt=""/></span>
-                          <span className="phone-code lato-regular ml-2">(+99894)</span>
-                          <p className="pnone-number lato-black">222-19-98</p>
+                          <span className="phone-code lato-regular ml-2">({company&& company.phoneNumber2.substring(0,6)})</span>
+                          <p className="pnone-number lato-black">{company&&company.phoneNumber2.substring(6)}</p>
                         </Col>
                       </Row>
                     </Col>
@@ -1070,24 +1070,24 @@ class A extends React.Component {
                 <div>
                   <p className="phone-num" style={{marginTop: "20px"}}>
                     <img className="phone-img" src="/assets/images/phone.png" alt=""/>
-                    <span className="phone-code lato-regular">(+99891)</span>
+                    <span className="phone-code lato-regular">({company&& company.phoneNumber1.substring(0,6)})</span>
                   </p>
-                  <p className="phone-number lato-black mb-0">204-11-00</p>
+                  <p className="phone-number lato-black mb-0">{company&&company.phoneNumber1.substring(6)}</p>
                 </div>
 
                 <div>
                   <p className="phone-num mt-3">
-                    <span className="phone-code lato-regular">(+99891)</span>
+                    <span className="phone-code lato-regular">(({company&& company.phoneNumber2.substring(0,6)}))</span>
                   </p>
-                  <p className="phone-number lato-black mb-0">360-77-00</p>
+                  <p className="phone-number lato-black mb-0">{company&&company.phoneNumber2.substring(6)}</p>
 
                 </div>
 
                 <div>
                   <p className="phone-num mt-3">
-                    <span className="phone-code lato-regular">(+99873)</span>
+                    <span className="phone-code lato-regular">(({company&& company.phoneNumber3.substring(0,6)}))</span>
                   </p>
-                  <p className="phone-number lato-black mb-0">543-55-55</p>
+                  <p className="phone-number lato-black mb-0">{company&&company.phoneNumber3.substring(6)}</p>
                 </div>
               </Col>
             </Row>
@@ -1116,23 +1116,23 @@ class A extends React.Component {
               </Col>
               <Col md={4} xs={7}>
                 <div className="telegram d-inline-block">
-                  <a href=""><img className="text-center" src="/assets/images/002-telegram.png" alt=""/></a>
+                  <a href={company.telegram}><img className="text-center" src="/assets/images/002-telegram.png" alt=""/></a>
                 </div>
                 <div className="telegram ml-md-3 ml-1 d-inline-block">
-                  <a href=""><img src="/assets/images/003-instagram.png" alt=""/></a>
+                  <a href={company.instagram}><img src="/assets/images/003-instagram.png" alt=""/></a>
                 </div>
                 <div className="telegram ml-md-3 ml-1 d-inline-block">
-                  <a href=""><img src="/assets/images/001-facebook-logo.png" alt=""/></a>
+                  <a href={company.facebook}><img src="/assets/images/001-facebook-logo.png" alt=""/></a>
                 </div>
                 <div className="telegram ml-md-3 ml-1 d-inline-block">
-                  <a href=""> <img src="/assets/images/004-youtube.png" alt=""/></a>
+                  <a href={company.youtube}> <img src="/assets/images/004-youtube.png" alt=""/></a>
                 </div>
               </Col>
               <Col md={2} xs={12} className="offset-lg-3 ml-2 ml-lg-0 offset-sm-0 offset-0" id="address" >
               <span>
                 <img className="phone-img" src="/assets/images/map-pin.png" alt=""/>
               </span>
-                <span className="lato-regular">140100. <br/> O'zbekiston R,  Farg'ona viloyati, Qo'qon sh. Usta bozor k, 1B uy.
+                <span className="lato-regular">140100. <br/> {company.address}
                 </span>
               </Col>
             </Row>

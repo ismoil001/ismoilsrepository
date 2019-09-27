@@ -53,7 +53,6 @@ class Index extends Component {
 
     ];
     const deleteManager = (id) => {
-      console.log(id);
       dispatch({
         type: 'manager/updateState',
         payload: {
@@ -63,7 +62,6 @@ class Index extends Component {
       })
     };
     const updateManager = (record) => {
-      console.log(record)
       dispatch({
         type: 'manager/updateState',
         payload: {
@@ -86,7 +84,6 @@ class Index extends Component {
       e.preventDefault();
       this.props.form.validateFields((err, values) => {
         if (!err) {
-          console.log(values);
           if (isEdit){
             dispatch({
               type: 'manager/editingManager',
