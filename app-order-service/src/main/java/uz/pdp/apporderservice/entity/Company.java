@@ -18,6 +18,7 @@ public class Company {
     private Integer id;
 
     private String address;
+    private String addressRu;
 
     private String email;
 

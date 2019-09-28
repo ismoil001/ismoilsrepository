@@ -167,7 +167,7 @@ class Index extends PureComponent {
           </Col>
           <Col span={20} offset={2}>
             <Table dataSource={paymentList} columns={visibleColumns}/>
-          </Col>
+          </Col>{console.log(paymentList)}
         </Row>
         <Modal visible={modalVisible} onCancel={handleHideModal} onOk={onSubmitPayment}>
           <Form style={{marginTop:"30px"}}>

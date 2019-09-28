@@ -35,6 +35,7 @@ public class CompanyController {
             company.setPhoneNumber1(reqCompany.getPhonenumber1());
             company.setPhoneNumber2(reqCompany.getPhonenumber2());
             company.setPhoneNumber3(reqCompany.getPhonenumber3());
+            company.setAddressRu(reqCompany.getAddressRu());
             companyRepository.save(company);
             return ResponseEntity.ok(new ApiResponse("success",true));
         } catch (Exception e) {

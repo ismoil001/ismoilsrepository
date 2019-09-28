@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 public class ReqCompany {
 
     private String address;
+    private String addressRu;
     private String email;
     private String facebook;
     private String instagram;
