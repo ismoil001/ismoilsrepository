@@ -81,7 +81,7 @@ export default {
         type:'updateState',
         payload:{
           company:data.object&& data.object.company,
-          homeData:data
+          homeData:data.object
         }
       })
     },

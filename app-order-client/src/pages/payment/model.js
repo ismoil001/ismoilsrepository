@@ -84,10 +84,11 @@ export default {
     },
     *savePayment({payload},{call,put,select}){
       payload.payDate = new Date(payload.payDate).getTime()
+      payload.paySum = payload && parseFloat(payload.paySum.replace(/\s/g, ''))
       const data = yield call(savePayment,payload);
       if(data.success){
         notification['success']({
-          message:'Saved'
+          message:data.message
         })
         yield put({
           type:'updateState',

@@ -31,8 +31,8 @@ class Index extends PureComponent {
 
   render() {
     const {dashboard, dispatch, form} = this.props;
-    const {modalVisible, modalType, currentItem, customerList, currentItemPaymentSum, ismine, archiveData, orderLists, page, totalElements, searchValue, paymentModalVisible} = dashboard;
-    const {getFieldDecorator, getFieldsValue, resetFields,setFieldsValue} = form;
+    const {modalVisible, modalType,modalLoading, currentItem, customerList, currentItemPaymentSum, ismine, archiveData, orderLists, page, totalElements, searchValue, paymentModalVisible} = dashboard;
+    const {getFieldDecorator,getFieldsValue, resetFields,setFieldsValue} = form;
     const {Option} = Select;
     const handleOpenModal = () => {
       dispatch({
@@ -56,6 +56,12 @@ class Index extends PureComponent {
     }
 
     const handleSubmit = () => {
+      dispatch({
+        type: 'dashboard/updateState',
+        payload: {
+          modalLoading: true
+        }
+      })
       if (modalType === "create") {
         dispatch({
           type: 'dashboard/saveOrder',
@@ -101,17 +107,21 @@ class Index extends PureComponent {
       {
         title: 'Count',
         dataIndex: 'count',
-        key: 'count'
+        key: 'count',
+        render:(text,record)=>record.count.toLocaleString()
       },
       {
         title: 'Price',
         dataIndex: 'price',
-        key: 'price'
+        key: 'price',
+        render:(text,record)=>record.price.toLocaleString()
+
       },
       {
         title: 'Sum',
         dataIndex: 'sum',
         key: 'sum',
+        render:(text,record)=>record.sum.toLocaleString()
       },
       {
         title: 'Qoldiq',
@@ -122,7 +132,7 @@ class Index extends PureComponent {
           record.payments.map(item => {
             a += item.amount
           })
-          return record.sum - a
+          return (record.sum - a).toLocaleString()
         }
       },
       {
@@ -150,11 +160,15 @@ class Index extends PureComponent {
             <Button className="border-0 text-center w-100">delete</Button>
           </Popconfirm>
         </Menu.Item>
-        <Menu.Item className="p-0 my-1 mx-2">
-          <Button className="border-0 text-center w-100" onClick={() => onClickMenu(3, record)}>Archive</Button>
-        </Menu.Item>
+              {record.status==="ACTIVE"?        <Menu.Item className="p-0 my-1 mx-2">
+                <Button className="border-0 text-center w-100" onClick={() => onClickMenu(3, record)}>Archive</Button>
+              </Menu.Item>:
+                <Menu.Item className="p-0 my-1 mx-2">
+                  <Button className="border-0 text-center w-100" onClick={() => onClickMenu(4, record)}>Active</Button>
+                </Menu.Item>
+              }
       </Menu>}>
-              <a className="ant-dropdown-link" href="#">
+              <a className="ant-dropdown-link" >
                 <Icon type="dash" /> <Icon type="down" />
               </a>
             </Dropdown>
@@ -188,6 +202,12 @@ class Index extends PureComponent {
           payload: item.id
         })
 
+      }
+      if(key===4){
+        dispatch({
+          type: 'dashboard/setStatusOfOrder1',
+          payload: item.id
+        })
       }
 
     };
@@ -240,6 +260,12 @@ class Index extends PureComponent {
       })
     }
     const saveOrderPayment = (formData) => {
+      dispatch({
+        type: 'dashboard/updateState',
+        payload: {
+          modalLoading: true
+        }
+      })
       dispatch({
         type: 'dashboard/saveOrderPayment',
         payload: {...formData, orderId: currentItem.id}
@@ -341,12 +367,13 @@ class Index extends PureComponent {
 
               <PaymentModal modalVisible={paymentModalVisible} item={currentItem} itemPaySum={currentItemPaymentSum}
                             onHideModal={hidePaymentModal}
-                            onSave={saveOrderPayment}/>
+                            onSave={saveOrderPayment} confirmLoading={modalLoading}/>
               <Modal
                 title="Add order"
                 visible={modalVisible}
                 onOk={handleSubmit}
                 onCancel={handleHideModal}
+                confirmLoading={modalLoading}
               >
 
                 <Form>

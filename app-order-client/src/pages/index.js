@@ -85,7 +85,7 @@ class A extends React.Component {
 
 render() {
   const {app} =this.props;
-  const {company} =app;
+  const {company,homeData} =app;
 
 
   let settings = {
@@ -460,20 +460,20 @@ render() {
                   <Row>
                     <Col md={4} id="count" className="text-center">
 
-                      {this.state.count?  <CountTo className="lato-bold text-center number d-inline-block" to={628} speed={3000}/>: <CountTo className="lato-bold text-center number d-inline-block" to={0} speed={1000}/>}
+                      {this.state.count?  <CountTo className="lato-bold text-center number d-inline-block" to={homeData.countAllCustomer} speed={3000}/>: <CountTo className="lato-bold text-center number d-inline-block" to={0} speed={1000}/>}
                       <span className="lato-bold number">+</span>
                       <p className="lato-regular text-center number-com">Bizning mijozlarimiz <br/>
                         soni</p>
                     </Col>
 
                     <Col md={4} className="text-center">
-                      {this.state.count? <CountTo className="lato-bold text-center number" to={1500} speed={3000}/>:<CountTo className="lato-bold text-center number d-inline-block" to={0} speed={1000}/>}
+                      {this.state.count? <CountTo className="lato-bold text-center number" to={homeData.countAllOrders} speed={3000}/>:<CountTo className="lato-bold text-center number d-inline-block" to={0} speed={1000}/>}
                       <span className="lato-bold number">+</span>
                       <p className="lato-regular  number-com">Bajarilgan buyurtmalar <br/>
                         soni</p>
                     </Col>
                     <Col md={4} className="text-center">
-                      {this.state.count?  <CountTo className="lato-bold text-center number" to={254} speed={3000}/>:<CountTo className="lato-bold text-center number d-inline-block" to={0} speed={1000}/>}
+                      {this.state.count?  <CountTo className="lato-bold text-center number" to={homeData.countAllMasters} speed={3000}/>:<CountTo className="lato-bold text-center number d-inline-block" to={0} speed={1000}/>}
                       <span className="lato-bold number">+</span>
                       <p className="lato-regular text-center number-com">Bizning <br/>
                         mutaxasislarimiz</p>

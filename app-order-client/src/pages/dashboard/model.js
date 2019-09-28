@@ -2,6 +2,7 @@ import {
   saveOrder,
   getCustomers,
   changeStatusOrder,
+  changeStatusOrder1,
   getActiveOrders,
   editOrder,
   deleteOrder,
@@ -23,6 +24,7 @@ export default {
     page: 0,
     totalElements: 0,
     ismine: false,
+    modalLoading:false,
     archiveData: [],
     currentItemPaymentSum: [],
   },
@@ -77,6 +79,12 @@ export default {
           }
         })
       }
+      yield put({
+        type: 'updateState',
+        payload: {
+          modalLoading: false
+        }
+      })
     },
 
     * deleteOrder({payload}, {call, put, select}) {
@@ -127,8 +135,19 @@ export default {
         })
       }
 
+      yield put({
+        type: 'updateState',
+        payload: {
+          modalLoading: false
+        }
+      })
+
     },
     * editOrder({payload}, {call, put, select}) {
+      if(typeof payload.price!=="number"){
+        payload.price = payload && parseFloat(payload.price.replace(/\s/g, ''))
+        payload.count = payload && parseFloat(payload.count.replace(/\s/g, ''))
+      }
       const {ismine} = yield select(_ => _.dashboard)
       payload.orderedDate = new Date(payload.orderedDate).getTime()
       const data = yield call(editOrder, payload);
@@ -155,6 +174,13 @@ export default {
           }
         })
       }
+
+      yield put({
+        type: 'updateState',
+        payload: {
+          modalLoading: false
+        }
+      })
 
     },
 
@@ -213,6 +239,26 @@ export default {
         })
         notification['success']({
           message: 'archived'
+        })
+      }
+    },
+    * setStatusOfOrder1({payload}, {call, put, select}) {
+      const {ismine} = yield select(_ => _.dashboard)
+
+      const data = yield call(changeStatusOrder1, payload)
+      if (data.success) {
+        yield put({
+          type: 'getOrders',
+          payload: {
+            page: 0,
+            size: 10,
+            name: '',
+            ismine: ismine,
+            status: 'notactive'
+          }
+        })
+        notification['success']({
+          message: 'actoved'
         })
       }
     }

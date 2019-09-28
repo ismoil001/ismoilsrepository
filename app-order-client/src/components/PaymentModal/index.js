@@ -3,7 +3,7 @@ import {Modal, Form, InputNumber} from "antd";
 
 class Index extends Component {
   render() {
-  const {modalVisible, onHideModal,onSave,form, item,itemPaySum} =this.props;
+  const {modalVisible, onHideModal,onSave,form,confirmLoading, item,itemPaySum} =this.props;
   const {getFieldsValue,getFieldDecorator,resetFields} =form;
   const onSubmit=()=>{
     onSave(getFieldsValue())
@@ -11,7 +11,7 @@ class Index extends Component {
   }
 
     return (
-      <Modal onOk={onSubmit} onCancel={onHideModal} visible={modalVisible}>
+      <Modal confirmLoading={confirmLoading} onOk={onSubmit} onCancel={onHideModal} visible={modalVisible}>
         <Form>
           <Form.Item>
             {getFieldDecorator('amount', {

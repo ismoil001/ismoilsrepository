@@ -1,7 +1,8 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'dva'
-import MaskedInput from 'react-text-mask'
+import CurrencyInput from 'react-currency-input';
+
 import {
   Button,
   Form,
@@ -204,12 +205,7 @@ class Index extends PureComponent {
                 initialValue:currentItem!==''?currentItem.paySum:0,
                 rules: [{required: true, message: 'Please input sum!'}],
               })(
-                <MaskedInput
-                  className="form-control"
-                  placeholder="Amount"
-                  mask={[/\d/, /\d/, /\d/," ", /\d/, /\d/, /\d/," ", /\d/, /\d/, /\d/," ",/\d/, /\d/, /\d/," ",/\d/, /\d/, /\d/," ",/\d/, /\d/, /\d/," ",/\d/, /\d/, /\d/," ",/\d/, /\d/, /\d/," ",/\d/, /\d/, /\d/," ",/\d/, /\d/, /\d/]}
-                  maskChar={null}
-                />,
+                <CurrencyInput precision={''} thousandSeparator=" "/>,
               )}
             </Form.Item>
           </Form>
