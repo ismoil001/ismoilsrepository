@@ -1,7 +1,12 @@
 import {Col, Layout, Icon, Menu} from "antd";
 import {Link} from "react-router-dom";
+import {LocaleProvider} from 'antd'
+
+import enUS from 'antd/lib/locale-provider/en_US'
+import ru from 'antd/lib/locale-provider/ru_RU'
 import React from "react";
 import {connect} from 'dva';
+import { formatMessage, setLocale, getLocale, FormattedMessage } from 'umi-plugin-locale';
 
 @connect(({app})=>({app}))
 class BasicLayout extends React.Component {
@@ -10,7 +15,6 @@ class BasicLayout extends React.Component {
     const props = this.props;
     const {app}=this.props;
     const {user}=app;
-    console.log(user);
 
     const pathname = props.location.pathname;
     let pageId = 1;
@@ -43,6 +47,7 @@ class BasicLayout extends React.Component {
       return props.children
     } else {
       return (
+        <LocaleProvider locale={getLocale() === 'en-US' ? enUS : ru}>
         <Layout>
           <Sider trigger={null} collapsible>
             <div className="logo"/>
@@ -107,6 +112,7 @@ class BasicLayout extends React.Component {
             </Content>
           </Layout>
         </Layout>
+        </LocaleProvider>
       );
     }
   }

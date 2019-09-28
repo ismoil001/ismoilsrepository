@@ -41,7 +41,6 @@ export default {
 
     *queryPayment({payload},{call,put,select}){
       const data = yield call(getPayments,payload);
-      console.log(data)
       if(data.success){
         yield put({
           type:'updateState',

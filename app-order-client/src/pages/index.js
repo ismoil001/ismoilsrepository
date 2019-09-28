@@ -2,28 +2,32 @@ import React from "react"
 import '../global.scss'
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import {Link, animateScroll as scroll} from "react-scroll";
+import {Link} from "react-scroll";
+import {FormattedMessage} from 'umi-plugin-locale';
 import {
   Button,
   Card,
+  CardBody,
+  CardImg,
+  CardText,
+  CardTitle,
   Col,
   Container,
-  Dropdown,
-  CardImg,
   DropdownItem,
   DropdownMenu,
-  DropdownToggle,
+  DropdownToggle, Nav,
   Row,
-  CardBody, CardTitle, CardText, UncontrolledDropdown, Nav
+  UncontrolledDropdown
 } from 'reactstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import CountTo from 'react-count-to';
-import {YMaps, Map, Placemark} from "react-yandex-maps";
+import {Map, Placemark, YMaps} from "react-yandex-maps";
 import Slider from "react-slick";
 import Header from "../components/Header/index";
 import Carusel from "../components/Carusel";
 import {FaAngleDown} from "react-icons/fa";
 import {connect} from "dva";
+import { formatMessage, setLocale, getLocale,} from 'umi-plugin-locale';
 
 @connect(({app}) => ({app}))
 class A extends React.Component {
@@ -46,6 +50,7 @@ class A extends React.Component {
       dropdownOpen: !prevState.dropdownOpen
     }));
   }
+
   componentDidMount() {
     this.handleResize();
     window.addEventListener('resize', this.handleResize)
@@ -55,6 +60,7 @@ class A extends React.Component {
   componentWillUnmount() {
     window.removeEventListener('resize', this.handleResize)
   }
+
   resize = () => {
     return window.innerWidth;
   }
@@ -84,6 +90,10 @@ class A extends React.Component {
   // }
 
   render() {
+    const {app} = this.props;
+    const {company} = app;
+
+
     let settings = {
       dots: true,
       infinite: true,
@@ -220,6 +230,13 @@ class A extends React.Component {
       },
     ];
 
+    const handleLang2=(key)=>{
+      if(key===1){
+        setLocale("en-US")
+      }else{
+        setLocale("en-RU")
+      }
+    }
     return (
       <div className="fullScreen">
         <div className="header" onWheel={this.scrolled} onMouseMove={this.scrolled}
@@ -240,24 +257,25 @@ class A extends React.Component {
                   <div className="d-flex justify-content-center justify-content-lg-end justify-content-xl-end">
                     <div className="contents">
                       <p className="order lato-regular mb-0">
-                        Nega mijozlar bizni tanlashadi?
-                        So‘ngi texnologiyalar sifati,
-                        <span className="lato-black"> hoziroq buyurtma bering!</span>
+                        <FormattedMessage id='header_text'/>
+                        <span className="lato-black"><FormattedMessage id="header_text_bold"/></span>
                       </p>
                       <Button color="danger" className="order-button">
-                        <span> Buyurtma berish</span>
+                        <span><FormattedMessage id="header_btn"/></span>
                         <span className="ml-3"><img src="/assets/images/arrow-right.png" alt="#"/></span>
                       </Button>
                       <Row className='contact ml-0 mr-0'>
                         <Col xs={5} sm={4} md={3} lg={4} xl={3} className='p-0'>
                           <span><img src="/assets/images/phone.png" alt=""/></span>
-                          <span className="phone-code  lato-regular ml-2">(+99894)</span>
-                          <p className="pnone-number lato-black">360-77-00</p>
+                          <span
+                            className="phone-code  lato-regular ml-2">({company && company.phoneNumber1.substring(0, 6)})</span>
+                          <p className="pnone-number lato-black">{company && company.phoneNumber1.substring(6)}</p>
                         </Col>
                         <Col xs={5} sm={4} md={3} lg={4} xl={3} className='p-0'>
                           <span><img src="/assets/images/phone.png" alt=""/></span>
-                          <span className="phone-code lato-regular ml-2">(+99894)</span>
-                          <p className="pnone-number lato-black">204-11-00</p>
+                          <span
+                            className="phone-code lato-regular ml-2">({company && company.phoneNumber2.substring(0, 6)})</span>
+                          <p className="pnone-number lato-black">{company && company.phoneNumber2.substring(6)}</p>
                         </Col>
                       </Row>
                     </div>
@@ -278,35 +296,39 @@ class A extends React.Component {
                 <Col xs={12} sm={12} md={6} lg={6} xl={6}>
                   <Row>
                     <Col xs={12} sm={12} md={9} lg={9} xl={9} className='ml-auto'>
-                      <p className="tipography lato-black">«EUROPRINT»
-                        tipografiyasi haqida</p>
-                      <p className="tipography-text lato-regular">"EUROPRINT" o'zbek bosmaxonasi - bu sizning
-                        biznesingizga
-                        yuqori darajadagi professional yondashuv. Axir, sizning kompaniyangizning imidji
-                        bunga bog'liq.
-                        Biz, o'zbek matbaa ijodiy uyi, Sizga eng yuqori darajadagi bosma dizayn va ishlab chiqarishni
-                        rivojlantirish bo'yicha xizmatlarni ko'rsatishga tayyormiz. Bizning ishimizda sifat,
-                        samaradorlik va
-                        mijozning
-                        vazifalariga individual yondoshishni muvaffaqiyatli birlashtiramiz.
+                      <p className="tipography lato-black">
+                        <FormattedMessage id='section1_Title'/>
                       </p>
-                      <span className="tipography-text pt-4 lato-regular"> "EUROPRINT" bosmaxonasi:</span>
+                      <p className="tipography-text lato-regular">
+                        <FormattedMessage id='section1_Text'/>
+                      </p>
+                      <span className="tipography-text pt-4 lato-regular">
+                        <FormattedMessage id='section1_Sub_Title'/>
+                      </span>
 
                       <div className="mt-3 ">
                         <span><img className="path" src="/assets/images/orengepart.png" alt=""/></span>
-                        <span className="ml-3 lato-bold tipography-text">Katta tajriba</span>
+                        <span className="ml-3 lato-bold tipography-text">
+                          <FormattedMessage id='section1_Sub_Text1'/>
+                        </span>
                       </div>
                       <div>
                         <span><img className="path" src="/assets/images/orengepart.png" alt=""/></span>
-                        <span className="ml-3 lato-bold tipography-text">Eng yangi uskunalar</span>
+                        <span className="ml-3 lato-bold tipography-text">
+                          <FormattedMessage id='section1_Sub_Text2'/>
+                        </span>
                       </div>
                       <div>
                         <span><img className="path" src="/assets/images/orengepart.png" alt=""/></span>
-                        <span className="ml-3 lato-bold tipography-text">Keng doiradagi xizmatlar</span>
+                        <span className="ml-3 lato-bold tipography-text">
+                          <FormattedMessage id='section1_Sub_Text3'/>
+                        </span>
                       </div>
                       <div>
                         <span><img className="path" src="/assets/images/orengepart.png" alt=""/></span>
-                        <span className="ml-3 lato-bold tipography-text">Buyurtmaning eng tezkor bajarilishi</span>
+                        <span className="ml-3 lato-bold tipography-text">
+                          <FormattedMessage id='section1_Sub_Text4'/>
+                        </span>
                       </div>
                     </Col>
                   </Row>
@@ -323,17 +345,21 @@ class A extends React.Component {
 
           <section className="section-two">
             <Container>
-              <p className="text-center text-white we-text lato-bold">Nima uchun biz ?</p>
+              <p className="text-center text-white we-text lato-bold">
+                <FormattedMessage id='section2_Main_Title'/>
+              </p>
               <Row className="card-row">
                 <Col xs={12} sm={12} md={4} lg={4} xl={4}>
                   <Card className='sectionInfoCard'>
                     <div className="timer_Main d-flex align-items-center flex-column">
                       <CardImg className='timer' src="/assets/images/timer.png" alt=""/>
                     </div>
-                    <p className="efficiency lato-bold">Samaradorlik</p>
-                    <p className="efficiency2 lato-regular">Har qanday murakkablikdagi buyurtmalarni
-                      tezkor hisoblash. Ofset usulida ishlash
-                      24 soat davom etadi.</p>
+                    <p className="efficiency lato-bold">
+                      <FormattedMessage id='section2_Sub_Title1'/>
+                    </p>
+                    <p className="efficiency2 lato-regular">
+                      <FormattedMessage id='section2_Text1'/>
+                    </p>
                   </Card>
                 </Col>
                 <Col xs={12} sm={12} md={4} lg={4} xl={4}>
@@ -341,9 +367,12 @@ class A extends React.Component {
                     <div className="timer_Main d-flex align-items-center flex-column">
                       <CardImg className='timer' src="/assets/images/Group 28.png" alt=""/>
                     </div>
-                    <p className="efficiency lato-bold">100% sifat</p>
-                    <p className="efficiency2 lato-regular">Eng yangi uskunalar, sifatli materiallar,
-                      professional xodimlar.</p>
+                    <p className="efficiency lato-bold">
+                      <FormattedMessage id='section2_Sub_Title2'/>
+                    </p>
+                    <p className="efficiency2 lato-regular">
+                      <FormattedMessage id='section2_Text2'/>
+                    </p>
                   </Card>
                 </Col>
                 <Col xs={12} sm={12} md={4} lg={4} xl={4}>
@@ -351,10 +380,12 @@ class A extends React.Component {
                     <div className="timer_Main d-flex align-items-center flex-column">
                       <CardImg className='timer' src="/assets/images/Group 29.png" alt=""/>
                     </div>
-                    <p className="efficiency lato-bold">Qulay narx</p>
-                    <p className="efficiency2 lato-regular">Xarajatlarni minimallashtirish bizga
-                      bozor narxidan past narxlarda
-                      raqobatdosh ustunlikni beradi.</p>
+                    <p className="efficiency lato-bold">
+                      <FormattedMessage id='section2_Sub_Title3'/>
+                    </p>
+                    <p className="efficiency2 lato-regular">
+                      <FormattedMessage id='section2_Text3'/>
+                    </p>
                   </Card>
                 </Col>
               </Row>
@@ -364,9 +395,12 @@ class A extends React.Component {
                     <div className="timer_Main d-flex align-items-center flex-column">
                       <CardImg className='timer' src="/assets/images/Group 30.png" alt=""/>
                     </div>
-                    <p className="efficiency lato-bold">Zamonaviy uskunalar</p>
-                    <p className="efficiency2 lato-regular">Bizning bosmaxona zamonaviy poligrafiya uskunalari bilan
-                      jihozlangan ishlab chiqarish ustaxonasiga asoslanadi.</p>
+                    <p className="efficiency lato-bold">
+                      <FormattedMessage id='section2_Sub_Title4'/>
+                    </p>
+                    <p className="efficiency2 lato-regular">
+                      <FormattedMessage id='section2_Text4'/>
+                    </p>
                   </Card>
                 </Col>
                 <Col xs={12} sm={12} md={4} lg={4} xl={4}>
@@ -375,12 +409,14 @@ class A extends React.Component {
                       <CardImg className='timer' src="/assets/images/Group 31.png" alt=""/>
                     </div>
                     <CardTitle className='mb-0'>
-                      <p className="efficiency lato-bold">Dizayn ofisi va dizayn studiasi</p>
+                      <p className="efficiency lato-bold">
+                        <FormattedMessage id='section2_Sub_Title5'/>
+                      </p>
                     </CardTitle>
                     <CardText>
-                      <p className="efficiency2 lato-regular">Ular bizga g'oyalar bosqichida buyurtma
-                        olishga va har qanday g'oyani birinchi darajali tayyor mahsulotga tarjima qilishga imkon
-                        beradi.</p>
+                      <p className="efficiency2 lato-regular">
+                        <FormattedMessage id='section2_Text5'/>
+                      </p>
                     </CardText>
                   </Card>
                 </Col>
@@ -389,17 +425,34 @@ class A extends React.Component {
           </section>
 
           <section className="section3" id="xizmatlar">
-            <p className="text-center service lato-bold">Bizning xizmatlar</p>
+            <p className="text-center service lato-bold">
+              <FormattedMessage id='section3_Title'/>
+            </p>
             <Container className="mahsulotlar">
               <Row className='position-relative pb-5 mb-5'>
                 <div className="bg-color-2 position-absolute"><img src="/assets/images/bg-color-3.png" alt=""/></div>
-                {ourService.map(service=>
+                {ourService.map(service =>
                   <Col xs={12} sm={6} md={3} lg={3} xl={3} className=' mt-4'>
                     <Card className="card-style">
                       <img src={service.img} alt="" className="img-fluid"/>
                       <div className='cart-hover text-center'>
-                        <p className='text-white text-center lato-bold'>{service.title}</p>
-                        <Button className='text-white lato-regular card-btn'>Buyurtma berish</Button>
+                        <ul className='list-unstyled mb-0'>
+                          <li className=''>
+                            <p className='text-white text-center lato-bold'>{service.title}</p>
+                          </li>
+                          <li className=''>
+                            <a href="#" className='text-decoration-none'>
+                              <span className='readMore text-center lato-light'>
+                              <FormattedMessage id='section3_Text'/>
+                              </span>
+                            </a>
+                          </li>
+                          <li className=''>
+                            <Button className='text-white lato-regular card-btn'>
+                              <FormattedMessage id='section3_Btn'/>
+                            </Button>
+                          </li>
+                        </ul>
                       </div>
                     </Card>
                   </Col>
@@ -413,13 +466,11 @@ class A extends React.Component {
               <Row className='p-0'>
                 <Col xs={12} sm={12} md={6} lg={6} xl={6} className='p-md-0 p-lg-0 p-xl-0'>
                   <div className='portfolio_Card'>
-                    <p className='portfolio_Title lato-bold'>Portfolio</p>
+                    <p className='portfolio_Title lato-bold'>
+                      <FormattedMessage id="section4_Title"/>
+                    </p>
                     <p className='portfolio_Text lato-regular'>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                      Dolor viverra quisque orci cursus curabitur auctor ut sit.
-                      Purus proin eget enim arcu aliquam. Dictumst aliquet
-                      aliquam pretium facilisis sed at cras varius. Erat vivamus
-                      mi sociis pharetra faucibus nisl enim.
+                      <FormattedMessage id="section4_Text"/>
                     </p>
                   </div>
                 </Col>
@@ -440,7 +491,9 @@ class A extends React.Component {
           </section>
 
           <section className="section5">
-            <p className="lato-bold text-center we-price">Bizning yutuqlarimiz</p>
+            <p className="lato-bold text-center we-price">
+              <FormattedMessage id="section5_Title"/>
+            </p>
             <div className="bgBox"/>
             <div className="bg-image" id="section5">
               <Container className="section5Container pt-md-5 pt-lg-5 pt-xl-5 pb-md-5 pb-lg-5 pb-xl-5">
@@ -454,23 +507,26 @@ class A extends React.Component {
                           <CountTo className="lato-bold text-center number d-inline-block" to={628} speed={3000}/> :
                           <CountTo className="lato-bold text-center number d-inline-block" to={0} speed={1000}/>}
                         <span className="lato-bold number">+</span>
-                        <p className="lato-regular text-center number-com">Bizning mijozlarimiz <br/>
-                          soni</p>
+                        <p className="lato-regular text-center number-com">
+                          <FormattedMessage id='section5_Text1'/>
+                        </p>
                       </Col>
 
                       <Col xs={12} sm={4} md={4} lg={4} xl={4} className="text-center">
                         {this.state.count ? <CountTo className="lato-bold text-center number" to={1500} speed={3000}/> :
                           <CountTo className="lato-bold text-center number d-inline-block" to={0} speed={1000}/>}
                         <span className="lato-bold number">+</span>
-                        <p className="lato-regular  number-com">Bajarilgan buyurtmalar <br/>
-                          soni</p>
+                        <p className="lato-regular mb-0 number-com">
+                          <FormattedMessage id='section5_Text2'/>
+                        </p>
                       </Col>
                       <Col xs={12} sm={4} md={4} lg={4} xl={4} className="text-center">
                         {this.state.count ? <CountTo className="lato-bold text-center number" to={254} speed={3000}/> :
                           <CountTo className="lato-bold text-center number d-inline-block" to={0} speed={1000}/>}
                         <span className="lato-bold number">+</span>
-                        <p className="lato-regular text-center number-com">Bizning <br/>
-                          mutaxasislarimiz</p>
+                        <p className="lato-regular text-center number-com">
+                          <FormattedMessage id='section5_Text3'/>
+                        </p>
                       </Col>
                     </Row>
                   </Col>
@@ -483,7 +539,9 @@ class A extends React.Component {
             <Container fluid={true} className='position-relative mt-lg-4'>
               <div className="bg-1 position-absolute"></div>
               <div className="bg-2 position-absolute"></div>
-              <h1 className='text-center mb-4 pt-lg-4 lato-bold mb-3'>Bizning mijozlar</h1>
+              <p className='section6Title text-center mb-4 pt-lg-4 lato-bold mb-3'>
+                <FormattedMessage id="section6_Title"/>
+              </p>
               <div className="tech-slideshow">
                 <div className="mover-1">
                   <div className="carusel  position-relative d-flex img-fluid">
@@ -743,7 +801,7 @@ class A extends React.Component {
                       </div>
                     </div>
                     <div className="d-block">
-                      <div className="our-product-2 " >
+                      <div className="our-product-2 ">
                         <img src="/assets/images/deya.png" className='img-fluid mb-1' alt="d"/>
                       </div>
                       <div className="our-product-2 ">
@@ -911,13 +969,17 @@ class A extends React.Component {
             </Container>
           </section>
 
+          {/*<section className="section7">*/}
+          {/*  <Container className='team_Carousel'>*/}
 
           <section className="section7 position-relative">
             <img src="/assets/images/Rectangle6.png" className='rec6 img-fluid position-absolute' alt=""/>
             <Container className='team_Carousel '>
-              <p className='team_Title'>Bizning jamoa</p>
+              <p className='team_Title'>
+                <FormattedMessage id='section7_Title'/>
+              </p>
               <Slider {...settings}>
-                {slideUsers.map(users=>
+                {slideUsers.map(users =>
                   <div className=''>
                     <Card className='team_Card'>
                       <p className="d-flex align-items-center flex-column">
@@ -955,66 +1017,144 @@ class A extends React.Component {
                 <Col xs={12} sm={12} md={12} lg={12} xl={12}>
                   <Row className='footerLinks'>
                     <Col xs={12} sm={6} md={6} lg={2} xl={2} className="mt-2">
-                      <p className="lato-bold company">Kompaniya</p>
-                      <Link className="lato-light link-menu" spy={true} smooth={true} duration={1500} activeClass="active"
-                            activeClassName="selected" to="bizhaqimizda"><p className="mt-3"><a> Biz haqimizda</a></p>
+                      <p className="lato-bold company">
+                        <FormattedMessage id="section8_Title1"/>
+                      </p>
+                      <Link className="lato-light link-menu" spy={true} smooth={true} duration={1500}
+                            activeClass="active"
+                            activeClassName="selected" to="bizhaqimizda"><p className="mt-3">
+                        <a><FormattedMessage id="section8_Title1_Link1"/></a></p>
                       </Link>
-                      <Link className="lato-light link-menu" spy={true} smooth={true} duration={1300} activeClass="active"
-                            activeClassName="selected" to="xizmatlar"><p className="mt-3"><a> Bizning xizmatlar</a></p>
+                      <Link className="lato-light link-menu" spy={true} smooth={true} duration={1300}
+                            activeClass="active"
+                            activeClassName="selected" to="xizmatlar"><p className="mt-3">
+                        <a><FormattedMessage id="section8_Title1_Link2"/></a></p>
                       </Link>
-                      <Link className="lato-light link-menu" spy={true} smooth={true} duration={1200} activeClass="active"
-                            activeClassName="selected" to="portfolio"><p className="mt-3"><a> Portfolio</a></p></Link>
-                      <Link className="lato-light link-menu" spy={true} smooth={true} duration={1000} activeClass="active"
-                            activeClassName="selected" to="mijozlar"><p className="mt-3"><a> Bizning Mijozlar</a></p>
+                      <Link className="lato-light link-menu" spy={true} smooth={true} duration={1200}
+                            activeClass="active"
+                            activeClassName="selected" to="portfolio"><p className="mt-3">
+                        <a><FormattedMessage id="section8_Title1_Link3"/></a>
+                      </p></Link>
+                      <Link className="lato-light link-menu" spy={true} smooth={true} duration={1000}
+                            activeClass="active"
+                            activeClassName="selected" to="mijozlar"><p className="mt-3">
+                        <a><FormattedMessage id="section8_Title1_Link4"/></a></p>
                       </Link>
-                      <Link className="lato-light link-menu" spy={true} smooth={true} duration={700} activeClass="active"
-                            activeClassName="selected" to="jamoa"><p className="mt-3"><a> Bizning Jamoa</a></p></Link>
+                      <Link className="lato-light link-menu" spy={true} smooth={true} duration={700}
+                            activeClass="active"
+                            activeClassName="selected" to="jamoa"><p className="mt-3">
+                        <a><FormattedMessage id="section8_Title1_Link5"/></a></p></Link>
                     </Col>
                     <Col xs={12} sm={6} md={6} lg={2} xl={2} className="mt-2">
-                      <p className="lato-bold company">Xizmatlar</p>
-                      <p className="mt-3 link-menu"><a className="lato-light" href="#">Ipakli bosma</a></p>
-                      <p className="link-menu"><a className="lato-light" href="#">Ofset bosma</a></p>
-                      <p className="link-menu"><a className="lato-light" href="#">Kesish</a></p>
-                      <p className="link-menu"><a className="lato-light" href="#">Ultra-binafsha rang</a></p>
-                      <p className="link-menu"><a className="lato-light" href="#">Bo'rttirish</a></p>
-                      <p className="link-menu"><a className="lato-light" href="#">Laminatsiya</a></p>
-                      <p className="link-menu"><a className="lato-light" href="#">Qog'oz lashirovka</a></p>
-                      <p className="link-menu"><a className="lato-light" href="#">O'yib olish</a></p>
+                      <p className="lato-bold company">
+                        <FormattedMessage id="section8_Title2"/>
+                      </p>
+
+                      <p className="mt-3 link-menu">
+                        <a className="lato-light" href="#">
+                          <FormattedMessage id="section8_Title2_Link1"/>
+                        </a>
+                      </p>
+                      <p className="link-menu">
+                        <a className="lato-light" href="#">
+                          <FormattedMessage id="section8_Title2_Link2"/>
+                        </a>
+                      </p>
+                      <p className="link-menu">
+                        <a className="lato-light" href="#">
+                          <FormattedMessage id="section8_Title2_Link3"/>
+                        </a>
+                      </p>
+                      <p className="link-menu">
+                        <a className="lato-light" href="#">
+                          <FormattedMessage id="section8_Title2_Link4"/>
+                        </a>
+                      </p>
+                      <p className="link-menu">
+                        <a className="lato-light" href="#">
+                          <FormattedMessage id="section8_Title2_Link5"/>
+                        </a>
+                      </p>
+                      <p className="link-menu">
+                        <a className="lato-light" href="#">
+                          <FormattedMessage id="section8_Title2_Link6"/>
+                        </a>
+                      </p>
+                      <p className="link-menu">
+                        <a className="lato-light" href="#">
+                          <FormattedMessage id="section8_Title2_Link7"/>
+                        </a>
+                      </p>
+                      <p className="link-menu">
+                        <a className="lato-light" href="#">
+                          <FormattedMessage id="section8_Title2_Link8"/>
+                        </a>
+                      </p>
                     </Col>
                     <Col xs={12} sm={6} md={6} lg={2} xl={2} className="mt-2">
-                      <p className="lato-bold company">Xizmatlar</p>
-                      <p className="mt-3 link-menu"><a className="lato-light" href="#">Rahbariyat</a></p>
-                      <p className="link-menu"><a className="lato-light" href="#">Tarix</a></p>
-                      <p className="link-menu"><a className="lato-light" href="#">Yangiliklar</a></p>
-                      <p className="link-menu"><a className="lato-light" href="#">Maketlar uchun talab</a></p>
-                      <p className="link-menu"><a className="lato-light" href="#">Aloqa</a></p>
+                      <p className="lato-bold company">
+                        <FormattedMessage id="section8_Title3"/>
+                      </p>
+                      <p className="mt-3 link-menu">
+                        <a className="lato-light" href="#">
+                          <FormattedMessage id="section8_Title3_Link1"/>
+                        </a>
+                      </p>
+                      <p className="link-menu">
+                        <a className="lato-light" href="#">
+                          <FormattedMessage id="section8_Title3_Link2"/>
+                        </a>
+                      </p>
+                      <p className="link-menu">
+                        <a className="lato-light" href="#">
+                          <FormattedMessage id="section8_Title3_Link3"/>
+                        </a>
+                      </p>
+                      <p className="link-menu">
+                        <a className="lato-light" href="#">
+                          <FormattedMessage id="section8_Title3_Link4"/>
+                        </a>
+                      </p>
+                      <p className="link-menu">
+                        <a className="lato-light" href="#">
+                          <FormattedMessage id="section8_Title3_Link5"/>
+                        </a>
+                      </p>
                     </Col>
                     <Col xs={12} sm={6} md={6} lg={6} xl={6} className="mt-2">
                       <div className="d-flex justify-content-lg-end justify-content-xl-end mr-lg-5 mr-xl-5">
                         <div className="">
-                          <p className="lato-bold aloqa">Aloqa</p>
+                          <p className="lato-bold aloqa">
+                            <FormattedMessage id="section8_Title4"/>
+                          </p>
 
                           <div>
                             <p className="phone-num" style={{marginTop: "20px"}}>
                               <img className="phone-img" src="/assets/images/phone.png" alt=""/>
-                              <span className="phone-code lato-regular">(+99891)</span>
+                              <span
+                                className="phone-code lato-regular">({company && company.phoneNumber1.substring(0, 6)})</span>
                             </p>
-                            <p className="phone-number lato-black mb-0">204-11-00</p>
+                            <p
+                              className="phone-number lato-black mb-0">{company && company.phoneNumber1.substring(6)}</p>
                           </div>
 
                           <div>
                             <p className="phone-num mt-3">
-                              <span className="phone-code lato-regular">(+99891)</span>
+                              <span
+                                className="phone-code lato-regular">(({company && company.phoneNumber2.substring(0, 6)}))</span>
                             </p>
-                            <p className="phone-number lato-black mb-0">360-77-00</p>
+                            <p
+                              className="phone-number lato-black mb-0">{company && company.phoneNumber2.substring(6)}</p>
 
                           </div>
 
                           <div>
                             <p className="phone-num mt-3">
-                              <span className="phone-code lato-regular">(+99873)</span>
+                              <span
+                                className="phone-code lato-regular">(({company && company.phoneNumber3.substring(0, 6)}))</span>
                             </p>
-                            <p className="phone-number lato-black mb-0">543-55-55</p>
+                            <p
+                              className="phone-number lato-black mb-0">{company && company.phoneNumber3.substring(6)}</p>
                           </div>
                         </div>
                       </div>
@@ -1033,24 +1173,28 @@ class A extends React.Component {
                             <DropdownToggle caret className="dropdownMain">
                               Uzbek <FaAngleDown/>
                             </DropdownToggle>
-                            <DropdownMenu>
-                              <DropdownItem>Uzbek</DropdownItem>
-                              <DropdownItem>Russian</DropdownItem>
+                            <DropdownMenu right>
+                              <DropdownItem onClick={()=>handleLang2(1)} key={1}>
+                                <FormattedMessage id='language_item1'/>
+                              </DropdownItem>
+                              <DropdownItem onClick={()=>handleLang2(2)} key={2}>
+                                <FormattedMessage id='language_item2'/>
+                              </DropdownItem>
                             </DropdownMenu>
                           </UncontrolledDropdown>
                         </Col>
                         <Col xs={8} sm={9} md={9} lg={10} xl={10}>
                           <div className="telegram d-inline-block">
-                            <a href=""><img className="text-center" src="/assets/images/002-telegram.png" alt=""/></a>
+                            <a><img className="text-center" src="/assets/images/002-telegram.png" alt=""/></a>
                           </div>
                           <div className="telegram ml-md-3 ml-1 d-inline-block">
-                            <a href=""><img src="/assets/images/003-instagram.png" alt=""/></a>
+                            <a href={company.instagram}><img src="/assets/images/003-instagram.png" alt=""/></a>
                           </div>
                           <div className="telegram ml-md-3 ml-1 d-inline-block">
-                            <a href=""><img src="/assets/images/001-facebook-logo.png" alt=""/></a>
+                            <a href={company.facebook}><img src="/assets/images/001-facebook-logo.png" alt=""/></a>
                           </div>
                           <div className="telegram ml-md-3 ml-1 d-inline-block">
-                            <a href=""> <img src="/assets/images/004-youtube.png" alt=""/></a>
+                            <a href={company.youtube}> <img src="/assets/images/004-youtube.png" alt=""/></a>
                           </div>
                         </Col>
                       </Row>
@@ -1062,8 +1206,10 @@ class A extends React.Component {
                         </Col>
                         <Col xs={11} sm={11} md={11} lg={11} xl={11} className='p-0'>
                           <p className='addres mb-0'>140100</p>
-                          <p className="lato-regular addres"> O'zbekiston R, Farg'ona viloyati, Qo'qon sh. Usta bozor k,
-                            1B uy.</p>
+                          <p className="lato-regular addres">
+                            {/*<FormattedMessage id='footer_address'/>*/}
+                            {company.address}
+                          </p>
                         </Col>
                       </Row>
                     </Col>
@@ -1072,8 +1218,10 @@ class A extends React.Component {
               </Row>
               <Row className=" mt-3 p-1">
                 <p className="lato-regular link-pdp">
-                  <a className="text-white" href="https://pdp.uz">© 2005 - 2019 europrint.uz tipografiyasi | Personal
-                    Development Process</a></p>
+                  <a className="text-white" href="https://pdp.uz">
+                    <FormattedMessage id='footer_linkText_Info'/>
+                  </a>
+                </p>
               </Row>
             </Container>
           </footer>

@@ -32,6 +32,9 @@ public class CompanyController {
             company.setInstagram(reqCompany.getInstagram());
             company.setTelegram(reqCompany.getTelegram());
             company.setYoutube(reqCompany.getYoutube());
+            company.setPhoneNumber1(reqCompany.getPhonenumber1());
+            company.setPhoneNumber2(reqCompany.getPhonenumber2());
+            company.setPhoneNumber3(reqCompany.getPhonenumber3());
             companyRepository.save(company);
             return ResponseEntity.ok(new ApiResponse("success",true));
         } catch (Exception e) {

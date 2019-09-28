@@ -41,14 +41,12 @@ public class HomeController {
     public HttpEntity<?> getHomePageData(){
         Integer customerCount = userRepository.countAllByRolesIn(new HashSet<>(roleRepository.findAllByName(RoleName.ROLE_CUSTOMER)));
         Company company = companyRepository.findById(1).orElseThrow(() -> new ResourceNotFoundException("company", "id", 1));
-        List<PhoneNumber> phoneNumbers = phoneNumberRepository.findAll();
         List<Portfolio> portfolios = portfolioRepository.findAll();
         List<Master> masters = masterRepository.findAll();
         long count = orderRepository.count();
         HomePageResponse homePageResponse = new HomePageResponse();
         homePageResponse.setCompany(company);
         homePageResponse.setCountAllCustomer(customerCount);
-        homePageResponse.setPhoneNumbers(phoneNumbers);
         homePageResponse.setPortfolios(portfolios);
         homePageResponse.setMasters(masters);
         homePageResponse.setCountAllMasters(masters.size());

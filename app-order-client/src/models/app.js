@@ -7,7 +7,7 @@ import {routerRedux} from 'dva/router'
 import {parse} from 'qs'
 import config from 'config'
 import {EnumRoleType} from 'enums'
-import {query, logout,getPhoneNumber} from 'services/app'
+import {query, logout,getCompany} from 'services/app'
 import * as menusService from 'services/menus'
 import queryString from 'query-string'
 import {TOKEN_NAME} from "../constants";
@@ -20,6 +20,7 @@ export default {
     apiPath: '',
     childModel: '',
     user: {},
+    company:'',
     permissions: {
       visit: [],
     },
@@ -38,6 +39,7 @@ export default {
     navOpenKeys: JSON.parse(window.localStorage.getItem(`${prefix}navOpenKeys`)) || [],
     locationPathname: '',
     locationQuery: {},
+    homeData:'',
     clear:false
   },
   subscriptions: {
@@ -73,9 +75,15 @@ export default {
   effects: {
 
     *homePageData({payload},{call,put,select}){
-      alert("s")
-      const data = yield call(getPhoneNumber);
+      const data = yield call(getCompany);
       console.log(data)
+      yield put({
+        type:'updateState',
+        payload:{
+          company:data.object&& data.object.company,
+          homeData:data
+        }
+      })
     },
 
     * query({

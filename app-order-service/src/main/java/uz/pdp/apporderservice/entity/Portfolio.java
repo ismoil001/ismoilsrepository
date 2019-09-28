@@ -18,9 +18,5 @@ public class Portfolio extends AbsEntity {
     @ManyToOne(fetch = FetchType.LAZY,optional = true)
     private Attachment attachment;
 
-    private String title;
-
-    private String description;
-
 }
 

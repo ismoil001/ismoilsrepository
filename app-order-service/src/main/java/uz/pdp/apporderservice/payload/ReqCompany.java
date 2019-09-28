@@ -15,6 +15,9 @@ public class ReqCompany {
     private String instagram;
     private String youtube;
     private String telegram;
+    private String phonenumber1;
+    private String phonenumber2;
+    private String phonenumber3;
 
 
 }

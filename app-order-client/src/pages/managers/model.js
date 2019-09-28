@@ -34,7 +34,6 @@ export default {
   effects: {
     * getManager({payload}, {call, put, select}) {
       const res = yield call(managers);
-      console.log(res);
       yield put({
         type:'updateState',
         payload:{
@@ -45,7 +44,6 @@ export default {
     * saveManager({payload},{call,put,select}){
       const res=yield call(saveManager,payload);
       const {openAddModal}=yield select(_=>_.manager);
-      console.log(res);
       yield put({
         type:'updateState',
         payload:{
@@ -58,7 +56,6 @@ export default {
     },
     * delManager({payload},{call,put,select}){
       const res=yield call(deleteManager,payload);
-      console.log(res);
       yield put({
         type:'getManager'
       });
@@ -71,7 +68,6 @@ export default {
     },
     * editingManager({payload},{call,put,select}){
       const res=yield call(editManag,payload)
-      console.log(res);
       yield put({
         type:'getManager'
       });

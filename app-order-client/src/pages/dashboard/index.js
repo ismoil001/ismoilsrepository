@@ -2,7 +2,7 @@ import React, {PureComponent} from 'react';
 import {connect} from "dva"
 import moment from 'moment'
 import PaymentModal from '../../components/PaymentModal/index'
-import MaskedInput from 'react-text-mask'
+import CurrencyInput from 'react-currency-input';
 import {
   Menu,
   Icon,
@@ -32,7 +32,7 @@ class Index extends PureComponent {
   render() {
     const {dashboard, dispatch, form} = this.props;
     const {modalVisible, modalType, currentItem, customerList, currentItemPaymentSum, ismine, archiveData, orderLists, page, totalElements, searchValue, paymentModalVisible} = dashboard;
-    const {getFieldDecorator, getFieldsValue, resetFields} = form;
+    const {getFieldDecorator, getFieldsValue, resetFields,setFieldsValue} = form;
     const {Option} = Select;
     const handleOpenModal = () => {
       dispatch({
@@ -54,7 +54,6 @@ class Index extends PureComponent {
       })
       resetFields();
     }
-
 
     const handleSubmit = () => {
       if (modalType === "create") {
@@ -399,12 +398,7 @@ class Index extends PureComponent {
                       initialValue: currentItem && currentItem.count,
                       rules: [{required: true, message: 'Please input your product count!'}],
                     })(
-                      <MaskedInput
-                        className="form-control"
-                        placeholder="Count..."
-                        mask={[/\d/, /\d/, /\d/," ", /\d/, /\d/, /\d/," ", /\d/, /\d/, /\d/," ",/\d/, /\d/, /\d/," ",/\d/, /\d/, /\d/," ",/\d/, /\d/, /\d/," ",/\d/, /\d/, /\d/," ",/\d/, /\d/, /\d/," ",/\d/, /\d/, /\d/," ",/\d/, /\d/, /\d/]}
-                        maskChar={null}
-                      />,
+                      <CurrencyInput precision={''} thousandSeparator=" "/>
                     )}
                   </Form.Item>
                   <Form.Item>
@@ -412,12 +406,7 @@ class Index extends PureComponent {
                       initialValue: currentItem && currentItem.price,
                       rules: [{required: true, message: 'Please input one product price!'}],
                     })(
-                      <MaskedInput
-                        className="form-control"
-                        placeholder="Our pruduct prce.."
-                        mask={[/\d/, /\d/, /\d/," ", /\d/, /\d/, /\d/," ", /\d/, /\d/, /\d/," ",/\d/, /\d/, /\d/," ",/\d/, /\d/, /\d/," ",/\d/, /\d/, /\d/," ",/\d/, /\d/, /\d/," ",/\d/, /\d/, /\d/," ",/\d/, /\d/, /\d/," ",/\d/, /\d/, /\d/]}
-                        maskChar={null}
-                      />,
+                      <CurrencyInput precision={''} thousandSeparator=" "/>
                     )}
                   </Form.Item>
                 </Form>

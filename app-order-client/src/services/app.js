@@ -27,9 +27,9 @@ export function managers() {
     method: 'get'
   })
 }
-export function getPhoneNumber() {
+export function getCompany() {
   return request({
-    url: '/api/phonenumber',
+    url: '/api/homepage',
     method: 'get'
   })
 }

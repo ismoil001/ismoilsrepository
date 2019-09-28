@@ -30,7 +30,6 @@ export default {
   effects: {
     *getCompany({payload},{call,put,select}){
       const data = yield call(getCompany);
-      console.log(data)
       if(data.success){
         yield put({
           type:'updateState',

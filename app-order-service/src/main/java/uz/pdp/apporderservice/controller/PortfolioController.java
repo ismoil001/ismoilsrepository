@@ -31,7 +31,7 @@ public class PortfolioController {
     @PostMapping
     public HttpEntity<?> savePortfolio(@RequestBody ReqPortfolio reqPortfolio) {
         try {
-            portfolioRepository.save(new Portfolio(attachmentRepository.findById(reqPortfolio.getAttachment()).orElseThrow(() -> new ResourceNotFoundException("attachment", "id", reqPortfolio)), reqPortfolio.getTitle(), reqPortfolio.getDescription()));
+            portfolioRepository.save(new Portfolio(attachmentRepository.findById(reqPortfolio.getAttachment()).orElseThrow(() -> new ResourceNotFoundException("attachment", "id", reqPortfolio))));
             return ResponseEntity.ok(new ApiResponse("success", true));
         } catch (Exception e) {
             e.printStackTrace();
