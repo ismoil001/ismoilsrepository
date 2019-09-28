@@ -13,8 +13,4 @@ public class ReqPortfolio {
 
     private UUID attachment;
 
-    private String title;
-
-    private String description;
-
 }

@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from "dva";
-import { Upload, Col, Row, Icon, Modal } from 'antd';
-
+import {Upload, Col, Row, Icon, Modal, notification, Button, Card} from 'antd';
 function getBase64(file) {
   return new Promise((resolve, reject) => {
     const reader = new FileReader();
@@ -10,8 +9,10 @@ function getBase64(file) {
     reader.onerror = error => reject(error);
   });
 }
-
+@connect(({settings})=>({settings}))
 class Portfolio extends Component {
+
+
   state = {
     previewVisible: false,
     previewImage: '',
@@ -37,31 +38,66 @@ class Portfolio extends Component {
 
 
   render() {
+    const {settings,dispatch} =this.props;
+    const {loadingImage,oldAttachment,photo} =settings;
+
     const { previewVisible, previewImage, fileList } = this.state;
     const uploadButton = (
-      <div>
-        <Icon type="plus" />
+      <Card>
+        <Icon type={loadingImage ? 'loading' : 'plus'} />
         <div className="ant-upload-text">Upload</div>
-      </div>
+      </Card>
     );
+    function beforeUpload(file) {
+      const isJPG = file.type === "image/jpeg";
+      const isPNG = file.type === "image/png";
+      if (!isJPG && !isPNG) {
+        notification['error']({message:"You can only upload JPG or PNG file!"});
+      }
+
+      return isJPG || isPNG;
+    }
+
+    const customRequest=(options)=>{
+      dispatch({
+        type:'settings/uploadFile',
+        payload:{
+          options
+        }
+      })
+    }
+    const handleSave=()=>{
+      alert(photo.split("/")[3])
+      dispatch({
+        type:'settings/savePortfolio',
+        payload:{
+          attachment:photo && photo.split("/")[3]
+        }
+      })
+    }
     return (
       <div className="clearfix">
         <Row>
           <Col span={20} offset={2}>
             <h2 className="text-center mt-5 mb-5"><b>Portfolio qo'shish</b></h2>
             <Upload
-              action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
-              listType="picture-card"
-              fileList={fileList}
-              onPreview={this.handlePreview}
-              onChange={this.handleChange}
+              name="attachment"
+              showUploadList={false}
+              beforeUpload={beforeUpload}
+              customRequest={customRequest}
             >
-              {fileList.length >= 100 ? null : uploadButton}
+              {photo ? <img width={200} height={200} src={photo} alt="avatar"/> : uploadButton}
             </Upload>
-            <Modal visible={previewVisible} footer={null} onCancel={this.handleCancel}>
-              <img alt="example" style={{ width: '100%' }} src={previewImage} />
-            </Modal>
+            <Button onClick={handleSave}>save</Button>
+
+
+            {/*<Modal visible={previewVisible} footer={null} onCancel={this.handleCancel}>*/}
+              {/*<img alt="example" style={{ width: '100%' }} src={previewImage} />*/}
+            {/*</Modal>*/}
           </Col>
+        </Row>
+        <Row>
+
         </Row>
       </div>
     );

@@ -10,8 +10,11 @@ export default {
     selectedUser:'',
     payTypes:[],
     paymentList:[],
+    loadingModal:false,
     searchValue:'',
     isArchive:false,
+    totalElements:0,
+    page:0
   },
 
   subscriptions: {
@@ -45,11 +48,12 @@ export default {
         yield put({
           type:'updateState',
           payload:{
-            paymentList:data.object
+            paymentList:data.object,
+            page:data.currentPage,
+            totalElements:data.totalElements
           }
         })
       }
-
     },
 
     *deletePayment({payload},{call,put,select}){
@@ -62,6 +66,15 @@ export default {
             size:10,
             name:'',
             isArchive: false
+          }
+        })
+        yield put({
+          type:'queryPayment',
+          payload:{
+            page:0,
+            size:10,
+            name:'',
+            isArchive: true
           }
         })
         notification['success']({
@@ -103,6 +116,15 @@ export default {
             size:10,
             name:'',
             isArchive:false
+          }
+        })
+        yield put({
+          type:'queryPayment',
+          payload:{
+            page:0,
+            size:10,
+            name:'',
+            isArchive:true
           }
         })
       }

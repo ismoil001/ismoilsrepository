@@ -16,7 +16,7 @@ import {
   InputNumber,
   Icon,
   Popconfirm,
-  Checkbox
+  Checkbox, Pagination
 } from "antd/lib/index";
 import moment from "moment/moment";
 import {Link} from "react-router-dom";
@@ -25,9 +25,10 @@ import {Link} from "react-router-dom";
 class Index extends PureComponent {
   render() {
     const {payment,dispatch,form} = this.props
-    const {modalVisible,modalType,isArchive,searchValue,currentItem,userList,selectedUser,payTypes,paymentList} = payment
-    const {getFieldsValue,getFieldDecorator} = form
+    const {modalVisible,modalType,totalElements,page,loadingModal,isArchive,searchValue,currentItem,userList,selectedUser,payTypes,paymentList} = payment
+    const {getFieldsValue,getFieldDecorator,resetFields} = form
     const onShowPaymentModal=()=>{
+      resetFields();
       dispatch({
         type:'payment/updateState',
         payload:{
@@ -36,6 +37,7 @@ class Index extends PureComponent {
       })
     }
     const handleHideModal=()=>{
+      resetFields();
       dispatch({
         type:'payment/updateState',
         payload:{
@@ -79,7 +81,8 @@ class Index extends PureComponent {
       },{
         title:'Amount',
         dataIndex:'paySum',
-        key:'paySum'
+        key:'paySum',
+        render:(text,record)=>record.paySum.toLocaleString()
       },{
         title:'PayType',
         dataIndex:'payType',
@@ -144,6 +147,23 @@ class Index extends PureComponent {
         }
       })
     }
+    const onChangePage = (cpage) => {
+      dispatch({
+        type: 'payment/updateState',
+        payload: {
+          page: cpage,
+        }
+      })
+      dispatch({
+        type: 'payment/queryPayment',
+        payload:{
+          page:0,
+          size:10,
+          name:'',
+          isArchive:isArchive
+        }
+      })
+    }
 
     return (
       <div>
@@ -166,10 +186,13 @@ class Index extends PureComponent {
             <Button className="btn-dark" onClick={searchButton}>Search</Button>
           </Col>
           <Col span={20} offset={2}>
-            <Table dataSource={paymentList} columns={visibleColumns}/>
-          </Col>{console.log(paymentList)}
+            <Table dataSource={paymentList} columns={visibleColumns} pagination={false}/>
+            <Pagination style={{position: "relative", top: "20px", left: "45%", marginBottom: "200px"}}
+                        current={page}
+                        onChange={onChangePage} pageSize={10} total={totalElements} />
+          </Col>
         </Row>
-        <Modal visible={modalVisible} onCancel={handleHideModal} onOk={onSubmitPayment}>
+        <Modal visible={modalVisible} onCancel={handleHideModal} onOk={onSubmitPayment} confirmLoading={loadingModal}>
           <Form style={{marginTop:"30px"}}>
             <p>Select user:</p>
             <Form.Item>
@@ -205,7 +228,7 @@ class Index extends PureComponent {
                 initialValue:currentItem!==''?currentItem.paySum:0,
                 rules: [{required: true, message: 'Please input sum!'}],
               })(
-                <CurrencyInput precision={''} thousandSeparator=" "/>,
+                <CurrencyInput className="form-control" placeholder="Miqdori" precision={''} thousandSeparator=" "/>,
               )}
             </Form.Item>
           </Form>
