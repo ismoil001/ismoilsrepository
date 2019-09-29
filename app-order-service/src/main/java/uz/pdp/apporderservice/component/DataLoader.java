@@ -42,11 +42,11 @@ public class DataLoader implements CommandLineRunner {
     public void run(String... args) throws Exception {
 //        PhoneNumber phone = phoneNumberRepository.save(new PhoneNumber("+7777777"));
         companyRepository.save(new Company(1,"O'zbekiston R,  Farg'ona viloyati, Qo'qon sh. Usta bozor k, 1B uy.","O'zbekiston R,  Farg'ona viloyati, Qo'qon sh. Usta bozor k, 1B uy.","sss@mail.ru","facebook","insta","youtube","tg","+998941211112","+998941211111","+998989877898"));
+
         if (initializationMode.equalsIgnoreCase("always")) {
 
-            User user = new User("+998941211112", passwordEncoder.encode("root123"), "Sobir", "Xalimov", "Botirovich", new HashSet<>(roleRepository.findAllByName(RoleName.ROLE_MANAGER)),"Europrint");
+            User user = new User("+998941211112", passwordEncoder.encode("root123"), "Sobir", "Xalimov", "Botirovich", new HashSet<>(roleRepository.findAllByName(RoleName.ROLE_ADMIN)),"Europrint");
             userRepository.save(user);
-            User user1=new User("+998993632587",passwordEncoder.encode("asd"),"Alisher","Atadjanov","Baxramovich",new HashSet<>(roleRepository.findAllByName(RoleName.ROLE_ADMIN)),"PDP");
            User user12=new User("+998993632582",passwordEncoder.encode("asd"),"Alisher","Atadjanov","Baxramovich",new HashSet<>(roleRepository.findAllByName(RoleName.ROLE_CUSTOMER)),"PDP");
             userRepository.save(user12);
         }

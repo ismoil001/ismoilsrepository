@@ -361,7 +361,7 @@ class Index extends PureComponent {
                   <Table dataSource={orderLists} columns={visibleColumns} pagination={false}/>
                   <Pagination style={{position: "relative", top: "20px", left: "45%", marginBottom: "200px"}}
                               current={page}
-                              onChange={onChangePage} pageSize={10} total={totalElements} pagination={false}/>
+                              onChange={onChangePage} pageSize={10} total={totalElements} />
                 </Col>
               </Row>
 
@@ -425,7 +425,7 @@ class Index extends PureComponent {
                       initialValue: currentItem && currentItem.count,
                       rules: [{required: true, message: 'Please input your product count!'}],
                     })(
-                      <CurrencyInput  className="form-control" precision={''} thousandSeparator=" "/>
+                      <CurrencyInput className="form-control" placeholder="Soni..." precision={''} thousandSeparator=" "/>
                     )}
                   </Form.Item>
                   <Form.Item>
@@ -433,7 +433,7 @@ class Index extends PureComponent {
                       initialValue: currentItem && currentItem.price,
                       rules: [{required: true, message: 'Please input one product price!'}],
                     })(
-                      <CurrencyInput  className="form-control" precision={''} thousandSeparator=" "/>
+                      <CurrencyInput className="form-control" placeholder="Narx..." precision={''} thousandSeparator=" "/>
                     )}
                   </Form.Item>
                 </Form>

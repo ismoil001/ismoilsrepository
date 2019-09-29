@@ -26,6 +26,12 @@ export function addPhoneNumber (data) {
     data,
   })
 }
+export function getAllPortfolio (data) {
+  return request({
+    url: '/api/portfolio',
+    method: 'get',
+  })
+}
 export function deleteNumber (data) {
   return request({
     url: '/api/phonenumber/'+data.id,

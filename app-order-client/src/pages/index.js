@@ -3,7 +3,6 @@ import '../global.scss'
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import {Link} from "react-scroll";
-import {FormattedMessage} from 'umi-plugin-locale';
 import {
   Button,
   Card,
@@ -27,8 +26,7 @@ import Header from "../components/Header/index";
 import Carusel from "../components/Carusel";
 import {FaAngleDown} from "react-icons/fa";
 import {connect} from "dva";
-import { formatMessage, setLocale, getLocale,} from 'umi-plugin-locale';
-
+import {FormattedMessage, formatMessage, setLocale, getLocale,} from 'umi-plugin-locale';
 @connect(({app}) => ({app}))
 class A extends React.Component {
 

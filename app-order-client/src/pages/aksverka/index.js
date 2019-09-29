@@ -50,19 +50,25 @@ class Index extends Component {
       },{
         title:<div><div className="d-inline-block" id="soni" ></div> Soni</div> ,
         dataIndex:'productCount',
-        key:'count'
+        key:'count',
+        render:(text,record)=>record.productCount && record.productCount.toLocaleString()
       },{
         title:'Narxi',
         dataIndex:'productPrice',
-        key:'price'
+        key:'price',
+        render:(text,record)=>record.productPrice && record.productPrice.toLocaleString()
+
       },{
         title:<div><div className="d-inline-block" id="summasi" ></div> Summasi</div>,
         dataIndex:'sum',
-        key:'price'
+        key:'price',
+        render:(text,record)=>record.sum &&record.sum.toLocaleString()
+
       },{
         title:<div><div className="d-inline-block" id="tolov" ></div> To'lov</div>,
         dataIndex:'paymentSum',
-        key:'payment'
+        key:'payment',
+        render:(text,record)=>record.paymentSum && record.paymentSum.toLocaleString()
       }
     ]
 
@@ -78,28 +84,28 @@ class Index extends Component {
         <Row id="aksverka" className="mb-3 mt-3 offset-1 p-1">
           <Col span={5} className="aksverka-header ml-1">
           <div className="bg-white border-1" >
-            <h3 className=" text-center font-weight-bold">{sumCount}</h3>
+            <h3 className=" text-center font-weight-bold">{sumCount.toLocaleString()}</h3>
             <p className=" text-center">
             <div className="d-inline-block" id="soni" ></div>Soni</p>
           </div>
         </Col>
           <Col span={5} className="aksverka-header ml-4">
             <div className="bg-white border-1" >
-              <h3 className="text-center font-weight-bold">{sumOrderCost}</h3>
+              <h3 className="text-center font-weight-bold">{sumOrderCost.toLocaleString()}</h3>
               <p className="text-center">
                 <div className="d-inline-block" id="summasi" ></div>Summasi</p>
             </div>
           </Col>
           <Col span={5} className="aksverka-header ml-4">
             <div className="bg-white border-1" >
-              <h3 className="text-center font-weight-bold">{sumPayment}</h3>
+              <h3 className="text-center font-weight-bold">{sumPayment.toLocaleString()}</h3>
               <p className="text-center">
                 <div className="d-inline-block" id="tolov" ></div>To'lov</p>
             </div>
           </Col>
           <Col span={5} className={saldo>=0?"aksverka-header ml-4 bg-plus":"aksverka-header ml-4 bg-minus"}>
             <div className="border-1" >
-              <h3 className="text-center font-weight-bold">{saldo}</h3>
+              <h3 className="text-center font-weight-bold">{saldo.toLocaleString()}</h3>
               <p className="text-center">Saldo</p>
             </div>
           </Col>
