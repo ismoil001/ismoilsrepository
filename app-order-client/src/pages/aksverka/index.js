@@ -10,6 +10,12 @@ class Index extends Component {
     const {aksverka,dispatch} = this.props;
     const {userList,aksverkaList,saldo, sumPayment, sumOrderCost, sumCount} = aksverka;
 
+    const handleScroll = () => {
+      let myDiv = document.getElementById("nL");
+      if (myDiv.offsetHeight + myDiv.scrollTop + 1 >= myDiv.scrollHeight) {
+        alert("Bas qil")
+      }
+    }
     const onSearch=(val)=>{
       if(val===''){
         dispatch({
@@ -67,7 +73,7 @@ class Index extends Component {
     ]
 
     return (
-      <div className="my-5">
+      <div className="my-5" id="tableMy">
         <Row>
           <Col span={12} offset={2}>
             <Select style={{width:"300px"}} placeholder={"User"} onSearch={onSearch} showSearch  optionFilterProp="children" onChange={handleSelect}>
@@ -106,7 +112,7 @@ class Index extends Component {
         </Row>
         <Row>
           <Col span={20} offset={2}>
-            <Table dataSource={aksverkaList} columns={visibleColumns} pagination={false}/>
+            <Table onScroll={() => handleScroll()} dataSource={aksverkaList} columns={visibleColumns} pagination={false}/>
           </Col>
         </Row>
 

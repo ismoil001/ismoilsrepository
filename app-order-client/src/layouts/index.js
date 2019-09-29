@@ -105,7 +105,7 @@ class BasicLayout extends React.Component {
             <Content
               style={{
                 background: '#fff',
-                minHeight: 900,
+                minHeight: "100vh",
               }}
             >
               {props.children}
