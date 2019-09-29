@@ -31,7 +31,7 @@ class Index extends PureComponent {
 
   render() {
     const {dashboard, dispatch, form} = this.props;
-    const {modalVisible, modalType,modalLoading, currentItem, customerList, currentItemPaymentSum, ismine, archiveData, orderLists, page, totalElements, searchValue, paymentModalVisible} = dashboard;
+    const {modalVisible,status, modalType,modalLoading, currentItem, customerList, currentItemPaymentSum, ismine, archiveData, orderLists, page, totalElements, searchValue, paymentModalVisible} = dashboard;
     const {getFieldDecorator,getFieldsValue, resetFields,setFieldsValue} = form;
     const {Option} = Select;
     const handleOpenModal = () => {
@@ -226,6 +226,8 @@ class Index extends PureComponent {
           page: cpage - 1,
           size: 10,
           name: searchValue,
+          ismine:ismine,
+          status:status
         }
       })
     }
@@ -245,7 +247,7 @@ class Index extends PureComponent {
           page: 0,
           size: 10,
           name: searchValue,
-          status: 'active',
+          status: status,
           ismine: false
         }
       })
@@ -294,6 +296,12 @@ class Index extends PureComponent {
     const handleTab = (key) => {
       if (key === 2 + '') {
         dispatch({
+          type:'dashboard/updateState',
+          payload:{
+            status:"notactive"
+          }
+        })
+        dispatch({
           type: 'dashboard/getOrders',
           payload: {
             page: 0,
@@ -305,6 +313,12 @@ class Index extends PureComponent {
         })
       }
       if (key === 1 + '') {
+        dispatch({
+          type:'dashboard/updateState',
+          payload:{
+            status:"active"
+          }
+        })
         dispatch({
           type: 'dashboard/getOrders',
           payload: {
@@ -336,9 +350,6 @@ class Index extends PureComponent {
 
     return (
       <div className="admin">
-        <Tabs onChange={handleTab} className="pb-5 pt-1">
-          <Tabs.TabPane tab="All orders" key="1">
-            <div>
               <h2 className="text-center my-3"><b>Buyurtmalar</b></h2>
               <Row>
                 <Col span={4} offset={18}>
@@ -355,6 +366,8 @@ class Index extends PureComponent {
                   <Button className="btn-dark" onClick={searchButton}>Search</Button>
                 </Col>
               </Row>
+            <Tabs onChange={handleTab} className="pb-5 pt-1">
+              <Tabs.TabPane tab="All orders" key="1">
 
               <Row className="my-4">
                 <Col span={20} offset={2}>
@@ -437,10 +450,7 @@ class Index extends PureComponent {
                     )}
                   </Form.Item>
                 </Form>
-
-
               </Modal>
-            </div>
           </Tabs.TabPane>
           <Tabs.TabPane tab="Archive" key="2">
             <Col span={20} offset={2}>

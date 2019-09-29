@@ -24,6 +24,7 @@ export default {
     page: 0,
     totalElements: 0,
     ismine: false,
+    status:'active',
     modalLoading:false,
     archiveData: [],
     currentItemPaymentSum: [],

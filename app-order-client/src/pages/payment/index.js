@@ -157,7 +157,7 @@ class Index extends PureComponent {
       dispatch({
         type: 'payment/queryPayment',
         payload:{
-          page:0,
+          page:cpage-1,
           size:10,
           name:'',
           isArchive:isArchive
