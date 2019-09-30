@@ -39,7 +39,7 @@ class Portfolio extends Component {
 
   render() {
     const {settings,dispatch} =this.props;
-    const {loadingImage,oldAttachment,photo} =settings;
+    const {loadingImage,oldAttachment,photo,portfolioList} =settings;
 
     const { previewVisible, previewImage, fileList } = this.state;
     const uploadButton = (
@@ -77,27 +77,26 @@ class Portfolio extends Component {
     }
     return (
       <div className="clearfix">
+        <h2 className="text-center mt-5 mb-5"><b>Portfolio qo'shish</b></h2>
         <Row>
-          <Col span={20} offset={2}>
-            <h2 className="text-center mt-5 mb-5"><b>Portfolio qo'shish</b></h2>
+          <Col span={4} offset={2}>
             <Upload
               name="attachment"
               showUploadList={false}
               beforeUpload={beforeUpload}
               customRequest={customRequest}
             >
-              {photo ? <img width={200} height={200} src={photo} alt="avatar"/> : uploadButton}
+              {uploadButton}
             </Upload>
-            <Button onClick={handleSave}>save</Button>
 
 
             {/*<Modal visible={previewVisible} footer={null} onCancel={this.handleCancel}>*/}
               {/*<img alt="example" style={{ width: '100%' }} src={previewImage} />*/}
             {/*</Modal>*/}
           </Col>
-        </Row>
-        <Row>
-
+            {portfolioList && portfolioList.map(item=>
+              <Col span={4} offset={2} className="mt-5">
+                <img width={200} height={200} src={item.attachment &&'/api/file/get/'+item.attachment.id} alt="avatar"/></Col> )}
         </Row>
       </div>
     );

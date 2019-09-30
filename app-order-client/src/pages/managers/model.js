@@ -47,12 +47,14 @@ export default {
       yield put({
         type:'updateState',
         payload:{
-          openAddModal:!openAddModal
+          openAddModal:!openAddModal,
+          record:{},
         }
       });
       yield put({
         type:'getManager'
       })
+
     },
     * delManager({payload},{call,put,select}){
       const res=yield call(deleteManager,payload);
@@ -74,7 +76,8 @@ export default {
       yield put({
         type:'updateState',
         payload:{
-          openAddModal:false
+          openAddModal:false,
+          record:{}
         }
       })
 

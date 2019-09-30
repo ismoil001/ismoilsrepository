@@ -157,7 +157,7 @@ class Index extends PureComponent {
       dispatch({
         type: 'payment/queryPayment',
         payload:{
-          page:0,
+          page:cpage-1,
           size:10,
           name:'',
           isArchive:isArchive
@@ -177,7 +177,7 @@ class Index extends PureComponent {
             <Checkbox onChange={handleArchive} checked={isArchive}></Checkbox>
           </Col>
           <Col offset={2} span={5} className="mr-4">
-            <Button onClick={onShowPaymentModal} className="btn-dark my-3 mb-2">Add payment</Button>
+            <button onClick={onShowPaymentModal} className="btn btn-dark my-3 mb-2">Add payment</button>
           </Col>
           <Col span={5} className="mt-3  pl-3" offset={8}>
             <Input className="ml-5" onChange={handleSearch}/>

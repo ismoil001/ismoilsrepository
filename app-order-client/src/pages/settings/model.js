@@ -1,7 +1,15 @@
 import {uploadFile} from "../../services/attachmentService";
 import {notification} from "antd";
 import {searchUser} from "../payment/service";
-import {getCompany, addCompany, getNumbers, deleteNumber, addPhoneNumber,getAllPortfolio} from './service';
+import {
+  getCompany,
+  addCompany,
+  getNumbers,
+  deleteNumber,
+  addPhoneNumber,
+  getAllPortfolio,
+  savePortfolio
+} from './service';
 
 export default {
   namespace: 'settings',
@@ -9,9 +17,10 @@ export default {
     company: '',
     numbers: [],
     phoneNumberValue: '',
-    loadingImage:false,
-    oldAttachment:'',
-    photo:'',
+    loadingImage: false,
+    oldAttachment: '',
+    photo: '',
+    portfolioList:[]
   },
 
   subscriptions: {
@@ -23,6 +32,9 @@ export default {
           dispatch({
             type: 'getCompany',
           })
+          dispatch({
+            type: 'getPortfolios',
+          })
         }
       });
     },
@@ -30,13 +42,30 @@ export default {
 
   effects: {
 
-    *getPortfolios({payload},{call,put,select}){
+    * getPortfolios({payload}, {call, put, select}) {
       const data = yield call(getAllPortfolio)
+      yield put({
+        type:'updateState',
+        payload:{
+          portfolioList:data.object
+        }
+      })
 
     },
 
-    *savePortfolio({payload},{call,put,select}){
-      // const data = yield call(savePortfolio,payload);
+    * savePortfolio({payload}, {call, put, select}) {
+      const data = yield call(savePortfolio, payload);
+      if(data.success){
+        yield put({
+          type:'updateState',
+          payload:{
+            portfolioList:data.object
+          }
+        })
+        yield put({
+          type:'getPortfolios',
+        })
+      }
     },
 
     * uploadFile({payload = {}}, {call, put, select}) {
@@ -53,11 +82,11 @@ export default {
       const res = yield call(uploadFile, payload.options);
       payload.options.onSuccess(res, payload.options.file);
       yield put({
-        type: 'updateState',
+        type: 'savePortfolio',
         payload: {
-          photo: '/api/file/get/' + res.id,
-        },
-      });
+          attachment: res.id
+        }
+      })
     },
 
     * getCompany({payload}, {call, put, select}) {

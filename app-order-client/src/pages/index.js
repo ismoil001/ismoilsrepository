@@ -476,12 +476,11 @@ class A extends React.Component {
                     {/*<div className='shape_Carousel1'/>*/}
                     <div className="shape_Carousel2"/>
                     <Slider {...portfolio}>
-                      <div className="">
-                        <img className='portfolio_Img img-fluid' src="/assets/images/portfolio.png" alt=""/>
-                      </div>
-                      <div className="">
-                        <img className='portfolio_Img img-fluid' src="/assets/images/portfolio2.png" alt=""/>
-                      </div>
+                      {homeData && homeData.portfolios.map(item=>
+                        <div className="">{console.log(item)}
+                          <img className='portfolio_Img img-fluid' src={"/api/file/get/"+item.attachment.id} alt=""/>
+                        </div>
+                      )}
                     </Slider>
                   </Col>
                 </Row>

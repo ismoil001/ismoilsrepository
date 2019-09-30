@@ -44,12 +44,13 @@ export default {
 
     *queryPayment({payload},{call,put,select}){
       const data = yield call(getPayments,payload);
+      console.log(data)
       if(data.success){
         yield put({
           type:'updateState',
           payload:{
             paymentList:data.object,
-            page:data.currentPage,
+            page:data.currentPage+1,
             totalElements:data.totalElements
           }
         })
@@ -57,6 +58,7 @@ export default {
     },
 
     *deletePayment({payload},{call,put,select}){
+      const {isArchive} = yield select(_=>_.payment);
       const data = yield call(deletePayment,{id:payload})
       if(data.success){
         yield put({
@@ -65,16 +67,7 @@ export default {
             page:0,
             size:10,
             name:'',
-            isArchive: false
-          }
-        })
-        yield put({
-          type:'queryPayment',
-          payload:{
-            page:0,
-            size:10,
-            name:'',
-            isArchive: true
+            isArchive: isArchive
           }
         })
         notification['success']({
@@ -96,6 +89,7 @@ export default {
       }
     },
     *savePayment({payload},{call,put,select}){
+      const {isArchive} = yield select(_=>_.payment);
       payload.payDate = new Date(payload.payDate).getTime()
       payload.paySum = payload && parseFloat(payload.paySum.replace(/\s/g, ''))
       const data = yield call(savePayment,payload);
@@ -115,16 +109,7 @@ export default {
             page:0,
             size:10,
             name:'',
-            isArchive:false
-          }
-        })
-        yield put({
-          type:'queryPayment',
-          payload:{
-            page:0,
-            size:10,
-            name:'',
-            isArchive:true
+            isArchive:isArchive
           }
         })
       }
