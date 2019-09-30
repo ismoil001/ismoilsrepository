@@ -58,6 +58,18 @@ export default {
 
   // Section 3 translate start
   section3_Title: "Bizning xizmatlar",
+  section3_Sub_Title1: "Gofra karobka",
+  section3_Sub_Title2: "Etiketka",
+  section3_Sub_Title3: "Flaer",
+  section3_Sub_Title4: "Bloknot",
+  section3_Sub_Title5: "Listovka",
+  section3_Sub_Title6: "Buklet",
+  section3_Sub_Title7: "Kalendar",
+  section3_Sub_Title8: "Katalog",
+  section3_Sub_Title9: "Visitka",
+  section3_Sub_Title10: "Jurnal",
+  section3_Sub_Title11: "Qog'oz stakan",
+  section3_Sub_Title12: "Kraft qog'oz paketlar",
   section3_Text: "Batafsil",
   section3_Btn: "Buyurtma berish",
   // Section 3 translate end
@@ -88,6 +100,18 @@ export default {
 
   // Section 7 translate start
   section7_Title: "Bizning jamoa",
+  section7_User_Name1: "Brandon Richards",
+  section7_User_Profession1: "Fotograf, Bosh dizayner",
+  section7_User_Name2: "Beth Mckinney",
+  section7_User_Profession2: "Mijozlar bilan ishlash bo’lim boshlig’i",
+  section7_User_Name3: "Dianne Fisher",
+  section7_User_Profession3: "Mijozlar bilan ishlash meneger",
+  section7_User_Name4: "Dianne Fisher",
+  section7_User_Profession4: "Mijozlar bilan ishlash meneger",
+  section7_User_Name5: "Brandon Richards",
+  section7_User_Profession5: "Fotograf, Bosh dizayner",
+  section7_User_Name6: "Beth Mckinney",
+  section7_User_Profession6: "Mijozlar bilan ishlash bo’lim boshlig’i",
   // Section 7 translate end
 
   // Footer translate start

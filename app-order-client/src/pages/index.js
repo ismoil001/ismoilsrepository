@@ -148,83 +148,83 @@ class A extends React.Component {
       const slideUsers = [
         {
           img: "/assets/images/user1.png",
-          name: "Brandon Richards",
-          profession: "Fotograf, Bosh dizayner",
+          name: <FormattedMessage id="section7_User_Name1"/>,
+          profession: <FormattedMessage id="section7_User_Profession1"/>,
         },
         {
           img: "/assets/images/user2.png",
-          name: "Beth Mckinney",
-          profession: "Mizlar bilan ishlash bo’lim boshlig’i",
+          name: <FormattedMessage id="section7_User_Name2"/>,
+          profession: <FormattedMessage id="section7_User_Profession2"/>,
         },
         {
           img: "/assets/images/user3.png",
-          name: "Dianne Fisher",
-          profession: "Mizlar bilan ishlash meneger",
+          name: <FormattedMessage id="section7_User_Name3"/>,
+          profession: <FormattedMessage id="section7_User_Profession3"/>,
         },
         {
           img: "/assets/images/user3.png",
-          name: "Dianne Fisher",
-          profession: "Mizlar bilan ishlash meneger",
+          name: <FormattedMessage id="section7_User_Name4"/>,
+          profession: <FormattedMessage id="section7_User_Profession4"/>
         },
         {
           img: "/assets/images/user1.png",
-          name: "Brandon Richards",
-          profession: "Fotograf, Bosh dizayner",
+          name: <FormattedMessage id="section7_User_Name5"/>,
+          profession: <FormattedMessage id="section7_User_Profession5"/>,
         },
         {
           img: "/assets/images/user2.png",
-          name: "Beth Mckinney",
-          profession: "Mizlar bilan ishlash bo’lim boshlig’i",
+          name: <FormattedMessage id="section7_User_Name6"/>,
+          profession: <FormattedMessage id="section7_User_Profession6"/>
         },
       ]
       const ourService = [
         {
           img: "/assets/images/mahsulot.png",
-          title: "Gofra karobka"
+          title: <FormattedMessage id='section3_Sub_Title1'/>
         },
         {
           img: "/assets/images/mahsulot2.png",
-          title: "Etiketka"
+          title: <FormattedMessage id='section3_Sub_Title2'/>
         },
         {
           img: "/assets/images/mahsulot3.png",
-          title: "Flaer"
+          title: <FormattedMessage id='section3_Sub_Title3'/>
         },
         {
           img: "/assets/images/mahsulot4.png",
-          title: "Bloknot"
+          title: <FormattedMessage id='section3_Sub_Title4'/>
         },
         {
           img: "/assets/images/mahsulot5.png",
-          title: "Listovka"
+          title: <FormattedMessage id='section3_Sub_Title5'/>
         },
         {
           img: "/assets/images/mahsulot6.png",
-          title: "Buklet"
+          title: <FormattedMessage id='section3_Sub_Title6'/>
         },
         {
           img: "/assets/images/mahsulot7.png",
-          title: "Kalendar"
+          title: <FormattedMessage id='section3_Sub_Title7'/>
         },
         {
           img: "/assets/images/mahsulot8.png",
-          title: "Katalog"
+          title: <FormattedMessage id='section3_Sub_Title8'/>
         },
         {
           img: "/assets/images/mahsulot9.png",
-          title: "Visitka"
+          title: <FormattedMessage id='section3_Sub_Title9'/>
         },
         {
           img: "/assets/images/mahsulot10.png",
-          title: "Jurnal"
+          title: <FormattedMessage id='section3_Sub_Title10'/>
         },
         {
           img: "/assets/images/mahsulot11.png",
-          title: "Qog'oz stakan"
+          title: <FormattedMessage id='section3_Sub_Title11'/>
         },
         {
           img: "/assets/images/mahsulot12.png",
-          title: "Kraft qog'oz paketlar"
+          title: <FormattedMessage id='section3_Sub_Title12'/>
         },
       ];
 

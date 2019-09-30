@@ -1,14 +1,5 @@
 import React from 'react'
 
-import Card from "reactstrap/es/Card";
-import Col from "reactstrap/es/Col";
-import Row from "reactstrap/es/Row";
-import CardText from "reactstrap/es/CardText";
-import CardBody from "reactstrap/es/CardBody";
-import Container from "reactstrap/es/Container";
-
-
-
 
 class Carusel extends React.Component {
   constructor(props) {
@@ -281,7 +272,8 @@ class Carusel extends React.Component {
     return (<div className='CaruselContainer'>
 
 
-        <div className="d-flex justify-content-center justify-content-lg-end justify-content-xl-end boxs" unselectable='on'>
+        <div className="d-flex justify-content-center justify-content-lg-end justify-content-xl-end boxs"
+             unselectable='on'>
 
 
           <div className="box card--left fill-white1" data-card="0" id="0" unselectable='on'
@@ -289,7 +281,7 @@ class Carusel extends React.Component {
             // onClick={this.mouseCordinate}
                onMouseMove={this.mouseMoveCordinate} onBlur={this.mouseCordinateBlur}
                onMouseDown={this.mouseCordinate}>
-            <img src="/assets/images/headerimg.png"  alt="" />
+            <img src="/assets/images/headerimg.png" alt=""/>
 
 
           </div>
@@ -299,7 +291,7 @@ class Carusel extends React.Component {
             // onClick={this.mouseCordinate}
                onMouseDown={this.mouseCordinate} onMouseMove={this.mouseMoveCordinate}
                onBlur={this.mouseCordinateBlur}>
-            <img src="/assets/images/headerimg.png"    alt=""/>
+            <img src="/assets/images/headerimg.png" alt=""/>
 
           </div>
           <div className="box card--right fill-white3" data-card="2" id="2" unselectable='on'
@@ -308,7 +300,7 @@ class Carusel extends React.Component {
             // onClick={this.mouseCordinate}
                onMouseDown={this.mouseCordinate}
                onMouseMove={this.mouseMoveCordinate} onBlur={this.mouseCordinateBlur}>
-            <img src="/assets/images/headerimg.png"   alt="" />
+            <img src="/assets/images/headerimg.png" alt=""/>
 
 
           </div>
@@ -316,15 +308,18 @@ class Carusel extends React.Component {
 
         </div>
 
-        <div className="homeCircles" id="0" style={this.state.circleId1 == 0 ? {opacity: "1",marginTop:"-318px"} : {marginTop:"-318px"}}
+        <div className="homeCircles" id="0"
+             style={this.state.circleId1 == 0 ? {opacity: "1", marginTop: "-318px"} : {marginTop: "-318px"}}
              onClick={this.circleAction}></div>
-        <div className="homeCircles" id="1" style={this.state.circleId1 == 1 ? {opacity: "1",marginTop:"-303px"} : {marginTop:"-303px"}}
+        <div className="homeCircles" id="1"
+             style={this.state.circleId1 == 1 ? {opacity: "1", marginTop: "-303px"} : {marginTop: "-303px"}}
              onClick={this.circleAction}></div>
-        <div className="homeCircles" id="2" style={this.state.circleId1 == 2 ? {opacity: "1",marginTop:"-288px"} : {marginTop:"-288px"}}
+        <div className="homeCircles" id="2"
+             style={this.state.circleId1 == 2 ? {opacity: "1", marginTop: "-288px"} : {marginTop: "-288px"}}
              onClick={this.circleAction}></div>
 
-
-
+        <p>
+        </p>
       </div>
     )
   }

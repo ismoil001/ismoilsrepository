@@ -12,7 +12,7 @@ export default {
   header_item1: "Узбек",
   header_item2: "Русский",
   header_text:"Почему клиенты выбирают нас?\n" +
-    "Качество новейших технологий.\n",
+    "Качество по последним технологиям",
   header_text_bold: "Заказать сейчас!",
   header_btn: "Заказать",
   // Header section translate start
@@ -21,30 +21,30 @@ export default {
 
   // Section 1 translate start
   section1_Title: "O типографии “ЕВРОПРИНТ”",
-  section1_Text: "Узбекская типография \"ЕВРОПРИНТ\" - это подход высокого уровня к вашему бизнесу. Важность\n" +
-    "печатной продукции сложно переоценить. Ведь от этого зависит имидж вашей компании. Мы\n" +
-    "узбекский издательский дом, готовы предоставить вам высококачественные полиграфические и\n" +
-    "дизайнерские услуги. В нашей работе мы успешно сочетаем качество, оперативность и\n" +
-    "индивидуальный подход к задачам заказчика.",
-  section1_Sub_Title: "Типография  “ЕВРОПРИНТ”:",
-  section1_Sub_Text1: "Большой опыт",
+  section1_Text: "Узбекская типография ««EUROPRINT» — это высокопрофессиональный подход к вашему бизнесу. Трудно переоценить\n" +
+    "важность полиграфической продукции. Ведь от нее зависит — имидж вашей компании. Мы, Узбекская типография,\n" +
+    "готовы оказать вам услуги по разработке дизайна и изготовлению полиграфии на самом высоком уровне. В своей\n" +
+    "работе мы успешно совмещаем качество, оперативность и индивидуальный подход к задачам клиента.",
+  section1_Sub_Title: "Типография «EUROPRINT» это:",
+  section1_Sub_Text1: "Огромный опыт",
   section1_Sub_Text2: "Новейшее оборудование",
-  section1_Sub_Text3: "Широкий спектр услуг",
-  section1_Sub_Text4: "Самый быстрый заказ.",
+  section1_Sub_Text3: "Широчайший спектр услуг",
+  section1_Sub_Text4: "Максимально быстрое выполнение заказа",
   // Section 1 translate end
 
 
   // Section 2 translate start
   section2_Main_Title: "Почему мы?",
   section2_Sub_Title1: "Эффективность",
-  section2_Text1: "Быстрый расчет заказов любой сложности." +
-    " Работы на способе офсет продлится 24 часа.",
+  section2_Text1: "Быстрый расчёт заказов любой сложности.\n" +
+    "Выполнение офсетных тиражей от 24 часов.",
   section2_Sub_Title2: "100% качество ",
-  section2_Text2: "Новейшее оборудование, качественные материалы," +
-    " профессиональние сотрудники.",
+  section2_Text2: "Новейшее оборудование, качественные" +
+    " материалы, проффесиональные сотрудники.",
   section2_Sub_Title3: "Доступная цена",
-  section2_Text3: "Минимизация затрат дает нам конкурентное " +
-    "преимущество при более низких рыночных ценах.",
+  section2_Text3: "Минимизация издержек даёт нам" +
+    " конкурентное преимущество в ввиде актуальных" +
+    " цен ниже рынка.",
   section2_Sub_Title4: "Современное оборудование",
   section2_Text4: "Наша типография основана на производственном цехе," +
     " оснащенном современным печатным оборудованием.",
@@ -56,6 +56,18 @@ export default {
 
   // Section 3 translate start
   section3_Title: "Наши услуги",
+  section3_Sub_Title1: "Гофра коробка",
+  section3_Sub_Title2: "Этикетка",
+  section3_Sub_Title3: "Флаер",
+  section3_Sub_Title4: "Блокнот",
+  section3_Sub_Title5: "Листовка",
+  section3_Sub_Title6: "Буклет",
+  section3_Sub_Title7: "Календарь",
+  section3_Sub_Title8: "Каталог",
+  section3_Sub_Title9: "Визитка",
+  section3_Sub_Title10: "Журнал",
+  section3_Sub_Title11: "Бумажный стаканчик",
+  section3_Sub_Title12: "Бумажные крафт пакеты",
   section3_Text: "Узнать больше",
   section3_Btn: "Заказать",
   // Section 3 translate end
@@ -86,6 +98,18 @@ export default {
 
   // Section 7 translate start
   section7_Title: "Наша команда",
+  section7_User_Name1: "Brandon Richards",
+  section7_User_Profession1: "Фотограф, главный дизайнер",
+  section7_User_Name2: "Beth Mckinney",
+  section7_User_Profession2: "Начальник отдела обслуживания клиентов",
+  section7_User_Name3: "Dianne Fisher",
+  section7_User_Profession3: "Менеджер по обслуживанию клиентов",
+  section7_User_Name4: "Dianne Fisher",
+  section7_User_Profession4: "Менеджер по обслуживанию клиентов",
+  section7_User_Name5: "Brandon Richards",
+  section7_User_Profession5: "Фотограф, главный дизайнер",
+  section7_User_Name6: "Beth Mckinney",
+  section7_User_Profession6: "Начальник отдела обслуживания клиентов",
   // Section 7 translate end
 
 
@@ -99,18 +123,18 @@ export default {
   section8_Title2: "Услуги ",
   section8_Title2_Link1: "Шелкография",
   section8_Title2_Link2: "Офсетная печать",
-  section8_Title2_Link3: "Вырезать",
-  section8_Title2_Link4: "Ультра-фиолетовый цвет",
-  section8_Title2_Link5: "Bo’rttirish",
+  section8_Title2_Link3: "Высечка",
+  section8_Title2_Link4: "УФ лакирования",
+  section8_Title2_Link5: "Тиснение",
   section8_Title2_Link6: "Ламинация",
-  section8_Title2_Link7: "Бумажная кашировка",
-  section8_Title2_Link8: "Гравить",
+  section8_Title2_Link7: "Кашировка бумаги",
+  section8_Title2_Link8: "Вырубка",
   section8_Title3: "Для клиентов",
   section8_Title3_Link1: "Руководство",
   section8_Title3_Link2: "История",
   section8_Title3_Link3: "Новости",
-  section8_Title3_Link4: "Спрос на макеты",
-  section8_Title3_Link5: "Контакт",
+  section8_Title3_Link4: "Требование к макетам",
+  section8_Title3_Link5: "Контакты",
   section8_Title4: "Контакт",
   language_item1: "Узбек",
   language_item2: "Русский",
