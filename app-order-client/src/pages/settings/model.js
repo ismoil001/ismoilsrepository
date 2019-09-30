@@ -1,6 +1,6 @@
 import {uploadFile} from "../../services/attachmentService";
 import {notification} from "antd";
-import {searchUser} from "../payment/service";
+import {deletePayment, searchUser} from "../payment/service";
 import {
   getCompany,
   addCompany,
@@ -8,7 +8,8 @@ import {
   deleteNumber,
   addPhoneNumber,
   getAllPortfolio,
-  savePortfolio
+  savePortfolio,
+  deletePortfolio
 } from './service';
 
 export default {
@@ -20,7 +21,8 @@ export default {
     loadingImage: false,
     oldAttachment: '',
     photo: '',
-    portfolioList:[]
+    portfolioList:[],
+    isArchive: false
   },
 
   subscriptions: {
@@ -64,6 +66,17 @@ export default {
         })
         yield put({
           type:'getPortfolios',
+        })
+      }
+    },
+    *deletePortfolio({payload},{call,put,select}){
+      const data = yield call(deletePortfolio,payload)
+      if(data.success){
+        notification['success']({
+          message:'deleted'
+        })
+        yield put({
+          type:'getPortfolios'
         })
       }
     },
