@@ -1,4 +1,5 @@
-import {managers,saveManager,deleteManager,editManag} from 'services/app'
+import {managers,saveManager,
+  deleteManager,editManag} from 'services/app'
 
 export default {
   namespace: 'manager',

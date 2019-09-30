@@ -1,7 +1,10 @@
-import {saveOrder,getCustomers,changeStatusOrder,getActiveOrders,editOrder,deleteOrder,saveOrderPayment} from './service'
+import {saveOrder,getCustomers,changeStatusOrder,
+  getActiveOrders,editOrder,deleteOrder,
+  saveOrderPayment} from './service'
 import {notification} from "antd";
 import {searchUser} from "../payment/service";
-import {getCompany,addCompany,getNumbers,deleteNumber,addPhoneNumber} from './service';
+import {getCompany,addCompany,getNumbers,
+  deleteNumber,addPhoneNumber} from './service';
 export default {
   namespace: 'settings',
   state: {

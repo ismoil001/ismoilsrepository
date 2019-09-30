@@ -2,7 +2,25 @@ import {request, config} from 'utils'
 
 const {api} = config;
 const {saveUser, userLogout, userLogin,
-  editManager,getManagers,delMan} = api;
+  editManager,getManagers,delMan,saveAttachment,getAttachment} = api;
+
+export function savePhoto(req) {
+  return request({
+    url:saveAttachment,
+    method:'post',
+    data:req
+  })
+
+}
+
+export function getPhoto(req) {
+  return request({
+    url:getAttachment+"/"+req.id,
+    method:'get',
+    data:req.data
+  })
+
+}
 
 export function editManag(data) {
   console.log(data)

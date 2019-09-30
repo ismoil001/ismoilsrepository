@@ -1,6 +1,7 @@
 import {Modal, Button, Col, Checkbox, Row, Form, Input, Table} from 'antd';
 import React from "react";
 import { Upload, Icon, message } from 'antd';
+import {connect} from "react-redux";
 
 
 
@@ -23,7 +24,7 @@ function beforeUpload(file) {
   return isJpgOrPng && isLt2M;
 }
 
-
+@connect(({master})=>({master}))
 class Index extends React.Component {
   state = { visible: false };
 
@@ -51,6 +52,7 @@ class Index extends React.Component {
   };
 
   handleChange = info => {
+    console.log(info)
     if (info.file.status === 'uploading') {
       this.setState({ loading: true });
       return;
@@ -67,6 +69,7 @@ class Index extends React.Component {
   };
 
   render() {
+    const {dispatch, master}=this.props;
     const {getFieldDecorator, getFieldsError, getFieldError, isFieldTouched} = this.props.form;
     const uploadButton = (
       <div>
@@ -91,13 +94,22 @@ class Index extends React.Component {
         dataIndex:'masterDescription',
         key:'masterDescription'
       }
-    ]
+    ];
+    const uploadFile = (options) => {
+      dispatch({
+        type:'master/saveMasterPhoto',
+        payload: {
+          options
+        }
+
+      })
+    };
     return (
       <div>
         <Row>
-          <h2 className="text-center mb-4 mt-5"><b>Usta qo'shish</b></h2>
+          <h2 className="text-center mb-4 mt-5"><b>Masterlar ro'yhati</b></h2>
           <Col offset={2} span={5} className="mr-4">
-            <div onClick={this.showModal} className="btn btn-dark my-3 mb-2">Add payment</div>
+            <div onClick={this.showModal} className="btn btn-dark my-3 mb-2">Master qo'shish</div>
           </Col>
           <Col span={20} offset={2}>
             <Table columns={visibleColumns} pagination={false}/>
@@ -118,6 +130,7 @@ class Index extends React.Component {
               action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
               beforeUpload={beforeUpload}
               onChange={this.handleChange}
+              customRequest={uploadFile}
             >
               {imageUrl ? <img src={imageUrl} alt="avatar" style={{ width: '100%' }} /> : uploadButton}
             </Upload>
