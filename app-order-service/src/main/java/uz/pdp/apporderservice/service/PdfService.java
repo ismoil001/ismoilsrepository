@@ -2,6 +2,8 @@ package uz.pdp.apporderservice.service;
 
 
 import com.itextpdf.io.font.PdfEncodings;
+import com.itextpdf.io.image.ImageData;
+import com.itextpdf.io.image.ImageDataFactory;
 import com.itextpdf.kernel.color.Color;
 import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
@@ -10,10 +12,7 @@ import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.border.Border;
 import com.itextpdf.layout.border.SolidBorder;
-import com.itextpdf.layout.element.Cell;
-import com.itextpdf.layout.element.Paragraph;
-import com.itextpdf.layout.element.Table;
-import com.itextpdf.layout.element.Text;
+import com.itextpdf.layout.element.*;
 import com.itextpdf.layout.property.TextAlignment;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
@@ -368,7 +367,378 @@ public class PdfService {
             e.printStackTrace();
             return null;
         }
+    };
+
+    public File sendPdfKP(){
+        try {
+            PdfWriter writer = new PdfWriter("D://Commercial Proposal.pdf");
+            PdfDocument pdfDocument = new PdfDocument(writer);
+            Document document = new Document(pdfDocument);
+            ImageData data1 = ImageDataFactory.create("D://pdfImages/logo.png");
+            Image img1 = new Image(data1);
+            img1.setWidth(180f);
+            img1.setHeight(60f);
+            Resource resource = new ClassPathResource("fonts/times.ttf");
+            PdfFont font = PdfFontFactory.createFont(resource.getFile().getPath(), PdfEncodings.IDENTITY_H, true);
+            float[] floats = {200f, 600f};
+            Table table1 = new Table(floats).setFont(font).setFontSize(10f);
+            Border border = new SolidBorder(Color.WHITE, 1f);
+            Border border2 = new SolidBorder(Color.BLACK, 1f);
+            //LastName
+            Cell cell1 = new Cell();
+            cell1.setBorder(border);
+            cell1.add(img1);
+            table1.addCell(cell1);
+            //LastName
+            Cell cell2 = new Cell();
+            cell2.setBorder(border);
+            cell2.setFont(font);
+            cell2.setFontSize(8f);
+            cell2.add(new Paragraph("\"EUROPRINT\" OOO\n" +
+                    "Узбекистан, г.Коканд, ул.Уста бозор, дом 1Б\n" +
+                    "+998(91)2041100\n" +
+                    "www.europrint.uz\n" +
+                    "info@europrint.uz").setBold().setTextAlignment(TextAlignment.RIGHT));
+            table1.addCell(cell2);
+            table1.setWidthPercent(100f);
+
+            Paragraph p1=new Paragraph("КОММЕРЧЕСКОЕ ПРЕДЛОЖЕНИЕ").setFont(font).setBold().setTextAlignment(TextAlignment.CENTER);
+            Paragraph p2=new Paragraph("Вас приветствует компания “EUROPRINT”! Наша типография работает с 2005 года, и уже\n" +
+                    "более 15 лет на рынке данной отрасли.\n" +
+                    "Если Вы заботитесь о том, чтобы производимый Вами товар надежно хранился в упаковке, а\n" +
+                    "также имел презентабельный вид, привлекал внимание покупателей и стал легко узнаваем,\n" +
+                    "выделяясь среди тысячи других, то обращайтесь в Нашу компанию. Сотрудничество с нами\n" +
+                    "позволит Вам использовать именно тот вид упаковки, который будет полностью\n" +
+                    "соответствовать Вашей продукции, и это далеко не единственное преимущество производить\n" +
+                    "заказ именно у нас.").setFont(font).setWidthPercent(100f);
+
+            ImageData data3 = ImageDataFactory.create("D://pdfImages/img3.png");
+            Image img3 = new Image(data3);
+            img3.setWidthPercent(95f);
+            img3.setHeight(180f);
+            img3.setTextAlignment(TextAlignment.CENTER);
+
+            float[] floats2 = {50f, 200f,100,100,100,100};
+            Table table2 = new Table(floats2).setFont(font).setFontSize(8f);
+            table2.setWidthPercent(100f);
+
+            Cell cell=new Cell();
+            cell.setBorder(border2);
+            cell.setFont(font);
+            cell.setFontSize(8f);
+            cell.add("T/R");
+            table2.addCell(cell);
+
+            Cell cell5=new Cell();
+            cell5.setBorder(border2);
+            cell5.setFont(font);
+            cell5.setFontSize(8f);
+            cell5.add("Вид продукции");
+            cell5.setTextAlignment(TextAlignment.CENTER);
+            table2.addCell(cell5);
+
+            Cell cell6=new Cell();
+            cell6.setBorder(border2);
+            cell6.setFont(font);
+            cell6.setFontSize(8f);
+            cell6.add("Тираж\n" +
+                    "5 000");
+            cell6.setTextAlignment(TextAlignment.CENTER);
+            table2.addCell(cell6);
+
+            Cell cell7=new Cell();
+            cell7.setBorder(border2);
+            cell7.setFont(font);
+            cell7.setFontSize(8f);
+            cell7.add("Тираж\n" +
+                    "10 000");
+            cell7.setTextAlignment(TextAlignment.CENTER);
+            table2.addCell(cell7);Cell cell8=new Cell();
+            cell8.setBorder(border2);
+            cell8.setFont(font);
+            cell8.setFontSize(8f);
+            cell8.add("Тираж\n" +
+                    "20 000");
+            cell8.setTextAlignment(TextAlignment.CENTER);
+            table2.addCell(cell8);
+
+            Cell cell9=new Cell();
+            cell9.setBorder(border2);
+            cell9.setFont(font);
+            cell9.setFontSize(8f);
+            cell9.add("Доп.\n" +
+                    "расходы");
+            cell9.setTextAlignment(TextAlignment.CENTER);
+            table2.addCell(cell9);
+
+            Cell cell11=new Cell();
+            cell11.setBorder(border2);
+            cell11.setFont(font);
+            cell11.setFontSize(8f);
+            cell11.add("1");
+            cell11.setTextAlignment(TextAlignment.CENTER);
+            table2.addCell(cell11);
+
+            Cell cell12=new Cell();
+            cell12.setBorder(border2);
+            cell12.setFont(font);
+            cell12.setFontSize(8f);
+            cell12.add(new Paragraph(""));
+            cell12.setTextAlignment(TextAlignment.CENTER);
+            table2.addCell(cell12);
+
+            Cell cell22=new Cell();
+            cell22.setBorder(border2);
+            cell22.setFont(font);
+            cell22.setFontSize(8f);
+            cell22.add(new Paragraph(""));
+            cell22.setTextAlignment(TextAlignment.CENTER);
+            table2.addCell(cell22);
+
+            Cell cell23=new Cell();
+            cell23.setBorder(border2);
+            cell23.setFont(font);
+            cell23.setFontSize(8f);
+            cell23.add(new Paragraph(""));
+            cell23.setTextAlignment(TextAlignment.CENTER);
+            table2.addCell(cell23);
+
+            Cell cell24=new Cell();
+            cell24.setBorder(border2);
+            cell24.setFont(font);
+            cell24.setFontSize(8f);
+            cell24.add(new Paragraph(""));
+            cell24.setTextAlignment(TextAlignment.CENTER);
+            table2.addCell(cell24);
+
+            Cell cell25=new Cell();
+            cell25.setBorder(border2);
+            cell25.setFont(font);
+            cell25.setFontSize(8f);
+            cell25.add(new Paragraph(""));
+            cell25.setTextAlignment(TextAlignment.CENTER);
+            table2.addCell(cell25);
+
+            Cell cell13=new Cell();
+            cell13.setBorder(border2);
+            cell13.setFont(font);
+            cell13.setFontSize(8f);
+            cell13.add("2");
+            cell13.setTextAlignment(TextAlignment.CENTER);
+            table2.addCell(cell13);
+
+            Cell cell31=new Cell();
+            cell31.setBorder(border2);
+            cell31.setFont(font);
+            cell31.setFontSize(8f);
+            cell31.add(new Paragraph(""));
+            cell31.setTextAlignment(TextAlignment.CENTER);
+            table2.addCell(cell31);
+
+            Cell cell32=new Cell();
+            cell32.setBorder(border2);
+            cell32.setFont(font);
+            cell32.setFontSize(8f);
+            cell32.add(new Paragraph(""));
+            cell32.setTextAlignment(TextAlignment.CENTER);
+            table2.addCell(cell32);
+
+            Cell cell33=new Cell();
+            cell33.setBorder(border2);
+            cell33.setFont(font);
+            cell33.setFontSize(8f);
+            cell33.add(new Paragraph(""));
+            cell33.setTextAlignment(TextAlignment.CENTER);
+            table2.addCell(cell33);
+
+            Cell cell34=new Cell();
+            cell34.setBorder(border2);
+            cell34.setFont(font);
+            cell34.setFontSize(8f);
+            cell34.add(new Paragraph(""));
+            cell34.setTextAlignment(TextAlignment.CENTER);
+            table2.addCell(cell34);
+
+            Cell cell35=new Cell();
+            cell35.setBorder(border2);
+            cell35.setFont(font);
+            cell35.setFontSize(8f);
+            cell35.add(new Paragraph(""));
+            cell35.setTextAlignment(TextAlignment.CENTER);
+            table2.addCell(cell35);Cell cell14=new Cell();
+            cell14.setBorder(border2);
+            cell14.setFont(font);
+            cell14.setFontSize(8f);
+            cell14.add("3");
+            cell14.setTextAlignment(TextAlignment.CENTER);
+            table2.addCell(cell14);
+
+            Cell cell41=new Cell();
+            cell41.setBorder(border2);
+            cell41.setFont(font);
+            cell41.setFontSize(8f);
+            cell41.add(new Paragraph(""));
+            cell41.setTextAlignment(TextAlignment.CENTER);
+            table2.addCell(cell41);
+
+            Cell cell42=new Cell();
+            cell42.setBorder(border2);
+            cell42.setFont(font);
+            cell42.setFontSize(8f);
+            cell42.add(new Paragraph(""));
+            cell42.setTextAlignment(TextAlignment.CENTER);
+            table2.addCell(cell42);
+
+            Cell cell43=new Cell();
+            cell43.setBorder(border2);
+            cell43.setFont(font);
+            cell43.setFontSize(8f);
+            cell43.add(new Paragraph(""));
+            cell43.setTextAlignment(TextAlignment.CENTER);
+            table2.addCell(cell43);
+
+            Cell cell44=new Cell();
+            cell44.setBorder(border2);
+            cell44.setFont(font);
+            cell44.setFontSize(8f);
+            cell44.add(new Paragraph(""));
+            cell44.setTextAlignment(TextAlignment.CENTER);
+            table2.addCell(cell44);
+
+            Cell cell45=new Cell();
+            cell45.setBorder(border2);
+            cell45.setFont(font);
+            cell45.setFontSize(8f);
+            cell45.add(new Paragraph(""));
+            cell45.setTextAlignment(TextAlignment.CENTER);
+            table2.addCell(cell45);
+
+            Cell cell15=new Cell();
+            cell15.setBorder(border2);
+            cell15.setFont(font);
+            cell15.setFontSize(8f);
+            cell15.add("4");
+            cell15.setTextAlignment(TextAlignment.CENTER);
+            table2.addCell(cell15);
+
+            Cell cell51=new Cell();
+            cell51.setBorder(border2);
+            cell51.setFont(font);
+            cell51.setFontSize(8f);
+            cell51.add(new Paragraph(""));
+            cell51.setTextAlignment(TextAlignment.CENTER);
+            table2.addCell(cell51);
+
+            Cell cell52=new Cell();
+            cell52.setBorder(border2);
+            cell52.setFont(font);
+            cell52.setFontSize(8f);
+            cell52.add(new Paragraph(""));
+            cell52.setTextAlignment(TextAlignment.CENTER);
+            table2.addCell(cell52);
+
+            Cell cell53=new Cell();
+            cell53.setBorder(border2);
+            cell53.setFont(font);
+            cell53.setFontSize(8f);
+            cell53.add(new Paragraph(""));
+            cell53.setTextAlignment(TextAlignment.CENTER);
+            table2.addCell(cell53);
+
+            Cell cell54=new Cell();
+            cell54.setBorder(border2);
+            cell54.setFont(font);
+            cell54.setFontSize(8f);
+            cell54.add(new Paragraph(""));
+            cell54.setTextAlignment(TextAlignment.CENTER);
+            table2.addCell(cell54);
+
+            Cell cell55=new Cell();
+            cell55.setBorder(border2);
+            cell55.setFont(font);
+            cell55.setFontSize(8f);
+            cell55.add(new Paragraph(""));
+            cell55.setTextAlignment(TextAlignment.CENTER);
+            table2.addCell(cell55);
+
+            Cell cell16=new Cell();
+            cell16.setBorder(border2);
+            cell16.setFont(font);
+            cell16.setFontSize(8f);
+            cell16.add("5");
+            cell16.setTextAlignment(TextAlignment.CENTER);
+            table2.addCell(cell16);
+
+            Cell cell61=new Cell();
+            cell61.setBorder(border2);
+            cell61.setFont(font);
+            cell61.setFontSize(8f);
+            cell61.add(new Paragraph(""));
+            cell61.setTextAlignment(TextAlignment.CENTER);
+            table2.addCell(cell61);Cell cell62=new Cell();
+            cell62.setBorder(border2);
+            cell62.setFont(font);
+            cell62.setFontSize(8f);
+            cell62.add(new Paragraph(""));
+            cell62.setTextAlignment(TextAlignment.CENTER);
+            table2.addCell(cell62);
+
+            Cell cell63=new Cell();
+            cell63.setBorder(border2);
+            cell63.setFont(font);
+            cell63.setFontSize(8f);
+            cell63.add(new Paragraph(""));
+            cell63.setTextAlignment(TextAlignment.CENTER);
+            table2.addCell(cell63);
+
+            Cell cell64=new Cell();
+            cell64.setBorder(border2);
+            cell64.setFont(font);
+            cell64.setFontSize(8f);
+            cell64.add(new Paragraph(""));
+            cell64.setTextAlignment(TextAlignment.CENTER);
+            table2.addCell(cell64);
+
+            Cell cell65=new Cell();
+            cell65.setBorder(border2);
+            cell65.setFont(font);
+            cell65.setFontSize(8f);
+            cell65.add(new Paragraph(""));
+            cell65.setTextAlignment(TextAlignment.CENTER);
+            table2.addCell(cell65);
+
+            Paragraph p3=new Paragraph("Цены приведенные в таблице указаны с учетом НДС, для Вашего удобства.\n" +
+                    "Позвоните или напишите нам, чтобы Мы вместе начали строить долгие отношения с\n" +
+                    "обоюдной пользой. Доверяйте работу лучшим!\n" +
+                    "Мы будем очень рады сотрудничеству с Вами!").setFont(font);
+            Paragraph p4=new Paragraph("С уважением!\n" +
+                    "Руководитель отдела маркетинга: Позилов Д.А.").setFont(font);
+
+            ImageData data4 = ImageDataFactory.create("D://pdfImages/6.png");
+            Image img4= new Image(data4);
+            img4.setWidthPercent(100f);
+            img4.setMarginTop(50f);
+
+            document.add(table1);
+            document.add(p1);
+            document.add(p2);
+            document.add(img3);
+            document.add(table2);
+            document.add(p3);
+            document.add(p4);
+            document.add(img4);
+            document.close();
+
+
+            return new File("D://Commercial Proposal.pdf");
+
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
+
 }
 
 
