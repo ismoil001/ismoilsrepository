@@ -15,7 +15,6 @@ import java.util.List;
 @NoArgsConstructor
 public class HomePageResponse {
 
-    private List<PhoneNumber> phoneNumbers;
     private List<Portfolio> portfolios;
     private List<Master> masters;
     private Company company;

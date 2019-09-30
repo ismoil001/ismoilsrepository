@@ -14,6 +14,8 @@ import {
   DropdownMenu,
   DropdownItem, Col
 } from 'reactstrap';
+import {FaAngleDown} from "react-icons/fa";
+import { formatMessage, setLocale, getLocale, FormattedMessage } from 'umi-plugin-locale';
 import {Link} from "react-scroll/modules";
 
 export default class Header extends React.Component {
@@ -32,66 +34,80 @@ export default class Header extends React.Component {
     });
   }
   render() {
+
+    const handleLang=(key)=>{
+      if(key===1){
+        setLocale("en-US")
+      }else{
+        setLocale("en-RU")
+      }
+    }
     return (
 
       <Container>
         <Navbar  light expand="md" className="lato-bold " >
-          <NavbarBrand href="/"><img src="/assets/images/logo.png" alt="salom"/></NavbarBrand>
+          <NavbarBrand href="/"><img src="/assets/images/logo.png" alt="logo"/></NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
                 <Link  spy={true} smooth={true} duration={1500}  to="bizhaqimizda">
                   <NavLink href="/" className="aboutUs">
-                  Biz haqimizda
-                  <div></div>
+                    <FormattedMessage id="header_link1"/>
                   </NavLink>
                 </Link>
               </NavItem>
               <NavItem>
                 <Link  spy={true} smooth={true} duration={1500}  to="xizmatlar">
-                <NavLink href="/">Xizmatlar
-                  <div></div></NavLink>
+                <NavLink href="/">
+                  <FormattedMessage id="header_link2"/>
+                  </NavLink>
                 </Link>
               </NavItem>
               <NavItem>
                 <Link  spy={true} smooth={true} duration={1500}  to="portfolio">
-                <NavLink href="/">Portfolio
-                  <div></div></NavLink>
+                <NavLink href="/">
+                  <FormattedMessage id="header_link3"/>
+                </NavLink>
                 </Link>
               </NavItem>
               <NavItem>
                 <Link  spy={true} smooth={true} duration={1500}  to="mijozlar">
-                <NavLink href="/">Mijozlar <div></div></NavLink>
+                <NavLink href="/">
+                  <FormattedMessage id="header_link4"/>
+                </NavLink>
                 </Link>
               </NavItem>
               <NavItem>
                 <Link  spy={true} smooth={true} duration={1500}  to="jamoa">
-                <NavLink href="/">Jamoa <div></div></NavLink>
+                <NavLink href="/">
+                  <FormattedMessage id="header_link5"/>
+                </NavLink>
                 </Link>
               </NavItem>
               <NavItem>
                 <Link  spy={true} smooth={true} duration={1500}  to="kontakt">
-                <NavLink href="/">Kontakt <div></div></NavLink>
+                <NavLink href="/">
+                  <FormattedMessage id="header_link6"/>
+                </NavLink>
                 </Link>
               </NavItem>
               <NavItem>
-                <NavLink href="/login">Admin <div></div></NavLink>
+                <NavLink href="/dashboard">
+                  <FormattedMessage id="header_link7"/>
+                </NavLink>
               </NavItem>
-              <UncontrolledDropdown nav inNavbar>
-                <DropdownToggle nav caret className="language">
-                  Uzbek
-                  <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M1 1L5 5L9 1" stroke="grey" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                  </svg>
 
+              <UncontrolledDropdown>
+                <DropdownToggle caret className="dropdownMain">
+                  Uzbek <FaAngleDown/>
                 </DropdownToggle>
                 <DropdownMenu right>
-                  <DropdownItem>
-                    RU
+                  <DropdownItem onClick={()=>handleLang(1)} key={1}>
+                    <FormattedMessage id='header_item1'/>
                   </DropdownItem>
-                  <DropdownItem>
-                    UZ
+                  <DropdownItem onClick={()=>handleLang(2)} key={2}>
+                    <FormattedMessage id='header_item2'/>
                   </DropdownItem>
                 </DropdownMenu>
               </UncontrolledDropdown>

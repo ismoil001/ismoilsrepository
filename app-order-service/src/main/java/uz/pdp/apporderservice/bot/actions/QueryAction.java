@@ -3,7 +3,6 @@ package uz.pdp.apporderservice.bot.actions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.telegram.telegrambots.meta.api.methods.ParseMode;
-import org.telegram.telegrambots.meta.api.methods.send.SendDocument;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.methods.updatingmessages.DeleteMessage;
 import org.telegram.telegrambots.meta.api.methods.updatingmessages.EditMessageText;
@@ -20,7 +19,6 @@ import uz.pdp.apporderservice.entity.TelegramState;
 import uz.pdp.apporderservice.entity.User;
 import uz.pdp.apporderservice.entity.enums.OrderStatus;
 import uz.pdp.apporderservice.exception.ResourceNotFoundException;
-import uz.pdp.apporderservice.payload.ReqPdf;
 import uz.pdp.apporderservice.repository.OrderRepository;
 import uz.pdp.apporderservice.repository.RoleRepository;
 import uz.pdp.apporderservice.repository.TelegramStateRepository;
@@ -28,9 +26,11 @@ import uz.pdp.apporderservice.repository.UserRepository;
 import uz.pdp.apporderservice.service.OrderService;
 import uz.pdp.apporderservice.service.PdfService;
 
-import java.io.File;
 import java.sql.Timestamp;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
 @Service
 public class QueryAction {
@@ -360,8 +360,17 @@ public class QueryAction {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-        }
-        if (query.startsWith(BotConstant.APLY_ORDER_WITH_NEW_PRICE)) {
+        } else if (query.startsWith("PdfSendkmp#")) {
+            try {
+                Long clientChatId = Long.parseLong(query.split("#")[1]);
+                SendMessage sendMessage = new SendMessage();
+                sendMessage.setChatId(clientChatId);
+                sendMessage.setText("Kom predlojeni");
+                pdpOrderBot.execute(sendMessage);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        } else if (query.startsWith(BotConstant.APLY_ORDER_WITH_NEW_PRICE)) {
             try {
                 TelegramState clientState = botMainService.getLastState(update).get();
                 User client = userRepository.findByTelegramId(clientState.getTgUserId()).orElseThrow(() -> new ResourceNotFoundException("user", "telegramid", clientState));
@@ -395,8 +404,7 @@ public class QueryAction {
             } catch (TelegramApiException e) {
                 e.printStackTrace();
             }
-        }
-        if (query.startsWith(BotConstant.CHANGE_EXISTING_ORDER_PRICE)) {
+        } else if (query.startsWith(BotConstant.CHANGE_EXISTING_ORDER_PRICE)) {
             try {
                 TelegramState telegramState = botMainService.getLastState(update).orElseThrow(() -> new ResourceNotFoundException("laststate", "id", update));
                 SendMessage sendMessage = new SendMessage();
@@ -409,8 +417,7 @@ public class QueryAction {
             } catch (TelegramApiException e) {
                 e.printStackTrace();
             }
-        }
-        if (query.startsWith(BotState.ADMIN_CABINET)) {
+        } else if (query.startsWith(BotState.ADMIN_CABINET)) {
             SendMessage sendMessage = new SendMessage();
             sendMessage.setText("Buyurtmangiz bekor qilingdi");
             sendMessage.setReplyMarkup(createButtonService.createInlineButton("Ok", BotState.BACK_TO_CABINET));

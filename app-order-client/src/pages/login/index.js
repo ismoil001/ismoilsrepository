@@ -10,13 +10,13 @@ import styles from './index.less'
 const FormItem = Form.Item;
 
 const Login = ({
-  loading,
-  dispatch,
-  form: {
-    getFieldDecorator,
-    validateFieldsAndScroll,
-  },
-}) => {
+                 loading,
+                 dispatch,
+                 form: {
+                   getFieldDecorator,
+                   validateFieldsAndScroll,
+                 },
+               }) => {
   function handleOk () {
     validateFieldsAndScroll((errors, values) => {
       if (errors) {
@@ -38,7 +38,7 @@ const Login = ({
         <Row className='mt-5 pt-4'>
           <Col span={8} className=' offset-2 text-center mt-5' >
             <Row>
-                <h4 className=' text-center mb-5 ml-5 pl-4' >Tizimga kirish</h4>
+              <h4 className=' text-center mb-5 ml-5 pl-4' >Tizimga kirish</h4>
               <div className="row pl-5 mb-3 text-left">
                 <div className="col-md-1 p-0 userr">
                   <span id="nma"><Icon type="user" /></span>
@@ -61,28 +61,28 @@ const Login = ({
                       maskChar={null}
                     />)}
                   </FormItem>
-              </div>
+                </div>
 
               </div>
 
 
-                <FormItem hasFeedback>
-                  {getFieldDecorator('password', {
-                    rules: [
-                      {
-                        required: true,
-                      },
-                    ],
-                  })(<Input
-                    className="mt-2 mb-2"
-                    addonBefore={<Icon type="lock" />}
-                    type="password" onPressEnter={handleOk}
-                    placeholder={"Password"}
-                  />)}
-                </FormItem>
-                <Button type="primary" onClick={handleOk} loading={loading.effects.login}>
-                  Sign in
-                </Button>
+              <FormItem hasFeedback>
+                {getFieldDecorator('password', {
+                  rules: [
+                    {
+                      required: true,
+                    },
+                  ],
+                })(<Input
+                  className="mt-2 mb-2"
+                  addonBefore={<Icon type="lock" />}
+                  type="password" onPressEnter={handleOk}
+                  placeholder={"Password"}
+                />)}
+              </FormItem>
+              <Button type="primary" onClick={handleOk} loading={loading.effects.login}>
+                Sign in
+              </Button>
             </Row>
           </Col>
           <Col span='10' className="ml-5 pl-5">

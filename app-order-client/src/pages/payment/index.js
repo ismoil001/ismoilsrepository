@@ -1,7 +1,8 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'dva'
-import MaskedInput from 'react-text-mask'
+import CurrencyInput from 'react-currency-input';
+
 import {
   Button,
   Form,
@@ -15,7 +16,7 @@ import {
   InputNumber,
   Icon,
   Popconfirm,
-  Checkbox
+  Checkbox, Pagination
 } from "antd/lib/index";
 import moment from "moment/moment";
 import {Link} from "react-router-dom";
@@ -24,9 +25,10 @@ import {Link} from "react-router-dom";
 class Index extends PureComponent {
   render() {
     const {payment,dispatch,form} = this.props
-    const {modalVisible,modalType,isArchive,searchValue,currentItem,userList,selectedUser,payTypes,paymentList} = payment
-    const {getFieldsValue,getFieldDecorator} = form
+    const {modalVisible,modalType,totalElements,page,loadingModal,isArchive,searchValue,currentItem,userList,selectedUser,payTypes,paymentList} = payment
+    const {getFieldsValue,getFieldDecorator,resetFields} = form
     const onShowPaymentModal=()=>{
+      resetFields();
       dispatch({
         type:'payment/updateState',
         payload:{
@@ -35,6 +37,7 @@ class Index extends PureComponent {
       })
     }
     const handleHideModal=()=>{
+      resetFields();
       dispatch({
         type:'payment/updateState',
         payload:{
@@ -78,7 +81,8 @@ class Index extends PureComponent {
       },{
         title:'Amount',
         dataIndex:'paySum',
-        key:'paySum'
+        key:'paySum',
+        render:(text,record)=>record.paySum.toLocaleString()
       },{
         title:'PayType',
         dataIndex:'payType',
@@ -143,6 +147,23 @@ class Index extends PureComponent {
         }
       })
     }
+    const onChangePage = (cpage) => {
+      dispatch({
+        type: 'payment/updateState',
+        payload: {
+          page: cpage,
+        }
+      })
+      dispatch({
+        type: 'payment/queryPayment',
+        payload:{
+          page:cpage-1,
+          size:10,
+          name:'',
+          isArchive:isArchive
+        }
+      })
+    }
 
     return (
       <div>
@@ -156,7 +177,7 @@ class Index extends PureComponent {
             <Checkbox onChange={handleArchive} checked={isArchive}></Checkbox>
           </Col>
           <Col offset={2} span={5} className="mr-4">
-            <Button onClick={onShowPaymentModal} className="btn-dark my-3 mb-2">Add payment</Button>
+            <button onClick={onShowPaymentModal} className="btn btn-dark my-3 mb-2">Add payment</button>
           </Col>
           <Col span={5} className="mt-3  pl-3" offset={8}>
             <Input className="ml-5" onChange={handleSearch}/>
@@ -165,10 +186,13 @@ class Index extends PureComponent {
             <Button className="btn-dark" onClick={searchButton}>Search</Button>
           </Col>
           <Col span={20} offset={2}>
-            <Table dataSource={paymentList} columns={visibleColumns}/>
+            <Table dataSource={paymentList} columns={visibleColumns} pagination={false}/>
+            <Pagination style={{position: "relative", top: "20px", left: "45%", marginBottom: "200px"}}
+                        current={page}
+                        onChange={onChangePage} pageSize={10} total={totalElements} />
           </Col>
         </Row>
-        <Modal visible={modalVisible} onCancel={handleHideModal} onOk={onSubmitPayment}>
+        <Modal visible={modalVisible} onCancel={handleHideModal} onOk={onSubmitPayment} confirmLoading={loadingModal}>
           <Form style={{marginTop:"30px"}}>
             <p>Select user:</p>
             <Form.Item>
@@ -204,12 +228,7 @@ class Index extends PureComponent {
                 initialValue:currentItem!==''?currentItem.paySum:0,
                 rules: [{required: true, message: 'Please input sum!'}],
               })(
-                <MaskedInput
-                  className="form-control"
-                  placeholder="Amount"
-                  mask={[/\d/, /\d/, /\d/," ", /\d/, /\d/, /\d/," ", /\d/, /\d/, /\d/," ",/\d/, /\d/, /\d/," ",/\d/, /\d/, /\d/," ",/\d/, /\d/, /\d/," ",/\d/, /\d/, /\d/," ",/\d/, /\d/, /\d/," ",/\d/, /\d/, /\d/," ",/\d/, /\d/, /\d/]}
-                  maskChar={null}
-                />,
+                <CurrencyInput className="form-control" placeholder="Miqdori" precision={''} thousandSeparator=" "/>,
               )}
             </Form.Item>
           </Form>

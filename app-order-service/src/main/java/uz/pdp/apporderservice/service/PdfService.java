@@ -379,7 +379,7 @@ public class PdfService {
             img1.setWidth(180f);
             img1.setHeight(60f);
             Resource resource = new ClassPathResource("fonts/times.ttf");
-            PdfFont font = PdfFontFactory.createFont(resource.getFile().getPath(), PdfEncodings.IDENTITY_H, true);
+            PdfFont font = PdfFontFactory.createFont("C:\\Windows\\Fonts\\Arial.ttf", PdfEncodings.IDENTITY_H, true);
             float[] floats = {200f, 600f};
             Table table1 = new Table(floats).setFont(font).setFontSize(10f);
             Border border = new SolidBorder(Color.WHITE, 1f);

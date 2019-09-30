@@ -109,8 +109,8 @@ class Index extends Component {
                 <Col span={12}>
                   <Col span={24} className="px-3">
                     <Form.Item>
-                      {getFieldDecorator('phonenumber', {
-                        initialValue: company && company.phonenumber
+                      {getFieldDecorator('phoneNumber1', {
+                        initialValue: company && company.phoneNumber1
                       })(
                         <Input placeholder="Phone number 1"/>,
                       )}
@@ -118,8 +118,8 @@ class Index extends Component {
                   </Col>
                   <Col span={24} className="px-3">
                     <Form.Item>
-                      {getFieldDecorator('phonenumber', {
-                        initialValue: company && company.phonenumber
+                      {getFieldDecorator('phoneNumber2', {
+                        initialValue: company && company.phoneNumber2
                       })(
                         <Input placeholder="Phone number 2"/>,
                       )}
@@ -127,8 +127,8 @@ class Index extends Component {
                   </Col>
                   <Col span={24} className="px-3">
                     <Form.Item>
-                      {getFieldDecorator('phonenumber', {
-                        initialValue: company && company.phonenumber
+                      {getFieldDecorator('phoneNumber3', {
+                        initialValue: company && company.phoneNumber3
                       })(
                         <Input placeholder="Phone number 3"/>,
                       )}

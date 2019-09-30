@@ -20,7 +20,7 @@ public class Master extends AbsEntity {
 
     private String fullName;
 
-    private String descriptioni;
+    private String description;
 
     @OneToOne(fetch = FetchType.LAZY)
     private Attachment attachment;

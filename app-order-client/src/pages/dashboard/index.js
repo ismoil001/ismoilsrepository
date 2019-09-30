@@ -2,7 +2,7 @@ import React, {PureComponent} from 'react';
 import {connect} from "dva"
 import moment from 'moment'
 import PaymentModal from '../../components/PaymentModal/index'
-import MaskedInput from 'react-text-mask'
+import CurrencyInput from 'react-currency-input';
 import {
   Menu,
   Icon,
@@ -31,8 +31,8 @@ class Index extends PureComponent {
 
   render() {
     const {dashboard, dispatch, form} = this.props;
-    const {modalVisible, modalType, currentItem, customerList, currentItemPaymentSum, ismine, archiveData, orderLists, page, totalElements, searchValue, paymentModalVisible} = dashboard;
-    const {getFieldDecorator, getFieldsValue, resetFields} = form;
+    const {modalVisible,status, modalType,modalLoading, currentItem, customerList, currentItemPaymentSum, ismine, archiveData, orderLists, page, totalElements, searchValue, paymentModalVisible} = dashboard;
+    const {getFieldDecorator,getFieldsValue, resetFields,setFieldsValue} = form;
     const {Option} = Select;
     const handleOpenModal = () => {
       dispatch({
@@ -55,8 +55,13 @@ class Index extends PureComponent {
       resetFields();
     }
 
-
     const handleSubmit = () => {
+      dispatch({
+        type: 'dashboard/updateState',
+        payload: {
+          modalLoading: true
+        }
+      })
       if (modalType === "create") {
         dispatch({
           type: 'dashboard/saveOrder',
@@ -102,17 +107,21 @@ class Index extends PureComponent {
       {
         title: 'Count',
         dataIndex: 'count',
-        key: 'count'
+        key: 'count',
+        render:(text,record)=>record.count.toLocaleString()
       },
       {
         title: 'Price',
         dataIndex: 'price',
-        key: 'price'
+        key: 'price',
+        render:(text,record)=>record.price.toLocaleString()
+
       },
       {
         title: 'Sum',
         dataIndex: 'sum',
         key: 'sum',
+        render:(text,record)=>record.sum.toLocaleString()
       },
       {
         title: 'Qoldiq',
@@ -123,7 +132,7 @@ class Index extends PureComponent {
           record.payments.map(item => {
             a += item.amount
           })
-          return record.sum - a
+          return (record.sum - a).toLocaleString()
         }
       },
       {
@@ -151,11 +160,15 @@ class Index extends PureComponent {
             <Button className="border-0 text-center w-100">delete</Button>
           </Popconfirm>
         </Menu.Item>
-        <Menu.Item className="p-0 my-1 mx-2">
-          <Button className="border-0 text-center w-100" onClick={() => onClickMenu(3, record)}>Archive</Button>
-        </Menu.Item>
+              {record.status==="ACTIVE"?        <Menu.Item className="p-0 my-1 mx-2">
+                <Button className="border-0 text-center w-100" onClick={() => onClickMenu(3, record)}>Bajarildi</Button>
+              </Menu.Item>:
+                <Menu.Item className="p-0 my-1 mx-2">
+                  <Button className="border-0 text-center w-100" onClick={() => onClickMenu(4, record)}>Active</Button>
+                </Menu.Item>
+              }
       </Menu>}>
-              <a className="ant-dropdown-link" href="#">
+              <a className="ant-dropdown-link" >
                 <Icon type="dash" /> <Icon type="down" />
               </a>
             </Dropdown>
@@ -190,6 +203,12 @@ class Index extends PureComponent {
         })
 
       }
+      if(key===4){
+        dispatch({
+          type: 'dashboard/setStatusOfOrder1',
+          payload: item.id
+        })
+      }
 
     };
 
@@ -207,6 +226,8 @@ class Index extends PureComponent {
           page: cpage - 1,
           size: 10,
           name: searchValue,
+          ismine:ismine,
+          status:status
         }
       })
     }
@@ -226,7 +247,7 @@ class Index extends PureComponent {
           page: 0,
           size: 10,
           name: searchValue,
-          status: 'active',
+          status: status,
           ismine: false
         }
       })
@@ -241,6 +262,12 @@ class Index extends PureComponent {
       })
     }
     const saveOrderPayment = (formData) => {
+      dispatch({
+        type: 'dashboard/updateState',
+        payload: {
+          modalLoading: true
+        }
+      })
       dispatch({
         type: 'dashboard/saveOrderPayment',
         payload: {...formData, orderId: currentItem.id}
@@ -269,6 +296,12 @@ class Index extends PureComponent {
     const handleTab = (key) => {
       if (key === 2 + '') {
         dispatch({
+          type:'dashboard/updateState',
+          payload:{
+            status:"notactive"
+          }
+        })
+        dispatch({
           type: 'dashboard/getOrders',
           payload: {
             page: 0,
@@ -280,6 +313,12 @@ class Index extends PureComponent {
         })
       }
       if (key === 1 + '') {
+        dispatch({
+          type:'dashboard/updateState',
+          payload:{
+            status:"active"
+          }
+        })
         dispatch({
           type: 'dashboard/getOrders',
           payload: {
@@ -311,9 +350,6 @@ class Index extends PureComponent {
 
     return (
       <div className="admin">
-        <Tabs onChange={handleTab} className="pb-5 pt-1">
-          <Tabs.TabPane tab="All orders" key="1">
-            <div>
               <h2 className="text-center my-3"><b>Buyurtmalar</b></h2>
               <Row>
                 <Col span={4} offset={18}>
@@ -321,7 +357,7 @@ class Index extends PureComponent {
                   <Checkbox onChange={handleIsMine} checked={ismine}></Checkbox>
                 </Col>
                 <Col offset={2} span={5} className="mr-4">
-                  <Button onClick={handleOpenModal} className="btn-dark mt-3">Add Order</Button>
+                  <button onClick={handleOpenModal} className="btn btn-dark mt-3">Add Order</button>
                 </Col>
                 <Col span={5} className="mt-3  pl-3" offset={8}>
                   <Input className="ml-5" onChange={handleSearch}/>
@@ -330,24 +366,27 @@ class Index extends PureComponent {
                   <Button className="btn-dark" onClick={searchButton}>Search</Button>
                 </Col>
               </Row>
+            <Tabs onChange={handleTab} className="pb-5 pt-1">
+              <Tabs.TabPane tab="All orders" key="1">
 
               <Row className="my-4">
                 <Col span={20} offset={2}>
                   <Table dataSource={orderLists} columns={visibleColumns} pagination={false}/>
                   <Pagination style={{position: "relative", top: "20px", left: "45%", marginBottom: "200px"}}
                               current={page}
-                              onChange={onChangePage} pageSize={10} total={totalElements} pagination={false}/>
+                              onChange={onChangePage} pageSize={10} total={totalElements} />
                 </Col>
               </Row>
 
               <PaymentModal modalVisible={paymentModalVisible} item={currentItem} itemPaySum={currentItemPaymentSum}
                             onHideModal={hidePaymentModal}
-                            onSave={saveOrderPayment}/>
+                            onSave={saveOrderPayment} confirmLoading={modalLoading}/>
               <Modal
                 title="Add order"
                 visible={modalVisible}
                 onOk={handleSubmit}
                 onCancel={handleHideModal}
+                confirmLoading={modalLoading}
               >
 
                 <Form>
@@ -399,12 +438,7 @@ class Index extends PureComponent {
                       initialValue: currentItem && currentItem.count,
                       rules: [{required: true, message: 'Please input your product count!'}],
                     })(
-                      <MaskedInput
-                        className="form-control"
-                        placeholder="Count..."
-                        mask={[/\d/, /\d/, /\d/," ", /\d/, /\d/, /\d/," ", /\d/, /\d/, /\d/," ",/\d/, /\d/, /\d/," ",/\d/, /\d/, /\d/," ",/\d/, /\d/, /\d/," ",/\d/, /\d/, /\d/," ",/\d/, /\d/, /\d/," ",/\d/, /\d/, /\d/," ",/\d/, /\d/, /\d/]}
-                        maskChar={null}
-                      />,
+                      <CurrencyInput className="form-control" placeholder="Soni..." precision={''} thousandSeparator=" "/>
                     )}
                   </Form.Item>
                   <Form.Item>
@@ -412,19 +446,11 @@ class Index extends PureComponent {
                       initialValue: currentItem && currentItem.price,
                       rules: [{required: true, message: 'Please input one product price!'}],
                     })(
-                      <MaskedInput
-                        className="form-control"
-                        placeholder="Our pruduct prce.."
-                        mask={[/\d/, /\d/, /\d/," ", /\d/, /\d/, /\d/," ", /\d/, /\d/, /\d/," ",/\d/, /\d/, /\d/," ",/\d/, /\d/, /\d/," ",/\d/, /\d/, /\d/," ",/\d/, /\d/, /\d/," ",/\d/, /\d/, /\d/," ",/\d/, /\d/, /\d/," ",/\d/, /\d/, /\d/]}
-                        maskChar={null}
-                      />,
+                      <CurrencyInput className="form-control" placeholder="Narx..." precision={''} thousandSeparator=" "/>
                     )}
                   </Form.Item>
                 </Form>
-
-
               </Modal>
-            </div>
           </Tabs.TabPane>
           <Tabs.TabPane tab="Archive" key="2">
             <Col span={20} offset={2}>

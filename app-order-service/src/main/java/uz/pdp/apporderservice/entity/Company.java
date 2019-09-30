@@ -18,6 +18,7 @@ public class Company {
     private Integer id;
 
     private String address;
+    private String addressRu;
 
     private String email;
 
@@ -28,5 +29,9 @@ public class Company {
     private String youtube;
 
     private String telegram;
+
+    private String phoneNumber1;
+    private String phoneNumber2;
+    private String phoneNumber3;
 
 }

@@ -9,8 +9,11 @@ import java.util.UUID;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class ReqPortfolio {
-
+public class ReqEditMAster {
+    private UUID id;
+    private String name;
+    private String description;
     private UUID attachment;
-
+    private Boolean active;
 }
+

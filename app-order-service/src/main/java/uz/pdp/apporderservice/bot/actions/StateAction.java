@@ -226,6 +226,7 @@ public class StateAction {
                         List<ReqInlineButton> buttons = new ArrayList<>();
                         buttons.add(new ReqInlineButton("Javob berish⬆", "FromAdmin#" + update.getMessage().getFrom().getId()));
                         buttons.add(new ReqInlineButton("Shartnoma yuborish", "PdfSend#" + update.getMessage().getFrom().getId()));
+                        buttons.add(new ReqInlineButton("Компредложение", "PdfSendkmp#" + update.getMessage().getFrom().getId()));
                         rows.add(createButtonService.createOneRowButtons(buttons));
                         inlineKeyboardMarkup.setKeyboard(rows);
                         sendMessage1.setReplyMarkup(inlineKeyboardMarkup);
@@ -281,7 +282,7 @@ public class StateAction {
                     botMainService.adminCabinetPage(update);
 
                 } else if (currentState.equals(BotState.EXISTING_ORDER_COUNT)) {
-                    if (NumberUtils.isCreatable(update.getMessage().getText())) {
+                    if (botMainService.isNumeric(update.getMessage().getText())) {
                         Optional<TelegramState> lastState1 = botMainService.getLastState(update);
                         lastState1.get().setCount(Double.parseDouble(update.getMessage().getText()));
                         String uuidString1 = orderRepository.getUserWithLessOrder();

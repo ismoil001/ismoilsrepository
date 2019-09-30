@@ -42,6 +42,13 @@ export function changeStatusOrder (data) {
     data,
   })
 }
+export function changeStatusOrder1 (data) {
+  return request({
+    url: '/api/order/changeStatus1/'+data,
+    method: 'post',
+    data,
+  })
+}
 export function getActiveOrders (data) {
   return request({
     url: '/api/order/active',

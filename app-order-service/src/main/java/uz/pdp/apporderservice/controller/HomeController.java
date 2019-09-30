@@ -10,6 +10,7 @@ import uz.pdp.apporderservice.entity.Company;
 import uz.pdp.apporderservice.entity.Master;
 import uz.pdp.apporderservice.entity.PhoneNumber;
 import uz.pdp.apporderservice.entity.Portfolio;
+import uz.pdp.apporderservice.entity.enums.OrderStatus;
 import uz.pdp.apporderservice.entity.enums.RoleName;
 import uz.pdp.apporderservice.exception.ResourceNotFoundException;
 import uz.pdp.apporderservice.payload.ApiResponseData;
@@ -41,14 +42,12 @@ public class HomeController {
     public HttpEntity<?> getHomePageData(){
         Integer customerCount = userRepository.countAllByRolesIn(new HashSet<>(roleRepository.findAllByName(RoleName.ROLE_CUSTOMER)));
         Company company = companyRepository.findById(1).orElseThrow(() -> new ResourceNotFoundException("company", "id", 1));
-        List<PhoneNumber> phoneNumbers = phoneNumberRepository.findAll();
         List<Portfolio> portfolios = portfolioRepository.findAll();
         List<Master> masters = masterRepository.findAll();
-        long count = orderRepository.count();
+        long count = orderRepository.countAllByStatus(OrderStatus.CLOSED);
         HomePageResponse homePageResponse = new HomePageResponse();
         homePageResponse.setCompany(company);
         homePageResponse.setCountAllCustomer(customerCount);
-        homePageResponse.setPhoneNumbers(phoneNumbers);
         homePageResponse.setPortfolios(portfolios);
         homePageResponse.setMasters(masters);
         homePageResponse.setCountAllMasters(masters.size());

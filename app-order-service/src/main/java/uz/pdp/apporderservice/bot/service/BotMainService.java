@@ -236,7 +236,8 @@ public class BotMainService {
         } catch (TelegramApiException e) {
             e.printStackTrace();
         }
-
-
+    }
+    public boolean isNumeric(String strNum) {
+        return strNum.matches("[0-9]+");
     }
 }

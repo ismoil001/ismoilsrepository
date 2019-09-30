@@ -1,95 +1,153 @@
-import {saveOrder,getCustomers,changeStatusOrder,
-  getActiveOrders,editOrder,deleteOrder,
-  saveOrderPayment} from './service'
+import {uploadFile} from "../../services/attachmentService";
 import {notification} from "antd";
 import {searchUser} from "../payment/service";
-import {getCompany,addCompany,getNumbers,
-  deleteNumber,addPhoneNumber} from './service';
+import {
+  getCompany,
+  addCompany,
+  getNumbers,
+  deleteNumber,
+  addPhoneNumber,
+  getAllPortfolio,
+  savePortfolio
+} from './service';
+
 export default {
   namespace: 'settings',
   state: {
-    company:'',
-    numbers:[],
-    phoneNumberValue:''
+    company: '',
+    numbers: [],
+    phoneNumberValue: '',
+    loadingImage: false,
+    oldAttachment: '',
+    photo: '',
+    portfolioList:[]
   },
 
   subscriptions: {
 
-    //
-    // setup({dispatch, history}) {
-    //   return history.listen(({pathname, query}) => {
-    //     if (pathname === '/settings') {
-    //       dispatch({
-    //         type:'getCompany',
-    //       })
-    //       dispatch({
-    //         type:'getPhoneNumbers',
-    //       })
-    //     }
-    //   });
-    // },
+
+    setup({dispatch, history}) {
+      return history.listen(({pathname, query}) => {
+        if (pathname.includes('/settings')) {
+          dispatch({
+            type: 'getCompany',
+          })
+          dispatch({
+            type: 'getPortfolios',
+          })
+        }
+      });
+    },
   },
 
   effects: {
-    *getCompany({payload},{call,put,select}){
+
+    * getPortfolios({payload}, {call, put, select}) {
+      const data = yield call(getAllPortfolio)
+      yield put({
+        type:'updateState',
+        payload:{
+          portfolioList:data.object
+        }
+      })
+
+    },
+
+    * savePortfolio({payload}, {call, put, select}) {
+      const data = yield call(savePortfolio, payload);
+      if(data.success){
+        yield put({
+          type:'updateState',
+          payload:{
+            portfolioList:data.object
+          }
+        })
+        yield put({
+          type:'getPortfolios',
+        })
+      }
+    },
+
+    * uploadFile({payload = {}}, {call, put, select}) {
+      const {photo} = yield select(_ => _.settings);
+      if (photo !== '') {
+        yield put({
+          type: 'updateState',
+          payload: {
+            loadingImage: true,
+            oldAttachment: photo.split('/')[photo.split('/').length - 1]
+          },
+        });
+      }
+      const res = yield call(uploadFile, payload.options);
+      payload.options.onSuccess(res, payload.options.file);
+      yield put({
+        type: 'savePortfolio',
+        payload: {
+          attachment: res.id
+        }
+      })
+    },
+
+    * getCompany({payload}, {call, put, select}) {
       const data = yield call(getCompany);
       console.log(data)
-      if(data.success){
+      if (data.success) {
         yield put({
-          type:'updateState',
-          payload:{
-            company:data.object.length>0? data.object[0]:''
+          type: 'updateState',
+          payload: {
+            company: data.object.length > 0 ? data.object[0] : ''
           }
         })
       }
     },
-    *getPhoneNumbers({payload},{call,put,select}){
+    * getPhoneNumbers({payload}, {call, put, select}) {
       const data = yield call(getNumbers);
-      if(data.success){
+      if (data.success) {
         yield put({
-          type:'updateState',
-          payload:{
-            numbers:data.object
+          type: 'updateState',
+          payload: {
+            numbers: data.object
           }
         })
       }
     },
-    *deleteNumber({payload},{call,put,select}){
-      const data = yield call(deleteNumber,payload)
-      if(data.success){
+    * deleteNumber({payload}, {call, put, select}) {
+      const data = yield call(deleteNumber, payload)
+      if (data.success) {
         notification["success"]({
-          message:"Deleted"
+          message: "Deleted"
         })
         yield put({
-          type:'getPhoneNumbers'
+          type: 'getPhoneNumbers'
         })
       }
     },
-    *addPhoneNumber({payload},{call,put,select}){
-      const data = yield call(addPhoneNumber,payload)
-      if(data.success){
+    * addPhoneNumber({payload}, {call, put, select}) {
+      const data = yield call(addPhoneNumber, payload)
+      if (data.success) {
         notification["success"]({
-          message:"Deleted"
+          message: "Deleted"
         })
         yield put({
-          type:'getPhoneNumbers'
+          type: 'getPhoneNumbers'
         })
         yield put({
-          type:'updateState',
-          payload:{
-            phoneNumberValue:''
+          type: 'updateState',
+          payload: {
+            phoneNumberValue: ''
           }
         })
       }
     },
-    *saveCompany({payload},{call,put,select}){
-      const data = yield call(addCompany,payload)
-      if(data.success){
+    * saveCompany({payload}, {call, put, select}) {
+      const data = yield call(addCompany, payload)
+      if (data.success) {
         notification["success"]({
-          message:"Added"
+          message: "Added"
         })
         yield put({
-          type:'getCompany'
+          type: 'getCompany'
         })
       }
     },

@@ -29,6 +29,10 @@ module.exports = {
     v1test: `${API}/test`,
     v2test: `${API}/test`,
     saveAttachment:`${API}/file/save`,
-    getAttachment:`${API}/file/get`
+    getAttachment:`${API}/file/get`,
+    saveMaster:`${API}/master`,
+    getAllMasters:`${API}/master`,
+    deleteMasters:`${API}/master`,
+    editMaster:`${API}/master`
   },
 };

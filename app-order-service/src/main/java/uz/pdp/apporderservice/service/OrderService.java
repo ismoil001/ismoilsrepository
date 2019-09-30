@@ -209,4 +209,16 @@ public class OrderService {
         }
 
     }
+    public HttpEntity<?> archiveOrder1(UUID id) {
+        try {
+            Order order = orderRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("order", "id", id));
+            order.setStatus(OrderStatus.ACTIVE);
+            orderRepository.save(order);
+            return ResponseEntity.ok(new ApiResponse("success", true));
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.ok(new ApiResponse("error", false));
+        }
+
+    }
 }

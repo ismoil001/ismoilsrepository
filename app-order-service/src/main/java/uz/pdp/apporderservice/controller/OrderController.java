@@ -33,6 +33,11 @@ public class OrderController {
         return orderService.archiveOrder(id);
     }
 
+@PostMapping("changeStatus1/{id}")
+    public HttpEntity<?> changeStatus1(@PathVariable UUID id){
+        return orderService.archiveOrder1(id);
+    }
+
 
 
     @PostMapping

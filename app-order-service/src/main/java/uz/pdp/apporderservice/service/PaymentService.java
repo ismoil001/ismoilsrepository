@@ -63,9 +63,9 @@ public class PaymentService {
                     changedOrders.add(order);
                 }
             }
-            paymentRepository.save(payment);
+            Payment save = paymentRepository.save(payment);
             orderRepository.saveAll(changedOrders);
-            return ResponseEntity.ok(new ApiResponse("success", true));
+            return ResponseEntity.ok(new ApiResponse(save.getLeftover()==0?"Saqlandi va barchasi buyurtma hisobiga yechildi.":"success", true));
 
         } catch (Exception e) {
             e.printStackTrace();
