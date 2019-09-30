@@ -157,7 +157,7 @@ class Index extends Component {
           <Form>
             <Form.Item>
               {getFieldDecorator('firstName', {
-                initialValue: record.firstName,
+                initialValue: record && record.firstName,
                 rules: [{required: true, message: 'Iltimos, manager ismini kiriting!'}],
               })(
                 <Input
@@ -168,7 +168,7 @@ class Index extends Component {
             </Form.Item>
             <Form.Item>
               {getFieldDecorator('lastName', {
-                initialValue: record.lastName,
+                initialValue: record&& record.lastName,
                 rules: [{required: true, message: 'Iltimos, manager familiyasini kiriting!'}],
               })(
                 <Input
@@ -179,7 +179,7 @@ class Index extends Component {
             </Form.Item>
             <Form.Item>
               {getFieldDecorator('patron', {
-                initialValue: record.patron,
+                initialValue:record&& record.patron,
                 rules: [{required: true, message: 'Iltimos, manager otasining ismini kiriting!'}],
               })(
                 <Input

@@ -96,7 +96,7 @@ class BasicLayout extends React.Component {
               {user.roles?user.roles.filter(item =>item.name==="ROLE_ADMIN").length===1?
                 <Menu.Item key="4">
                 <Link to="/managers">
-                  <span>Managers</span>
+                  <span>Managerlar</span>
                 </Link>
               </Menu.Item>:"":""}
             </Menu>

@@ -161,7 +161,7 @@ class Index extends PureComponent {
           </Popconfirm>
         </Menu.Item>
               {record.status==="ACTIVE"?        <Menu.Item className="p-0 my-1 mx-2">
-                <Button className="border-0 text-center w-100" onClick={() => onClickMenu(3, record)}>Archive</Button>
+                <Button className="border-0 text-center w-100" onClick={() => onClickMenu(3, record)}>Bajarildi</Button>
               </Menu.Item>:
                 <Menu.Item className="p-0 my-1 mx-2">
                   <Button className="border-0 text-center w-100" onClick={() => onClickMenu(4, record)}>Active</Button>

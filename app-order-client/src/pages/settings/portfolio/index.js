@@ -94,9 +94,9 @@ class Portfolio extends Component {
               {/*<img alt="example" style={{ width: '100%' }} src={previewImage} />*/}
             {/*</Modal>*/}
           </Col>
-          <Col span={4}>
-            {portfolioList.map(item=> <img width={200} height={200} src={item.attachment &&'/api/file/get/'+item.attachment.id} alt="avatar"/> )}
-          </Col>
+            {portfolioList && portfolioList.map(item=>
+              <Col span={4} offset={2} className="mt-5">
+                <img width={200} height={200} src={item.attachment &&'/api/file/get/'+item.attachment.id} alt="avatar"/></Col> )}
         </Row>
       </div>
     );

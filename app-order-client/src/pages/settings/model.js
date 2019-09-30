@@ -62,6 +62,9 @@ export default {
             portfolioList:data.object
           }
         })
+        yield put({
+          type:'getPortfolios',
+        })
       }
     },
 

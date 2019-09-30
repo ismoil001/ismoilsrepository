@@ -22,6 +22,8 @@ public interface OrderRepository extends JpaRepository<Order, UUID> {
     List<Order> findAllByUser_Id(UUID userId);
     Order findTop1ByUser_IdOrderByCreatedAtDesc(UUID userId);
 
+    Integer countAllByStatus(OrderStatus status);
+
     List<Order> findAllByUserAndStatusOrderByCreatedAtDesc(User user,OrderStatus status);
 
     @Query(value = "select * from orders t where t.id=(select id from orders where product_name=t.product_name order by created_at desc limit 1) and t.user_id=:userId",nativeQuery = true)
