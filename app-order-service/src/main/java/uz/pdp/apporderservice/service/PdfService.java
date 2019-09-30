@@ -367,7 +367,7 @@ public class PdfService {
             e.printStackTrace();
             return null;
         }
-    }
+    };
 
     public File sendPdfKP(){
         try {
@@ -379,7 +379,7 @@ public class PdfService {
             img1.setWidth(180f);
             img1.setHeight(60f);
             Resource resource = new ClassPathResource("fonts/times.ttf");
-            PdfFont font = PdfFontFactory.createFont("C:\\Windows\\Fonts\\Arial.ttf", PdfEncodings.IDENTITY_H, true);
+            PdfFont font = PdfFontFactory.createFont(resource.getFile().getPath(), PdfEncodings.IDENTITY_H, true);
             float[] floats = {200f, 600f};
             Table table1 = new Table(floats).setFont(font).setFontSize(10f);
             Border border = new SolidBorder(Color.WHITE, 1f);
@@ -453,9 +453,7 @@ public class PdfService {
             cell7.add("Тираж\n" +
                     "10 000");
             cell7.setTextAlignment(TextAlignment.CENTER);
-            table2.addCell(cell7);
-
-            Cell cell8=new Cell();
+            table2.addCell(cell7);Cell cell8=new Cell();
             cell8.setBorder(border2);
             cell8.setFont(font);
             cell8.setFontSize(8f);
@@ -567,9 +565,7 @@ public class PdfService {
             cell35.setFontSize(8f);
             cell35.add(new Paragraph(""));
             cell35.setTextAlignment(TextAlignment.CENTER);
-            table2.addCell(cell35);
-
-            Cell cell14=new Cell();
+            table2.addCell(cell35);Cell cell14=new Cell();
             cell14.setBorder(border2);
             cell14.setFont(font);
             cell14.setFontSize(8f);
@@ -679,9 +675,7 @@ public class PdfService {
             cell61.setFontSize(8f);
             cell61.add(new Paragraph(""));
             cell61.setTextAlignment(TextAlignment.CENTER);
-            table2.addCell(cell61);
-
-            Cell cell62=new Cell();
+            table2.addCell(cell61);Cell cell62=new Cell();
             cell62.setBorder(border2);
             cell62.setFont(font);
             cell62.setFontSize(8f);
@@ -726,13 +720,13 @@ public class PdfService {
             img4.setMarginTop(50f);
 
             document.add(table1);
-           document.add(p1);
-           document.add(p2);
-           document.add(img3);
-           document.add(table2);
-           document.add(p3);
-           document.add(p4);
-           document.add(img4);
+            document.add(p1);
+            document.add(p2);
+            document.add(img3);
+            document.add(table2);
+            document.add(p3);
+            document.add(p4);
+            document.add(img4);
             document.close();
 
 
@@ -744,6 +738,7 @@ public class PdfService {
             return null;
         }
     }
+
 }
 
 
