@@ -18,5 +18,6 @@ public interface BotState {
     String ENTERED_CABINET_PAGE="ENTERED_CABINET_PAGE";
     String DIRECTOR_NAME="DIRECTOR_NAME";
     String GENERATE_ORDER="GENERATE_ORDER";
+    String FILE_SEND="FILE_SEND";
 
 }

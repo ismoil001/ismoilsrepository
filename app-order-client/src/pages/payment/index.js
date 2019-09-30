@@ -127,6 +127,7 @@ class Index extends PureComponent {
           page: 0,
           size: 10,
           name: searchValue,
+          isArchive: isArchive
         }
       })
     }
@@ -180,7 +181,7 @@ class Index extends PureComponent {
             <button onClick={onShowPaymentModal} className="btn btn-dark my-3 mb-2">Add payment</button>
           </Col>
           <Col span={5} className="mt-3  pl-3" offset={8}>
-            <Input className="ml-5" onChange={handleSearch}/>
+            <Input className="ml-5" onChange={handleSearch} onPressEnter={searchButton}/>
           </Col>
           <Col span={2} className="mt-3">
             <Button className="btn-dark" onClick={searchButton}>Search</Button>

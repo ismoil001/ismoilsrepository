@@ -218,10 +218,10 @@ public class QueryAction {
                     "<b>Soni:</b>" + order.getCount());
             toAdmin.setParseMode(ParseMode.HTML);
             InlineKeyboardButton button = new InlineKeyboardButton();
-            button.setText("Tasdiqlash");
+            button.setText("✅");
             button.setCallbackData(BotConstant.ALLOW_IGNORE_ORDER + "/" + order.getId());
             InlineKeyboardButton button1 = new InlineKeyboardButton();
-            button1.setText("Bekor qilish");
+            button1.setText("❌");
             button1.setCallbackData(BotConstant.NOT_ALLOW_IGNORE_ORDER + "/" + order.getId());
             List<InlineKeyboardButton> buttons = new ArrayList<>();
             buttons.add(button);
@@ -363,9 +363,13 @@ public class QueryAction {
         } else if (query.startsWith("PdfSendkmp#")) {
             try {
                 Long clientChatId = Long.parseLong(query.split("#")[1]);
+                TelegramState telegramState= botMainService.getLastState(update).orElseThrow(() -> new ResourceNotFoundException("state","id",update));
+                telegramState.setCustomerChatId(clientChatId);
+                telegramState.setState(BotState.FILE_SEND);
+                telegramStateRepository.save(telegramState);
                 SendMessage sendMessage = new SendMessage();
-                sendMessage.setChatId(clientChatId);
-                sendMessage.setText("Kom predlojeni");
+                sendMessage.setText("File ni kiriting");
+                sendMessage.setChatId(update.getCallbackQuery().getMessage().getChatId());
                 pdpOrderBot.execute(sendMessage);
             } catch (Exception e) {
                 e.printStackTrace();
