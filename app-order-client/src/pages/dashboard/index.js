@@ -350,14 +350,14 @@ class Index extends PureComponent {
 
     return (
       <div className="admin">
-              <h2 className="text-center my-3"><b>Buyurtmalar</b></h2>
+              <h2 className="text-center mt-5 my-3"><b>Buyurtmalar</b></h2>
               <Row>
-                <Col span={4} offset={18}>
+                <Col span={5} offset={17}>
                   <span className='ml-5 mr-3'>Mening buyurtmalarim</span>
                   <Checkbox onChange={handleIsMine} checked={ismine}></Checkbox>
                 </Col>
                 <Col offset={2} span={5} className="mr-4">
-                  <button onClick={handleOpenModal} className="btn btn-dark mt-3">Add Order</button>
+                  <button onClick={handleOpenModal} className="btn mb-4 btn-dark mt-3">Add Order</button>
                 </Col>
                 <Col span={5} className="mt-3  pl-3" offset={8}>
                   <Input className="ml-5" onChange={handleSearch}/>

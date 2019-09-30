@@ -50,8 +50,7 @@ class BasicLayout extends React.Component {
         <LocaleProvider locale={getLocale() === 'en-US' ? enUS : ru}>
         <Layout>
           <Sider trigger={null} collapsible>
-            <div className="logo"/>
-            <Menu theme="dark" mode="inline" defaultSelectedKeys={["" + pageId]}>
+            <Menu style={{position: 'fixed',width: '200px'}} theme="dark" mode="inline" defaultSelectedKeys={["" + pageId]}>
               <h4 className="text-white text-center my-3 mb-3">Europrint</h4>
               <Menu.Item key="1">
                 <Link to="/dashboard">
@@ -103,9 +102,10 @@ class BasicLayout extends React.Component {
           </Sider>
           <Layout>
             <Content
+              className="layout-content"
               style={{
                 background: '#fff',
-                minHeight: "100vh",
+                minHeight: '761px',
               }}
             >
               {props.children}
