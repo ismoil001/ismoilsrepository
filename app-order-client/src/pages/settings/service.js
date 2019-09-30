@@ -39,6 +39,12 @@ export function savePortfolio (data) {
     data,
   })
 }
+export function deletePortfolio (data) {
+  return request({
+    url: '/api/portfolio/'+data.id,
+    method: 'delete'
+  })
+}
 export function deleteNumber (data) {
   return request({
     url: '/api/phonenumber/'+data.id,
