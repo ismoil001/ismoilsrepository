@@ -12,13 +12,15 @@
       }
     }
   }
+
   .ant-table-tbody {
     overflow-y: auto;
     width: 100%;
     height: 55vh;
     position: absolute;
-    td{
-      width: 100%!important;
+
+    td {
+      width: 100% !important;
     }
   }
 }
@@ -277,7 +279,7 @@ $black: #131A22;
 
 .header {
   .rec {
-    width: 35.5%;
+    width: 37%;
     right: 0;
   }
 
@@ -297,6 +299,7 @@ $black: #131A22;
       .nav-link {
         padding-right: 0;
         padding-left: 0;
+        color: #131A22 !important;
       }
 
       &::after {
@@ -323,19 +326,27 @@ $black: #131A22;
       top: 10px;
 
       .dropdownMain {
+        font-size: 16px;
+        line-height: 19px;
         background: none !important;
-        border: 1px solid #131A22;
+        border: 1.2px solid #cdcdcd;
         box-sizing: border-box;
         border-radius: 100px;
-        color: #000000;
+        color: #131A22;
 
         &:focus {
-          color: #000000;
+          border: 1.2px solid #cdcdcd;
+          color: #131A22;
           outline: 0;
           -webkit-appearance: none;
           box-shadow: none;
           -moz-box-shadow: none;
           -webkit-box-shadow: none;
+        }
+
+        .faAngel {
+          font-size: 16px;
+          color: #d4d4d4;
         }
       }
 
@@ -343,15 +354,14 @@ $black: #131A22;
         padding: 0;
         text-align: center;
         min-width: 0;
-        margin-left: -14px;
-        margin-top: 5px;
+        margin-left: 13px;
+        border: none !important;
 
         &:hover {
           box-shadow: 2px 2px 2px 2px rgba(169, 163, 142, 0.15);
         }
 
         button {
-          width: 120px;
 
           &:hover {
             background: $orange;
@@ -404,6 +414,7 @@ $black: #131A22;
 
     .phone-code {
       font-size: 12px;
+      margin-left: 32px;
     }
 
     .pnone-number {
@@ -415,9 +426,6 @@ $black: #131A22;
     padding-top: 120px;
   }
 
-  .contact {
-  }
-
 
   @media (min-width: 1600px) {
     .header {
@@ -425,7 +433,7 @@ $black: #131A22;
         width: 685px;
 
         .order {
-          margin-top: 145px;
+          padding-top: 100px;
         }
       }
     }
@@ -437,7 +445,7 @@ $black: #131A22;
         width: 685px;
 
         .order {
-          margin-top: 145px;
+          padding-top: 140px;
         }
       }
     }
@@ -457,6 +465,11 @@ $black: #131A22;
 
       .contact {
         margin-top: 120px;
+
+        .pnone-number {
+          font-size: 27px;
+          margin-left: 30px;
+        }
       }
     }
   }
@@ -488,7 +501,8 @@ $black: #131A22;
           }
 
           .pnone-number {
-            font-size: 30px;
+            font-size: 27px;
+            margin-left: 30px;
           }
         }
       }
@@ -533,7 +547,8 @@ $black: #131A22;
           }
 
           .pnone-number {
-            font-size: 30px;
+            font-size: 27px;
+            margin-left: 30px;
           }
         }
       }
@@ -582,8 +597,10 @@ $black: #131A22;
             font-size: 12px;
           }
 
+
           .pnone-number {
-            font-size: 20px;
+            font-size: 17px;
+            margin-left: 30px;
           }
         }
       }
@@ -592,104 +609,27 @@ $black: #131A22;
 }
 
 .section-one {
-  margin-top: 140px;
+  margin-top: 168px;
 
   .tipography {
-    font-size: 45px;
-    line-height: 55px;
+    font-size: 50px;
+    line-height: 60px;
+    color: #131A22;
   }
 
   .tipography-text {
-    font-size: 24px;
+    font-size: 20px;
+    line-height: 34px;
+    color: #37475A;
   }
-
   .path {
     font-size: 24px;
     line-height: 40px;
   }
 
   .section1img1 {
-    width: 64%;
-  }
-
-  .section1img2 {
-    width: 86%;
-    left: 0;
-    bottom: -18%;
-  }
-
-  @media (min-width: 1600px) {
-
-  }
-
-  @media (max-width: 1600px) and (min-width: 1200px) {
-    .section1img1 {
-      height: 755px;
-    }
-  }
-
-  @media (max-width: 1200px) and (min-width: 992px) {
-    .tipography {
-      font-size: 35px;
-      line-height: 35px;
-    }
-
-    .tipography-text {
-      font-size: 16px;
-    }
-
-    .path {
-      font-size: 20px;
-      line-height: 30px;
-    }
-  }
-
-  @media (max-width: 992px) and (min-width: 765px) {
-    .tipography {
-      font-size: 26px;
-      line-height: 35px;
-    }
-
-    .tipography-text {
-      font-size: 12px;
-    }
-
-    .path {
-      font-size: 16px;
-      line-height: 30px;
-    }
-  }
-
-  @media (max-width: 765px) and (min-width: 576px) {
-    .tipography {
-      font-size: 45px;
-      line-height: 45px;
-    }
-
-    .tipography-text {
-      font-size: 20px;
-    }
-
-    .path {
-      font-size: 20px;
-      line-height: 30px;
-    }
-  }
-
-  @media only screen and (max-width: 576px) and (min-width: 320px) {
-    .tipography {
-      font-size: 30px;
-      line-height: 40px;
-    }
-
-    .tipography-text {
-      font-size: 16px;
-    }
-
-    .path {
-      font-size: 18px;
-      line-height: 30px;
-    }
+    padding-top: 30px;
+    width: 83%;
   }
 }
 
@@ -826,12 +766,16 @@ $black: #131A22;
 }
 
 .section3 {
-  margin-top: 255px;
-  background-image: url("../public/assets/images/bg-img-2.png");
-  background-repeat: no-repeat;
-  background-position-x: right;
-  background-position-y: top;
-
+  margin-top: 178px;
+  .bg-color-1{
+    right: 0;
+    top: 0;
+    img{
+      width: 100%;
+      height: 565px;
+      transform: translate(0px, -70px);
+    }
+  }
   .service {
     font-size: 50px;
     padding-top: 40px;
@@ -840,7 +784,7 @@ $black: #131A22;
   .mahsulotlar {
     .bg-color-2 {
       bottom: -110px;
-      //left: -185px;
+      left: -185px;
       z-index: 33;
     }
 
@@ -1334,50 +1278,49 @@ $black: #131A22;
     line-height: 28px;
   }
 
-  .dropdownMenu {
-    .dropdownMain {
-      background: none !important;
-      border: 1px solid #ffffff;
-      box-sizing: border-box;
-      border-radius: 100px;
-      color: #ffffff !important;
-
-      &:focus {
-        color: #ffffff !important;
-        outline: 0;
-        -webkit-appearance: none;
-        box-shadow: none;
-        -moz-box-shadow: none;
-        -webkit-box-shadow: none;
-      }
-    }
-
-    .dropdown-menu {
-      padding: 0;
-      text-align: center;
-      min-width: 0;
-      margin-left: -14px;
-      margin-top: 5px;
-
-      &:hover {
-        box-shadow: 2px 2px 2px 2px rgba(169, 163, 142, 0.15);
-      }
-
-      button {
-        width: 120px;
-
-        &:hover {
-          background: $orange;
-          color: #ffffff;
-        }
-      }
-    }
-
-    .dropdown-toggle::after {
-      display: block;
-      border: none !important;
-    }
-  }
+  //.dropdownMenu {
+  //  .dropdownMain {
+  //    background: none !important;
+  //    border: 1px solid #ffffff;
+  //    box-sizing: border-box;
+  //    border-radius: 100px;
+  //    color: #ffffff !important;
+  //
+  //    &:focus {
+  //      color: #ffffff !important;
+  //      outline: 0;
+  //      -webkit-appearance: none;
+  //      box-shadow: none;
+  //      -moz-box-shadow: none;
+  //      -webkit-box-shadow: none;
+  //    }
+  //  }
+  //
+  //  .dropdown-menu {
+  //    padding: 0;
+  //    text-align: center;
+  //    min-width: 0;
+  //    margin-top: 5px;
+  //    margin-left: 13px;
+  //
+  //    &:hover {
+  //      box-shadow: 2px 2px 2px 2px rgba(169, 163, 142, 0.15);
+  //    }
+  //
+  //    button {
+  //
+  //      &:hover {
+  //        background: $orange;
+  //        color: #ffffff;
+  //      }
+  //    }
+  //  }
+  //
+  //  .dropdown-toggle::after {
+  //    display: block;
+  //    border: none !important;
+  //  }
+  //}
 
   .telegram {
     width: 32px;
@@ -1416,6 +1359,7 @@ $black: #131A22;
   }
 
 }
+
 #login {
   height: 100vh;
 
@@ -1423,9 +1367,11 @@ $black: #131A22;
     .text-center {
       padding-right: 80px;
     }
-    .ant-input-group-wrapper{
-      width: 80%!important;
+
+    .ant-input-group-wrapper {
+      width: 80% !important;
     }
+
     .ant-col {
       .ant-btn {
         width: 300px;
@@ -1439,22 +1385,25 @@ $black: #131A22;
         border: 0;
 
       }
-      #username{
+
+      #username {
         width: 93% !important;
         height: 44px;
         padding-left: 4px;
         background-color: #e8f0fe;
         border: 0;
       }
-      .userrr{
+
+      .userrr {
         border-left: 5px solid #fafafa;
         height: 44px;
       }
-      .userr{
+
+      .userr {
         background-color: #fafafa;
-        padding-left: 10px!important;
-        padding-top: 5px!important;
-        border: 1px  solid rgba(196, 196, 196, 0.2);
+        padding-left: 10px !important;
+        padding-top: 5px !important;
+        border: 1px solid rgba(196, 196, 196, 0.2);
         height: 44px;
         border-right: 0;
         margin-left: 9px !important;
@@ -1778,6 +1727,21 @@ $black: #131A22;
       width: 100%;
       height: 464px;
     }
+
+    .homeCircles {
+      transform: translate(-80px, 0px);
+    }
+  }
+  .section-one {
+    height: 100vh;
+
+    .section1img1 {
+      height: 720px;
+    }
+
+    .tipography-text {
+      padding-top: 39px;
+    }
   }
   .section4 {
     .portfolio_Img {
@@ -1815,6 +1779,21 @@ $black: #131A22;
 
     img {
       height: 400px;
+    }
+  }
+  .section-one {
+    .tipography {
+      font-size: 35px;
+      line-height: 35px;
+    }
+
+    .tipography-text {
+      font-size: 16px;
+    }
+
+    .path {
+      font-size: 20px;
+      line-height: 30px;
     }
   }
   .section4 {
@@ -1900,6 +1879,21 @@ $black: #131A22;
 @media (max-width: 992px) and (min-width: 768px) {
   .CaruselContainer {
     margin-top: 45px;
+  }
+  .section-one {
+    .tipography {
+      font-size: 26px;
+      line-height: 35px;
+    }
+
+    .tipography-text {
+      font-size: 12px;
+    }
+
+    .path {
+      font-size: 16px;
+      line-height: 30px;
+    }
   }
   .section4 {
     margin-top: 188px;
@@ -2010,6 +2004,21 @@ $black: #131A22;
   .CaruselContainer {
     margin-top: 45px;
   }
+  .section-one {
+    .tipography {
+      font-size: 45px;
+      line-height: 45px;
+    }
+
+    .tipography-text {
+      font-size: 20px;
+    }
+
+    .path {
+      font-size: 20px;
+      line-height: 30px;
+    }
+  }
   .section4 {
     margin-top: 188px;
 
@@ -2110,6 +2119,21 @@ $black: #131A22;
   .CaruselContainer {
     margin-top: 45px;
   }
+  .section-one {
+    .tipography {
+      font-size: 30px;
+      line-height: 40px;
+    }
+
+    .tipography-text {
+      font-size: 16px;
+    }
+
+    .path {
+      font-size: 18px;
+      line-height: 30px;
+    }
+  }
   .section4 {
     margin-top: 188px;
 
@@ -2202,6 +2226,21 @@ $black: #131A22;
 @media only screen and (max-width: 450px) and (min-width: 320px) {
   .CaruselContainer {
     margin-top: 45px;
+  }
+  .section-one {
+    .tipography {
+      font-size: 30px;
+      line-height: 40px;
+    }
+
+    .tipography-text {
+      font-size: 16px;
+    }
+
+    .path {
+      font-size: 18px;
+      line-height: 30px;
+    }
   }
   .section4 {
     margin-top: 188px;

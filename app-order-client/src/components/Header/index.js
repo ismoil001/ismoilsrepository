@@ -24,7 +24,6 @@ export default class Header extends React.Component {
 
     this.toggle = this.toggle.bind(this);
     this.state = {
-
       isOpen: false
     };
   }
@@ -45,62 +44,62 @@ export default class Header extends React.Component {
     return (
 
       <Container>
-        <Navbar  light expand="md" className="lato-bold " >
+        <Navbar  light expand="md" className="lato-regular">
           <NavbarBrand href="/"><img src="/assets/images/logo.png" alt="logo"/></NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
-                <Link  spy={true} smooth={true} duration={1500}  to="bizhaqimizda">
+                <Link onClick={this.toggle}  spy={true} smooth={true} duration={1500}  to="bizhaqimizda">
                   <NavLink href="/" className="aboutUs">
                     <FormattedMessage id="header_link1"/>
                   </NavLink>
                 </Link>
               </NavItem>
               <NavItem>
-                <Link  spy={true} smooth={true} duration={1500}  to="xizmatlar">
+                <Link onClick={this.toggle}  spy={true} smooth={true} duration={1500}  to="xizmatlar">
                 <NavLink href="/">
                   <FormattedMessage id="header_link2"/>
                   </NavLink>
                 </Link>
               </NavItem>
               <NavItem>
-                <Link  spy={true} smooth={true} duration={1500}  to="portfolio">
+                <Link onClick={this.toggle}  spy={true} smooth={true} duration={1500}  to="portfolio">
                 <NavLink href="/">
                   <FormattedMessage id="header_link3"/>
                 </NavLink>
                 </Link>
               </NavItem>
               <NavItem>
-                <Link  spy={true} smooth={true} duration={1500}  to="mijozlar">
+                <Link onClick={this.toggle}  spy={true} smooth={true} duration={1500}  to="mijozlar">
                 <NavLink href="/">
                   <FormattedMessage id="header_link4"/>
                 </NavLink>
                 </Link>
               </NavItem>
               <NavItem>
-                <Link  spy={true} smooth={true} duration={1500}  to="jamoa">
+                <Link onClick={this.toggle} spy={true} smooth={true} duration={1500}  to="jamoa">
                 <NavLink href="/">
                   <FormattedMessage id="header_link5"/>
                 </NavLink>
                 </Link>
               </NavItem>
               <NavItem>
-                <Link  spy={true} smooth={true} duration={1500}  to="kontakt">
+                <Link onClick={this.toggle} spy={true} smooth={true} duration={1500}  to="kontakt">
                 <NavLink href="/">
                   <FormattedMessage id="header_link6"/>
                 </NavLink>
                 </Link>
               </NavItem>
-              <NavItem>
-                <NavLink href="/dashboard">
-                  <FormattedMessage id="header_link7"/>
-                </NavLink>
-              </NavItem>
+              {/*<NavItem>*/}
+              {/*  <NavLink href="/dashboard">*/}
+              {/*    <FormattedMessage id="header_link7"/>*/}
+              {/*  </NavLink>*/}
+              {/*</NavItem>*/}
 
               <UncontrolledDropdown>
                 <DropdownToggle caret className="dropdownMain">
-                  Uzbek <FaAngleDown/>
+                  Uzbek <FaAngleDown className='faAngel'/>
                 </DropdownToggle>
                 <DropdownMenu right>
                   <DropdownItem onClick={()=>handleLang(1)} key={1}>

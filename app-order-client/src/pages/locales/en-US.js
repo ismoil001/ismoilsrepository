@@ -12,7 +12,7 @@ export default {
   header_item1: "Uzbek",
   header_item2: "Rus",
   header_text: "Nega mijozlar bizni tanlashadi?\n" +
-    "So‘ngi texnologiyalar sifati,",
+    " So‘ngi texnologiyalar sifati,",
   header_text_bold: "hoziroq buyurtma bering!",
   header_btn: "Buyurtma berish",
   // Header section translate start
