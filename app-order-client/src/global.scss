@@ -1,10 +1,10 @@
 
 #tableMy {
   .ant-table-content {
-    height: 450px !important;
+    height: 430px !important;
 
     .ant-table-placeholder {
-      height: 450px !important;
+      height: 430px !important;
 
 
       .ant-empty-normal {
@@ -1115,7 +1115,6 @@ $black: #131A22;
     right: -25px;
     display: none !important;
   }
-
   .team_Carousel {
     .team_Title {
       font-size: 46px;
@@ -1712,6 +1711,9 @@ $black: #131A22;
   }
 
 
+}
+.ant-pagination{
+  margin-bottom: 0!important;
 }
 
 @media (min-width: 1200px) {
@@ -2348,5 +2350,43 @@ $black: #131A22;
   100% {
     opacity: 1;
   }
+}
+.portfolio-card{
+  margin-right: 35px;
+  overflow: hidden;
+  img{
+    transform: scale(3.1);
+  }
+  .ant-card-body{
+    padding: 12px 10px 0 0 !important;
+    zoom: 1.6!important;
+  }
+  .ant-upload{
+    width: 100%;
+  }
+  &:hover{
+    .delete-portfolio{
+      opacity: 1;
+    }
+  }
+  .delete-portfolio{
+    transition: 0.5s ease;
+    opacity: 0;
+    svg{
+      path{
+        color: red;
+      }
+      width: 20px;
+      height: 20px;
+    }
+    top: 10px;
+    right: 10px;
+
+  }
+  width: 200px!important;
+  height: 200px !important;
+  padding-left: 25px!important;
+  margin-right: 20px;
+
 }
 

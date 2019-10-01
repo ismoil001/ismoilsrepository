@@ -324,60 +324,11 @@ public class StateAction {
                     }
                 }
             } else {
-                if (botMainService.isCheckPhoneNumber(update)) {
-                    Optional<User> userOptional = userRepository.findByPhoneNumber(update.getMessage().getText());
-                    Optional<TelegramState> lastState = botMainService.getLastState(update);
-                    if (userOptional.isPresent()) {
-                        if (!lastState.isPresent()) {
-                            try {
-                                TelegramState telegramState = new TelegramState();
-                                telegramState.setState(BotState.CHECK_PASSWORD);
-                                telegramState.setPhoneNumber(userOptional.get().getPhoneNumber());
-                                telegramState.setTgUserId(update.getMessage().getFrom().getId());
-                                telegramState.setFirstName(userOptional.get().getFirstName());
-                                telegramState.setLastName(userOptional.get().getLastName());
-                                telegramState.setPatron(userOptional.get().getPatron());
-                                telegramStateRepository.save(telegramState);
-                                userOptional.get().setTelegramId(update.getMessage().getFrom().getId());
-                                userRepository.save(userOptional.get());
-                                SendMessage sendMessage = new SendMessage();
-                                sendMessage.setChatId(update.getMessage().getChatId());
-                                sendMessage.setText("Siz tizimdan ro'yxatdan o'tgansiz parolni kiriting");
-                                pdpOrderBot.execute(sendMessage);
-                            } catch (Exception e) {
-                                e.printStackTrace();
-                                SendMessage sendMessage1 = new SendMessage();
-                                sendMessage1.setText("Bunday foydalanuvchi mavjud");
-                                sendMessage1.setChatId(update.getMessage().getChatId());
-                                pdpOrderBot.execute(sendMessage1);
-                                botMainService.startPage(update);
-
-                            }
-                        } else {
-                            lastState.get().setState(BotState.CHECK_PASSWORD);
-                            telegramStateRepository.save(lastState.get());
-                        }
-                    } else {
-                        SendMessage sendMessage = new SendMessage();
-                        sendMessage.setReplyMarkup(new ReplyKeyboardRemove());
-                        String phoneNumber;
-                        phoneNumber = update.getMessage().getText();
-                        TelegramState telegramState = new TelegramState();
-                        telegramState.setPhoneNumber(phoneNumber);
-                        telegramState.setTgUserId(update.getMessage().getFrom().getId());
-                        telegramState.setState(BotState.REGISTRATION_FIRSTNAME);
-                        telegramStateRepository.save(telegramState);
-                        sendMessage.setText("Ismingizni kiriting");
-                        pdpOrderBot.execute(sendMessage);
-                    }
-                } else {
                     SendMessage sendMessage = new SendMessage();
-                    sendMessage.setText("Raqam noto'g'ri kiritilgan");
+                    sendMessage.setText("Iltimos kontakt yuborish tugmasini bosing");
                     sendMessage.setChatId(update.getMessage().getChatId());
                     pdpOrderBot.execute(sendMessage);
                 }
-            }
-
         } catch (
                 TelegramApiException e) {
             e.printStackTrace();

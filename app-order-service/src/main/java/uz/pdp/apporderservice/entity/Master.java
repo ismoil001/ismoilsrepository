@@ -9,6 +9,7 @@ import uz.pdp.apporderservice.entity.template.AbsEntity;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 @EqualsAndHashCode(callSuper = true)
 @Data
@@ -21,7 +22,7 @@ public class Master extends AbsEntity {
 
     private String description;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY)
     private Attachment attachment;
 
     private Boolean active;

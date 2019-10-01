@@ -46,7 +46,9 @@ public class DataLoader implements CommandLineRunner {
         if (initializationMode.equalsIgnoreCase("always")) {
 
             User user = new User("+998941211112", passwordEncoder.encode("root123"), "Sobir", "Xalimov", "Botirovich", new HashSet<>(roleRepository.findAllByName(RoleName.ROLE_MANAGER)),"Europrint");
+            User user1 = new User("+998947777777", passwordEncoder.encode("root123"), "Sobir", "Xalimov", "Botirovich", new HashSet<>(roleRepository.findAllByName(RoleName.ROLE_ADMIN)),"Europrint");
             userRepository.save(user);
+            userRepository.save(user1);
            User user12=new User("+998993632582",passwordEncoder.encode("asd"),"Alisher","Atadjanov","Baxramovich",new HashSet<>(roleRepository.findAllByName(RoleName.ROLE_CUSTOMER)),"PDP");
             userRepository.save(user12);
         }

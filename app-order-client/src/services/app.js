@@ -2,7 +2,55 @@ import {request, config} from 'utils'
 
 const {api} = config;
 const {saveUser, userLogout, userLogin,
-  editManager,getManagers,delMan} = api;
+  editManager,getManagers,delMan,saveAttachment,
+  getAttachment,saveMaster,getAllMasters,deleteMasters,editMaster} = api;
+export function upodateMas(data) {
+  return request({
+    url:editMaster,
+    method:'put',
+    data:data
+  })
+
+}
+export function removeMaster(id) {
+  return request({
+    url:deleteMasters+"/"+id,
+    method:'delete'
+  })
+
+}
+export function getMasters() {
+  return request({
+    url:getAllMasters,
+    method:'get'
+  })
+
+}
+export function addMaster(data) {
+  return request({
+    url:saveMaster,
+    method:'post',
+    data:data
+  })
+
+}
+export function savePhoto(req) {
+  return request({
+    url:saveAttachment,
+    method:'post',
+    data:req
+  })
+
+}
+
+export function getPhoto(req) {
+  return request({
+    url:getAttachment+"/"+req.id,
+    method:'get',
+    data:req.data
+  })
+
+}
 
 export function editManag(data) {
   console.log(data)
