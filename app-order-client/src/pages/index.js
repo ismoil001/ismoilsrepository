@@ -2,6 +2,7 @@ import React from "react"
 import '../global.scss'
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import {Link} from "react-scroll";
 import {
   Button,
   Card,
@@ -10,20 +11,22 @@ import {
   CardText,
   CardTitle,
   Col,
-  Container, DropdownItem, DropdownMenu, DropdownToggle,
+  Container,
+  DropdownItem,
+  DropdownMenu,
+  DropdownToggle, Nav,
   Row,
   UncontrolledDropdown
 } from 'reactstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import CountTo from 'react-count-to';
+import {Map, Placemark, YMaps} from "react-yandex-maps";
+import Slider from "react-slick";
 import Header from "../components/Header/index";
 import Carusel from "../components/Carusel";
-import {connect} from "dva";
-import {FormattedMessage, setLocale,} from 'umi-plugin-locale';
-import Slider from "react-slick";
-import {CountTo} from "react-count-to";
-import {Map, Placemark, YMaps} from "react-yandex-maps";
-import {Link} from "react-router-dom";
 import {FaAngleDown} from "react-icons/fa";
+import {connect} from "dva";
+import {FormattedMessage, formatMessage, setLocale, getLocale,} from 'umi-plugin-locale';
 
 @connect(({app}) => ({app}))
 class A extends React.Component {
@@ -1136,8 +1139,8 @@ class A extends React.Component {
 
                           <div>
                             <p className="phone-num mt-3">
-                            <span
-                              className="phone-code lato-regular">(({company && company.phoneNumber2.substring(0, 6)}))</span>
+                              <span
+                                className="phone-code lato-regular">(({company && company.phoneNumber2.substring(0, 6)}))</span>
                             </p>
                             <p
                               className="phone-number lato-black mb-0">{company && company.phoneNumber2.substring(6)}</p>
@@ -1146,8 +1149,8 @@ class A extends React.Component {
 
                           <div>
                             <p className="phone-num mt-3">
-                            <span
-                              className="phone-code lato-regular">(({company && company.phoneNumber3.substring(0, 6)}))</span>
+                              <span
+                                className="phone-code lato-regular">(({company && company.phoneNumber3.substring(0, 6)}))</span>
                             </p>
                             <p
                               className="phone-number lato-black mb-0">{company && company.phoneNumber3.substring(6)}</p>
@@ -1202,6 +1205,10 @@ class A extends React.Component {
                         </Col>
                         <Col xs={11} sm={11} md={11} lg={11} xl={11} className='p-0'>
                           <p className='addres mb-0'>140100</p>
+                          <p className="lato-regular addres">
+                            {/*<FormattedMessage id='footer_address'/>*/}
+                            {getLocale()==="en-US"? company.address:company.addressRu}
+                          </p>
                         </Col>
                       </Row>
                     </Col>
