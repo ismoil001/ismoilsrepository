@@ -35,6 +35,13 @@ export function getCustomers (data) {
     data,
   })
 }
+export function changeStatusOrder (data) {
+  return request({
+    url: '/api/order/changeStatus/'+data,
+    method: 'post',
+    data,
+  })
+}
 export function getActiveOrders (data) {
   return request({
     url: '/api/order/active',

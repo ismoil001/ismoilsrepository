@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 HELP.md
 target/
 !.mvn/wrapper/maven-wrapper.jar
@@ -35,3 +36,6 @@ app-mfaktor-server/.mvn
 app-mfaktor-server/mvnw
 app-mfaktor-server/mvnw.cmd
 node_modules/**
+=======
+.idea
+>>>>>>> ab874c724edfec9a35db5178f1dc53c6fcf88ed9

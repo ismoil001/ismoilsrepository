@@ -10,6 +10,8 @@ export default {
     selectedUser:'',
     payTypes:[],
     paymentList:[],
+    searchValue:'',
+    isArchive:false,
   },
 
   subscriptions: {
@@ -22,7 +24,13 @@ export default {
             type:'queryPayType'
           })
           dispatch({
-            type:'queryPayment'
+            type:'queryPayment',
+            payload:{
+              page:0,
+              size:10,
+              name:'',
+              isArchive:false
+            }
           })
         }
       });
@@ -32,8 +40,8 @@ export default {
   effects: {
 
     *queryPayment({payload},{call,put,select}){
-
-      const data = yield call(getPayments);
+      const data = yield call(getPayments,payload);
+      console.log(data)
       if(data.success){
         yield put({
           type:'updateState',
@@ -49,7 +57,13 @@ export default {
       const data = yield call(deletePayment,{id:payload})
       if(data.success){
         yield put({
-          type:'queryPayment'
+          type:'queryPayment',
+          payload:{
+            page:0,
+            size:10,
+            name:'',
+            isArchive: false
+          }
         })
         notification['success']({
           message:'Saved'
@@ -83,7 +97,13 @@ export default {
           }
         })
         yield put({
-          type:'queryPayment'
+          type:'queryPayment',
+          payload:{
+            page:0,
+            size:10,
+            name:'',
+            isArchive:false
+          }
         })
       }
     },

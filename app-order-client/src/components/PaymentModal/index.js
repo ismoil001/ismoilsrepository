@@ -3,9 +3,8 @@ import {Modal, Form, InputNumber} from "antd";
 
 class Index extends Component {
   render() {
-  const {modalVisible, onHideModal,onSave,form} =this.props;
+  const {modalVisible, onHideModal,onSave,form, item,itemPaySum} =this.props;
   const {getFieldsValue,getFieldDecorator,resetFields} =form;
-
   const onSubmit=()=>{
     onSave(getFieldsValue())
     resetFields();
@@ -16,9 +15,10 @@ class Index extends Component {
         <Form>
           <Form.Item>
             {getFieldDecorator('amount', {
+              initialValue:item.sum-itemPaySum,
               rules: [{required: true, message: 'Please input amount!'}],
             })(
-             <InputNumber placeholder={"Amount"}/>,
+             <InputNumber placeholder={"Amount"} min={0} max={item.sum-itemPaySum}/>,
             )}
           </Form.Item>
         </Form>
