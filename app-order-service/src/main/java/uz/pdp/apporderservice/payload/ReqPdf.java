@@ -4,10 +4,19 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.UUID;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class ReqPdf {
+    private UUID orderId;
     private String customerCompanyName;
     private String customerCompanyDirector;
+
+    public ReqPdf(String customerCompanyName, String customerCompanyDirector) {
+        this.customerCompanyName = customerCompanyName;
+        this.customerCompanyDirector = customerCompanyDirector;
+    }
 }
+
