@@ -2,23 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b04e4617-cc1a-42d9-8949-04bd51c3031d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app-order-service/src/main/java/uz/pdp/apporderservice/payload/ReqPdf.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app-order-service/src/main/java/uz/pdp/apporderservice/service/PdfService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app-order-service/src/main/resources/fonts/times.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app-order-service/src/main/resources/fonts/timesbd.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app-order-service/src/main/resources/fonts/timesbi.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app-order-service/src/main/resources/fonts/timesi.ttf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/d71af8db-a3a3-4f15-8803-a46638e93044.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/d71af8db-a3a3-4f15-8803-a46638e93044/storage_v2/_src_/database/orderdb.TPgMuA.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/d71af8db-a3a3-4f15-8803-a46638e93044/storage_v2/_src_/database/orderdb.TPgMuA/schema/public.abK9xQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-order-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app-order-service/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-order-service/src/main/java/uz/pdp/apporderservice/component/DataLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/app-order-service/src/main/java/uz/pdp/apporderservice/component/DataLoader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-order-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/app-order-service/src/main/resources/application.properties" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/app-order-service/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -46,8 +31,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app-order-service/src/main/java/uz/pdp/apporderservice/service/PdfService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="284">
-              <caret line="147" column="48" selection-start-line="147" selection-start-column="48" selection-end-line="147" selection-end-column="48" />
+            <state relative-caret-position="4417">
+              <caret line="168" column="34" selection-start-line="168" selection-start-column="34" selection-end-line="168" selection-end-column="34" />
             </state>
           </provider>
         </entry>
@@ -368,12 +353,20 @@
       <updated>1569839135102</updated>
       <workItem from="1569839139205" duration="5074000" />
       <workItem from="1569846907243" duration="5439000" />
-      <workItem from="1569904908387" duration="14037000" />
+      <workItem from="1569904908387" duration="14404000" />
     </task>
+    <task id="LOCAL-00001" summary="14:30">
+      <created>1569921843312</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1569921843313</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="24550000" />
+    <option name="totallyTimeSpent" value="24917000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -391,7 +384,7 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.3286119" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.5042493" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.5042493" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -454,6 +447,10 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="14:30" />
+    <option name="LAST_COMMIT_MESSAGE" value="14:30" />
+  </component>
   <component name="editorHistoryManager">
     <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/a76e57f3-05f7-489d-b14a-e05ee05e1cc9/console.sql">
       <provider selected="true" editor-type-id="text-editor" />
@@ -512,8 +509,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app-order-service/src/main/java/uz/pdp/apporderservice/service/PdfService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="284">
-          <caret line="147" column="48" selection-start-line="147" selection-start-column="48" selection-end-line="147" selection-end-column="48" />
+        <state relative-caret-position="4417">
+          <caret line="168" column="34" selection-start-line="168" selection-start-column="34" selection-end-line="168" selection-end-column="34" />
         </state>
       </provider>
     </entry>
