@@ -1,27 +1,71 @@
-
-#tableMy {
-  .ant-table-content {
-    height: 430px !important;
-
-    .ant-table-placeholder {
-      height: 430px !important;
-
-
-      .ant-empty-normal {
-        margin-top: 150px !important;
+.ant-layout-content{
+  min-height: 0!important;
+  height: 100vh!important;
+  #tableMy {
+    position: relative!important;
+    .ant-table{
+      table{
+        border-collapse: collapse!important;
+      }
+    }
+    .ant-table-thead{
+      tr{
+        th:nth-child(1){
+          width: 125px;
+        }
+        th:nth-child(2){
+          width: 100px;
+        }
+        th:nth-child(3){
+          width: 100px;
+        }
+        th:nth-child(4){
+          width: 100px;
+        }
+        th:nth-child(5){
+          width: 100px;
+        }
+        th:nth-child(6){
+          width: 100px;
+          position: static;
+        }
+      }
+    }
+    .ant-table-tbody {
+      border: 1px solid #e2e2e2!important;
+      width: 100%;
+      tr{
+        border-bottom: 1px solid #e2e2e2 !important;
+        td:nth-child(1){
+          width: 20%;
+        }
+        td:nth-child(2){
+          width: 16%;
+        }
+        td:nth-child(3){
+          width: 16%;
+        }
+        td:nth-child(4){
+          width: 16%;
+        }
+        td:nth-child(5){
+          width: 16%;
+        }
+        td:nth-child(6){
+          width: 16%;
+        }
       }
     }
   }
-  .ant-table-tbody {
-    overflow-y: auto;
-    width: 100%;
-    height: 55vh;
-    position: absolute;
-    td{
-      width: 100%!important;
+    .ant-pagination{
+      text-align: center!important;
+      margin-top: 10px!important;
+      ul{
+        margin-bottom: 0!important;
+      }
     }
-  }
 }
+
 
 #aksverka {
   .bg-minus {

@@ -50,30 +50,30 @@ class Index extends Component {
       },{
         title:<div><div className="d-inline-block" id="soni" ></div> Soni</div> ,
         dataIndex:'productCount',
-        key:'count',
+        key:'productCount',
         render:(text,record)=>record.productCount && record.productCount.toLocaleString()
       },{
         title:'Narxi',
         dataIndex:'productPrice',
-        key:'price',
+        key:'productPrice',
         render:(text,record)=>record.productPrice && record.productPrice.toLocaleString()
 
       },{
         title:<div><div className="d-inline-block" id="summasi" ></div> Summasi</div>,
         dataIndex:'sum',
-        key:'price',
+        key:'sum',
         render:(text,record)=>record.sum &&record.sum.toLocaleString()
 
       },{
         title:<div><div className="d-inline-block" id="tolov" ></div> To'lov</div>,
         dataIndex:'paymentSum',
-        key:'payment',
+        key:'paymentSum',
         render:(text,record)=>record.paymentSum && record.paymentSum.toLocaleString()
       }
     ]
 
     return (
-      <div className="my-5" id="tableMy">
+      <div className="mt-5" id="tableMy">
         <Row>
           <Col span={12} offset={2}>
             <Select style={{width:"300px"}} placeholder={"User"} onSearch={onSearch} showSearch  optionFilterProp="children" onChange={handleSelect}>
@@ -111,8 +111,9 @@ class Index extends Component {
           </Col>
         </Row>
         <Row>
-          <Col span={20} offset={2}>
-            <Table onScroll={() => handleScroll()} dataSource={aksverkaList} columns={visibleColumns} pagination={false}/>
+          {console.log(aksverkaList)}
+          <Col  span={20} offset={2}>
+            <Table scroll={{ y: 376}} onScroll={() => handleScroll()} dataSource={aksverkaList} columns={visibleColumns} pagination={false}/>
           </Col>
         </Row>
 

@@ -135,11 +135,11 @@ class Index extends React.Component {
         key: 'RU',
       },
       {
-        title: 'Action',
+        title: 'Amallar',
         dataIndex: 'action',
         key: 'action',
         render: (text, record) => <span>
-     <div onClick={()=>delMaster(record.id)} className="d-inline-block circle delete-circle ml-4"> <Icon
+     <div onClick={()=>delMaster(record.id)} className="d-inline-block circle delete-circle"> <Icon
        type="delete"/></div>
      <div onClick={()=>editMaster(record)} className="d-inline-block circle ml-4"><Icon type="edit"/> </div>
     </span>

@@ -47,7 +47,7 @@ class Portfolio extends Component {
     const uploadButton = (
       <Card className="text-center portfolio-card">
         <Icon className="mt-5"  type={loadingImage ? 'loading' : 'plus'} />
-        <div className="mt-2 ant-upload-text">Upload</div>
+        <div className="mt-2 ant-upload-text">Yuklash</div>
       </Card>
     );
     function beforeUpload(file) {
