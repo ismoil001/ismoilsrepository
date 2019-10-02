@@ -2,7 +2,11 @@ import React, {PureComponent} from 'react';
 import {connect} from "dva"
 import moment from 'moment'
 import PaymentModal from '../../components/PaymentModal/index'
+import MaskedInput from 'react-text-mask'
 import {
+  Menu,
+  Icon,
+  Dropdown,
   Button,
   Checkbox,
   Col,
@@ -20,9 +24,13 @@ import {
 } from "antd";
 import './index.less'
 
+
+
 @connect(({dashboard}) => ({dashboard}))
 class Index extends PureComponent {
+
   render() {
+
     const {dashboard, dispatch, form} = this.props;
     const {modalVisible, modalType, currentItem, customerList, currentItemPaymentSum, ismine, archiveData, orderLists, page, totalElements, searchValue, paymentModalVisible} = dashboard;
     const {getFieldDecorator, getFieldsValue, resetFields} = form;
@@ -48,11 +56,13 @@ class Index extends PureComponent {
       resetFields();
     }
 
+
     const handleSubmit = () => {
       if (modalType === "create") {
         dispatch({
           type: 'dashboard/saveOrder',
           payload: getFieldsValue()
+          // item.amount.replace(/\s/g,''))
         })
         resetFields();
       } else {
@@ -132,14 +142,24 @@ class Index extends PureComponent {
         key: 'operation',
         render: (text, record) =>
           <div>
-            <Button onClick={() => onClickMenu(1, record)}>edit</Button>
-            <Popconfirm placement="topLeft" title="Tasdiqlash" onConfirm={() => onClickMenu(2, record)} okText="Yes"
-                        cancelText="No">
-              <Button>delete</Button>
-            </Popconfirm>
-            <Button onClick={() => onClickMenu(3, record)}>Archive</Button>
-
-
+            <Dropdown overlay={<Menu>
+        <Menu.Item className="p-0 my-1 mx-2">
+          <Button className="border-0 text-center w-100" onClick={() => onClickMenu(1, record)}>edit</Button>
+        </Menu.Item>
+        <Menu.Item className="p-0 my-1 mx-2">
+          <Popconfirm placement="topLeft" title="Tasdiqlash" onConfirm={() => onClickMenu(2, record)} okText="Yes"
+                      cancelText="No">
+            <Button className="border-0 text-center w-100">delete</Button>
+          </Popconfirm>
+        </Menu.Item>
+        <Menu.Item className="p-0 my-1 mx-2">
+          <Button className="border-0 text-center w-100" onClick={() => onClickMenu(3, record)}>Archive</Button>
+        </Menu.Item>
+      </Menu>}>
+              <a className="ant-dropdown-link" href="#">
+                <Icon type="dash" /> <Icon type="down" />
+              </a>
+            </Dropdown>
           </div>
       },
     ]
@@ -314,7 +334,7 @@ class Index extends PureComponent {
 
               <Row className="my-4">
                 <Col span={20} offset={2}>
-                  <Table dataSource={orderLists} columns={visibleColumns}/>
+                  <Table dataSource={orderLists} columns={visibleColumns} pagination={false}/>
                   <Pagination style={{position: "relative", top: "20px", left: "45%", marginBottom: "200px"}}
                               current={page}
                               onChange={onChangePage} pageSize={10} total={totalElements} pagination={false}/>
@@ -356,7 +376,7 @@ class Index extends PureComponent {
                       initialValue: currentItem && currentItem.userId,
                       rules: [{required: true, message: 'Please select company!'}],
                     })(
-                      <Select placeholder="Select company" onSearch={onSearchCompany} showSearch  optionFilterProp="children">
+                      <Select placeholder="User" onSearch={onSearchCompany} showSearch  optionFilterProp="children">
                         {customerList.map(item =>
                           <Option value={item.id}
                                   key={item.id}>{item.lastName + " " + item.firstName + " " + item.companyName + " " + item.phoneNumber}</Option>
@@ -370,6 +390,7 @@ class Index extends PureComponent {
                       rules: [{required: true, message: 'Please input your product name!'}],
                     })(
                       <Input
+                        className="form-control"
                         placeholder="Product name..."
                       />,
                     )}
@@ -379,8 +400,11 @@ class Index extends PureComponent {
                       initialValue: currentItem && currentItem.count,
                       rules: [{required: true, message: 'Please input your product count!'}],
                     })(
-                      <InputNumber
+                      <MaskedInput
+                        className="form-control"
                         placeholder="Count..."
+                        mask={[/\d/, /\d/, /\d/," ", /\d/, /\d/, /\d/," ", /\d/, /\d/, /\d/," ",/\d/, /\d/, /\d/," ",/\d/, /\d/, /\d/," ",/\d/, /\d/, /\d/," ",/\d/, /\d/, /\d/," ",/\d/, /\d/, /\d/," ",/\d/, /\d/, /\d/," ",/\d/, /\d/, /\d/]}
+                        maskChar={null}
                       />,
                     )}
                   </Form.Item>
@@ -389,8 +413,11 @@ class Index extends PureComponent {
                       initialValue: currentItem && currentItem.price,
                       rules: [{required: true, message: 'Please input one product price!'}],
                     })(
-                      <InputNumber
-                        placeholder="One product price..."
+                      <MaskedInput
+                        className="form-control"
+                        placeholder="Our pruduct prce.."
+                        mask={[/\d/, /\d/, /\d/," ", /\d/, /\d/, /\d/," ", /\d/, /\d/, /\d/," ",/\d/, /\d/, /\d/," ",/\d/, /\d/, /\d/," ",/\d/, /\d/, /\d/," ",/\d/, /\d/, /\d/," ",/\d/, /\d/, /\d/," ",/\d/, /\d/, /\d/," ",/\d/, /\d/, /\d/]}
+                        maskChar={null}
                       />,
                     )}
                   </Form.Item>
@@ -403,7 +430,7 @@ class Index extends PureComponent {
           <Tabs.TabPane tab="Archive" key="2">
             <Col span={20} offset={2}>
 
-              <Table dataSource={orderLists} columns={visibleColumns}/>
+              <Table dataSource={orderLists} columns={visibleColumns} pagination={false}/>
               <Pagination style={{position: "relative", top: "20px", left: "45%", marginBottom: "200px"}}
                           current={page}
                           onChange={onChangePage} pageSize={10} total={totalElements} pagination={false}/>

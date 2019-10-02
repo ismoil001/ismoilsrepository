@@ -24,6 +24,9 @@ class BasicLayout extends React.Component {
     if (props.location.pathname.includes("aksverka")) {
       pageId = 3
     }
+    if (props.location.pathname.includes("settings")) {
+      pageId = 6
+    }
     if (props.location.pathname.includes("managers")) {
       pageId = 4
     }

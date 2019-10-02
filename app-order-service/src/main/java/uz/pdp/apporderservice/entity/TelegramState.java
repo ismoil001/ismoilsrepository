@@ -40,7 +40,7 @@ public class TelegramState extends AbsEntity {
 
     private UUID orderId;
 
-    private Integer count;
+    private Double count;
 
     private Double newPrice;
 

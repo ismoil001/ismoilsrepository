@@ -17,7 +17,7 @@ public class ResAksverka {
 
     private Double sumCost;
 
-    private Integer sumCount;
+    private Double sumCount;
 
     private List<Aksverka> aksverkaList;
 

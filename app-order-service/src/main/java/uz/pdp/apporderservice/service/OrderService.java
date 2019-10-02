@@ -156,7 +156,7 @@ public class OrderService {
             List<Aksverka> aksverkaList = new ArrayList<>();
             Double sumOrderCost = 0.0;
             Double sumPayment = 0.0;
-            Integer sumCount = 0;
+            Double sumCount = 0.0;
             for (Order order : orderList) {
                 sumOrderCost += order.getCount() * order.getPrice();
                 sumCount += order.getCount();

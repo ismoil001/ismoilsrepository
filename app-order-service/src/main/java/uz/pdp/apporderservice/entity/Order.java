@@ -36,9 +36,9 @@ public class Order extends AbsEntity{
 
     private Double price;
 
-    private Integer count;
+    private Double count;
 
-    public Order(OrderStatus status, User user, Timestamp orderedDate, String productName, Double price, Integer count) {
+    public Order(OrderStatus status, User user, Timestamp orderedDate, String productName, Double price, Double count) {
         this.status = status;
         this.user = user;
         this.orderedDate = orderedDate;
