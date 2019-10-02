@@ -45,7 +45,7 @@ class Portfolio extends Component {
 
     const { previewVisible, previewImage, fileList } = this.state;
     const uploadButton = (
-      <Card className="text-center portfolio-card">
+      <Card className="text-center pl-4 portfolio-card">
         <Icon className="mt-5"  type={loadingImage ? 'loading' : 'plus'} />
         <div className="mt-2 ant-upload-text">Upload</div>
       </Card>
@@ -91,7 +91,7 @@ class Portfolio extends Component {
       <div className="clearfix">
         <h2 className="text-center mt-5 mb-5"><b>Portfolio qo'shish</b></h2>
         <Col span={20} offset={2}>
-          <Col span={4} style={{marginRight: '36px'}}>
+          <Col span={4} style={{marginRight: '20px', width: '250px'}}>
             <Upload
               name="attachment"
               showUploadList={false}
@@ -109,7 +109,7 @@ class Portfolio extends Component {
             {portfolioList && portfolioList.map(item=>
               <Col span={4} className="position-relative portfolio-card mb-5">
                 <Icon onClick={()=>deletePortfolio(item.id)} className="delete-portfolio position-absolute" type="close-circle" />
-                <img className="img-fluid h-100" src={item.attachment &&'/api/file/get/'+item.attachment.id} alt="avatar"/>
+                <img className="img-fluid " src={item.attachment &&'/api/file/get/'+item.attachment.id} alt="avatar"/>
               </Col> )}
         </Col>
       </div>
