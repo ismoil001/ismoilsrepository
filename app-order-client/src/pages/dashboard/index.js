@@ -29,8 +29,10 @@ class Index extends PureComponent {
 
   render() {
     const {dashboard, dispatch, form} = this.props;
-    const {modalVisible, status, modalType, modalLoading, currentItem, customerList, currentItemPaymentSum, ismine, archiveData, orderLists, page, totalElements, searchValue, paymentModalVisible} = dashboard;
-    const {getFieldDecorator, getFieldsValue, resetFields, setFieldsValue} = form;
+    const {modalVisible,status, modalType,modalLoading, currentItem, customerList, currentItemPaymentSum, ismine, archiveData, orderLists, page, totalElements, searchValue, paymentModalVisible} = dashboard;
+    const {getFieldDecorator,validateFields,getFieldsValue, resetFields,setFieldsValue} = form;
+    // const {modalVisible, status, modalType, modalLoading, currentItem, customerList, currentItemPaymentSum, ismine, archiveData, orderLists, page, totalElements, searchValue, paymentModalVisible} = dashboard;
+    // const {getFieldDecorator, getFieldsValue, resetFields, setFieldsValue} = form;
     const {Option} = Select;
     const handleOpenModal = () => {
       dispatch({
@@ -54,26 +56,31 @@ class Index extends PureComponent {
     }
 
     const handleSubmit = () => {
-      dispatch({
-        type: 'dashboard/updateState',
-        payload: {
-          modalLoading: true
+      validateFields((err, values) => {
+        if (!err) {
+          dispatch({
+            type: 'dashboard/updateState',
+            payload: {
+              modalLoading: true
+            }
+          })
+          if (modalType === "create") {
+            dispatch({
+              type: 'dashboard/saveOrder',
+              payload: getFieldsValue()
+              // item.amount.replace(/\s/g,''))
+            })
+            resetFields();
+          } else {
+            dispatch({
+              type: 'dashboard/editOrder',
+              payload: {id: currentItem.id, ...getFieldsValue()}
+            })
+            resetFields();
+          }
         }
-      })
-      if (modalType === "create") {
-        dispatch({
-          type: 'dashboard/saveOrder',
-          payload: getFieldsValue()
-          // item.amount.replace(/\s/g,''))
-        })
-        resetFields();
-      } else {
-        dispatch({
-          type: 'dashboard/editOrder',
-          payload: {id: currentItem.id, ...getFieldsValue()}
-        })
-        resetFields();
-      }
+      });
+
     }
 
     const visibleColumns = [
@@ -138,7 +145,7 @@ class Index extends PureComponent {
         dataIndex: 'payments',
         key: 'payment',
         render: (text, record) => record.payments.map(item => {
-          return <div><span><b>{item.amount} $</b>&nbsp; {item.date}</span><br/>
+          return <div><span><b>{item.amount} sum</b>&nbsp; {item.date}</span><br/>
           </div>
         })
       },
@@ -420,7 +427,7 @@ class Index extends PureComponent {
                   </Form.Item>
                   <Form.Item>
                     {getFieldDecorator('userId', {
-                      initialValue: currentItem && currentItem.userId,
+                      initialValue: currentItem? currentItem.userId:'Mijoni tanlang...',
                       rules: [{required: true, message: 'Please select company!'}],
                     })(
                       <Select placeholder="User" onSearch={onSearchCompany} showSearch optionFilterProp="children">
@@ -442,22 +449,22 @@ class Index extends PureComponent {
                       />,
                     )}
                   </Form.Item>
-                  <Form.Item>
+                  <Form.Item label={"Soni"}>
                     {getFieldDecorator('count', {
                       initialValue: currentItem && currentItem.count,
                       rules: [{required: true, message: 'Please input your product count!'}],
                     })(
-                      <CurrencyInput className="form-control" placeholder="Soni..." precision={''}
-                                     thousandSeparator=" "/>
+                      <CurrencyInput className="form-control" precision={''} thousandSeparator=" "/>
+                      // <CurrencyInput className="form-control" placeholder="Soni..." precision={''}
+                      //                thousandSeparator=" "/>
                     )}
                   </Form.Item>
-                  <Form.Item>
+                  <Form.Item label={"Narxi"}>
                     {getFieldDecorator('price', {
                       initialValue: currentItem && currentItem.price,
                       rules: [{required: true, message: 'Please input one product price!'}],
                     })(
-                      <CurrencyInput className="form-control" placeholder="Narx..." precision={''}
-                                     thousandSeparator=" "/>
+                      <CurrencyInput className="form-control" placeholder="Narx..." precision={''} thousandSeparator=" "/>
                     )}
                   </Form.Item>
                 </Form>
