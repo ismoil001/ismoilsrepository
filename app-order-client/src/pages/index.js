@@ -478,7 +478,7 @@ class A extends React.Component {
                   <Slider {...portfolio}>
                     {homeData && homeData.portfolios.map(item =>
                       <div className="">{console.log(item)}
-                        <img className='portfolio_Img img-fluid' src={"/api/file/get/" + item.attachment.id} alt=""/>
+                        <img className='portfolio_Img' src={"/api/file/get/" + item.attachment.id} alt=""/>
                       </div>
                     )}
                   </Slider>
