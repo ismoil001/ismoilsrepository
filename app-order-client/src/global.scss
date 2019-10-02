@@ -2315,10 +2315,11 @@ $black: #131A22;
   }
 }
 .portfolio-card{
-  margin-right: 35px;
+
+  margin-right: 20px;
   overflow: hidden;
   img{
-    transform: scale(3.1);
+    height: 100%;
   }
   .ant-card-body{
     padding: 12px 10px 0 0 !important;
@@ -2332,7 +2333,7 @@ $black: #131A22;
       opacity: 1;
     }
   }
-  .delete-portfolio{
+    .delete-portfolio{
     transition: 0.5s ease;
     opacity: 0;
     svg{
@@ -2346,10 +2347,8 @@ $black: #131A22;
     right: 10px;
 
   }
-  width: 200px!important;
+  width: 250px!important;
   height: 200px !important;
-  padding-left: 25px!important;
-  margin-right: 20px;
 
 }
 
