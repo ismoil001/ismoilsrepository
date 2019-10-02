@@ -112,7 +112,7 @@ class Index extends Component {
         </Row>
         <Row>
           <Col span={20} offset={2}>
-            <Table onScroll={() => handleScroll()} dataSource={aksverkaList} columns={visibleColumns} pagination={false}/>
+            <Table scroll={{y:376}} ref="DataTable" onScroll={() => handleScroll()} dataSource={aksverkaList} columns={visibleColumns} pagination={false}/>
           </Col>
         </Row>
 

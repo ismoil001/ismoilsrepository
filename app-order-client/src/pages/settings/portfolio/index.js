@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from "dva";
-import {Upload, Col, Row, Icon, Modal, notification, Button, Card} from 'antd';
+import {Upload, Col, Row, Icon, Modal, notification, Button, Card, Popconfirm} from 'antd';
 function getBase64(file) {
   return new Promise((resolve, reject) => {
     const reader = new FileReader();
@@ -108,7 +108,10 @@ class Portfolio extends Component {
           </Col>
             {portfolioList && portfolioList.map(item=>
               <Col span={4} className="position-relative portfolio-card mb-5">
-                <Icon onClick={()=>deletePortfolio(item.id)} className="delete-portfolio position-absolute" type="close-circle" />
+                <Popconfirm placement="topLeft" title="Tasdiqlash" onConfirm={()=>deletePortfolio(item.id)} okText="Yes"
+                            cancelText="No">
+                  <Icon className="delete-portfolio position-absolute" type="close-circle" />
+                </Popconfirm>
                 <img className="img-fluid " src={item.attachment &&'/api/file/get/'+item.attachment.id} alt="avatar"/>
               </Col> )}
         </Col>

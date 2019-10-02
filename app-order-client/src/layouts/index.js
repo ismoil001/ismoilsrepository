@@ -43,7 +43,7 @@ class BasicLayout extends React.Component {
     }
 
     const {Content, Sider} = Layout;
-    if (props.location.pathname === "/home" || props.location.pathname === "/" || props.location.pathname === "/login") {
+    if (props.location.pathname !== "/dashboard" || props.location.pathname !== "payment" || props.location.pathname !== "/managers" || props.location.pathname !=="aksverka" || props.location.pathname!=="/settings/address" || props.location.pathname!=="/settings/ourteam" || props.location.pathname!=="/settings/portfolio") {
       return props.children
     } else {
       return (

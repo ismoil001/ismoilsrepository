@@ -84,6 +84,11 @@ class Index extends PureComponent {
         key:'paySum',
         render:(text,record)=>record.paySum.toLocaleString()
       },{
+        title:'Qoldiq',
+        dataIndex:'leftOver',
+        key:'qoldiq',
+        render:(text,record)=>record&& record.leftover.toLocaleString()
+      },{
         title:'PayType',
         dataIndex:'payType',
         key:'payType',
@@ -195,10 +200,9 @@ class Index extends PureComponent {
         </Row>
         <Modal visible={modalVisible} onCancel={handleHideModal} onOk={onSubmitPayment} confirmLoading={loadingModal}>
           <Form style={{marginTop:"30px"}}>
-            <p>Select user:</p>
             <Form.Item>
               {getFieldDecorator('userId', {
-                initialValue: currentItem !== '' ? currentItem.user.id : "",
+                initialValue: currentItem ? currentItem.user.id : "Mijozni tanlang",
                 rules: [{required: true, message: 'Please select user!'}],
               })(
                 <Select placeholder={"User"} onSearch={onSearch} showSearch  optionFilterProp="children">
@@ -224,7 +228,7 @@ class Index extends PureComponent {
                 <DatePicker format="DD.MM.YYYY"/>,
               )}
             </Form.Item>
-            <Form.Item>
+            <Form.Item label="Miqdori">
               {getFieldDecorator('paySum', {
                 initialValue:currentItem!==''?currentItem.paySum:0,
                 rules: [{required: true, message: 'Please input sum!'}],
