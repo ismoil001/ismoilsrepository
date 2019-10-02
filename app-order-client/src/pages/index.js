@@ -976,7 +976,7 @@ class A extends React.Component {
 
             <section className="section7 position-relative">
               <img src="/assets/images/Rectangle6.png" className='rec6 img-fluid position-absolute' alt=""/>
-              <Container className='team_Carousel '>
+              <Container className='team_Carousel position-relative'>
                 <p className='team_Title'>
                   <FormattedMessage id='section7_Title'/>
                 </p>
