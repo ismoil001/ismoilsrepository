@@ -12,15 +12,13 @@
       }
     }
   }
-
   .ant-table-tbody {
     overflow-y: auto;
     width: 100%;
     height: 55vh;
     position: absolute;
-
-    td {
-      width: 100% !important;
+    td{
+      width: 100%!important;
     }
   }
 }
@@ -1019,12 +1017,13 @@ $black: #131A22;
 
 
 .section7 {
+
   margin-top: 134px;
   padding-top: 110px;
   transform: translate(0px, -110px);
 
   .rec6 {
-    top: -7%;
+    top: -12%;
     left: 0;
     width: 18%;
   }
@@ -1049,8 +1048,27 @@ $black: #131A22;
     right: -25px;
     display: none !important;
   }
-
   .team_Carousel {
+    .bg-1 {
+      height: 77%;
+      width: 85px;
+      left: 0;
+      bottom: 0;
+      background: rgb(255, 255, 255);
+      background: linear-gradient(90deg, rgba(255, 255, 255, 1) 25%, rgba(255, 255, 255, 0) 64%, rgba(0, 212, 255, 0) 100%);
+      position: absolute;
+      z-index: 998;
+    }
+
+    .bg-2 {
+      height: 77%;
+      width: 70px;
+      right: 0;
+      bottom: 0;
+      background: rgb(0, 212, 255);
+      background: linear-gradient(90deg, rgba(0, 212, 255, 0) 0%, rgba(255, 255, 255, 0) 5%, rgba(255, 255, 255, 1) 69%, rgba(255, 255, 255, 1) 83%);
+      z-index: 998;
+    }
 
     .team_Title {
       font-size: 46px;
@@ -1707,7 +1725,7 @@ $black: #131A22;
   }
   .section7 {
     .rec6 {
-      top: 4%;
+      top: 0%;
     }
     .team_Carousel {
       margin-top: 100px;
@@ -2204,6 +2222,9 @@ $black: #131A22;
   }
   .section7 {
     margin-top: 208px;
+    .rec6{
+      top: 20px;
+    }
     .slick-slider {
       padding-top: 0px;
     }
@@ -2360,6 +2381,9 @@ $black: #131A22;
   .section7 {
     margin-top: 208px;
 
+    .rec6{
+      top: 0;
+    }
     .slick-slider {
       padding-top: 0px;
     }
@@ -2510,6 +2534,9 @@ $black: #131A22;
   .section7 {
     margin-top: 208px;
 
+    .rec6{
+      top: 0;
+    }
     .slick-slider {
       padding-top: 0px;
     }

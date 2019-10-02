@@ -19,6 +19,8 @@ import uz.pdp.apporderservice.entity.TelegramState;
 import uz.pdp.apporderservice.entity.User;
 import uz.pdp.apporderservice.entity.enums.OrderStatus;
 import uz.pdp.apporderservice.exception.ResourceNotFoundException;
+import uz.pdp.apporderservice.payload.ReqOrder;
+import uz.pdp.apporderservice.payload.ReqOrderBot;
 import uz.pdp.apporderservice.repository.OrderRepository;
 import uz.pdp.apporderservice.repository.RoleRepository;
 import uz.pdp.apporderservice.repository.TelegramStateRepository;
@@ -62,7 +64,7 @@ public class QueryAction {
                 lastState.get().setState(BotState.ADMIN_CUSTOMER_CHAT);
                 telegramStateRepository.save(lastState.get());
                 SendMessage sendMessage = new SendMessage();
-                sendMessage.setText("Admin bilan aloqa o'rnatildi. Xabaringizni qoldiring");
+                sendMessage.setText("Admin bilan aloqa o'rnatildi. Buyurtma qilmoqchi bo'lgan maxsulotingiz haqida yozing");
                 sendMessage.setChatId(update.getCallbackQuery().getMessage().getChatId());
                 try {
                     pdpOrderBot.execute(sendMessage);
@@ -121,16 +123,7 @@ public class QueryAction {
             TelegramState clientState = telegramStateRepository.findByTgUserId(byId.getTelegramId()).orElseThrow(() -> new ResourceNotFoundException("client", "id", update));
             Order order = orderRepository.findById(clientState.getOrderId()).orElseThrow(() -> new ResourceNotFoundException("order", "id", byId));
             User userAdmin = userRepository.findByTelegramId(update.getCallbackQuery().getMessage().getChatId().intValue()).orElseThrow(() -> new ResourceNotFoundException("user", "telegram id", update));
-            Order newOrder = new Order();
-            newOrder.setUser(byId);
-            newOrder.setStatus(OrderStatus.ACTIVE);
-            newOrder.setProductName(order.getProductName());
-            newOrder.setPrice(order.getPrice());
-            newOrder.setOrderedDate(new Timestamp(System.currentTimeMillis()));
-            newOrder.setCount(clientState.getCount());
-            newOrder.setCreatedBy(userAdmin);
-            newOrder.setUpdatedBy(userAdmin);
-            orderRepository.save(newOrder);
+            orderService.saveOrderByBot(new ReqOrderBot("ACTIVE",byId.getId(),new Timestamp(System.currentTimeMillis()),order.getProductName(),order.getPrice(),clientState.getCount(),userAdmin.getId()));
             SendMessage sendMessage1 = new SendMessage();
             sendMessage1.setText("Buyurtma tasdiqlandi");
             sendMessage1.setChatId(lastState.getTgUserId().longValue());
@@ -250,10 +243,10 @@ public class QueryAction {
                 List<List<InlineKeyboardButton>> rows = new ArrayList<>();
                 List<InlineKeyboardButton> buttons = new ArrayList<>();
                 InlineKeyboardButton button = new InlineKeyboardButton();
-                button.setText("Bekor qilish");
+                button.setText("❌");
                 button.setCallbackData(BotConstant.CUSTOMER_IGNORE_ORDER_IGNORE);
                 InlineKeyboardButton button1 = new InlineKeyboardButton();
-                button1.setText("Tasdiqlash");
+                button1.setText("✅");
                 button1.setCallbackData(BotConstant.CUSTOMER_IGNORE_ALLOW + "/" + order.getId());
                 buttons.add(button);
                 buttons.add(button1);
@@ -368,7 +361,7 @@ public class QueryAction {
                 telegramState.setState(BotState.FILE_SEND);
                 telegramStateRepository.save(telegramState);
                 SendMessage sendMessage = new SendMessage();
-                sendMessage.setText("File ni kiriting");
+                sendMessage.setText("Faylni kiriting");
                 sendMessage.setChatId(update.getCallbackQuery().getMessage().getChatId());
                 pdpOrderBot.execute(sendMessage);
             } catch (Exception e) {
@@ -379,16 +372,7 @@ public class QueryAction {
                 TelegramState clientState = botMainService.getLastState(update).get();
                 User client = userRepository.findByTelegramId(clientState.getTgUserId()).orElseThrow(() -> new ResourceNotFoundException("user", "telegramid", clientState));
                 Order order = orderRepository.findById(clientState.getOrderId()).orElseThrow(() -> new ResourceNotFoundException("order", "id", clientState));
-                Order order1 = new Order();
-                order1.setCount(clientState.getCount());
-                order1.setOrderedDate(new Timestamp(System.currentTimeMillis()));
-                order1.setPrice(clientState.getNewPrice());
-                order1.setProductName(order.getProductName());
-                order1.setStatus(OrderStatus.ACTIVE);
-                order1.setUser(client);
-                order1.setCreatedBy(userRepository.findByTelegramId(Integer.parseInt(query.split("/")[1])).orElseThrow(() -> new ResourceNotFoundException("user", "id", update)));
-                order1.setUpdatedBy(userRepository.findByTelegramId(Integer.parseInt(query.split("/")[1])).orElseThrow(() -> new ResourceNotFoundException("user", "id", update)));
-                orderRepository.save(order1);
+                Order order1 = orderService.saveOrderByBot(new ReqOrderBot("ACTIVE", order.getUser().getId(), new Timestamp(System.currentTimeMillis()), order.getProductName(), clientState.getNewPrice(), clientState.getCount(), UUID.fromString(query.split("/")[1])));
                 SendMessage toManager = new SendMessage();
                 toManager.setChatId(Long.parseLong(query.split("/")[1]));
                 toManager.setText("Buyurtma mijoz tomonidan tasdiqlandi\n" +

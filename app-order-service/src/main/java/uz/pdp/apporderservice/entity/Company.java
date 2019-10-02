@@ -34,4 +34,9 @@ public class Company {
     private String phoneNumber2;
     private String phoneNumber3;
 
+    private Integer countCustomer;
+    private Integer orderCount;
+    private Integer masterCount;
+
+
 }

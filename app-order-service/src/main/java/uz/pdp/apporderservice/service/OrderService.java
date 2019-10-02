@@ -80,6 +80,53 @@ public class OrderService {
         }
     }
 
+
+    public Order saveOrderByBot(ReqOrderBot reqOrderBot) {
+        try {
+            Order order1= new Order();
+            order1.setOrderedDate(reqOrderBot.getOrderedDate());
+            order1.setStatus(Enum.valueOf(OrderStatus.class, reqOrderBot.getStatus()));
+            order1.setProductName(reqOrderBot.getProductName());
+            order1.setUser(userRepository.findById(reqOrderBot.getUserId()).orElseThrow(() -> new ResourceNotFoundException("user", "id", reqOrderBot)));
+            order1.setPrice(reqOrderBot.getPrice());
+            order1.setCount(reqOrderBot.getCount());
+            order1.setCreatedBy(userRepository.findById(reqOrderBot.getCreatedById()).orElseThrow(() -> new ResourceNotFoundException("user", "id", reqOrderBot)));
+            order1.setUpdatedBy(userRepository.findById(reqOrderBot.getCreatedById()).orElseThrow(() -> new ResourceNotFoundException("user", "id", reqOrderBot)));
+            Order order = orderRepository.save(order1);
+            List<Payment> changingPayments = new ArrayList<>();
+            List<Payment> payments = paymentRepository.findAllByUserAndLeftoverNotIn(order.getUser(), 0.0);
+            for (Payment payment : payments) {
+                if (payment.getLeftover() >= order.getCount() * order.getPrice()) {
+                    if (order.getOrderPayments() != null) {
+                        order.getOrderPayments().add(new OrderPayment(payment, order.getPrice() * order.getCount(), order));
+                    } else {
+                        List<OrderPayment> orderPayments = new ArrayList<>();
+                        orderPayments.add(new OrderPayment(payment, order.getPrice() * order.getCount(), order));
+                        order.setOrderPayments(orderPayments);
+                    }
+                    payment.setLeftover(payment.getLeftover() - order.getCount() * order.getPrice());
+                    changingPayments.add(payment);
+                    break;
+                } else {
+                    if (order.getOrderPayments() != null) {
+                        order.getOrderPayments().add(new OrderPayment(payment, payment.getLeftover(), order));
+                    }else{
+                        List<OrderPayment> orderPayments = new ArrayList<>();
+                        orderPayments.add(new OrderPayment(payment,payment.getLeftover(),order));
+                        order.setOrderPayments(orderPayments);
+                    }
+                    payment.setLeftover(0.0);
+                    changingPayments.add(payment);
+                }
+            }
+            paymentRepository.saveAll(changingPayments);
+            return orderRepository.save(order);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
     public HttpEntity<?> editOrder(ReqOrder reqOrder, UUID id) {
         try {
             Order order = orderRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("order", "id", id));

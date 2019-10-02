@@ -24,6 +24,7 @@ export default class Header extends React.Component {
 
     this.toggle = this.toggle.bind(this);
     this.state = {
+
       isOpen: false
     };
   }
@@ -35,6 +36,7 @@ export default class Header extends React.Component {
   render() {
 
     const handleLang=(key)=>{
+      localStorage.setItem("dropdown",key);
       if(key===1){
         setLocale("en-US")
       }else{
@@ -99,7 +101,7 @@ export default class Header extends React.Component {
 
               <UncontrolledDropdown>
                 <DropdownToggle caret className="dropdownMain">
-                  Uzbek <FaAngleDown className='faAngel'/>
+                  {localStorage.getItem("dropdown")==1?"Узбек":"Русский"} <FaAngleDown className='faAngel'/>
                 </DropdownToggle>
                 <DropdownMenu right>
                   <DropdownItem onClick={()=>handleLang(1)} key={1}>
