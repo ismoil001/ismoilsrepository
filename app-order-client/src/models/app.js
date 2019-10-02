@@ -19,7 +19,7 @@ export default {
   state: {
     apiPath: '',
     childModel: '',
-    user: '',
+    user: {},
     permissions: {
       visit: [],
     },
@@ -71,12 +71,20 @@ export default {
             }, {call, put, select}) {
 
       const user = yield call(query, payload);
+      console.log(user);
       const {locationPathname} = yield select(_ => _.app);
       if (typeof user !== 'undefined') {
+        yield put({
+          type:'updateState',
+          payload:{
+            user:user
+          }
+        });
         if (location.pathname === '/login') {
           yield put(routerRedux.push({
             pathname: '/dashboard',
-          }))
+          }));
+
         }
       } else if (config.openPages && config.openPages.indexOf(locationPathname) < 0) {
         yield put(routerRedux.push({
