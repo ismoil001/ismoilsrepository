@@ -27,8 +27,8 @@ import Carusel from "../components/Carusel";
 import {FaAngleDown} from "react-icons/fa";
 import {connect} from "dva";
 import {FormattedMessage, formatMessage, setLocale, getLocale,} from 'umi-plugin-locale';
-
 @connect(({app}) => ({app}))
+
 class A extends React.Component {
 
   constructor(props) {
@@ -67,26 +67,25 @@ class A extends React.Component {
     windowHeight: window.innerHeight,
     windowWidth: window.innerWidth
   });
-  // scrolled=()=>{
-  //   var testDiv = document.getElementById("section5");
-  //
-  //   if ( window.visualViewport.pageTop < testDiv.offsetTop+50 && window.visualViewport.pageTop >  testDiv.offsetTop-500) {
-  //
-  //     this.state.count=true;
-  //
-  //     this.setState(this.state)
-  //   }
-  //   if(window.visualViewport.pageTop!=0){
-  //     this.state.scrolled=true;
-  //     this.setState(this.state)
-  //   }
-  //   else{
-  //     this.state.scrolled=false;
-  //     this.setState(this.state)
-  //   }
-  //   console.log("state")
-  //   console.log(  this.state.count)
-  // }
+  scrolled = () => {
+    var testDiv = document.getElementById("fixedMenu");
+
+    if (window.visualViewport.pageTop < testDiv.offsetTop + 50 && window.visualViewport.pageTop > testDiv.offsetTop - 500) {
+
+      this.state.count = true;
+
+      this.setState(this.state)
+    }
+    if (window.visualViewport.pageTop != 0) {
+      this.state.scrolled = true;
+      this.setState(this.state)
+    } else {
+      this.state.scrolled = false;
+      this.setState(this.state)
+    }
+    console.log("state")
+    console.log(this.state.count)
+  }
 
   render() {
     const {app} = this.props;
@@ -134,7 +133,7 @@ class A extends React.Component {
       slidesToShow: 1,
       slidesToScroll: 1,
       autoplay: true,
-      speed: 500,
+      speed: 300,
       autoplaySpeed: 3000,
       cssEase: "linear"
     };
@@ -237,17 +236,18 @@ class A extends React.Component {
     }
     return (
       <div className="fullScreen">
-        <div className="header" onWheel={this.scrolled} onMouseMove={this.scrolled}
+        <div className="header" id='fixedMenu' onAnimationEnd={this.scrolled} onWheel={this.scrolled}
+             onMouseMove={this.scrolled}
              onTouchStart={this.scrolled} onTouchMove={this.scrolled}>
           <div className="header position-relative">
-            <Container fluid={1} className='' style={{height: "100vh"}}>
+            <Container fluid={1} className='pl-0'>
               <img src="/assets/images/headerborder.png" className='rec position-absolute' alt=""/>
               <div className={this.state.scrolled ? "headerback" : null} style={this.state.scrolled ? {
                 background: "white",
                 position: "fixed",
                 zIndex: "999",
-                marginLeft: "-1.1%",
                 width: "100%",
+                padding: "0",
               } : null}><Header/></div>
               <Row className='p-0'>
                 <Col xs={12} sm={12} md={12} lg={7} xl={7} className='p-md-0 p-lg-0 p-xl-0'
@@ -299,15 +299,15 @@ class A extends React.Component {
                 <Col xs={12} sm={12} md={6} lg={6} xl={6}>
                   <Row>
                     <Col xs={12} sm={12} md={9} lg={9} xl={9} className='ml-auto'>
-                      <p className="tipography lato-bold mb-0">
+                      <p className="tipography lato-bold mb-xl-0">
                         <FormattedMessage id='section1_Title'/>
                       </p>
                       <p className="tipography-text lato-regular mb-0">
                         <FormattedMessage id='section1_Text'/>
                       </p>
-                      <p className="tipography-text lato-regular">
-                      <FormattedMessage id='section1_Sub_Title'/>
-                    </p>
+                      <p className="tipography-text mt-md-4 mt-lg-n1 mt-xl-0 lato-regular">
+                        <FormattedMessage id='section1_Sub_Title'/>
+                      </p>
 
                       <div className="mt-3 ">
                         <span><img className="path" src="/assets/images/orengepart.png" alt=""/></span>
@@ -461,7 +461,7 @@ class A extends React.Component {
 
           <section className='section4' id='portfolio'>
             <Container fluid={1}>
-              <Row className='p-0'>
+              <Row className='p-0 section4_row'>
                 <Col xs={12} sm={12} md={6} lg={6} xl={6} className='p-md-0 p-lg-0 p-xl-0'>
                   <div className='portfolio_Card'>
                     <p className='portfolio_Title lato-bold'>
@@ -476,9 +476,9 @@ class A extends React.Component {
                   {/*<div className='shape_Carousel1'/>*/}
                   <div className="shape_Carousel2"/>
                   <Slider {...portfolio}>
-                    {homeData && homeData.portfolios.map(item=>
+                    {homeData && homeData.portfolios.map(item =>
                       <div className="">{console.log(item)}
-                        <img className='portfolio_Img img-fluid' src={"/api/file/get/"+item.attachment.id} alt=""/>
+                        <img className='portfolio_Img img-fluid' src={"/api/file/get/" + item.attachment.id} alt=""/>
                       </div>
                     )}
                   </Slider>
@@ -494,38 +494,53 @@ class A extends React.Component {
             <div className="bgBox"/>
             <div className="bg-image" id="section5">
               <Container className="section5Container pt-md-5 pt-lg-5 pt-xl-5 pb-md-5 pb-lg-5 pb-xl-5">
-                <Row>
+                <Row className='mr-0'>
                   <div className="bg-img"/>
                   <Col xs={12} sm={12} md={12} lg={12} xl={12} className='counters'>
                     <Row>
-                      <Col xs={12} sm={4} md={4} lg={4} xl={4} id="count" className="text-center">
+                      <Col xs={12} sm={4} md={4} lg={4} xl={4} id="count" className="text-center pl-0">
 
                         {this.state.count ?
-                          <CountTo className="lato-bold text-center number d-inline-block" to={homeData.countAllCustomer} speed={3000}/> :
+                          <CountTo className="lato-bold text-center number d-inline-block"
+                                   to={homeData.countAllCustomer} speed={3000}/> :
                           <CountTo className="lato-bold text-center number d-inline-block" to={0} speed={1000}/>}
                         <span className="lato-bold number">+</span>
-                        <p className="lato-regular text-center number-com">
-                          <FormattedMessage id='section5_Text1'/>
-                        </p>
+                        <div className="d-flex justify-content-center">
+                          <div className="">
+                            <p className="lato-regular text-center number-com">
+                              <FormattedMessage id='section5_Text1'/>
+                            </p>
+                          </div>
+                        </div>
                       </Col>
 
                       <Col xs={12} sm={4} md={4} lg={4} xl={4} className="text-center">
                         {this.state.count ?
-                          <CountTo className="lato-bold text-center number" to={homeData.countAllOrders} speed={3000}/> :
+                          <CountTo className="lato-bold text-center number" to={homeData.countAllOrders}
+                                   speed={3000}/> :
                           <CountTo className="lato-bold text-center number d-inline-block" to={0} speed={1000}/>}
                         <span className="lato-bold number">+</span>
-                        <p className="lato-regular mb-0 number-com">
-                          <FormattedMessage id='section5_Text2'/>
-                        </p>
+                        <div className="d-flex justify-content-center">
+                          <div className="">
+                            <p className="lato-regular mb-0 number-com">
+                              <FormattedMessage id='section5_Text2'/>
+                            </p>
+                          </div>
+                        </div>
                       </Col>
                       <Col xs={12} sm={4} md={4} lg={4} xl={4} className="text-center">
                         {this.state.count ?
-                          <CountTo className="lato-bold text-center number" to={homeData.countAllMasters} speed={3000}/> :
+                          <CountTo className="lato-bold text-center number" to={homeData.countAllMasters}
+                                   speed={3000}/> :
                           <CountTo className="lato-bold text-center number d-inline-block" to={0} speed={1000}/>}
                         <span className="lato-bold number">+</span>
-                        <p className="lato-regular text-center number-com">
-                          <FormattedMessage id='section5_Text3'/>
-                        </p>
+                        <div className="d-flex justify-content-center">
+                          <div className="">
+                            <p className="lato-regular text-center number-com">
+                              <FormattedMessage id='section5_Text3'/>
+                            </p>
+                          </div>
+                        </div>
                       </Col>
                     </Row>
                   </Col>
@@ -534,7 +549,7 @@ class A extends React.Component {
             </div>
           </section>
 
-          <section className="section6 pt-lg-5" id="mijozlar">
+          <section className="section6" id="mijozlar">
             <Container fluid={true} className='position-relative mt-lg-4'>
               <div className="bg-1 position-absolute"></div>
               <div className="bg-2 position-absolute"></div>
@@ -968,12 +983,9 @@ class A extends React.Component {
             </Container>
           </section>
 
-          {/*<section className="section7">*/}
-          {/*  <Container className='team_Carousel'>*/}
-
-          <section className="section7 position-relative">
+          <section className="section7 position-relative" id="jamoa">
             <img src="/assets/images/Rectangle6.png" className='rec6 img-fluid position-absolute' alt=""/>
-            <Container className='team_Carousel '>
+            <Container className='team_Carousel'>
               <p className='team_Title'>
                 <FormattedMessage id='section7_Title'/>
               </p>
@@ -1000,7 +1012,7 @@ class A extends React.Component {
           </section>
 
           <section className='section8'>
-            <Container fluid={1} className="mt-5 p-0">
+            <Container fluid={1} className="p-0">
               <img className="rectangle" src="/assets/images/Rectangle 6.7.png" alt=""/>
               <YMaps>
                 <Map defaultState={mapData} className='mapYandex'>
@@ -1021,7 +1033,7 @@ class A extends React.Component {
                       </p>
                       <Link className="lato-light link-menu" spy={true} smooth={true} duration={1500}
                             activeClass="active"
-                            activeClassName="selected" to="bizhaqimizda"><p className="mt-3">
+                            activeClassName="selected" to="bizhaqimizda"><p className="mt-4">
                         <a><FormattedMessage id="section8_Title1_Link1"/></a></p>
                       </Link>
                       <Link className="lato-light link-menu" spy={true} smooth={true} duration={1300}
@@ -1049,7 +1061,7 @@ class A extends React.Component {
                         <FormattedMessage id="section8_Title2"/>
                       </p>
 
-                      <p className="mt-3 link-menu">
+                      <p className="mt-4 link-menu">
                         <a className="lato-light" href="#">
                           <FormattedMessage id="section8_Title2_Link1"/>
                         </a>
@@ -1094,7 +1106,7 @@ class A extends React.Component {
                       <p className="lato-bold company">
                         <FormattedMessage id="section8_Title3"/>
                       </p>
-                      <p className="mt-3 link-menu">
+                      <p className="mt-4 link-menu">
                         <a className="lato-light" href="#">
                           <FormattedMessage id="section8_Title3_Link1"/>
                         </a>
@@ -1121,14 +1133,14 @@ class A extends React.Component {
                       </p>
                     </Col>
                     <Col xs={12} sm={6} md={6} lg={6} xl={6} className="mt-2">
-                      <div className="d-flex justify-content-lg-end justify-content-xl-end mr-lg-5 mr-xl-5">
+                      <div className="d-flex offset-lg-8 offset-xl-8">
                         <div className="">
                           <p className="lato-bold aloqa">
                             <FormattedMessage id="section8_Title4"/>
                           </p>
 
                           <div>
-                            <p className="phone-num" style={{marginTop: "20px"}}>
+                            <p className="phone-num mt-4">
                               <img className="phone-img" src="/assets/images/phone.png" alt=""/>
                               <span
                                 className="phone-code lato-regular">({company && company.phoneNumber1.substring(0, 6)})</span>
@@ -1140,7 +1152,7 @@ class A extends React.Component {
                           <div>
                             <p className="phone-num mt-3">
                               <span
-                                className="phone-code lato-regular">(({company && company.phoneNumber2.substring(0, 6)}))</span>
+                                className="phone-code lato-regular">({company && company.phoneNumber2.substring(0, 6)})</span>
                             </p>
                             <p
                               className="phone-number lato-black mb-0">{company && company.phoneNumber2.substring(6)}</p>
@@ -1150,7 +1162,7 @@ class A extends React.Component {
                           <div>
                             <p className="phone-num mt-3">
                               <span
-                                className="phone-code lato-regular">(({company && company.phoneNumber3.substring(0, 6)}))</span>
+                                className="phone-code lato-regular">({company && company.phoneNumber3.substring(0, 6)})</span>
                             </p>
                             <p
                               className="phone-number lato-black mb-0">{company && company.phoneNumber3.substring(6)}</p>
@@ -1201,7 +1213,7 @@ class A extends React.Component {
                     <Col xs={12} sm={12} md={4} lg={2} xl={2} className=''>
                       <Row className='row2'>
                         <Col xs={1} sm={1} md={1} lg={1} xl={1} className='p-0'>
-                          <img className="phone-img" src="/assets/images/map-pin.png" alt=""/>
+                          <img className="phone-img1" src="/assets/images/map-pin.png" alt=""/>
                         </Col>
                         <Col xs={11} sm={11} md={11} lg={11} xl={11} className='p-0'>
                           <p className='addres mb-0'>140100</p>

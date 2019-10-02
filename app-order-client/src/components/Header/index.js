@@ -43,7 +43,7 @@ export default class Header extends React.Component {
     }
     return (
 
-      <Container>
+      <Container className='p-0'>
         <Navbar  light expand="md" className="lato-regular">
           <NavbarBrand href="/"><img src="/assets/images/logo.png" alt="logo"/></NavbarBrand>
           <NavbarToggler onClick={this.toggle} />

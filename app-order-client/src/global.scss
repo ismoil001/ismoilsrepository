@@ -97,7 +97,7 @@ body {
 }
 
 .headerback {
-  transition: 0.6s ease;
+  transition: 0.2s ease;
 }
 
 .lato-black {
@@ -527,6 +527,7 @@ $black: #131A22;
 
         .dropdown {
           align-self: unset;
+          top: 0;
         }
       }
 
@@ -573,6 +574,7 @@ $black: #131A22;
 
         .dropdown {
           align-self: unset;
+          top: 0;
         }
       }
 
@@ -609,10 +611,11 @@ $black: #131A22;
 }
 
 .section-one {
-  margin-top: 168px;
+  padding-top: 90px;
+  margin-top: 47px;
 
   .tipography {
-    font-size: 50px;
+    font-size: 47px;
     line-height: 60px;
     color: #131A22;
   }
@@ -622,6 +625,7 @@ $black: #131A22;
     line-height: 34px;
     color: #37475A;
   }
+
   .path {
     font-size: 24px;
     line-height: 40px;
@@ -634,7 +638,7 @@ $black: #131A22;
 }
 
 .section-two {
-  margin-top: 240px;
+  margin-top: 172px;
   background-image: url("../public/assets/images/NUB.png");
   background-repeat: no-repeat;
   background-position: center center;
@@ -677,105 +681,23 @@ $black: #131A22;
       overflow: hidden;
     }
   }
-
-  @media (max-width: 1200px) and (min-width: 992px) {
-    .we-text {
-      font-size: 2.9em;
-    }
-    .sectionInfoCard {
-      .efficiency {
-        font-size: 20px;
-      }
-
-      .efficiency2 {
-        font-size: 12px;
-      }
-    }
-  }
-
-  @media (max-width: 992px) and (min-width: 765px) {
-    .we-text {
-      font-size: 2.5em;
-    }
-    .sectionInfoCard {
-      .efficiency {
-        font-size: 14px;
-      }
-
-      .efficiency2 {
-        font-size: 12px;
-      }
-    }
-  }
-
-  @media (max-width: 765px) and (min-width: 576px) {
-    .we-text {;
-      padding-bottom: 26px;
-      font-size: 2.1em;
-    }
-    .card-row2 {
-      padding-top: 0px;
-      padding-bottom: 64px;
-    }
-    .sectionInfoCard {
-      margin-top: 60px;
-
-      .timer_Main {
-        .timer {
-          width: 20%;
-        }
-      }
-
-      .efficiency {
-        font-size: 24px;
-      }
-
-      .efficiency2 {
-        font-size: 15px;
-      }
-    }
-  }
-
-  @media only screen and (max-width: 576px) and (min-width: 320px) {
-    .we-text {
-      padding-bottom: 26px;
-      font-size: 1.9em;
-    }
-    .card-row2 {
-      padding-top: 0px;
-      padding-bottom: 64px;
-    }
-    .sectionInfoCard {
-      margin-top: 60px;
-
-      .timer_Main {
-        .timer {
-          width: 20%;
-        }
-      }
-
-      .efficiency {
-        font-size: 21px;
-      }
-
-      .efficiency2 {
-        font-size: 13px;
-      }
-    }
-  }
 }
 
 .section3 {
-  margin-top: 178px;
-  .bg-color-1{
+  padding-top: 50px;
+  margin-top: 128px;
+
+  .bg-color-1 {
     right: 0;
     top: 0;
-    img{
+
+    img {
       width: 100%;
       height: 565px;
       transform: translate(0px, -70px);
     }
   }
+
   .service {
     font-size: 50px;
     padding-top: 40px;
@@ -870,104 +792,105 @@ $black: #131A22;
       }
     }
   }
-
 }
 
 .section4 {
-  margin-top: 287.5px;
+  .section4_row {
+    padding-top: 120px !important;
 
-  .portfolio_Card {
-    z-index: 23;
-    border: none !important;
-    border-radius: 0 !important;
+    .portfolio_Card {
+      z-index: 23;
+      border: none !important;
+      border-radius: 0 !important;
 
-    .portfolio_Title {
-      font-size: 50px;
-      line-height: 60px;
-      color: $black;
+      .portfolio_Title {
+        font-size: 50px;
+        line-height: 60px;
+        color: #131A22;
+      }
+
+      .portfolio_Text {
+        font-size: 24px;
+        line-height: 30px;
+        color: #37475A;
+      }
     }
 
-    .portfolio_Text {
-      font-size: 24px;
-      line-height: 30px;
-      color: $black;
+    .slick-prev:before {
+      content: url("../public/assets/images/vector1.png") !important;
+      font-family: 'slick';
+      font-size: 45px !important;
+      line-height: 1;
+      opacity: 1;
+      background-color: transparent;
+      color: white;
+      background-repeat: no-repeat;
+      background-position: center center;
     }
-  }
 
-  .slick-prev:before {
-    content: url("../public/assets/images/vector1.png") !important;
-    font-family: 'slick';
-    font-size: 45px !important;
-    line-height: 1;
-    opacity: 1;
-    background-color: transparent;
-    color: white;
-    background-repeat: no-repeat;
-    background-position: center center;
-  }
+    .slick-next:before {
+      content: url("../public/assets/images/vector2.png") !important;
+      font-family: 'slick';
+      font-size: 45px !important;
+      line-height: 1;
+      opacity: 1;
+      background-color: transparent;
 
-  .slick-next:before {
-    content: url("../public/assets/images/vector2.png") !important;
-    font-family: 'slick';
-    font-size: 45px !important;
-    line-height: 1;
-    opacity: 1;
-    background-color: transparent;
+      color: white;
+      background-repeat: no-repeat;
+      background-position: center center;
+    }
 
-    color: white;
-    background-repeat: no-repeat;
-    background-position: center center;
-  }
+    .slick-prev {
+      left: 120px;
+      top: 94% !important;
+    }
 
-  .slick-prev {
-    left: 120px;
-    top: 94% !important;
-  }
+    .slick-next {
+      left: 200px;
+      top: 94% !important;
+    }
 
-  .slick-next {
-    left: 200px;
-    top: 94% !important;
-  }
-
-  .slick-prev, .slick-next {
-    z-index: 30;
-    width: 80px;
-    height: 60px;
-    cursor: pointer;
-    background: #FFFFFF;
-
-    &:hover {
+    .slick-prev, .slick-next {
+      z-index: 30;
+      width: 80px;
+      height: 60px;
+      cursor: pointer;
       background: #FFFFFF;
+
+      &:hover {
+        background: #FFFFFF;
+      }
+
+      &:focus {
+        background: #FFFFFF;
+      }
     }
 
-    &:focus {
+    .slick-dots li button:before {
+      font-size: 0px;;
+    }
+
+
+    .shape_Carousel1 {
+      overflow: hidden;
+      border-radius: 0 30% 0 0 !important;
+    }
+
+    .shape_Carousel2 {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 200px;
+      height: 80%;
       background: #FFFFFF;
+      z-index: 22;
     }
-  }
-
-  .slick-dots li button:before {
-    font-size: 0px;;
-  }
-
-
-  .shape_Carousel1 {
-    overflow: hidden;
-    border-radius: 0 30% 0 0 !important;
-  }
-
-  .shape_Carousel2 {
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 200px;
-    height: 80%;
-    background: #FFFFFF;
-    z-index: 22;
   }
 }
 
 .section5 {
-  margin-top: 237px;
+  margin-top: 176px;
   position: relative;
 
   .bg-img {
@@ -997,6 +920,7 @@ $black: #131A22;
   }
 
   .number-com {
+    width: 236px;
     font-size: 22px;
     margin-bottom: 0;
     line-height: 24px;
@@ -1004,10 +928,9 @@ $black: #131A22;
   }
 }
 
-
 .section6 {
-  margin-top: 240px;
-  margin-bottom: 20px;
+  padding-top: 50px;
+  margin-top: 170px;
 
   .section6Title {
     font-size: 50px;
@@ -1092,16 +1015,23 @@ $black: #131A22;
 
 
 .section7 {
-  margin-top: 308px;
+  margin-top: 134px;
+  padding-top: 110px;
+  transform: translate(0px, -110px);
 
   .rec6 {
-    top: -30%;
+    top: -7%;
     left: 0;
     width: 18%;
   }
 
-  .slick-list {
+  .slick-slider {
+    padding-top: 60px;
     padding-bottom: 92px;
+  }
+
+  .slick-dots {
+    transform: translate(0, -157px);
   }
 
   .slick-prev {
@@ -1115,7 +1045,9 @@ $black: #131A22;
     right: -25px;
     display: none !important;
   }
+
   .team_Carousel {
+
     .team_Title {
       font-size: 46px;
       line-height: 55px;
@@ -1127,8 +1059,8 @@ $black: #131A22;
     .team_Card {
       margin-left: 15px;
       margin-right: 15px;
-      margin-top: 146px;
-      transform: translate(0, 10px);
+      margin-top: 186px;
+      transform: translate(0, -90px);
       height: 256px;
       background: #FFFDF7;
       border: none !important;
@@ -1165,7 +1097,7 @@ $black: #131A22;
         font-size: 24px;
         line-height: 29px;
         color: #131A22;
-        transform: translate(0, -78px);
+        margin-top: -80px;
       }
 
       .user_Profession {
@@ -1173,7 +1105,6 @@ $black: #131A22;
         font-size: 16px;
         line-height: 19px;
         color: #EC681F;
-        transform: translate(0, -78px);
       }
     }
 
@@ -1181,17 +1112,16 @@ $black: #131A22;
 }
 
 .section8 {
-  margin-top: 196px;
-  transform: translate(0, 40px);
   position: relative;
-
+  margin-top: -105px;
+  transform: translate(0, 45px);
   .rectangle {
     width: 20%;
     position: absolute;
     text-align: right !important;
     z-index: 999;
     right: 0;
-    top: -131px;
+    top: -152px;
   }
 
   .mapYandex {
@@ -1217,11 +1147,6 @@ $black: #131A22;
   @media only screen and (max-width: 576px) and (min-width: 320px) {
     .rectangle {
       width: 30%;
-      position: absolute;
-      text-align: right !important;
-      z-index: 999;
-      right: 0;
-      top: -131px;
     }
   }
 }
@@ -1261,6 +1186,11 @@ $black: #131A22;
 
   .phone-img {
     cursor: pointer;
+    margin-left: -18px;
+  }
+  .phone-img1 {
+    cursor: pointer;
+    margin-left: -3px;
   }
 
   .phone-num {
@@ -1277,49 +1207,59 @@ $black: #131A22;
     line-height: 28px;
   }
 
-  //.dropdownMenu {
-  //  .dropdownMain {
-  //    background: none !important;
-  //    border: 1px solid #ffffff;
-  //    box-sizing: border-box;
-  //    border-radius: 100px;
-  //    color: #ffffff !important;
-  //
-  //    &:focus {
-  //      color: #ffffff !important;
-  //      outline: 0;
-  //      -webkit-appearance: none;
-  //      box-shadow: none;
-  //      -moz-box-shadow: none;
-  //      -webkit-box-shadow: none;
-  //    }
-  //  }
-  //
-  //  .dropdown-menu {
-  //    padding: 0;
-  //    text-align: center;
-  //    min-width: 0;
-  //    margin-top: 5px;
-  //    margin-left: 13px;
-  //
-  //    &:hover {
-  //      box-shadow: 2px 2px 2px 2px rgba(169, 163, 142, 0.15);
-  //    }
-  //
-  //    button {
-  //
-  //      &:hover {
-  //        background: $orange;
-  //        color: #ffffff;
-  //      }
-  //    }
-  //  }
-  //
-  //  .dropdown-toggle::after {
-  //    display: block;
-  //    border: none !important;
-  //  }
-  //}
+  .dropdown {
+    align-self: center;
+
+    .dropdownMain {
+      font-size: 16px;
+      line-height: 19px;
+      background: none !important;
+      border: 1.2px solid #cdcdcd;
+      box-sizing: border-box;
+      border-radius: 100px;
+      color: #ffffff;
+
+      &:focus {
+        border: 1.2px solid #cdcdcd;
+        color: #ffffff;
+        outline: 0;
+        -webkit-appearance: none;
+        box-shadow: none;
+        -moz-box-shadow: none;
+        -webkit-box-shadow: none;
+      }
+
+      .faAngel {
+        font-size: 16px;
+        color: #d4d4d4;
+      }
+    }
+
+    .dropdown-menu {
+      padding: 0;
+      text-align: center;
+      min-width: 0;
+      margin-left: 13px;
+      border: none !important;
+
+      &:hover {
+        box-shadow: 2px 2px 2px 2px rgba(169, 163, 142, 0.15);
+      }
+
+      button {
+
+        &:hover {
+          background: $orange;
+          color: #ffffff;
+        }
+      }
+    }
+  }
+
+  .dropdown-toggle::after {
+    display: block;
+    border: none !important;
+  }
 
   .telegram {
     width: 32px;
@@ -1451,7 +1391,8 @@ $black: #131A22;
     }
   }
   .section6 {
-    margin-top: 150px;
+    height: 80vh;
+    padding-top: 80px;
 
     .section6Title {
       font-size: 30px;
@@ -1520,8 +1461,9 @@ $black: #131A22;
   }
 
   .section6 {
+    height: 45vh;
+    padding-top: 60px;
     margin-Y: 50px;
-    margin-top: 100px;
 
     .bg-1, .bg-2 {
       width: 50px;
@@ -1712,18 +1654,51 @@ $black: #131A22;
 
 
 }
-.ant-pagination{
-  margin-bottom: 0!important;
+
+.ant-pagination {
+  margin-bottom: 0 !important;
 }
 
-@media (min-width: 1200px) {
+@media (min-width: 1600px) {
   .fullScreen {
     .header {
       max-width: 1600px;
       margin: 0 auto;
     }
   }
+  .section4 {
+    .section4_row {
+      .portfolio_Img {
+        position: relative;
+      }
 
+      .portfolio_Card {
+        position: absolute;
+        transform: translate(24%, 150px);
+        padding-bottom: 8rem;
+      }
+    }
+  }
+  .section5 {
+    .bg-img {
+      width: 1160px;
+      height: 282px;
+      position: absolute;
+    }
+
+    .bgBox {
+      width: 270px;
+      height: 282px;
+      top: 46.8%;
+    }
+
+    .counters {
+      top: 80px;
+    }
+  }
+}
+
+@media (max-width: 1600px) and (min-width: 1200px) {
   .CaruselContainer {
     img {
       width: 100%;
@@ -1738,22 +1713,30 @@ $black: #131A22;
     height: 100vh;
 
     .section1img1 {
-      height: 720px;
+      height: 660px;
+    }
+
+    .tipography {
+      margin-top: 10px;
     }
 
     .tipography-text {
-      padding-top: 39px;
+      padding-top: 19px;
     }
   }
   .section4 {
-    .portfolio_Img {
-      position: relative;
-    }
+    height: 100vh;
 
-    .portfolio_Card {
-      position: absolute;
-      transform: translate(24%, 150px);
-      padding-bottom: 8rem;
+    .section4_row {
+      .portfolio_Img {
+        position: relative;
+      }
+
+      .portfolio_Card {
+        position: absolute;
+        transform: translate(24%, 150px);
+        padding-bottom: 8rem;
+      }
     }
   }
   .section5 {
@@ -1766,12 +1749,17 @@ $black: #131A22;
     .bgBox {
       width: 270px;
       height: 282px;
-      top: 48.5%;
+      top: 44.8%;
     }
 
     .counters {
       top: 80px;
     }
+  }
+  .section6 {
+    height: 100vh;
+  }
+  .section7 {
   }
 }
 
@@ -1784,9 +1772,16 @@ $black: #131A22;
     }
   }
   .section-one {
+    height: 100vh;
+
     .tipography {
+      margin-top: 30px;
       font-size: 35px;
       line-height: 35px;
+    }
+
+    .section1img1 {
+      height: 660px;
     }
 
     .tipography-text {
@@ -1798,43 +1793,66 @@ $black: #131A22;
       line-height: 30px;
     }
   }
+  .section-two {
+    margin-top: 50px;
+
+    .we-text {
+      font-size: 2.9em;
+    }
+
+    .sectionInfoCard {
+      .efficiency {
+        font-size: 20px;
+      }
+
+      .efficiency2 {
+        font-size: 12px;
+      }
+    }
+  }
   .section4 {
-    .portfolio_Card {
-      position: absolute;
-      width: 80%;
-      transform: translate(195px, 150px);
+    margin-top: 0;
 
-      .portfolio_Title {
-        font-size: 30px;
-        line-height: 20px;
+    .section4_row {
+      .portfolio_Card {
+        position: absolute;
+        width: 80%;
+        transform: translate(195px, 150px);
+
+        .portfolio_Title {
+          font-size: 30px;
+          line-height: 20px;
+        }
+
+        .portfolio_Text {
+          font-size: 16px;
+          line-height: 20px;
+        }
       }
 
-      .portfolio_Text {
-        font-size: 16px;
-        line-height: 20px;
+      .portfolio_Img {
+        position: relative;
       }
-    }
 
-    .portfolio_Img {
-      position: relative;
-    }
+      .shape_Carousel2 {
+        width: 120px;
+        background: #FFFFFF;
+      }
 
-    .shape_Carousel2 {
-      width: 120px;
-      background: #FFFFFF;
-    }
+      .slick-prev {
+        left: 40px;
+        top: 92.1% !important;
+      }
 
-    .slick-prev {
-      left: 40px;
-      top: 92.1% !important;
-    }
-
-    .slick-next {
-      left: 120px;
-      top: 92.1% !important;
+      .slick-next {
+        left: 120px;
+        top: 92.1% !important;
+      }
     }
   }
   .section5 {
+    margin-top: 190px;
+
     .bg-img {
       width: 960px;
       height: 240px;
@@ -1868,6 +1886,9 @@ $black: #131A22;
       line-height: 18px;
     }
   }
+  .section6 {
+    height: 100vh;
+  }
   .section7 {
     .team_Carousel {
       .team_Title {
@@ -1883,13 +1904,22 @@ $black: #131A22;
     margin-top: 45px;
   }
   .section-one {
+    padding-top: 90px;
+    margin-top: 0px;
+
     .tipography {
-      font-size: 26px;
+      margin-top: 30px;
+      font-size: 27px;
       line-height: 35px;
+    }
+
+    .section1img1 {
+      height: 440px;
     }
 
     .tipography-text {
       font-size: 12px;
+      line-height: 14px;
     }
 
     .path {
@@ -1897,42 +1927,61 @@ $black: #131A22;
       line-height: 30px;
     }
   }
-  .section4 {
-    margin-top: 188px;
+  .section-two {
+    margin-top: 0;
 
-    .portfolio_Card {
-      position: absolute;
-      width: 100%;
-      transform: translate(100px, 95px);
+    .we-text {
+      font-size: 2.5em;
+    }
 
-      .portfolio_Title {
-        font-size: 30px;
-        line-height: 20px;
+    .sectionInfoCard {
+      .efficiency {
+        font-size: 14px;
       }
 
-      .portfolio_Text {
+      .efficiency2 {
         font-size: 12px;
-        line-height: 20px;
       }
     }
+  }
+  .section4 {
+    margin-top: 0px;
 
-    .portfolio_Img {
-      position: relative;
-    }
+    .section4_row {
+      .portfolio_Card {
+        position: absolute;
+        width: 100%;
+        transform: translate(100px, 95px);
 
-    .shape_Carousel2 {
-      width: 120px;
-      background: #FFFFFF;
-    }
+        .portfolio_Title {
+          font-size: 30px;
+          line-height: 20px;
+        }
 
-    .slick-prev {
-      left: 40px;
-      top: 90.4% !important;
-    }
+        .portfolio_Text {
+          font-size: 12px;
+          line-height: 20px;
+        }
+      }
 
-    .slick-next {
-      left: 120px;
-      top: 90.4% !important;
+      .portfolio_Img {
+        position: relative;
+      }
+
+      .shape_Carousel2 {
+        width: 120px;
+        background: #FFFFFF;
+      }
+
+      .slick-prev {
+        left: 40px;
+        top: 90.4% !important;
+      }
+
+      .slick-next {
+        left: 120px;
+        top: 90.4% !important;
+      }
     }
   }
   .section5 {
@@ -1973,7 +2022,9 @@ $black: #131A22;
   }
   .section7 {
     margin-top: 208px;
-
+    .slick-slider {
+      padding-top: 0px;
+    }
     .team_Carousel {
       .team_Title {
         font-size: 30px;
@@ -1981,8 +2032,6 @@ $black: #131A22;
       }
 
       .team_Card {
-        margin-top: 70px;
-
         .img_Round {
           transform: translate(0, -55px);
           width: 135px;
@@ -1995,7 +2044,7 @@ $black: #131A22;
         }
 
         .user_Name {
-          margin-top: 27px;
+          margin-top: -40px;
         }
       }
     }
@@ -2007,6 +2056,9 @@ $black: #131A22;
     margin-top: 45px;
   }
   .section-one {
+    padding-top: 90px;
+    margin-top: 0px;
+
     .tipography {
       font-size: 45px;
       line-height: 45px;
@@ -2021,32 +2073,67 @@ $black: #131A22;
       line-height: 30px;
     }
   }
+  .section-two {
+    margin-top: 0;
+
+    .we-text {;
+      padding-bottom: 26px;
+      font-size: 2.1em;
+    }
+
+    .card-row2 {
+      padding-top: 0px;
+      padding-bottom: 64px;
+    }
+
+    .sectionInfoCard {
+      margin-top: 60px;
+
+      .timer_Main {
+        .timer {
+          width: 20%;
+        }
+      }
+
+      .efficiency {
+        font-size: 24px;
+      }
+
+      .efficiency2 {
+        font-size: 15px;
+      }
+    }
+  }
   .section4 {
-    margin-top: 188px;
+    margin-top: 0px;
 
-    .portfolio_Card {
-      .portfolio_Title {
-        font-size: 40px;
-        text-align: center;
+    .section4_row {
+      padding-top: 70px !important;
+
+      .portfolio_Card {
+        .portfolio_Title {
+          font-size: 40px;
+          text-align: center;
+        }
+
+        .portfolio_Text {
+          font-size: 20px;
+        }
       }
 
-      .portfolio_Text {
-        font-size: 20px;
+      .shape_Carousel2 {
+        background: transparent;
       }
-    }
 
-    .shape_Carousel2 {
-      background: transparent;
-    }
+      .slick-prev {
+        left: 0px;
+        top: 94% !important;
+      }
 
-    .slick-prev {
-      left: 0px;
-      top: 94% !important;
-    }
-
-    .slick-next {
-      left: 81px;
-      top: 94% !important;
+      .slick-next {
+        left: 81px;
+        top: 94% !important;
+      }
     }
   }
   .section5 {
@@ -2087,7 +2174,9 @@ $black: #131A22;
   }
   .section7 {
     margin-top: 208px;
-
+    .slick-slider {
+      padding-top: 0px;
+    }
     .team_Carousel {
       .team_Title {
         font-size: 30px;
@@ -2095,8 +2184,6 @@ $black: #131A22;
       }
 
       .team_Card {
-        margin-top: 70px;
-
         .img_Round {
           transform: translate(0, -55px);
           width: 135px;
@@ -2110,7 +2197,7 @@ $black: #131A22;
 
         .user_Name {
           font-size: 18px;
-          margin-top: 27px;
+          margin-top: -40px;
         }
       }
     }
@@ -2122,6 +2209,9 @@ $black: #131A22;
     margin-top: 45px;
   }
   .section-one {
+    padding-top: 90px;
+    margin-top: 0px;
+
     .tipography {
       font-size: 30px;
       line-height: 40px;
@@ -2136,32 +2226,69 @@ $black: #131A22;
       line-height: 30px;
     }
   }
-  .section4 {
-    margin-top: 188px;
+  .section-two {
+    margin-top: 0;
 
-    .portfolio_Card {
-      .portfolio_Title {
-        font-size: 30px;
-        text-align: center;
+    .we-text {
+      padding-bottom: 26px;
+      font-size: 1.9em;
+    }
+
+    .card-row2 {
+      padding-top: 0px;
+      padding-bottom: 64px;
+    }
+
+    .sectionInfoCard {
+      margin-top: 60px;
+
+      .timer_Main {
+        .timer {
+          width: 20%;
+        }
+      }
+
+      .efficiency {
+        font-size: 21px;
+      }
+
+      .efficiency2 {
+        font-size: 13px;
+      }
+    }
+  }
+  .section4 {
+    .section4_row {
+      padding-top: 70px !important;
+
+      .portfolio_Card {
+        .portfolio_Title {
+          font-size: 30px;
+          text-align: center;
+        }
+
+        .portfolio_Text {
+          font-size: 18px;
+        }
       }
 
       .portfolio_Text {
-        font-size: 18px;
+        margin-top: -20px;
       }
-    }
 
-    .shape_Carousel2 {
-      background: transparent;
-    }
+      .shape_Carousel2 {
+        background: transparent;
+      }
 
-    .slick-prev {
-      left: 0px;
-      top: 92% !important;
-    }
+      .slick-prev {
+        left: 0px;
+        top: 92% !important;
+      }
 
-    .slick-next {
-      left: 81px;
-      top: 92% !important;
+      .slick-next {
+        left: 81px;
+        top: 92% !important;
+      }
     }
   }
   .section5 {
@@ -2197,6 +2324,9 @@ $black: #131A22;
   .section7 {
     margin-top: 208px;
 
+    .slick-slider {
+      padding-top: 0px;
+    }
     .team_Carousel {
       .team_Title {
         font-size: 30px;
@@ -2204,8 +2334,6 @@ $black: #131A22;
       }
 
       .team_Card {
-        margin-top: 70px;
-
         .img_Round {
           transform: translate(0, -55px);
           width: 135px;
@@ -2218,7 +2346,7 @@ $black: #131A22;
         }
 
         .user_Name {
-          margin-top: 27px;
+          margin-top: -40px;
         }
       }
     }
@@ -2230,6 +2358,9 @@ $black: #131A22;
     margin-top: 45px;
   }
   .section-one {
+    padding-top: 90px;
+    margin-top: 0px;
+
     .tipography {
       font-size: 30px;
       line-height: 40px;
@@ -2244,32 +2375,65 @@ $black: #131A22;
       line-height: 30px;
     }
   }
+  .section-two {
+    margin-top: 0;
+
+    .we-text {
+      padding-bottom: 26px;
+      font-size: 1.9em;
+    }
+
+    .card-row2 {
+      padding-top: 0px;
+      padding-bottom: 64px;
+    }
+
+    .sectionInfoCard {
+      margin-top: 60px;
+
+      .timer_Main {
+        .timer {
+          width: 20%;
+        }
+      }
+
+      .efficiency {
+        font-size: 21px;
+      }
+
+      .efficiency2 {
+        font-size: 13px;
+      }
+    }
+  }
   .section4 {
     margin-top: 188px;
 
-    .portfolio_Card {
-      .portfolio_Title {
-        font-size: 30px;
-        text-align: center;
+    .section4_row {
+      .portfolio_Card {
+        .portfolio_Title {
+          font-size: 30px;
+          text-align: center;
+        }
+
+        .portfolio_Text {
+          font-size: 16px;
+        }
       }
 
-      .portfolio_Text {
-        font-size: 16px;
+      .shape_Carousel2 {
+        background: transparent;
       }
-    }
 
-    .shape_Carousel2 {
-      background: transparent;
-    }
+      .slick-prev {
+        left: 0px;
+        top: 90% !important;
+      }
 
-    .slick-prev {
-      left: 0px;
-      top: 90% !important;
-    }
-
-    .slick-next {
-      left: 81px;
-      top: 90% !important;
+      .slick-next {
+        left: 81px;
+        top: 90% !important;
+      }
     }
   }
   .section5 {
@@ -2305,6 +2469,9 @@ $black: #131A22;
   .section7 {
     margin-top: 208px;
 
+    .slick-slider {
+      padding-top: 0px;
+    }
     .team_Carousel {
       .team_Title {
         font-size: 30px;
@@ -2312,8 +2479,6 @@ $black: #131A22;
       }
 
       .team_Card {
-        margin-top: 70px;
-
         .img_Round {
           transform: translate(0, -55px);
           width: 135px;
@@ -2326,7 +2491,7 @@ $black: #131A22;
         }
 
         .user_Name {
-          margin-top: 27px;
+          margin-top: -40px;
         }
       }
     }
@@ -2351,41 +2516,51 @@ $black: #131A22;
     opacity: 1;
   }
 }
-.portfolio-card{
+
+.portfolio-card {
   margin-right: 35px;
   overflow: hidden;
-  img{
+
+  img {
     transform: scale(3.1);
   }
-  .ant-card-body{
+
+  .ant-card-body {
     padding: 12px 10px 0 0 !important;
-    zoom: 1.6!important;
+    zoom: 1.6 !important;
   }
-  .ant-upload{
+
+  .ant-upload {
     width: 100%;
   }
-  &:hover{
-    .delete-portfolio{
+
+  &:hover {
+    .delete-portfolio {
       opacity: 1;
     }
   }
-  .delete-portfolio{
+
+  .delete-portfolio {
     transition: 0.5s ease;
     opacity: 0;
-    svg{
-      path{
+
+    svg {
+      path {
         color: red;
       }
+
       width: 20px;
       height: 20px;
     }
+
     top: 10px;
     right: 10px;
 
   }
-  width: 200px!important;
+
+  width: 200px !important;
   height: 200px !important;
-  padding-left: 25px!important;
+  padding-left: 25px !important;
   margin-right: 20px;
 
 }
