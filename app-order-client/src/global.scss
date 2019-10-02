@@ -97,7 +97,7 @@ body {
 }
 
 .headerback {
-  transition: 0.2s ease;
+  transition: 0.6s ease;
 }
 
 .lato-black {
@@ -1158,7 +1158,7 @@ $black: #131A22;
 
 .footer {
   background-color: #131A22;
-  padding-top: 50px;
+  padding-top: 70px;
   color: #FFFFFF;
 
   .footerLinks {
@@ -1665,6 +1665,9 @@ $black: #131A22;
 }
 
 @media (min-width: 1600px) {
+  .headerback{
+    max-width: 1600px;
+  }
   .fullScreen {
     .header {
       max-width: 1600px;
@@ -1699,6 +1702,14 @@ $black: #131A22;
 
     .counters {
       top: 80px;
+    }
+  }
+  .section7 {
+    .rec6 {
+      top: 4%;
+    }
+    .team_Carousel {
+      margin-top: 100px;
     }
   }
 }
@@ -1763,8 +1774,6 @@ $black: #131A22;
   }
   .section6 {
     height: 100vh;
-  }
-  .section7 {
   }
 }
 
