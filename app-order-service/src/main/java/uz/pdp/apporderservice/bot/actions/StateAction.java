@@ -23,8 +23,10 @@ import uz.pdp.apporderservice.entity.User;
 import uz.pdp.apporderservice.entity.enums.OrderStatus;
 import uz.pdp.apporderservice.exception.ResourceNotFoundException;
 import uz.pdp.apporderservice.payload.ReqInlineButton;
+import uz.pdp.apporderservice.payload.ReqOrderBot;
 import uz.pdp.apporderservice.payload.ReqPdf;
 import uz.pdp.apporderservice.repository.*;
+import uz.pdp.apporderservice.service.OrderService;
 import uz.pdp.apporderservice.service.PdfService;
 
 import java.io.File;
@@ -54,6 +56,8 @@ public class StateAction {
     OrderRepository orderRepository;
     @Autowired
     PdfService pdfService;
+    @Autowired
+    OrderService orderService;
 
     public void runState(Update update) throws TelegramApiException {
         try {
@@ -176,10 +180,7 @@ public class StateAction {
                         Double count = Double.parseDouble(text.split("/")[2]);
                         User client = userRepository.findByTelegramId(telegramState1.getCustomerChatId().intValue()).orElseThrow(() -> new ResourceNotFoundException("user", "telegramid", currentState));
                         User admin = userRepository.findByTelegramId(telegramState1.getTgUserId()).orElseThrow(() -> new ResourceNotFoundException("admin", "id", update));
-
-                        Order order = new Order(OrderStatus.CLOSED, client, null, new Timestamp(System.currentTimeMillis()), productName, price, count);
-                        order.setCreatedBy(admin);
-                        Order save = orderRepository.save(order);
+                        Order order = orderService.saveOrderByBot(new ReqOrderBot("CLOSED", client.getId(), new Timestamp(System.currentTimeMillis()), productName, price, count, admin.getId()));
                         SendMessage sendMessage = new SendMessage();
                         sendMessage.setText("Mijoz tasdiqlagandan so'ng buyurtma aktivlashtiriladi");
                         sendMessage.setChatId(update.getMessage().getChatId());

@@ -2,7 +2,7 @@ import React from "react"
 import '../global.scss'
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import {Link} from "react-scroll";
+import {Link} from "react-router-dom";
 import {
   Button,
   Card,
@@ -96,10 +96,10 @@ class A extends React.Component {
         dots: true,
         infinite: true,
         slidesToShow: 3,
-        slidesToScroll: 3,
+        slidesToScroll:1,
         autoplay: true,
         speed: 500,
-        autoplaySpeed: 5000,
+        autoplaySpeed: 3000,
         cssEase: "linear",
         responsive: [
           {
@@ -229,6 +229,7 @@ class A extends React.Component {
       ];
 
       const handleLang2 = (key) => {
+        localStorage.setItem("dropdown",key)
         if (key === 1) {
           setLocale("en-US")
         } else {
@@ -446,9 +447,11 @@ class A extends React.Component {
                               </a>
                             </li>
                             <li className=''>
-                              <Button className='text-white lato-regular card-btn'>
+                              {/*https://t.me/MFaktorBot*/}
+                             <a href="https://t.me/EuroPrintTestPdpBot"> <Button className='text-white lato-regular card-btn'>
                                 <FormattedMessage id='section3_Btn'/>
                               </Button>
+                             </a>
                             </li>
                           </ul>
                         </div>
@@ -501,7 +504,7 @@ class A extends React.Component {
                         <Col xs={12} sm={4} md={4} lg={4} xl={4} id="count" className="text-center">
 
                           {this.state.count ?
-                            <CountTo className="lato-bold text-center number d-inline-block" to={homeData.countAllCustomer} speed={3000}/> :
+                            <CountTo className="lato-bold text-center number d-inline-block" to={company.countCustomer} speed={3000}/> :
                             <CountTo className="lato-bold text-center number d-inline-block" to={0} speed={1000}/>}
                           <span className="lato-bold number">+</span>
                           <p className="lato-regular text-center number-com">
@@ -511,7 +514,7 @@ class A extends React.Component {
 
                         <Col xs={12} sm={4} md={4} lg={4} xl={4} className="text-center">
                           {this.state.count ?
-                            <CountTo className="lato-bold text-center number" to={homeData.countAllOrders} speed={3000}/> :
+                            <CountTo className="lato-bold text-center number" to={company.orderCount} speed={3000}/> :
                             <CountTo className="lato-bold text-center number d-inline-block" to={0} speed={1000}/>}
                           <span className="lato-bold number">+</span>
                           <p className="lato-regular mb-0 number-com">
@@ -520,7 +523,7 @@ class A extends React.Component {
                         </Col>
                         <Col xs={12} sm={4} md={4} lg={4} xl={4} className="text-center">
                           {this.state.count ?
-                            <CountTo className="lato-bold text-center number" to={homeData.countAllMasters} speed={3000}/> :
+                            <CountTo className="lato-bold text-center number" to={company.masterCount} speed={3000}/> :
                             <CountTo className="lato-bold text-center number d-inline-block" to={0} speed={1000}/>}
                           <span className="lato-bold number">+</span>
                           <p className="lato-regular text-center number-com">
@@ -978,18 +981,18 @@ class A extends React.Component {
                   <FormattedMessage id='section7_Title'/>
                 </p>
                 <Slider {...settings}>
-                  {slideUsers.map(users =>
+                  {homeData&& homeData.masters.map(item =>
                     <div className=''>
                       <Card className='team_Card'>
                         <p className="d-flex align-items-center flex-column">
                           <p className='d-flex justify-content-center align-items-center img_Round'>
-                            <CardImg className='user_Img' src={users.img} alt=""/>
+                            <CardImg className='user_Img' src={"/api/file/get/"+item.attachment.id} alt=""/>
                           </p>
                         </p>
                         <CardBody>
-                          <CardTitle className='user_Name'>{users.name}</CardTitle>
+                          <CardTitle className='user_Name'>{item.fullName}</CardTitle>
                           <p className="d-flex align-items-center flex-column">
-                            <CardText className='user_Profession'>{users.profession}</CardText>
+                            <CardText className='user_Profession'>{item.description}</CardText>
                           </p>
                         </CardBody>
                       </Card>
@@ -1170,7 +1173,7 @@ class A extends React.Component {
                           <Col xs={4} sm={3} md={3} lg={2} xl={2} className='dropdownMenu'>
                             <UncontrolledDropdown>
                               <DropdownToggle caret className="dropdownMain">
-                                Uzbek <FaAngleDown/>
+                                {localStorage.getItem("dropdown")==1?"Uzbek" :"Rus"}<FaAngleDown/>
                               </DropdownToggle>
                               <DropdownMenu right>
                                 <DropdownItem onClick={() => handleLang2(1)} key={1}>

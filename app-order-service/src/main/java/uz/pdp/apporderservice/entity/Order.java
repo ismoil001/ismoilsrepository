@@ -46,4 +46,6 @@ public class Order extends AbsEntity{
         this.price = price;
         this.count = count;
     }
+
+
 }

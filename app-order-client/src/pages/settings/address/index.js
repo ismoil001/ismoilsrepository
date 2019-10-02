@@ -109,6 +109,33 @@ class Index extends Component {
                 <Col span={12}>
                   <Col span={24} className="px-3">
                     <Form.Item>
+                      {getFieldDecorator('customerCount', {
+                        initialValue: company && company.countCustomer
+                      })(
+                        <Input placeholder="Customers count"/>,
+                      )}
+                    </Form.Item>
+                  </Col>
+                  <Col span={24} className="px-3">
+                    <Form.Item>
+                      {getFieldDecorator('masterCount', {
+                        initialValue: company && company.masterCount
+                      })(
+                        <Input placeholder="Master count"/>,
+                      )}
+                    </Form.Item>
+                  </Col>
+                  <Col span={24} className="px-3">
+                    <Form.Item>
+                      {getFieldDecorator('orderCount', {
+                        initialValue: company && company.orderCount
+                      })(
+                        <Input placeholder="Order count"/>,
+                      )}
+                    </Form.Item>
+                  </Col>
+                  <Col span={24} className="px-3">
+                    <Form.Item>
                       {getFieldDecorator('phoneNumber1', {
                         initialValue: company && company.phoneNumber1
                       })(

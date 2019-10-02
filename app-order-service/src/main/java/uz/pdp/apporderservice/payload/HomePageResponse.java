@@ -14,13 +14,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class HomePageResponse {
-
     private List<Portfolio> portfolios;
     private List<Master> masters;
     private Company company;
-    private Integer countAllCustomer;
-    private Integer countAllMasters;
-    private Integer countAllOrders;
-
-
 }
