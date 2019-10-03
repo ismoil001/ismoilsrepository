@@ -4,16 +4,15 @@ import moment from 'moment'
 import PaymentModal from '../../components/PaymentModal/index'
 import CurrencyInput from 'react-currency-input';
 import {
-  Menu,
-  Icon,
-  Dropdown,
   Button,
   Checkbox,
   Col,
   DatePicker,
+  Dropdown,
   Form,
+  Icon,
   Input,
-  InputNumber,
+  Menu,
   Modal,
   Pagination,
   Popconfirm,
@@ -25,7 +24,6 @@ import {
 import './index.less'
 
 
-
 @connect(({dashboard}) => ({dashboard}))
 class Index extends PureComponent {
 
@@ -33,6 +31,8 @@ class Index extends PureComponent {
     const {dashboard, dispatch, form} = this.props;
     const {modalVisible,status, modalType,modalLoading, currentItem, customerList, currentItemPaymentSum, ismine, archiveData, orderLists, page, totalElements, searchValue, paymentModalVisible} = dashboard;
     const {getFieldDecorator,validateFields,getFieldsValue, resetFields,setFieldsValue} = form;
+    // const {modalVisible, status, modalType, modalLoading, currentItem, customerList, currentItemPaymentSum, ismine, archiveData, orderLists, page, totalElements, searchValue, paymentModalVisible} = dashboard;
+    // const {getFieldDecorator, getFieldsValue, resetFields, setFieldsValue} = form;
     const {Option} = Select;
     const handleOpenModal = () => {
       dispatch({
@@ -85,22 +85,22 @@ class Index extends PureComponent {
 
     const visibleColumns = [
       {
-        title: 'Date',
+        title: 'Sana',
         dataIndex: 'date',
         key: 'date'
       },
       {
-        title: 'Product',
+        title: 'Mahsulot',
         dataIndex: 'productName',
         key: 'productName'
       },
       {
-        title: 'Company',
+        title: 'Kompaniya',
         dataIndex: 'companyName',
         key: 'company',
       },
       {
-        title: 'Client',
+        title: 'Mijoz',
         dataIndex: 'userFullName',
         key: 'user',
       },
@@ -110,23 +110,23 @@ class Index extends PureComponent {
         key: 'manager',
       },
       {
-        title: 'Count',
+        title: 'Hisob',
         dataIndex: 'count',
         key: 'count',
-        render:(text,record)=>record.count.toLocaleString()
+        render: (text, record) => record.count.toLocaleString()
       },
       {
-        title: 'Price',
+        title: 'Narx',
         dataIndex: 'price',
         key: 'price',
-        render:(text,record)=>record.price.toLocaleString()
+        render: (text, record) => record.price.toLocaleString()
 
       },
       {
         title: 'Sum',
         dataIndex: 'sum',
         key: 'sum',
-        render:(text,record)=>record.sum.toLocaleString()
+        render: (text, record) => record.sum.toLocaleString()
       },
       {
         title: 'Qoldiq',
@@ -141,7 +141,7 @@ class Index extends PureComponent {
         }
       },
       {
-        title: 'Payment',
+        title: 'To`lov',
         dataIndex: 'payments',
         key: 'payment',
         render: (text, record) => record.payments.map(item => {
@@ -150,31 +150,31 @@ class Index extends PureComponent {
         })
       },
       {
-        title: 'Operation',
+        title: 'Amallar',
         dataIndex: 'operation',
         key: 'operation',
         render: (text, record) =>
           <div>
             <Dropdown overlay={<Menu>
-        <Menu.Item className="p-0 my-1 mx-2">
-          <Button className="border-0 text-center w-100" onClick={() => onClickMenu(1, record)}>edit</Button>
-        </Menu.Item>
-        <Menu.Item className="p-0 my-1 mx-2">
-          <Popconfirm placement="topLeft" title="Tasdiqlash" onConfirm={() => onClickMenu(2, record)} okText="Yes"
-                      cancelText="No">
-            <Button className="border-0 text-center w-100">delete</Button>
-          </Popconfirm>
-        </Menu.Item>
-              {record.status==="ACTIVE"?        <Menu.Item className="p-0 my-1 mx-2">
-                <Button className="border-0 text-center w-100" onClick={() => onClickMenu(3, record)}>Bajarildi</Button>
-              </Menu.Item>:
+              <Menu.Item className="p-0 my-1 mx-2">
+                <Button className="border-0 text-center w-100" onClick={() => onClickMenu(1, record)}>O`zgartirish</Button>
+              </Menu.Item>
+              <Menu.Item className="p-0 my-1 mx-2">
+                <Popconfirm placement="topLeft" title="Tasdiqlash" onConfirm={() => onClickMenu(2, record)} okText="Yes"
+                            cancelText="No">
+                  <Button className="border-0 text-center w-100">O`chirish</Button>
+                </Popconfirm>
+              </Menu.Item>
+              {record.status === "ACTIVE" ? <Menu.Item className="p-0 my-1 mx-2">
+                  <Button className="border-0 text-center w-100" onClick={() => onClickMenu(3, record)}>Bajarildi</Button>
+                </Menu.Item> :
                 <Menu.Item className="p-0 my-1 mx-2">
-                  <Button className="border-0 text-center w-100" onClick={() => onClickMenu(4, record)}>Active</Button>
+                  <Button className="border-0 text-center w-100" onClick={() => onClickMenu(4, record)}>Faol</Button>
                 </Menu.Item>
               }
-      </Menu>}>
-              <a className="ant-dropdown-link" >
-                <Icon type="dash" /> <Icon type="down" />
+            </Menu>}>
+              <a className="ant-dropdown-link">
+                <Icon type="dash"/> <Icon type="down"/>
               </a>
             </Dropdown>
           </div>
@@ -208,7 +208,7 @@ class Index extends PureComponent {
         })
 
       }
-      if(key===4){
+      if (key === 4) {
         dispatch({
           type: 'dashboard/setStatusOfOrder1',
           payload: item.id
@@ -231,8 +231,8 @@ class Index extends PureComponent {
           page: cpage - 1,
           size: 10,
           name: searchValue,
-          ismine:ismine,
-          status:status
+          ismine: ismine,
+          status: status
         }
       })
     }
@@ -301,9 +301,9 @@ class Index extends PureComponent {
     const handleTab = (key) => {
       if (key === 2 + '') {
         dispatch({
-          type:'dashboard/updateState',
-          payload:{
-            status:"notactive"
+          type: 'dashboard/updateState',
+          payload: {
+            status: "notactive"
           }
         })
         dispatch({
@@ -319,9 +319,9 @@ class Index extends PureComponent {
       }
       if (key === 1 + '') {
         dispatch({
-          type:'dashboard/updateState',
-          payload:{
-            status:"active"
+          type: 'dashboard/updateState',
+          payload: {
+            status: "active"
           }
         })
         dispatch({
@@ -337,49 +337,60 @@ class Index extends PureComponent {
       }
     }
 
-    const onSearchCompany=(val)=>{
-        if(val===''){
-          dispatch({
-            type:'dashboard/updateState',
-            payload:{
-              customerList:[]
-            }
-          })
-        }else{
-          dispatch({
-            type:'dashboard/searchUser',
-            payload:val
-          })
+    const onSearchCompany = (val) => {
+      if (val === '') {
+        dispatch({
+          type: 'dashboard/updateState',
+          payload: {
+            customerList: []
+          }
+        })
+      } else {
+        dispatch({
+          type: 'dashboard/searchUser',
+          payload: val
+        })
       }
     }
 
     return (
-      <div className="admin">
-              <h2 className="text-center mt-5 my-3"><b>Buyurtmalar</b></h2>
-              <Row>
-                <Col span={5} offset={17}>
-                  <span className='ml-5 mr-3'>Mening buyurtmalarim</span>
-                  <Checkbox onChange={handleIsMine} checked={ismine}></Checkbox>
-                </Col>
-                <Col offset={2} span={5} className="mr-4">
-                  <button onClick={handleOpenModal} className="btn mb-4 btn-dark mt-3">Add Order</button>
-                </Col>
-                <Col span={5} className="mt-3  pl-3" offset={8}>
-                  <Input className="ml-5" onChange={handleSearch}/>
-                </Col>
-                <Col span={2} className="mt-3">
-                  <Button className="btn-dark" onClick={searchButton}>Search</Button>
-                </Col>
-              </Row>
-            <Tabs onChange={handleTab} className="pb-5 pt-1">
-              <Tabs.TabPane tab="All orders" key="1">
+      <div className="container-fluid bg-white">
+        <div className="container admin">
+          <h2 className="text-center pt-5 py-3"><b>Buyurtmalar</b></h2>
+          <Row>
+            <Col offset={17} className=''>
+              <div className="d-flex align-items-center justify-content-end">
+                <span className='ml-5 mr-3'>Mening buyurtmalarim</span>
+                <Checkbox onChange={handleIsMine} checked={ismine}></Checkbox>
+              </div>
+            </Col>
+            <Col span={24} className="">
+              <div className="d-flex align-items-center justify-content-between">
+                <div className="">
+                  <button onClick={handleOpenModal} className="btn btn-dark ">Buyurtma qo'shish</button>
+                </div>
+                <div className="">
+                  <ul className='list-unstyled mt-3 mb-0 mr-0 ml-0'>
+                    <li className='d-inline-block'>
+                      <Input className="" onChange={handleSearch}/>
+                    </li>
+                    <li className='d-inline-block'>
+                      <Button className="btn-dark" onClick={searchButton}>Qidiruv</Button>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </Col>
+          </Row>
+          <Tabs onChange={handleTab} className="pb-5 pt-1">
+            <Tabs.TabPane tab="Barcha buyurtmalar" key="1">
 
               <Row className="my-4">
-                <Col span={20} offset={2}>
+                <Col span={24}>
                   <Table dataSource={orderLists} columns={visibleColumns} pagination={false}/>
-                  <Pagination style={{position: "relative", top: "20px", left: "45%", marginBottom: "200px"}}
-                              current={page}
-                              onChange={onChangePage} pageSize={10} total={totalElements} />
+                  <Pagination
+                    current={page}
+                    onChange={onChangePage} pageSize={10} total={totalElements}/>
                 </Col>
               </Row>
 
@@ -419,7 +430,7 @@ class Index extends PureComponent {
                       initialValue: currentItem? currentItem.userId:'Mijoni tanlang...',
                       rules: [{required: true, message: 'Please select company!'}],
                     })(
-                      <Select placeholder="User" onSearch={onSearchCompany} showSearch  optionFilterProp="children">
+                      <Select placeholder="User" onSearch={onSearchCompany} showSearch optionFilterProp="children">
                         {customerList.map(item =>
                           <Option value={item.id}
                                   key={item.id}>{item.lastName + " " + item.firstName + " " + item.companyName + " " + item.phoneNumber}</Option>
@@ -444,6 +455,8 @@ class Index extends PureComponent {
                       rules: [{required: true, message: 'Please input your product count!'}],
                     })(
                       <CurrencyInput className="form-control" precision={''} thousandSeparator=" "/>
+                      // <CurrencyInput className="form-control" placeholder="Soni..." precision={''}
+                      //                thousandSeparator=" "/>
                     )}
                   </Form.Item>
                   <Form.Item label={"Narxi"}>
@@ -456,19 +469,20 @@ class Index extends PureComponent {
                   </Form.Item>
                 </Form>
               </Modal>
-          </Tabs.TabPane>
-          <Tabs.TabPane tab="Archive" key="2">
-            <Col span={20} offset={2}>
+            </Tabs.TabPane>
+            <Tabs.TabPane tab="Arxiv" key="2">
+              <Col span={24}>
 
-              <Table dataSource={orderLists} columns={visibleColumns} pagination={false}/>
-              <Pagination style={{position: "relative", top: "20px", left: "45%", marginBottom: "200px"}}
-                          current={page}
-                          onChange={onChangePage} pageSize={10} total={totalElements} pagination={false}/>
+                <Table dataSource={orderLists} columns={visibleColumns} pagination={false}/>
+                <Pagination style={{position: "relative"}}
+                            current={page}
+                            onChange={onChangePage} pageSize={10} total={totalElements} pagination={false}/>
 
-            </Col>
+              </Col>
 
-          </Tabs.TabPane>
-        </Tabs>
+            </Tabs.TabPane>
+          </Tabs>
+        </div>
       </div>
     );
   }

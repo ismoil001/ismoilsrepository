@@ -1219,7 +1219,7 @@ class A extends React.Component {
                         <Col xs={11} sm={11} md={11} lg={11} xl={11} className='p-0'>
                           <p className='addres mb-0'>140100</p>
                           <p className="lato-regular addres">
-                            {/*<FormattedMessage id='footer_address'/>*/}
+                            <FormattedMessage id='footer_address'/>
                             {getLocale()==="en-US"? company.address:company.addressRu}
                           </p>
                         </Col>
