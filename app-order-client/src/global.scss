@@ -1369,7 +1369,7 @@ $black: #131A22;
 }
 
 #login {
-  height: 100vh;
+  height: 100vh!important;
 
   .ant-row {
     .text-center {
@@ -1381,6 +1381,9 @@ $black: #131A22;
     }
 
     .ant-col {
+      .img-fluid{
+        height: 650px;
+      }
       .ant-btn {
         width: 300px;
         height: 44px;

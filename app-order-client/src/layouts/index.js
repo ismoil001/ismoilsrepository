@@ -100,7 +100,10 @@ class BasicLayout extends React.Component {
               </Menu.Item>:"":""}
             </Menu>
           </Sider>
-          <Layout>
+          <Layout
+            style={{
+              background: '#fff',
+            }}>
             <Content
               className="layout-content"
               style={{
