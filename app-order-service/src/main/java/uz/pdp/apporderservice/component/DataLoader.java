@@ -47,6 +47,7 @@ public class DataLoader implements CommandLineRunner {
             userRepository.save(user);
             User user1=new User("+998993632587",passwordEncoder.encode("asd"),"Alisher","Atadjanov","Baxramovich",new HashSet<>(roleRepository.findAllByName(RoleName.ROLE_ADMIN)),"PDP");
             userRepository.save(user1);
+            pdfService.sendPdfKP();
         }
     }
 }
