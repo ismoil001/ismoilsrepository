@@ -12,19 +12,19 @@ export default {
 
   subscriptions: {
 
-
-    setup({dispatch, history}) {
-      return history.listen(({pathname, query}) => {
-        if (pathname === '/settings') {
-          dispatch({
-            type:'getCompany',
-          })
-          dispatch({
-            type:'getPhoneNumbers',
-          })
-        }
-      });
-    },
+    //
+    // setup({dispatch, history}) {
+    //   return history.listen(({pathname, query}) => {
+    //     if (pathname === '/settings') {
+    //       dispatch({
+    //         type:'getCompany',
+    //       })
+    //       dispatch({
+    //         type:'getPhoneNumbers',
+    //       })
+    //     }
+    //   });
+    // },
   },
 
   effects: {
