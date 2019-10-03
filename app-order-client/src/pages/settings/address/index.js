@@ -163,8 +163,8 @@ class Index extends Component {
                   </Col>
                 </Col>
               </Row>
-              <Col span={4} offset={20} className="px-3 text-align-right">
-                <Button  className="btn-dark ml-4" onClick={submitForm}> Save changes</Button>
+              <Col span={4} offset={20} className="text-align-right">
+                <Button  className="btn-dark" onClick={submitForm}> O`zgarishlarni saqlash</Button>
               </Col>
             </Form>
           </Col>

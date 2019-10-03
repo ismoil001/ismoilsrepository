@@ -135,7 +135,7 @@ class Index extends React.Component {
         key: 'RU',
       },
       {
-        title: 'Action',
+        title: 'Amallar',
         dataIndex: 'action',
         key: 'action',
         render: (text, record) => <span>
@@ -144,6 +144,8 @@ class Index extends React.Component {
             <div className="d-inline-block circle delete-circle ml-4"> <Icon
               type="delete"/></div>
           </Popconfirm>
+     {/*<div onClick={()=>delMaster(record.id)} className="d-inline-block circle delete-circle"> <Icon*/}
+     {/*  type="delete"/></div>*/}
      <div onClick={()=>editMaster(record)} className="d-inline-block circle ml-4"><Icon type="edit"/> </div>
     </span>
       },
@@ -231,6 +233,7 @@ class Index extends React.Component {
           <Col span={8}>
             <Upload
               name="avatar"
+              // className="avatar-uploader"
               showUploadList={false}
               beforeUpload={beforeUpload}
               customRequest={uploadFile}
