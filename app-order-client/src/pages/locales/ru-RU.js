@@ -9,7 +9,7 @@ export default {
   header_link5: "Команда",
   header_link6: "Контакт",
   header_link7: "Aдмин",
-  header_item1: "Узбек",
+  header_item1: "O`zbekcha",
   header_item2: "Русский",
   header_text:"Почему клиенты выбирают нас?\n" +
     "Качество по последним технологиям",
@@ -136,7 +136,7 @@ export default {
   section8_Title3_Link4: "Требование к макетам",
   section8_Title3_Link5: "Контакты",
   section8_Title4: "Контакт",
-  language_item1: "Узбек",
+  language_item1: "O`zbekcha",
   language_item2: "Русский",
   footer_linkText_Info: "© 2005 – 2019  " +
     "типография  europrint.uz |" +

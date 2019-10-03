@@ -101,7 +101,7 @@ export default class Header extends React.Component {
 
               <UncontrolledDropdown>
                 <DropdownToggle caret className="dropdownMain">
-                  {localStorage.getItem("dropdown")==1?"Узбек":"Русский"} <FaAngleDown className='faAngel'/>
+                  {localStorage.getItem("dropdown")==1?"O`zbekcha":"Русский"} <FaAngleDown className='faAngel'/>
                 </DropdownToggle>
                 <DropdownMenu right>
                   <DropdownItem onClick={()=>handleLang(1)} key={1}>

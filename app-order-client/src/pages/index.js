@@ -14,7 +14,7 @@ import {
   Container,
   DropdownItem,
   DropdownMenu,
-  DropdownToggle, Nav,
+  DropdownToggle,
   Row,
   UncontrolledDropdown
 } from 'reactstrap';
@@ -26,7 +26,8 @@ import Header from "../components/Header/index";
 import Carusel from "../components/Carusel";
 import {FaAngleDown} from "react-icons/fa";
 import {connect} from "dva";
-import {FormattedMessage, formatMessage, setLocale, getLocale,} from 'umi-plugin-locale';
+import {FormattedMessage, getLocale, setLocale,} from 'umi-plugin-locale';
+
 @connect(({app}) => ({app}))
 
 class A extends React.Component {
@@ -41,6 +42,7 @@ class A extends React.Component {
       windowWidth: undefined,
       scrolled: false,
       count: true,
+      display: true,
     };
   }
 
@@ -93,12 +95,11 @@ class A extends React.Component {
 
     let settings = {
       dots: true,
-      infinite: true,
       slidesToShow: 3,
       slidesToScroll: 1,
       autoplay: true,
       speed: 500,
-      autoplaySpeed: 5000,
+      autoplaySpeed: 4000,
       cssEase: "linear",
       responsive: [
         {
@@ -228,13 +229,14 @@ class A extends React.Component {
     ];
 
     const handleLang2 = (key) => {
-      localStorage.setItem("dropdown",key)
+      localStorage.setItem("dropdown", key)
       if (key === 1) {
         setLocale("en-US")
       } else {
         setLocale("en-RU")
       }
     }
+
     return (
       <div className="fullScreen">
         <div className="header" id='fixedMenu' onAnimationEnd={this.scrolled} onWheel={this.scrolled}
@@ -447,7 +449,8 @@ class A extends React.Component {
                             <p className='text-white text-center lato-bold'>{service.title}</p>
                           </li>
                           <li className=''>
-                            <a href="https://t.me/EuroPrintTestPdpBot"> <Button className='text-white lato-regular card-btn'>
+                            <a href="https://t.me/EuroPrintTestPdpBot"> <Button
+                              className='text-white lato-regular card-btn'>
                               <FormattedMessage id='section3_Btn'/>
                             </Button>
                             </a>
@@ -493,17 +496,17 @@ class A extends React.Component {
             <p className="lato-bold text-center we-price">
               <FormattedMessage id="section5_Title"/>
             </p>
-            <div className="bgBox"/>
-            <div className="bg-image" id="section5">
-              <Container className="section5Container pt-md-5 pt-lg-5 pt-xl-5 pb-md-5 pb-lg-5 pb-xl-5">
-                <Row className='mr-0'>
-                  <div className="bg-img"/>
+            <div className="bg-img"/>
+            <div className="" id="section5">
+              <Container className="section5Container">
+                <Row className=''>
                   <Col xs={12} sm={12} md={12} lg={12} xl={12} className='counters'>
                     <Row>
-                      <Col xs={12} sm={4} md={4} lg={4} xl={4} id="count" className="text-center pl-0">
+                      <Col xs={12} sm={4} md={4} lg={4} xl={4} id="count" className="text-center">
 
                         {this.state.count ?
-                          <CountTo className="lato-bold text-center number d-inline-block" to={company.countCustomer} speed={3000}/> :
+                          <CountTo className="lato-bold text-center number d-inline-block" to={company.countCustomer}
+                                   speed={3000}/> :
                           <CountTo className="lato-bold text-center number d-inline-block" to={0} speed={1000}/>}
                         <span className="lato-bold number">+</span>
                         <div className="d-flex justify-content-center">
@@ -515,7 +518,7 @@ class A extends React.Component {
                         </div>
                       </Col>
 
-                      <Col xs={12} sm={4} md={4} lg={4} xl={4} className="text-center">
+                      <Col xs={12} sm={4} md={4} lg={4} xl={4} className="text-center py-3 py-sm-0 py-md-0 py-lg-0 py-xl-0">
                         {this.state.count ?
                           <CountTo className="lato-bold text-center number" to={company.orderCount} speed={3000}/> :
                           <CountTo className="lato-bold text-center number d-inline-block" to={0} speed={1000}/>}
@@ -985,30 +988,30 @@ class A extends React.Component {
           <section className="section7 position-relative" id='jamoa'>
             <img src="/assets/images/Rectangle6.png" className='rec6 img-fluid position-absolute' alt=""/>
             <Container className='team_Carousel position-relative'>
-              <div className="bg-1 position-absolute"></div>
-              <div className="bg-2 position-absolute"></div>
+              {/*<div className="bg-1 position-absolute"></div>*/}
+              {/*<div className="bg-2 position-absolute"></div>*/}
               <p className='team_Title'>
                 <FormattedMessage id='section7_Title'/>
               </p>
-              <Slider {...settings}>
-                {homeData&& homeData.masters.map(item =>
-                  <div className=''>
-                    <Card className='team_Card'>
-                      <p className="d-flex align-items-center flex-column">
-                        <p className='d-flex justify-content-center align-items-center img_Round'>
-                          <CardImg className='user_Img' src={"/api/file/get/"+item.attachment.id} alt=""/>
-                        </p>
-                      </p>
-                      <CardBody>
-                        <CardTitle className='user_Name'>{item.fullName}</CardTitle>
+                <Slider {...settings}>
+                  {homeData && homeData.masters.map(item =>
+                    <div className=''>
+                      <Card className='team_Card'>
                         <p className="d-flex align-items-center flex-column">
-                          <CardText className='user_Profession'>{item.description}</CardText>
+                          <p className='d-flex justify-content-center align-items-center img_Round'>
+                            <CardImg className='user_Img' src={"/api/file/get/" + item.attachment.id} alt=""/>
+                          </p>
                         </p>
-                      </CardBody>
-                    </Card>
-                  </div>
-                )}
-              </Slider>
+                        <CardBody>
+                          <CardTitle className='user_Name'>{item.fullName}</CardTitle>
+                          <p className="d-flex align-items-center flex-column">
+                            <CardText className='user_Profession'>{item.description}</CardText>
+                          </p>
+                        </CardBody>
+                      </Card>
+                    </div>
+                  )}
+                </Slider>
             </Container>
           </section>
 
@@ -1180,10 +1183,10 @@ class A extends React.Component {
                   <Row>
                     <Col xs={12} sm={12} md={8} lg={10} xl={10} className='row1'>
                       <Row>
-                        <Col xs={4} sm={3} md={3} lg={2} xl={2} className='dropdownMenu'>
+                        <Col xs={12} sm={4} md={4} lg={2} xl={2} className='dropdownMenu'>
                           <UncontrolledDropdown>
                             <DropdownToggle caret className="dropdownMain">
-                              {localStorage.getItem("dropdown")==1?"Узбек" :"Русский"}<FaAngleDown/>
+                              {localStorage.getItem("dropdown") == 1 ? "O`zbekcha" : "Русский"}<FaAngleDown/>
                             </DropdownToggle>
                             <DropdownMenu right>
                               <DropdownItem onClick={() => handleLang2(1)} key={1}>
@@ -1195,12 +1198,14 @@ class A extends React.Component {
                             </DropdownMenu>
                           </UncontrolledDropdown>
                         </Col>
-                        <Col xs={8} sm={9} md={9} lg={10} xl={10}>
+                        <Col xs={12} sm={8} md={8} lg={10} xl={10} className='pt-3 pt-sm-0 pt-md-0 pt-lg-0 pt-xl-0'>
                           <div className="telegram d-inline-block">
-                            <a href={company.telegram}><img className="text-center" src="/assets/images/002-telegram.png" alt=""/></a>
+                            <a href={company.telegram}><img className="text-center"
+                                                            src="/assets/images/002-telegram.png" alt=""/></a>
                           </div>
                           <div className="telegram ml-md-3 ml-1 d-inline-block">
-                            <a href={company.instagram} href={company.instagram}><img src="/assets/images/003-instagram.png" alt=""/></a>
+                            <a href={company.instagram} href={company.instagram}><img
+                              src="/assets/images/003-instagram.png" alt=""/></a>
                           </div>
                           <div className="telegram ml-md-3 ml-1 d-inline-block">
                             <a href={company.facebook}><img src="/assets/images/001-facebook-logo.png" alt=""/></a>
@@ -1213,14 +1218,14 @@ class A extends React.Component {
                     </Col>
                     <Col xs={12} sm={12} md={4} lg={2} xl={2} className=''>
                       <Row className='row2'>
-                        <Col xs={1} sm={1} md={1} lg={1} xl={1} className='p-0'>
+                        <Col xs={1} sm={1} md={1} lg={1} xl={1} className='p-md-0 p-lg-0 p-xl-0'>
                           <img className="phone-img1" src="/assets/images/map-pin.png" alt=""/>
                         </Col>
-                        <Col xs={11} sm={11} md={11} lg={11} xl={11} className='p-0'>
+                        <Col xs={11} sm={11} md={11} lg={11} xl={11} className=' pl-sm-0 pl-md-0 pl-lg-0 pl-xl-0'>
                           <p className='addres mb-0'>140100</p>
                           <p className="lato-regular addres">
                             <FormattedMessage id='footer_address'/>
-                            {getLocale()==="en-US"? company.address:company.addressRu}
+                            {getLocale() === "en-US" ? company.address : company.addressRu}
                           </p>
                         </Col>
                       </Row>

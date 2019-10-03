@@ -70,7 +70,7 @@ module.exports = {
       output: {
         comments: false,
         ascii_only: true
-      }
+      },
     }),
   ],
 };

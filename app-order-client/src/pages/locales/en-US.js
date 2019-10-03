@@ -9,7 +9,7 @@ export default {
   header_link5: "Jamoa",
   header_link6: "Kontakt",
   header_link7: "Admin",
-  header_item1: "Узбек",
+  header_item1: "O`zbekcha",
   header_item2: "Русский",
   header_text: "Nega mijozlar bizni tanlashadi?\n" +
     " So‘ngi texnologiyalar sifati,",
@@ -137,7 +137,7 @@ export default {
   section8_Title3_Link4: "Maketlar uchun talab",
   section8_Title3_Link5: "Aloqa",
   section8_Title4: "Aloqa",
-  language_item1: "Узбек",
+  language_item1: "O`zbekcha",
   language_item2: "Русский",
   footer_linkText_Info: "© 2005 - 2019 europrint.uz tipografiyasi | Personal\n" +
     "Development Process",
