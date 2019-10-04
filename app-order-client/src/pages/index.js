@@ -493,7 +493,6 @@ class A extends React.Component {
             <p className="lato-bold text-center we-price">
               <FormattedMessage id="section5_Title"/>
             </p>
-            <div className="bgBox"/>
             <div className="bg-image" id="section5">
               <Container className="section5Container pt-md-5 pt-lg-5 pt-xl-5 pb-md-5 pb-lg-5 pb-xl-5">
                 <Row className='mr-0'>
