@@ -27,6 +27,12 @@ export default {
             type:'queryPayType'
           })
           dispatch({
+            type:'updateState',
+            payload:{
+              isArchive:false
+            }
+          })
+          dispatch({
             type:'queryPayment',
             payload:{
               page:0,
@@ -95,12 +101,13 @@ export default {
       const data = yield call(savePayment,payload);
       if(data.success){
         notification['success']({
-          message:data.message
+          message:data.message==="success"?"success":"Saqlandi va barchasi buyurtma hisobiga yechildi."
         })
         yield put({
           type:'updateState',
           payload:{
-            modalVisible: false
+            modalVisible: false,
+            isArchive:true,
           }
         })
         yield put({
@@ -109,7 +116,7 @@ export default {
             page:0,
             size:10,
             name:'',
-            isArchive:isArchive
+            isArchive:data.message !== "success"
           }
         })
       }

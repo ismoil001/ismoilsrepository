@@ -30,12 +30,16 @@ public class Order extends AbsEntity{
     @OneToMany(fetch = FetchType.LAZY,mappedBy = "order",cascade = CascadeType.ALL)
     private List<OrderPayment> orderPayments;
 
+    @Column(nullable = false)
     private Timestamp orderedDate;
 
+    @Column(nullable = false)
     private String productName;
 
+    @Column(nullable = false)
     private Double price;
 
+    @Column(nullable = false)
     private Double count;
 
     public Order(OrderStatus status, User user, Timestamp orderedDate, String productName, Double price, Double count) {

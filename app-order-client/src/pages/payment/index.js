@@ -26,7 +26,7 @@ class Index extends PureComponent {
   render() {
     const {payment,dispatch,form} = this.props
     const {modalVisible,modalType,totalElements,page,loadingModal,isArchive,searchValue,currentItem,userList,selectedUser,payTypes,paymentList} = payment
-    const {getFieldsValue,getFieldDecorator,resetFields} = form
+    const {getFieldsValue,validateFields,getFieldDecorator,resetFields} = form
     const onShowPaymentModal=()=>{
       resetFields();
       dispatch({
@@ -66,9 +66,13 @@ class Index extends PureComponent {
     }
 
     const onSubmitPayment=()=>{
-      dispatch({
-        type:'payment/savePayment',
-        payload:getFieldsValue()
+      validateFields((err, values) => {
+        if(!err){
+          dispatch({
+            type:'payment/savePayment',
+            payload:getFieldsValue()
+          })
+        }
       })
     }
 
@@ -177,10 +181,9 @@ class Index extends PureComponent {
 
         </Row>
         <Row>
-          <h2 className="text-center mb-4 mt-5"><b>To'lovlar</b></h2>
+          <h2 className="text-center mb-4 mt-5"><b>{isArchive?"Yechilgan to'lovlar":"To'lovlar"} </b></h2>
           <Col span={4} offset={18}>
-            <span className='ml-5 mr-3'>Yechilgan to'lovlar</span>
-            <Checkbox onChange={handleArchive} checked={isArchive}></Checkbox>
+            <Checkbox onChange={handleArchive} checked={isArchive}><span id="ss" className='ml-5 mr-3'>Yechilgan to'lovlar</span></Checkbox>
           </Col>
           <Col offset={2} span={5} className="mr-4">
             <button onClick={onShowPaymentModal} className="btn btn-dark my-3 mb-2">To`lov qo`shish</button>

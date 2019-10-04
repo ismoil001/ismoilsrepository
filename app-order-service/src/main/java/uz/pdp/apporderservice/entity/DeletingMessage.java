@@ -6,23 +6,14 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import uz.pdp.apporderservice.entity.template.AbsEntity;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import java.util.UUID;
 
 @EqualsAndHashCode(callSuper = true)
 @Data
+@Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity
-public class Master extends AbsEntity {
-
-    @Column(nullable = false)
-    private String fullName;
-
-    private String description;
-
-    @OneToOne(fetch = FetchType.LAZY)
-    private Attachment attachment;
-
-    private Boolean active;
-
+public class DeletingMessage extends AbsEntity {
+    private Integer messageId;
 }

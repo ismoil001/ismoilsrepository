@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.telegram.telegrambots.meta.api.methods.ParseMode;
 import org.telegram.telegrambots.meta.api.methods.send.SendDocument;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
+import org.telegram.telegrambots.meta.api.methods.updatingmessages.DeleteMessage;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.InlineKeyboardMarkup;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.ReplyKeyboardRemove;
@@ -87,11 +88,17 @@ public class StateAction {
                     sendMessage.setChatId(update.getMessage().getChatId());
                     telegramStateRepository.save(telegramState);
                     pdpOrderBot.execute(sendMessage);
+                }else if (currentState.equals(BotState.ADMIN_CABINET)) {
+                    SendMessage sendMessage = new SendMessage();
+                    sendMessage.setText("Mijozlarga xabar yuborish uchun javob berish tugmasini bosing.");
+                    sendMessage.setChatId(update.getMessage().getChatId());
+                     pdpOrderBot.execute(sendMessage);
                 } else if (currentState.equals(BotState.DIRECTOR_NAME)) {
                     TelegramState telegramState1 = telegramStateRepository.findByTgUserId(update.getMessage().getChatId().intValue()).orElseThrow(() -> new ResourceNotFoundException("order", "id", update));
                     Order order = orderRepository.findById(telegramState1.getOrderId()).orElseThrow(() -> new ResourceNotFoundException("order", "id", update));
                     File file = pdfService.readPdf(new ReqPdf(order.getId(),order.getUser().getCompanyName(),update.getMessage().getText()));
                     Long clientChatId = update.getMessage().getChatId();
+                    pdpOrderBot.execute(new DeleteMessage(clientChatId,update.getMessage().getMessageId()));
                     SendDocument sendDocumentRequest = new SendDocument();
                     sendDocumentRequest.setChatId(clientChatId);
                     sendDocumentRequest.setDocument(file);
@@ -171,10 +178,11 @@ public class StateAction {
                     sendMessage1.setChatId(update.getMessage().getChatId());
                     sendMessage1.setText("Yangi buyurtma yarating yoki avvalki buyurtmalaringizdan andoza oling");
                     pdpOrderBot.execute(sendMessage1);
+                    botMainService.cabinetPage(update);
                 } else if (currentState.equals(BotState.GENERATE_ORDER)) {
                     TelegramState telegramState1 = botMainService.getLastState(update).orElseThrow(() -> new ResourceNotFoundException("state", "chatid", update));
                     String text = update.getMessage().getText();
-                    if (text.contains("/") && text.split("/").length == 3 && NumberUtils.isCreatable(text.split("/")[1]) && NumberUtils.isCreatable(text.split("/")[2])) {
+                    if (text.contains("/") && text.split("/").length == 3 && botMainService.isNumeric(text.split("/")[1]) && botMainService.isNumeric(text.split("/")[2])) {
                         String productName = text.split("/")[0];
                         Double price = Double.parseDouble(text.split("/")[1]);
                         Double count = Double.parseDouble(text.split("/")[2]);
@@ -184,6 +192,8 @@ public class StateAction {
                         SendMessage sendMessage = new SendMessage();
                         sendMessage.setText("Mijoz tasdiqlagandan so'ng buyurtma aktivlashtiriladi");
                         sendMessage.setChatId(update.getMessage().getChatId());
+                        telegramState1.setState(BotState.ADMIN_CABINET);
+                        telegramStateRepository.save(telegramState1);
                         pdpOrderBot.execute(sendMessage);
 
                         SendMessage sendMessage1 = new SendMessage();

@@ -80,7 +80,7 @@ class Index extends React.Component {
   render() {
     const {dispatch, master} = this.props;
     const {photoUrl,currentMaster,masters,isEdit} = master;
-    const {getFieldDecorator,resetFields, getFieldsValue, getFieldsError, getFieldError, isFieldTouched} = this.props.form;
+    const {getFieldDecorator,resetFields, validateFields,getFieldsValue, getFieldsError, getFieldError, isFieldTouched} = this.props.form;
     const uploadButton = (
       <div style={{border:"1px solid #eee",padding:"20px",zIndex:10}}>
         <Icon type={this.state.loading ? 'loading' : 'plus'}/>
@@ -130,7 +130,7 @@ class Index extends React.Component {
         key: 'UZ',
       },
       {
-        title: 'Nomi(Ru)',
+        title: 'Izoh',
         dataIndex: 'description',
         key: 'RU',
       },
@@ -182,20 +182,24 @@ class Index extends React.Component {
       })
     };
     const handleOkok = () => {
-      console.log(getFieldsValue());
-      let obj = getFieldsValue();
-      this.setState({
-        visible: false,
-      });
-      dispatch({
-        type: 'master/createMaster',
-        payload: {
-          name: obj.name,
-          description:obj.description,
-          attachment:photoUrl,
-          active:true
+      validateFields((error,values)=>{
+        if(!error){
+          console.log(getFieldsValue());
+          let obj = getFieldsValue();
+          this.setState({
+            visible: false,
+          });
+          dispatch({
+            type: 'master/createMaster',
+            payload: {
+              name: obj.name,
+              description:obj.description,
+              attachment:photoUrl,
+              active:true
+            }
+          })
         }
-      })
+      });
     };
     const updateMaster=()=>{
       let obj = getFieldsValue();
@@ -223,7 +227,7 @@ class Index extends React.Component {
           <Col span={20} offset={2}>
             <Table columns={columns} dataSource={masters} pagination={false}/>
           </Col>
-        </Row>
+        </Row><br/><br/>
         <Modal
           title="Basic Modal"
           visible={this.state.visible}

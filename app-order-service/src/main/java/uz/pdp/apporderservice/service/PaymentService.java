@@ -65,7 +65,7 @@ public class PaymentService {
             }
             Payment save = paymentRepository.save(payment);
             orderRepository.saveAll(changedOrders);
-            return ResponseEntity.ok(new ApiResponse(save.getLeftover()==0?"Saqlandi va barchasi buyurtma hisobiga yechildi.":"success", true));
+            return ResponseEntity.ok(new ApiResponse(save.getLeftover()==0?"true":"false", true));
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -78,9 +78,9 @@ public class PaymentService {
             Pageable pageable = PageRequest.of(page,size);
             Page<Payment> paymentList;
             if(isArchive){
-                paymentList = paymentRepository.findAllByLeftoverAndUser_FirstNameContainingIgnoreCaseOrLeftoverAndUser_LastNameContainingIgnoreCaseOrLeftoverAndUser_PhoneNumberContainingOrLeftoverAndUser_CompanyNameContainingIgnoreCase(pageable,0.0, name,0.0, name, 0.0,name,0.0, name);
+                paymentList = paymentRepository.findAllByLeftoverAndUser_FirstNameContainingIgnoreCaseOrLeftoverAndUser_LastNameContainingIgnoreCaseOrLeftoverAndUser_PhoneNumberContainingOrLeftoverAndUser_CompanyNameContainingIgnoreCaseOrderByCreatedAtDesc(pageable,0.0, name,0.0, name, 0.0,name,0.0, name);
             }else{
-                paymentList= paymentRepository.findAllByLeftoverNotInAndUser_FirstNameContainingIgnoreCaseOrLeftoverNotInAndUser_LastNameContainingIgnoreCaseOrLeftoverNotInAndUser_PhoneNumberContainingOrLeftoverNotInAndUser_CompanyNameContainingIgnoreCase(pageable,0.0, name,0.0, name, 0.0,name,0.0, name);
+                paymentList= paymentRepository.findAllByLeftoverNotInAndUser_FirstNameContainingIgnoreCaseOrLeftoverNotInAndUser_LastNameContainingIgnoreCaseOrLeftoverNotInAndUser_PhoneNumberContainingOrLeftoverNotInAndUser_CompanyNameContainingIgnoreCaseOrderByCreatedAtDesc(pageable,0.0, name,0.0, name, 0.0,name,0.0, name);
             }
             return ResponseEntity.ok(new PageResponse((int)paymentList.getTotalElements(),page,paymentList.getContent()));
         } catch (Exception e) {

@@ -151,9 +151,9 @@ public class OrderService {
         if (status.equals("notactive")) {
             result = orderRepository.findAllByStatusOrderByCreatedAtDesc(pageable, OrderStatus.CLOSED);
         } else if (ismine) {
-            result = orderRepository.findAllByCreatedByAndStatusAndUser_CompanyNameContainingIgnoreCaseOrCreatedByAndStatusAndUser_FirstNameContainingIgnoreCaseOrCreatedByAndStatusAndUser_LastNameContainingIgnoreCaseOrCreatedByAndStatusAndProductNameContainingIgnoreCase(pageable, currentUser, OrderStatus.ACTIVE, name, currentUser, OrderStatus.ACTIVE, name, currentUser, OrderStatus.ACTIVE, name, currentUser, OrderStatus.ACTIVE, name);
+            result = orderRepository.findAllByCreatedByAndStatusAndUser_CompanyNameContainingIgnoreCaseOrCreatedByAndStatusAndUser_FirstNameContainingIgnoreCaseOrCreatedByAndStatusAndUser_LastNameContainingIgnoreCaseOrCreatedByAndStatusAndProductNameContainingIgnoreCaseOrderByCreatedAtDesc(pageable, currentUser, OrderStatus.ACTIVE, name, currentUser, OrderStatus.ACTIVE, name, currentUser, OrderStatus.ACTIVE, name, currentUser, OrderStatus.ACTIVE, name);
         } else {
-            result = orderRepository.findAllByStatusAndUser_CompanyNameContainingIgnoreCaseOrStatusAndUser_FirstNameContainingIgnoreCaseOrStatusAndUser_LastNameContainingIgnoreCaseOrStatusAndProductNameContainingIgnoreCase(pageable, OrderStatus.ACTIVE, name, OrderStatus.ACTIVE, name, OrderStatus.ACTIVE, name, OrderStatus.ACTIVE, name);
+            result = orderRepository.findAllByStatusAndUser_CompanyNameContainingIgnoreCaseOrStatusAndUser_FirstNameContainingIgnoreCaseOrStatusAndUser_LastNameContainingIgnoreCaseOrStatusAndProductNameContainingIgnoreCaseOrderByCreatedAtDesc(pageable, OrderStatus.ACTIVE, name, OrderStatus.ACTIVE, name, OrderStatus.ACTIVE, name, OrderStatus.ACTIVE, name);
         }
 
         return ResponseEntity.ok(new ApiResponseData(true, "success",

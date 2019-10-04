@@ -29,7 +29,7 @@ class Index extends PureComponent {
 
   render() {
     const {dashboard, dispatch, form} = this.props;
-    const {modalVisible,status, modalType,modalLoading, currentItem, customerList, currentItemPaymentSum, ismine, archiveData, orderLists, page, totalElements, searchValue, paymentModalVisible} = dashboard;
+    const {modalVisible,activeKey, status, modalType,modalLoading, currentItem, customerList, currentItemPaymentSum, ismine, archiveData, orderLists, page, totalElements, searchValue, paymentModalVisible} = dashboard;
     const {getFieldDecorator,validateFields,getFieldsValue, resetFields,setFieldsValue} = form;
     // const {modalVisible, status, modalType, modalLoading, currentItem, customerList, currentItemPaymentSum, ismine, archiveData, orderLists, page, totalElements, searchValue, paymentModalVisible} = dashboard;
     // const {getFieldDecorator, getFieldsValue, resetFields, setFieldsValue} = form;
@@ -90,9 +90,9 @@ class Index extends PureComponent {
         key: 'date'
       },
       {
-        title: 'Mahsulot',
-        dataIndex: 'productName',
-        key: 'productName'
+        title: 'Mijoz',
+        dataIndex: 'userFullName',
+        key: 'user',
       },
       {
         title: 'Kompaniya',
@@ -100,9 +100,9 @@ class Index extends PureComponent {
         key: 'company',
       },
       {
-        title: 'Mijoz',
-        dataIndex: 'userFullName',
-        key: 'user',
+        title: 'Mahsulot',
+        dataIndex: 'productName',
+        key: 'productName'
       },
       {
         title: 'Manager',
@@ -299,6 +299,12 @@ class Index extends PureComponent {
     }
 
     const handleTab = (key) => {
+      dispatch({
+        type:'dashboard/updateState',
+        payload:{
+          activeKey:key
+        }
+      })
       if (key === 2 + '') {
         dispatch({
           type: 'dashboard/updateState',
@@ -372,7 +378,7 @@ class Index extends PureComponent {
                 <div className="">
                   <ul className='list-unstyled mt-3 mb-0 mr-0 ml-0'>
                     <li className='d-inline-block'>
-                      <Input className="" onChange={handleSearch}/>
+                      <Input onPressEnter={searchButton} className="" onChange={handleSearch} value={searchValue}/>
                     </li>
                     <li className='d-inline-block'>
                       <Button className="btn-dark" onClick={searchButton}>Qidiruv</Button>
@@ -382,7 +388,7 @@ class Index extends PureComponent {
               </div>
             </Col>
           </Row>
-          <Tabs onChange={handleTab} className="pb-5 pt-1">
+          <Tabs activeKey={activeKey} onChange={handleTab} className="pb-5 pt-1">
             <Tabs.TabPane tab="Barcha buyurtmalar" key="1">
 
               <Row className="my-4">
@@ -455,9 +461,7 @@ class Index extends PureComponent {
                       rules: [{required: true, message: 'Please input your product count!'}],
                     })(
                       <CurrencyInput className="form-control" precision={''} thousandSeparator=" "/>
-                      // <CurrencyInput className="form-control" placeholder="Soni..." precision={''}
-                      //                thousandSeparator=" "/>
-                    )}
+                      )}
                   </Form.Item>
                   <Form.Item label={"Narxi"}>
                     {getFieldDecorator('price', {
