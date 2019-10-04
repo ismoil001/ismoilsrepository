@@ -194,7 +194,7 @@ class Index extends PureComponent {
           <Col span={2} className="mt-3">
             <Button className="btn-dark" onClick={searchButton}>Qidiruv</Button>
           </Col>
-          <Col span={20} offset={2}>
+          <Col className="pb-5" span={20} offset={2}>
             <Table dataSource={paymentList} columns={visibleColumns} pagination={false}/>
             <Pagination style={{position: "relative"}}
                         current={page}

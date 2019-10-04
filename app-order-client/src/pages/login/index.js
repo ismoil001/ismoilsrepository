@@ -37,7 +37,7 @@ const Login = ({
         </Row>
         <Row className='mt-5 pt-4'>
           <Col span={8} className=' offset-2 text-center mt-5' >
-            <Row>
+            <Row style={{width: "426px"}}>
               <h4 className=' text-center mb-5 ml-5 pl-4' >Tizimga kirish</h4>
               <div className="row pl-5 mb-3 text-left">
                 <div className="col-md-1 p-0 userr">
