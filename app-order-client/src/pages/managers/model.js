@@ -73,6 +73,9 @@ export default {
         type:'getManager'
       });
       yield put({
+        type:'getCustomers'
+      });
+      yield put({
         type:'updateState',
         payload:{
           openDeleteModal: false

@@ -155,12 +155,6 @@ class Index extends Component {
     return (
       <div>
         <Container>
-          <h2 className="text-center mt-5"><b>Menejerlar</b></h2>
-          <Row className="my-4">
-            <Col span={20}>
-              <Button  onClick={addManager} className=" btn-dark mb-4">Qo'shish</Button>
-            </Col>
-          </Row>
           <Row className="mt-3">
             <Col span={24}>
               <Nav tabs className="mt-4">
@@ -187,9 +181,12 @@ class Index extends Component {
               </Nav>
               <TabContent activeTab={this.state.activeTab}>
                 <TabPane tabId="1">
+                  <h2 className="text-center mt-2 mb-1"><b>Managerlar</b></h2>
+                      <Button  onClick={addManager} className=" btn-dark mb-2">Qo'shish</Button>
                   <Table pagination={false} columns={columns} dataSource={allManagers}/>
                 </TabPane>
                 <TabPane tabId="2">
+                  <h2 className="text-center mt-2 mb-2"><b>Haridorlar</b></h2>
                   <Table pagination={false} columns={columns} dataSource={allCustomers}/>
                 </TabPane>
               </TabContent>
