@@ -105,8 +105,44 @@ class Index extends Component {
                       )}
                     </Form.Item>
                   </Col>
+                  <Col span={24} className="px-3">
+                    <Form.Item>
+                      {getFieldDecorator('customerCount', {
+                        initialValue: company && company.countCustomer
+                      })(
+                        <Input placeholder="Customers count"/>,
+                      )}
+                    </Form.Item>
+                  </Col>
                 </Col>
                 <Col span={12}>
+                  <Col span={24} className="px-3">
+                    <Form.Item>
+                      {getFieldDecorator('addressRu', {
+                        initialValue: company && company.addressRu
+                      })(
+                        <Input placeholder="Address Ru"/>,
+                      )}
+                    </Form.Item>
+                  </Col>
+                  <Col span={24} className="px-3">
+                    <Form.Item>
+                      {getFieldDecorator('masterCount', {
+                        initialValue: company && company.masterCount
+                      })(
+                        <Input placeholder="Master count"/>,
+                      )}
+                    </Form.Item>
+                  </Col>
+                  <Col span={24} className="px-3">
+                    <Form.Item>
+                      {getFieldDecorator('orderCount', {
+                        initialValue: company && company.orderCount
+                      })(
+                        <Input placeholder="Order count"/>,
+                      )}
+                    </Form.Item>
+                  </Col>
                   <Col span={24} className="px-3">
                     <Form.Item>
                       {getFieldDecorator('phoneNumber1', {
@@ -136,8 +172,8 @@ class Index extends Component {
                   </Col>
                 </Col>
               </Row>
-              <Col span={4} offset={20} className="px-3 text-align-right">
-                <Button  className="btn-dark ml-4" onClick={submitForm}> Save changes</Button>
+              <Col span={4} offset={20} className="text-align-right">
+                <Button  className="btn-dark" onClick={submitForm}> O`zgarishlarni saqlash</Button>
               </Col>
             </Form>
           </Col>

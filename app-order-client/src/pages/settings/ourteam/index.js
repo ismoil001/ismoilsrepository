@@ -1,4 +1,4 @@
-import {Modal, Button, Col, Checkbox, Row, Form, Input, Table} from 'antd';
+import {Modal, Button, Col, Checkbox, Row, Form, Input, Table, Popconfirm} from 'antd';
 import React from "react";
 import {Upload, Icon, message} from 'antd';
 import {connect} from "react-redux";
@@ -32,21 +32,6 @@ class Index extends React.Component {
   }
 
   state = {visible: false};
-
-  showModal = () => {
-    this.props.dispatch({
-      type:'master/updateState',
-      payload:{
-        isEdit:false,
-        attachment:this.props.master.photoUrl,
-        currentMaster:'',
-        photoUrl: ''
-      }
-    })
-    this.setState({
-      visible: true,
-    });
-  };
 
   handleOk = e => {
     console.log(e);
@@ -95,14 +80,29 @@ class Index extends React.Component {
   render() {
     const {dispatch, master} = this.props;
     const {photoUrl,currentMaster,masters,isEdit} = master;
-    console.log(masters)
-    const {getFieldDecorator, getFieldsValue, getFieldsError, getFieldError, isFieldTouched} = this.props.form;
+    const {getFieldDecorator,resetFields, validateFields,getFieldsValue, getFieldsError, getFieldError, isFieldTouched} = this.props.form;
     const uploadButton = (
-      <div>
+      <div style={{border:"1px solid #eee",padding:"20px",zIndex:10}}>
         <Icon type={this.state.loading ? 'loading' : 'plus'}/>
         <div className="ant-upload-text">Upload</div>
       </div>
     );
+
+    const showModal = () => {
+      resetFields();
+      dispatch({
+        type:'master/updateState',
+        payload:{
+          isEdit:false,
+          attachment:this.props.master.photoUrl,
+          currentMaster:'',
+          photoUrl: ''
+        }
+      })
+      this.setState({
+        visible: true,
+      });
+    };
 
     const columns = [
       {
@@ -130,17 +130,22 @@ class Index extends React.Component {
         key: 'UZ',
       },
       {
-        title: 'Nomi(Ru)',
+        title: 'Izoh',
         dataIndex: 'description',
         key: 'RU',
       },
       {
-        title: 'Action',
+        title: 'Amallar',
         dataIndex: 'action',
         key: 'action',
         render: (text, record) => <span>
-     <div onClick={()=>delMaster(record.id)} className="d-inline-block circle delete-circle ml-4"> <Icon
-       type="delete"/></div>
+          <Popconfirm placement="topLeft" title="Tasdiqlash" onConfirm={()=>delMaster(record.id)} okText="Yes"
+                      cancelText="No">
+            <div className="d-inline-block circle delete-circle ml-4"> <Icon
+              type="delete"/></div>
+          </Popconfirm>
+     {/*<div onClick={()=>delMaster(record.id)} className="d-inline-block circle delete-circle"> <Icon*/}
+     {/*  type="delete"/></div>*/}
      <div onClick={()=>editMaster(record)} className="d-inline-block circle ml-4"><Icon type="edit"/> </div>
     </span>
       },
@@ -177,20 +182,24 @@ class Index extends React.Component {
       })
     };
     const handleOkok = () => {
-      console.log(getFieldsValue());
-      let obj = getFieldsValue();
-      this.setState({
-        visible: false,
-      });
-      dispatch({
-        type: 'master/createMaster',
-        payload: {
-          name: obj.name,
-          description:obj.description,
-          attachment:photoUrl,
-          active:true
+      validateFields((error,values)=>{
+        if(!error){
+          console.log(getFieldsValue());
+          let obj = getFieldsValue();
+          this.setState({
+            visible: false,
+          });
+          dispatch({
+            type: 'master/createMaster',
+            payload: {
+              name: obj.name,
+              description:obj.description,
+              attachment:photoUrl,
+              active:true
+            }
+          })
         }
-      })
+      });
     };
     const updateMaster=()=>{
       let obj = getFieldsValue();
@@ -213,12 +222,12 @@ class Index extends React.Component {
         <Row>
           <h2 className="text-center mb-4 mt-5"><b>Masterlar ro'yhati</b></h2>
           <Col offset={2} span={5} className="mr-4">
-            <div onClick={this.showModal} className="btn btn-dark my-3 mb-2">Master qo'shish</div>
+            <div onClick={showModal} className="btn btn-dark my-3 mb-2">Master qo'shish</div>
           </Col>
           <Col span={20} offset={2}>
             <Table columns={columns} dataSource={masters} pagination={false}/>
           </Col>
-        </Row>
+        </Row><br/><br/>
         <Modal
           title="Basic Modal"
           visible={this.state.visible}
@@ -228,7 +237,7 @@ class Index extends React.Component {
           <Col span={8}>
             <Upload
               name="avatar"
-              className="avatar-uploader"
+              // className="avatar-uploader"
               showUploadList={false}
               beforeUpload={beforeUpload}
               customRequest={uploadFile}

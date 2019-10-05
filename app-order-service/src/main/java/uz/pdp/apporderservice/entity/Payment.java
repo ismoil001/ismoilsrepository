@@ -6,6 +6,7 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import uz.pdp.apporderservice.entity.template.AbsEntity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
@@ -24,8 +25,10 @@ public class Payment extends AbsEntity {
     @ManyToOne(fetch = FetchType.LAZY,optional = false)
     private PayType payType;
 
+    @Column(nullable = false)
     private Timestamp payDate;
 
+    @Column(nullable = false)
     private Double paySum;
 
     private Double leftover;

@@ -43,15 +43,14 @@ class BasicLayout extends React.Component {
     }
 
     const {Content, Sider} = Layout;
-    if (props.location.pathname === "/home" || props.location.pathname === "/" || props.location.pathname === "/login") {
+    if (props.location.pathname !== "/dashboard" && props.location.pathname !== "/payment" && props.location.pathname !== "/managers" && props.location.pathname !=="/aksverka" && props.location.pathname!=="/settings/address" && props.location.pathname!=="/settings/ourteam" && props.location.pathname!=="/settings/portfolio") {
       return props.children
     } else {
       return (
         <LocaleProvider locale={getLocale() === 'en-US' ? enUS : ru}>
         <Layout>
           <Sider trigger={null} collapsible>
-            <div className="logo"/>
-            <Menu theme="dark" mode="inline" defaultSelectedKeys={["" + pageId]}>
+            <Menu style={{position: 'fixed',width: '200px'}} theme="dark" mode="inline" defaultSelectedKeys={["" + pageId]}>
               <h4 className="text-white text-center my-3 mb-3">Europrint</h4>
               <Menu.Item key="1">
                 <Link to="/dashboard">
@@ -99,13 +98,22 @@ class BasicLayout extends React.Component {
                   <span>Managerlar</span>
                 </Link>
               </Menu.Item>:"":""}
+              <Menu.Item key="9">
+                <Link to="/">
+                  <span>Bosh sahifa</span>
+                </Link>
+              </Menu.Item>
             </Menu>
           </Sider>
-          <Layout>
+          <Layout
+            style={{
+              background: '#fff',
+            }}>
             <Content
+              className="layout-content"
               style={{
                 background: '#fff',
-                minHeight: "100vh",
+                minHeight: '829px',
               }}
             >
               {props.children}

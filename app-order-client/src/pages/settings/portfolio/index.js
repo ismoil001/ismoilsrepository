@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from "dva";
-import {Upload, Col, Row, Icon, Modal, notification, Button, Card} from 'antd';
+import {Upload, Col, Row, Icon, Modal, notification, Button, Card, Popconfirm} from 'antd';
 function getBase64(file) {
   return new Promise((resolve, reject) => {
     const reader = new FileReader();
@@ -37,15 +37,17 @@ class Portfolio extends Component {
   handleChange = ({ fileList }) => this.setState({ fileList });
 
 
+
+
   render() {
     const {settings,dispatch} =this.props;
     const {loadingImage,oldAttachment,photo,portfolioList} =settings;
 
     const { previewVisible, previewImage, fileList } = this.state;
     const uploadButton = (
-      <Card>
-        <Icon type={loadingImage ? 'loading' : 'plus'} />
-        <div className="ant-upload-text">Upload</div>
+      <Card className="text-center pl-4 portfolio-card">
+        <Icon className="mt-5"  type={loadingImage ? 'loading' : 'plus'} />
+        <div className="mt-2 ant-upload-text">Yuklash</div>
       </Card>
     );
     function beforeUpload(file) {
@@ -75,11 +77,21 @@ class Portfolio extends Component {
         }
       })
     }
+    const deletePortfolio=(id)=>{
+      console.log(id)
+      dispatch({
+        type:'settings/deletePortfolio',
+        payload:{
+          id
+        }
+      })
+    }
+
     return (
       <div className="clearfix">
         <h2 className="text-center mt-5 mb-5"><b>Portfolio qo'shish</b></h2>
-        <Row>
-          <Col span={4} offset={2}>
+        <Col span={20} offset={2}>
+          <Col span={4} style={{marginRight: '20px', width: '250px'}}>
             <Upload
               name="attachment"
               showUploadList={false}
@@ -95,9 +107,14 @@ class Portfolio extends Component {
             {/*</Modal>*/}
           </Col>
             {portfolioList && portfolioList.map(item=>
-              <Col span={4} offset={2} className="mt-5">
-                <img width={200} height={200} src={item.attachment &&'/api/file/get/'+item.attachment.id} alt="avatar"/></Col> )}
-        </Row>
+              <Col span={4} className="position-relative portfolio-card mb-5">
+                <Popconfirm placement="topLeft" title="Tasdiqlash" onConfirm={()=>deletePortfolio(item.id)} okText="Yes"
+                            cancelText="No">
+                  <Icon className="delete-portfolio position-absolute" type="close-circle" />
+                </Popconfirm>
+                <img className="img-fluid " src={item.attachment &&'/api/file/get/'+item.attachment.id} alt="avatar"/>
+              </Col> )}
+        </Col>
       </div>
     );
   }

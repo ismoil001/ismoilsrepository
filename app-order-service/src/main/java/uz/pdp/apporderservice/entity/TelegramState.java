@@ -7,10 +7,7 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.Type;
 import uz.pdp.apporderservice.entity.template.AbsEntity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 import java.util.List;
 import java.util.UUID;
 
@@ -43,5 +40,8 @@ public class TelegramState extends AbsEntity {
     private Double count;
 
     private Double newPrice;
+
+    @OneToMany(fetch = FetchType.LAZY)
+    private List<DeletingMessage> deletingMessages;
 
 }

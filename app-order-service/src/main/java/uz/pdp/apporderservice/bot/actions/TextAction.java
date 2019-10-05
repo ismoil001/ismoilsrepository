@@ -47,8 +47,6 @@ public class TextAction {
                 }
                 botMainService.startPage(update);
                 break;
-            /////////////////////////////////
-
 
             default:
                 try {

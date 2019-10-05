@@ -44,14 +44,10 @@ public class HomeController {
         Company company = companyRepository.findById(1).orElseThrow(() -> new ResourceNotFoundException("company", "id", 1));
         List<Portfolio> portfolios = portfolioRepository.findAll();
         List<Master> masters = masterRepository.findAll();
-        long count = orderRepository.countAllByStatus(OrderStatus.CLOSED);
         HomePageResponse homePageResponse = new HomePageResponse();
         homePageResponse.setCompany(company);
-        homePageResponse.setCountAllCustomer(customerCount);
         homePageResponse.setPortfolios(portfolios);
         homePageResponse.setMasters(masters);
-        homePageResponse.setCountAllMasters(masters.size());
-        homePageResponse.setCountAllOrders((int)count);
         return ResponseEntity.ok(new ApiResponseData(true,"success",homePageResponse));
     }
 

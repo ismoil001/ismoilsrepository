@@ -13,9 +13,9 @@ import java.util.UUID;
 
 public interface OrderRepository extends JpaRepository<Order, UUID> {
 
-    Page<Order> findAllByStatusAndUser_CompanyNameContainingIgnoreCaseOrStatusAndUser_FirstNameContainingIgnoreCaseOrStatusAndUser_LastNameContainingIgnoreCaseOrStatusAndProductNameContainingIgnoreCase(Pageable pageable, OrderStatus status,String name,OrderStatus status1,String name1,OrderStatus status2,String name2,OrderStatus status3,String name3);
+    Page<Order> findAllByStatusAndUser_CompanyNameContainingIgnoreCaseOrStatusAndUser_FirstNameContainingIgnoreCaseOrStatusAndUser_LastNameContainingIgnoreCaseOrStatusAndProductNameContainingIgnoreCaseOrderByCreatedAtDesc(Pageable pageable, OrderStatus status,String name,OrderStatus status1,String name1,OrderStatus status2,String name2,OrderStatus status3,String name3);
 
-    Page<Order> findAllByCreatedByAndStatusAndUser_CompanyNameContainingIgnoreCaseOrCreatedByAndStatusAndUser_FirstNameContainingIgnoreCaseOrCreatedByAndStatusAndUser_LastNameContainingIgnoreCaseOrCreatedByAndStatusAndProductNameContainingIgnoreCase(Pageable pageable,User user, OrderStatus status,String name,User user1,OrderStatus status1,String name1,User user2,OrderStatus status2,String name2,User user3,OrderStatus status3,String name3);
+    Page<Order> findAllByCreatedByAndStatusAndUser_CompanyNameContainingIgnoreCaseOrCreatedByAndStatusAndUser_FirstNameContainingIgnoreCaseOrCreatedByAndStatusAndUser_LastNameContainingIgnoreCaseOrCreatedByAndStatusAndProductNameContainingIgnoreCaseOrderByCreatedAtDesc(Pageable pageable,User user, OrderStatus status,String name,User user1,OrderStatus status1,String name1,User user2,OrderStatus status2,String name2,User user3,OrderStatus status3,String name3);
 
     Page<Order> findAllByStatusOrderByCreatedAtDesc(Pageable pageable,OrderStatus status);
 

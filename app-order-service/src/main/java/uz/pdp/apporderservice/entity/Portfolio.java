@@ -15,7 +15,7 @@ import javax.persistence.ManyToOne;
 @Entity
 public class Portfolio extends AbsEntity {
 
-    @ManyToOne(fetch = FetchType.LAZY,optional = true)
+    @ManyToOne(fetch = FetchType.LAZY,optional = false)
     private Attachment attachment;
 
 }

@@ -26,6 +26,7 @@ export default {
     ismine: false,
     status:'active',
     modalLoading:false,
+    activeKey:'1',
     archiveData: [],
     currentItemPaymentSum: [],
   },
@@ -55,42 +56,8 @@ export default {
   },
 
   effects: {
-    * saveOrderPayment({payload}, {call, put, select}) {
-      const {ismine} = yield select(_ => _.dashboard)
-
-      const data = yield call(saveOrderPayment, payload)
-      if (data.success) {
-        yield put({
-          type: 'updateState',
-          payload: {
-            paymentModalVisible: false
-          }
-        })
-        notification['success']({
-          message: 'added'
-        })
-        yield put({
-          type: 'getOrders',
-          payload: {
-            page: 0,
-            size: 10,
-            name: '',
-            ismine: ismine,
-            status: 'active'
-          }
-        })
-      }
-      yield put({
-        type: 'updateState',
-        payload: {
-          modalLoading: false
-        }
-      })
-    },
-
     * deleteOrder({payload}, {call, put, select}) {
-      const {ismine} = yield select(_ => _.dashboard)
-
+      const {ismine,status} = yield select(_ => _.dashboard)
       const data = yield call(deleteOrder, {id: payload})
       if (data.success) {
         notification['success']({
@@ -103,7 +70,7 @@ export default {
             size: 10,
             name: '',
             ismine: ismine,
-            status: 'active'
+            status: status
           }
         })
       }
@@ -132,6 +99,9 @@ export default {
           type: 'updateState',
           payload: {
             modalVisible: false,
+            status:'active',
+            activeKey:'1',
+            searchValue: ''
           }
         })
       }

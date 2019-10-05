@@ -1,27 +1,72 @@
 
-#tableMy {
-  .ant-table-content {
-    height: 450px !important;
-
-    .ant-table-placeholder {
-      height: 450px !important;
-
-
-      .ant-empty-normal {
-        margin-top: 150px !important;
+.ant-layout-content{
+  min-height: 0!important;
+  height: 100vh!important;
+  #tableMy {
+    position: relative!important;
+    .ant-table{
+      table{
+        border-collapse: collapse!important;
+      }
+    }
+    .ant-table-thead{
+      tr{
+        th:nth-child(1){
+          width: 125px;
+        }
+        th:nth-child(2){
+          width: 100px;
+        }
+        th:nth-child(3){
+          width: 100px;
+        }
+        th:nth-child(4){
+          width: 100px;
+        }
+        th:nth-child(5){
+          width: 100px;
+        }
+        th:nth-child(6){
+          width: 100px;
+          position: static;
+        }
+      }
+    }
+    .ant-table-tbody {
+      border: 1px solid #e2e2e2!important;
+      width: 100%;
+      tr{
+        border-bottom: 1px solid #e2e2e2 !important;
+        td:nth-child(1){
+          width: 20%;
+        }
+        td:nth-child(2){
+          width: 16%;
+        }
+        td:nth-child(3){
+          width: 16%;
+        }
+        td:nth-child(4){
+          width: 16%;
+        }
+        td:nth-child(5){
+          width: 16%;
+        }
+        td:nth-child(6){
+          width: 16%;
+        }
       }
     }
   }
-  .ant-table-tbody {
-    overflow-y: auto;
-    width: 100%;
-    height: 55vh;
-    position: absolute;
-    td{
-      width: 100%!important;
+  .ant-pagination{
+    text-align: center!important;
+    margin-top: 10px!important;
+    ul{
+      margin-bottom: 0!important;
     }
   }
 }
+
 
 #aksverka {
   .bg-minus {
@@ -277,7 +322,7 @@ $black: #131A22;
 
 .header {
   .rec {
-    width: 35.5%;
+    width: 37%;
     right: 0;
   }
 
@@ -297,6 +342,7 @@ $black: #131A22;
       .nav-link {
         padding-right: 0;
         padding-left: 0;
+        color: #131A22 !important;
       }
 
       &::after {
@@ -323,19 +369,27 @@ $black: #131A22;
       top: 10px;
 
       .dropdownMain {
+        font-size: 16px;
+        line-height: 19px;
         background: none !important;
-        border: 1px solid #131A22;
+        border: 1.2px solid #cdcdcd;
         box-sizing: border-box;
         border-radius: 100px;
-        color: #000000;
+        color: #131A22;
 
         &:focus {
-          color: #000000;
+          border: 1.2px solid #cdcdcd;
+          color: #131A22;
           outline: 0;
           -webkit-appearance: none;
           box-shadow: none;
           -moz-box-shadow: none;
           -webkit-box-shadow: none;
+        }
+
+        .faAngel {
+          font-size: 16px;
+          color: #d4d4d4;
         }
       }
 
@@ -343,15 +397,14 @@ $black: #131A22;
         padding: 0;
         text-align: center;
         min-width: 0;
-        margin-left: -14px;
-        margin-top: 5px;
+        margin-left: 13px;
+        border: none !important;
 
         &:hover {
           box-shadow: 2px 2px 2px 2px rgba(169, 163, 142, 0.15);
         }
 
         button {
-          width: 120px;
 
           &:hover {
             background: $orange;
@@ -404,6 +457,7 @@ $black: #131A22;
 
     .phone-code {
       font-size: 12px;
+      margin-left: 32px;
     }
 
     .pnone-number {
@@ -415,9 +469,6 @@ $black: #131A22;
     padding-top: 120px;
   }
 
-  .contact {
-  }
-
 
   @media (min-width: 1600px) {
     .header {
@@ -425,7 +476,7 @@ $black: #131A22;
         width: 685px;
 
         .order {
-          margin-top: 145px;
+          padding-top: 100px;
         }
       }
     }
@@ -437,7 +488,7 @@ $black: #131A22;
         width: 685px;
 
         .order {
-          margin-top: 145px;
+          padding-top: 140px;
         }
       }
     }
@@ -457,6 +508,11 @@ $black: #131A22;
 
       .contact {
         margin-top: 120px;
+
+        .pnone-number {
+          font-size: 27px;
+          margin-left: 30px;
+        }
       }
     }
   }
@@ -488,7 +544,8 @@ $black: #131A22;
           }
 
           .pnone-number {
-            font-size: 30px;
+            font-size: 27px;
+            margin-left: 30px;
           }
         }
       }
@@ -513,6 +570,7 @@ $black: #131A22;
 
         .dropdown {
           align-self: unset;
+          top: 0;
         }
       }
 
@@ -533,7 +591,8 @@ $black: #131A22;
           }
 
           .pnone-number {
-            font-size: 30px;
+            font-size: 27px;
+            margin-left: 30px;
           }
         }
       }
@@ -558,6 +617,7 @@ $black: #131A22;
 
         .dropdown {
           align-self: unset;
+          top: 0;
         }
       }
 
@@ -582,8 +642,10 @@ $black: #131A22;
             font-size: 12px;
           }
 
+
           .pnone-number {
-            font-size: 20px;
+            font-size: 17px;
+            margin-left: 30px;
           }
         }
       }
@@ -592,15 +654,19 @@ $black: #131A22;
 }
 
 .section-one {
-  margin-top: 140px;
+  padding-top: 90px;
+  margin-top: 47px;
 
   .tipography {
-    font-size: 45px;
-    line-height: 55px;
+    font-size: 47px;
+    line-height: 60px;
+    color: #131A22;
   }
 
   .tipography-text {
-    font-size: 24px;
+    font-size: 20px;
+    line-height: 34px;
+    color: #37475A;
   }
 
   .path {
@@ -609,92 +675,13 @@ $black: #131A22;
   }
 
   .section1img1 {
-    width: 64%;
-  }
-
-  .section1img2 {
-    width: 86%;
-    left: 0;
-    bottom: -18%;
-  }
-
-  @media (min-width: 1600px) {
-
-  }
-
-  @media (max-width: 1600px) and (min-width: 1200px) {
-    .section1img1 {
-      height: 755px;
-    }
-  }
-
-  @media (max-width: 1200px) and (min-width: 992px) {
-    .tipography {
-      font-size: 35px;
-      line-height: 35px;
-    }
-
-    .tipography-text {
-      font-size: 16px;
-    }
-
-    .path {
-      font-size: 20px;
-      line-height: 30px;
-    }
-  }
-
-  @media (max-width: 992px) and (min-width: 765px) {
-    .tipography {
-      font-size: 26px;
-      line-height: 35px;
-    }
-
-    .tipography-text {
-      font-size: 12px;
-    }
-
-    .path {
-      font-size: 16px;
-      line-height: 30px;
-    }
-  }
-
-  @media (max-width: 765px) and (min-width: 576px) {
-    .tipography {
-      font-size: 45px;
-      line-height: 45px;
-    }
-
-    .tipography-text {
-      font-size: 20px;
-    }
-
-    .path {
-      font-size: 20px;
-      line-height: 30px;
-    }
-  }
-
-  @media only screen and (max-width: 576px) and (min-width: 320px) {
-    .tipography {
-      font-size: 30px;
-      line-height: 40px;
-    }
-
-    .tipography-text {
-      font-size: 16px;
-    }
-
-    .path {
-      font-size: 18px;
-      line-height: 30px;
-    }
+    padding-top: 30px;
+    width: 83%;
   }
 }
 
 .section-two {
-  margin-top: 240px;
+  margin-top: 172px;
   background-image: url("../public/assets/images/NUB.png");
   background-repeat: no-repeat;
   background-position: center center;
@@ -737,100 +724,22 @@ $black: #131A22;
       overflow: hidden;
     }
   }
-
-  @media (max-width: 1200px) and (min-width: 992px) {
-    .we-text {
-      font-size: 2.9em;
-    }
-    .sectionInfoCard {
-      .efficiency {
-        font-size: 20px;
-      }
-
-      .efficiency2 {
-        font-size: 12px;
-      }
-    }
-  }
-
-  @media (max-width: 992px) and (min-width: 765px) {
-    .we-text {
-      font-size: 2.5em;
-    }
-    .sectionInfoCard {
-      .efficiency {
-        font-size: 14px;
-      }
-
-      .efficiency2 {
-        font-size: 12px;
-      }
-    }
-  }
-
-  @media (max-width: 765px) and (min-width: 576px) {
-    .we-text {;
-      padding-bottom: 26px;
-      font-size: 2.1em;
-    }
-    .card-row2 {
-      padding-top: 0px;
-      padding-bottom: 64px;
-    }
-    .sectionInfoCard {
-      margin-top: 60px;
-
-      .timer_Main {
-        .timer {
-          width: 20%;
-        }
-      }
-
-      .efficiency {
-        font-size: 24px;
-      }
-
-      .efficiency2 {
-        font-size: 15px;
-      }
-    }
-  }
-
-  @media only screen and (max-width: 576px) and (min-width: 320px) {
-    .we-text {
-      padding-bottom: 26px;
-      font-size: 1.9em;
-    }
-    .card-row2 {
-      padding-top: 0px;
-      padding-bottom: 64px;
-    }
-    .sectionInfoCard {
-      margin-top: 60px;
-
-      .timer_Main {
-        .timer {
-          width: 20%;
-        }
-      }
-
-      .efficiency {
-        font-size: 21px;
-      }
-
-      .efficiency2 {
-        font-size: 13px;
-      }
-    }
-  }
 }
 
 .section3 {
-  margin-top: 255px;
-  background-image: url("../public/assets/images/bg-img-2.png");
-  background-repeat: no-repeat;
-  background-position-x: right;
-  background-position-y: top;
+  padding-top: 50px;
+  margin-top: 128px;
+
+  .bg-color-1 {
+    right: 0;
+    top: 0;
+
+    img {
+      width: 100%;
+      height: 565px;
+      transform: translate(0px, -70px);
+    }
+  }
 
   .service {
     font-size: 50px;
@@ -840,7 +749,7 @@ $black: #131A22;
   .mahsulotlar {
     .bg-color-2 {
       bottom: -110px;
-      //left: -185px;
+      left: -185px;
       z-index: 33;
     }
 
@@ -926,104 +835,109 @@ $black: #131A22;
       }
     }
   }
-
 }
 
 .section4 {
-  margin-top: 287.5px;
+  .section4_row {
+    padding-top: 120px !important;
 
-  .portfolio_Card {
-    z-index: 23;
-    border: none !important;
-    border-radius: 0 !important;
+    .portfolio_Card {
+      z-index: 23;
+      border: none !important;
+      border-radius: 0 !important;
 
-    .portfolio_Title {
-      font-size: 50px;
-      line-height: 60px;
-      color: $black;
+      .portfolio_Title {
+        font-size: 50px;
+        line-height: 60px;
+        color: #131A22;
+      }
+
+      .portfolio_Text {
+        font-size: 24px;
+        line-height: 30px;
+        color: #37475A;
+      }
     }
 
-    .portfolio_Text {
-      font-size: 24px;
-      line-height: 30px;
-      color: $black;
+    .slick-prev:before {
+      content: url("../public/assets/images/vector1.png") !important;
+      font-family: 'slick';
+      font-size: 45px !important;
+      line-height: 1;
+      opacity: 1;
+      background-color: transparent;
+      color: white;
+      background-repeat: no-repeat;
+      background-position: center center;
     }
-  }
 
-  .slick-prev:before {
-    content: url("../public/assets/images/vector1.png") !important;
-    font-family: 'slick';
-    font-size: 45px !important;
-    line-height: 1;
-    opacity: 1;
-    background-color: transparent;
-    color: white;
-    background-repeat: no-repeat;
-    background-position: center center;
-  }
+    .slick-next:before {
+      content: url("../public/assets/images/vector2.png") !important;
+      font-family: 'slick';
+      font-size: 45px !important;
+      line-height: 1;
+      opacity: 1;
+      background-color: transparent;
 
-  .slick-next:before {
-    content: url("../public/assets/images/vector2.png") !important;
-    font-family: 'slick';
-    font-size: 45px !important;
-    line-height: 1;
-    opacity: 1;
-    background-color: transparent;
+      color: white;
+      background-repeat: no-repeat;
+      background-position: center center;
+    }
 
-    color: white;
-    background-repeat: no-repeat;
-    background-position: center center;
-  }
+    .slick-prev {
+      left: 120px;
+      top: 94% !important;
+    }
 
-  .slick-prev {
-    left: 120px;
-    top: 94% !important;
-  }
+    .slick-next {
+      left: 200px;
+      top: 94% !important;
+    }
 
-  .slick-next {
-    left: 200px;
-    top: 94% !important;
-  }
-
-  .slick-prev, .slick-next {
-    z-index: 30;
-    width: 80px;
-    height: 60px;
-    cursor: pointer;
-    background: #FFFFFF;
-
-    &:hover {
+    .slick-prev, .slick-next {
+      z-index: 30;
+      width: 80px;
+      height: 60px;
+      cursor: pointer;
       background: #FFFFFF;
+
+      &:hover {
+        background: #FFFFFF;
+      }
+
+      &:focus {
+        background: #FFFFFF;
+      }
     }
 
-    &:focus {
+    .slick-dots li button:before {
+      font-size: 0px;;
+    }
+
+
+    .shape_Carousel1 {
+      overflow: hidden;
+      border-radius: 0 30% 0 0 !important;
+      .portfolio_Img{
+        width: 100%;
+        height: 570px;
+      }
+    }
+
+    .shape_Carousel2 {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 200px;
+      height: 80%;
       background: #FFFFFF;
+      z-index: 22;
     }
-  }
-
-  .slick-dots li button:before {
-    font-size: 0px;;
-  }
-
-
-  .shape_Carousel1 {
-    overflow: hidden;
-    border-radius: 0 30% 0 0 !important;
-  }
-
-  .shape_Carousel2 {
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 200px;
-    height: 80%;
-    background: #FFFFFF;
-    z-index: 22;
   }
 }
 
 .section5 {
-  margin-top: 237px;
+  margin-top: 176px;
   position: relative;
 
   .bg-img {
@@ -1053,6 +967,7 @@ $black: #131A22;
   }
 
   .number-com {
+    width: 236px;
     font-size: 22px;
     margin-bottom: 0;
     line-height: 24px;
@@ -1060,10 +975,9 @@ $black: #131A22;
   }
 }
 
-
 .section6 {
-  margin-top: 240px;
-  margin-bottom: 20px;
+  padding-top: 50px;
+  margin-top: 170px;
 
   .section6Title {
     font-size: 50px;
@@ -1148,16 +1062,24 @@ $black: #131A22;
 
 
 .section7 {
-  margin-top: 308px;
+
+  margin-top: 134px;
+  padding-top: 110px;
+  transform: translate(0px, -110px);
 
   .rec6 {
-    top: -30%;
+    top: -12%;
     left: 0;
     width: 18%;
   }
 
-  .slick-list {
+  .slick-slider {
+    padding-top: 60px;
     padding-bottom: 92px;
+  }
+
+  .slick-dots {
+    transform: translate(0, -157px);
   }
 
   .slick-prev {
@@ -1171,8 +1093,28 @@ $black: #131A22;
     right: -25px;
     display: none !important;
   }
-
   .team_Carousel {
+    .bg-1 {
+      height: 77%;
+      width: 85px;
+      left: 0;
+      bottom: 0;
+      background: rgb(255, 255, 255);
+      background: linear-gradient(90deg, rgba(255, 255, 255, 1) 25%, rgba(255, 255, 255, 0) 64%, rgba(0, 212, 255, 0) 100%);
+      position: absolute;
+      z-index: 998;
+    }
+
+    .bg-2 {
+      height: 77%;
+      width: 70px;
+      right: 0;
+      bottom: 0;
+      background: rgb(0, 212, 255);
+      background: linear-gradient(90deg, rgba(0, 212, 255, 0) 0%, rgba(255, 255, 255, 0) 5%, rgba(255, 255, 255, 1) 69%, rgba(255, 255, 255, 1) 83%);
+      z-index: 998;
+    }
+
     .team_Title {
       font-size: 46px;
       line-height: 55px;
@@ -1184,8 +1126,8 @@ $black: #131A22;
     .team_Card {
       margin-left: 15px;
       margin-right: 15px;
-      margin-top: 146px;
-      transform: translate(0, 10px);
+      margin-top: 186px;
+      transform: translate(0, -90px);
       height: 256px;
       background: #FFFDF7;
       border: none !important;
@@ -1215,6 +1157,7 @@ $black: #131A22;
         .user_Img {
           width: 150px;
           height: 150px;
+          border-radius: 50%;
         }
       }
 
@@ -1222,7 +1165,7 @@ $black: #131A22;
         font-size: 24px;
         line-height: 29px;
         color: #131A22;
-        transform: translate(0, -78px);
+        margin-top: -80px;
       }
 
       .user_Profession {
@@ -1230,7 +1173,6 @@ $black: #131A22;
         font-size: 16px;
         line-height: 19px;
         color: #EC681F;
-        transform: translate(0, -78px);
       }
     }
 
@@ -1238,17 +1180,16 @@ $black: #131A22;
 }
 
 .section8 {
-  margin-top: 196px;
-  transform: translate(0, 40px);
   position: relative;
-
+  margin-top: -105px;
+  transform: translate(0, 45px);
   .rectangle {
     width: 20%;
     position: absolute;
     text-align: right !important;
     z-index: 999;
     right: 0;
-    top: -131px;
+    top: -152px;
   }
 
   .mapYandex {
@@ -1274,18 +1215,14 @@ $black: #131A22;
   @media only screen and (max-width: 576px) and (min-width: 320px) {
     .rectangle {
       width: 30%;
-      position: absolute;
-      text-align: right !important;
-      z-index: 999;
-      right: 0;
-      top: -131px;
     }
+
   }
 }
 
 .footer {
   background-color: #131A22;
-  padding-top: 50px;
+  padding-top: 70px;
   color: #FFFFFF;
 
   .footerLinks {
@@ -1318,6 +1255,11 @@ $black: #131A22;
 
   .phone-img {
     cursor: pointer;
+    margin-left: -18px;
+  }
+  .phone-img1 {
+    cursor: pointer;
+    margin-left: -3px;
   }
 
   .phone-num {
@@ -1334,21 +1276,31 @@ $black: #131A22;
     line-height: 28px;
   }
 
-  .dropdownMenu {
+  .dropdown {
+    align-self: center;
+
     .dropdownMain {
+      font-size: 16px;
+      line-height: 19px;
       background: none !important;
-      border: 1px solid #ffffff;
+      border: 1.2px solid #cdcdcd;
       box-sizing: border-box;
       border-radius: 100px;
-      color: #ffffff !important;
+      color: #ffffff;
 
       &:focus {
-        color: #ffffff !important;
+        border: 1.2px solid #cdcdcd;
+        color: #ffffff;
         outline: 0;
         -webkit-appearance: none;
         box-shadow: none;
         -moz-box-shadow: none;
         -webkit-box-shadow: none;
+      }
+
+      .faAngel {
+        font-size: 16px;
+        color: #d4d4d4;
       }
     }
 
@@ -1356,15 +1308,14 @@ $black: #131A22;
       padding: 0;
       text-align: center;
       min-width: 0;
-      margin-left: -14px;
-      margin-top: 5px;
+      margin-left: 13px;
+      border: none !important;
 
       &:hover {
         box-shadow: 2px 2px 2px 2px rgba(169, 163, 142, 0.15);
       }
 
       button {
-        width: 120px;
 
         &:hover {
           background: $orange;
@@ -1372,11 +1323,11 @@ $black: #131A22;
         }
       }
     }
+  }
 
-    .dropdown-toggle::after {
-      display: block;
-      border: none !important;
-    }
+  .dropdown-toggle::after {
+    display: block;
+    border: none !important;
   }
 
   .telegram {
@@ -1416,17 +1367,23 @@ $black: #131A22;
   }
 
 }
+
 #login {
-  height: 100vh;
+  height: 100vh!important;
 
   .ant-row {
     .text-center {
       padding-right: 80px;
     }
-    .ant-input-group-wrapper{
-      width: 80%!important;
+
+    .ant-input-group-wrapper {
+      width: 80% !important;
     }
+
     .ant-col {
+      .img-fluid{
+        height: 650px;
+      }
       .ant-btn {
         width: 300px;
         height: 44px;
@@ -1439,22 +1396,25 @@ $black: #131A22;
         border: 0;
 
       }
-      #username{
+
+      #username {
         width: 93% !important;
         height: 44px;
         padding-left: 4px;
         background-color: #e8f0fe;
         border: 0;
       }
-      .userrr{
+
+      .userrr {
         border-left: 5px solid #fafafa;
         height: 44px;
       }
-      .userr{
+
+      .userr {
         background-color: #fafafa;
-        padding-left: 10px!important;
-        padding-top: 5px!important;
-        border: 1px  solid rgba(196, 196, 196, 0.2);
+        padding-left: 10px !important;
+        padding-top: 5px !important;
+        border: 1px solid rgba(196, 196, 196, 0.2);
         height: 44px;
         border-right: 0;
         margin-left: 9px !important;
@@ -1503,7 +1463,8 @@ $black: #131A22;
     }
   }
   .section6 {
-    margin-top: 150px;
+    height: 80vh;
+    padding-top: 80px;
 
     .section6Title {
       font-size: 30px;
@@ -1572,8 +1533,9 @@ $black: #131A22;
   }
 
   .section6 {
+    height: 45vh;
+    padding-top: 60px;
     margin-Y: 50px;
-    margin-top: 100px;
 
     .bg-1, .bg-2 {
       width: 50px;
@@ -1765,34 +1727,106 @@ $black: #131A22;
 
 }
 
-@media (min-width: 1200px) {
+.ant-pagination {
+  margin-bottom: 0 !important;
+}
+
+@media (min-width: 1600px) {
+  .headerback{
+    max-width: 1600px;
+  }
   .fullScreen {
     .header {
       max-width: 1600px;
       margin: 0 auto;
     }
   }
-
-  .CaruselContainer {
-    img {
-      width: 100%;
-      height: 464px;
-    }
-  }
   .section4 {
-    .portfolio_Img {
-      position: relative;
-    }
+    .section4_row {
+      .portfolio_Img {
+        position: relative;
+      }
 
-    .portfolio_Card {
-      position: absolute;
-      transform: translate(24%, 150px);
-      padding-bottom: 8rem;
+      .portfolio_Card {
+        position: absolute;
+        transform: translate(24%, 150px);
+        padding-bottom: 8rem;
+      }
     }
   }
   .section5 {
     .bg-img {
       width: 1160px;
+      height: 282px;
+      left: 0!important;
+      position: absolute;
+    }
+
+    .bgBox {
+      width: 270px;
+      height: 282px;
+      top: 46.8%;
+    }
+
+    .counters {
+      top: 80px;
+    }
+  }
+  .section7 {
+    .rec6 {
+      top: 0%;
+    }
+    .team_Carousel {
+      margin-top: 100px;
+    }
+  }
+}
+
+@media (max-width: 1600px) and (min-width: 1200px) {
+  .CaruselContainer {
+    img {
+      width: 100%;
+      height: 464px;
+    }
+
+    .homeCircles {
+      transform: translate(-80px, 0px);
+    }
+  }
+  .section-one {
+    height: 100vh;
+
+    .section1img1 {
+      height: 660px;
+    }
+
+    .tipography {
+      margin-top: 10px;
+    }
+
+    .tipography-text {
+      padding-top: 19px;
+    }
+  }
+  .section4 {
+    height: 100vh;
+
+    .section4_row {
+      .portfolio_Img {
+        position: relative;
+      }
+
+      .portfolio_Card {
+        position: absolute;
+        transform: translate(24%, 150px);
+        padding-bottom: 8rem;
+      }
+    }
+  }
+  .section5 {
+    .bg-img {
+      left: 0;
+      width: 90%;
       height: 282px;
       position: absolute;
     }
@@ -1800,14 +1834,18 @@ $black: #131A22;
     .bgBox {
       width: 270px;
       height: 282px;
-      top: 48.5%;
+      top: 44.8%;
     }
 
     .counters {
       top: 80px;
     }
   }
+  .section6 {
+    height: 100vh;
+  }
 }
+
 
 @media (max-width: 1200px) and (min-width: 992px) {
   .CaruselContainer {
@@ -1817,45 +1855,95 @@ $black: #131A22;
       height: 400px;
     }
   }
+  .section-one {
+    height: 100vh;
+
+    .tipography {
+      margin-top: 30px;
+      font-size: 35px;
+      line-height: 35px;
+    }
+
+    .section1img1 {
+      height: 660px;
+    }
+
+    .tipography-text {
+      font-size: 16px;
+    }
+
+    .path {
+      font-size: 20px;
+      line-height: 30px;
+    }
+  }
+  .section-two {
+    margin-top: 50px;
+
+    .we-text {
+      font-size: 2.9em;
+    }
+
+    .sectionInfoCard {
+      .efficiency {
+        font-size: 20px;
+      }
+
+      .efficiency2 {
+        font-size: 12px;
+      }
+    }
+  }
   .section4 {
-    .portfolio_Card {
-      position: absolute;
-      width: 80%;
-      transform: translate(195px, 150px);
+    margin-top: 0;
 
-      .portfolio_Title {
-        font-size: 30px;
-        line-height: 20px;
+    .section4_row {
+      .portfolio_Card {
+        position: absolute;
+        width: 80%;
+        transform: translate(195px, 150px);
+
+        .portfolio_Title {
+          font-size: 30px;
+          line-height: 20px;
+        }
+
+        .portfolio_Text {
+          font-size: 16px;
+          line-height: 20px;
+        }
       }
 
-      .portfolio_Text {
-        font-size: 16px;
-        line-height: 20px;
+      .portfolio_Img {
+        position: relative;
       }
-    }
+      .shape_Carousel1 {
+        .portfolio_Img{
+          height: 445px;
+        }
+      }
+      .shape_Carousel2 {
+        width: 120px;
+        background: #FFFFFF;
+      }
 
-    .portfolio_Img {
-      position: relative;
-    }
+      .slick-prev {
+        left: 40px;
+        top: 92.1% !important;
+      }
 
-    .shape_Carousel2 {
-      width: 120px;
-      background: #FFFFFF;
-    }
-
-    .slick-prev {
-      left: 40px;
-      top: 92.1% !important;
-    }
-
-    .slick-next {
-      left: 120px;
-      top: 92.1% !important;
+      .slick-next {
+        left: 120px;
+        top: 92.1% !important;
+      }
     }
   }
   .section5 {
+    margin-top: 190px;
+
     .bg-img {
-      width: 960px;
+      width: 90%;
+      left: 0;
       height: 240px;
       position: absolute;
     }
@@ -1887,6 +1975,9 @@ $black: #131A22;
       line-height: 18px;
     }
   }
+  .section6 {
+    height: 100vh;
+  }
   .section7 {
     .team_Carousel {
       .team_Title {
@@ -1901,49 +1992,98 @@ $black: #131A22;
   .CaruselContainer {
     margin-top: 45px;
   }
-  .section4 {
-    margin-top: 188px;
+  .section-one {
+    padding-top: 90px;
+    margin-top: 0px;
 
-    .portfolio_Card {
-      position: absolute;
-      width: 100%;
-      transform: translate(100px, 95px);
+    .tipography {
+      margin-top: 30px;
+      font-size: 27px;
+      line-height: 35px;
+    }
 
-      .portfolio_Title {
-        font-size: 30px;
-        line-height: 20px;
+    .section1img1 {
+      height: 440px;
+    }
+
+    .tipography-text {
+      font-size: 12px;
+      line-height: 14px;
+    }
+
+    .path {
+      font-size: 16px;
+      line-height: 30px;
+    }
+  }
+  .section-two {
+    margin-top: 0;
+
+    .we-text {
+      font-size: 2.5em;
+    }
+
+    .sectionInfoCard {
+      .efficiency {
+        font-size: 14px;
       }
 
-      .portfolio_Text {
+      .efficiency2 {
         font-size: 12px;
-        line-height: 20px;
       }
     }
+  }
+  .section4 {
+    margin-top: 0px;
 
-    .portfolio_Img {
-      position: relative;
-    }
+    .section4_row {
+      .portfolio_Card {
+        position: absolute;
+        width: 100%;
+        transform: translate(100px, 95px);
 
-    .shape_Carousel2 {
-      width: 120px;
-      background: #FFFFFF;
-    }
+        .portfolio_Title {
+          font-size: 30px;
+          line-height: 20px;
+        }
 
-    .slick-prev {
-      left: 40px;
-      top: 90.4% !important;
-    }
+        .portfolio_Text {
+          font-size: 12px;
+          line-height: 20px;
+        }
+      }
 
-    .slick-next {
-      left: 120px;
-      top: 90.4% !important;
+      .portfolio_Img {
+        position: relative;
+      }
+      .shape_Carousel1 {
+        .portfolio_Img{
+          width: 100%;
+          height: 370px;
+        }
+      }
+      .shape_Carousel2 {
+        width: 120px;
+        background: #FFFFFF;
+      }
+
+      .slick-prev {
+        left: 40px;
+        top: 90.4% !important;
+      }
+
+      .slick-next {
+        left: 120px;
+        top: 90.4% !important;
+      }
     }
   }
   .section5 {
     margin-top: 100px;
 
     .bg-img {
-      width: 720px;
+      left: 0;
+      width: 90%;
       height: 240px;
       position: absolute;
     }
@@ -1977,7 +2117,9 @@ $black: #131A22;
   }
   .section7 {
     margin-top: 208px;
-
+    .slick-slider {
+      padding-top: 0px;
+    }
     .team_Carousel {
       .team_Title {
         font-size: 30px;
@@ -1985,8 +2127,6 @@ $black: #131A22;
       }
 
       .team_Card {
-        margin-top: 70px;
-
         .img_Round {
           transform: translate(0, -55px);
           width: 135px;
@@ -1999,7 +2139,7 @@ $black: #131A22;
         }
 
         .user_Name {
-          margin-top: 27px;
+          margin-top: -40px;
         }
       }
     }
@@ -2007,35 +2147,103 @@ $black: #131A22;
 }
 
 @media (max-width: 765px) and (min-width: 576px) {
+  .section5 {
+    margin-top: 100px;
+
+    .bg-img {
+      left: 0;
+      width: 90%!important;
+    }
+  }
+
   .CaruselContainer {
     margin-top: 45px;
   }
+  .section-one {
+    padding-top: 90px;
+    margin-top: 0px;
+
+    .tipography {
+      font-size: 45px;
+      line-height: 45px;
+    }
+
+    .tipography-text {
+      font-size: 20px;
+    }
+
+    .path {
+      font-size: 20px;
+      line-height: 30px;
+    }
+  }
+  .section-two {
+    margin-top: 0;
+
+    .we-text {;
+      padding-bottom: 26px;
+      font-size: 2.1em;
+    }
+
+    .card-row2 {
+      padding-top: 0px;
+      padding-bottom: 64px;
+    }
+
+    .sectionInfoCard {
+      margin-top: 60px;
+
+      .timer_Main {
+        .timer {
+          width: 20%;
+        }
+      }
+
+      .efficiency {
+        font-size: 24px;
+      }
+
+      .efficiency2 {
+        font-size: 15px;
+      }
+    }
+  }
   .section4 {
-    margin-top: 188px;
+    margin-top: 0px;
 
-    .portfolio_Card {
-      .portfolio_Title {
-        font-size: 40px;
-        text-align: center;
+    .section4_row {
+      padding-top: 70px !important;
+
+      .portfolio_Card {
+        .portfolio_Title {
+          font-size: 40px;
+          text-align: center;
+        }
+
+        .portfolio_Text {
+          font-size: 20px;
+        }
       }
 
-      .portfolio_Text {
-        font-size: 20px;
+      .shape_Carousel1 {
+        .portfolio_Img{
+          width: 100%;
+          height: 470px;
+        }
       }
-    }
+      .shape_Carousel2 {
+        background: transparent;
+      }
 
-    .shape_Carousel2 {
-      background: transparent;
-    }
+      .slick-prev {
+        left: 0px;
+        top: 94% !important;
+      }
 
-    .slick-prev {
-      left: 0px;
-      top: 94% !important;
-    }
-
-    .slick-next {
-      left: 81px;
-      top: 94% !important;
+      .slick-next {
+        left: 81px;
+        top: 94% !important;
+      }
     }
   }
   .section5 {
@@ -2076,7 +2284,12 @@ $black: #131A22;
   }
   .section7 {
     margin-top: 208px;
-
+    .rec6{
+      top: 20px;
+    }
+    .slick-slider {
+      padding-top: 0px;
+    }
     .team_Carousel {
       .team_Title {
         font-size: 30px;
@@ -2084,8 +2297,6 @@ $black: #131A22;
       }
 
       .team_Card {
-        margin-top: 70px;
-
         .img_Round {
           transform: translate(0, -55px);
           width: 135px;
@@ -2099,7 +2310,7 @@ $black: #131A22;
 
         .user_Name {
           font-size: 18px;
-          margin-top: 27px;
+          margin-top: -40px;
         }
       }
     }
@@ -2110,32 +2321,93 @@ $black: #131A22;
   .CaruselContainer {
     margin-top: 45px;
   }
-  .section4 {
-    margin-top: 188px;
+  .section-one {
+    padding-top: 90px;
+    margin-top: 0px;
 
-    .portfolio_Card {
-      .portfolio_Title {
-        font-size: 30px;
-        text-align: center;
+    .tipography {
+      font-size: 30px;
+      line-height: 40px;
+    }
+
+    .tipography-text {
+      font-size: 16px;
+    }
+
+    .path {
+      font-size: 18px;
+      line-height: 30px;
+    }
+  }
+  .section-two {
+    margin-top: 0;
+
+    .we-text {
+      padding-bottom: 26px;
+      font-size: 1.9em;
+    }
+
+    .card-row2 {
+      padding-top: 0px;
+      padding-bottom: 64px;
+    }
+
+    .sectionInfoCard {
+      margin-top: 60px;
+
+      .timer_Main {
+        .timer {
+          width: 20%;
+        }
+      }
+
+      .efficiency {
+        font-size: 21px;
+      }
+
+      .efficiency2 {
+        font-size: 13px;
+      }
+    }
+  }
+  .section4 {
+    .section4_row {
+      padding-top: 70px !important;
+
+      .portfolio_Card {
+        .portfolio_Title {
+          font-size: 30px;
+          text-align: center;
+        }
+
+        .portfolio_Text {
+          font-size: 18px;
+        }
       }
 
       .portfolio_Text {
-        font-size: 18px;
+        margin-top: -20px;
       }
-    }
 
-    .shape_Carousel2 {
-      background: transparent;
-    }
+      .shape_Carousel1 {
+        .portfolio_Img{
+          width: 100%;
+          height: 440px;
+        }
+      }
+      .shape_Carousel2 {
+        background: transparent;
+      }
 
-    .slick-prev {
-      left: 0px;
-      top: 92% !important;
-    }
+      .slick-prev {
+        left: 0px;
+        top: 92% !important;
+      }
 
-    .slick-next {
-      left: 81px;
-      top: 92% !important;
+      .slick-next {
+        left: 81px;
+        top: 92% !important;
+      }
     }
   }
   .section5 {
@@ -2171,6 +2443,12 @@ $black: #131A22;
   .section7 {
     margin-top: 208px;
 
+    .rec6{
+      top: 0;
+    }
+    .slick-slider {
+      padding-top: 0px;
+    }
     .team_Carousel {
       .team_Title {
         font-size: 30px;
@@ -2178,8 +2456,6 @@ $black: #131A22;
       }
 
       .team_Card {
-        margin-top: 70px;
-
         .img_Round {
           transform: translate(0, -55px);
           width: 135px;
@@ -2192,7 +2468,7 @@ $black: #131A22;
         }
 
         .user_Name {
-          margin-top: 27px;
+          margin-top: -40px;
         }
       }
     }
@@ -2203,32 +2479,88 @@ $black: #131A22;
   .CaruselContainer {
     margin-top: 45px;
   }
+  .section-one {
+    padding-top: 90px;
+    margin-top: 0px;
+
+    .tipography {
+      font-size: 30px;
+      line-height: 40px;
+    }
+
+    .tipography-text {
+      font-size: 16px;
+    }
+
+    .path {
+      font-size: 18px;
+      line-height: 30px;
+    }
+  }
+  .section-two {
+    margin-top: 0;
+
+    .we-text {
+      padding-bottom: 26px;
+      font-size: 1.9em;
+    }
+
+    .card-row2 {
+      padding-top: 0px;
+      padding-bottom: 64px;
+    }
+
+    .sectionInfoCard {
+      margin-top: 60px;
+
+      .timer_Main {
+        .timer {
+          width: 20%;
+        }
+      }
+
+      .efficiency {
+        font-size: 21px;
+      }
+
+      .efficiency2 {
+        font-size: 13px;
+      }
+    }
+  }
   .section4 {
     margin-top: 188px;
 
-    .portfolio_Card {
-      .portfolio_Title {
-        font-size: 30px;
-        text-align: center;
+    .section4_row {
+      .portfolio_Card {
+        .portfolio_Title {
+          font-size: 30px;
+          text-align: center;
+        }
+
+        .portfolio_Text {
+          font-size: 16px;
+        }
+      }
+      .shape_Carousel1 {
+        .portfolio_Img{
+          width: 100%;
+          height: 340px;
+        }
+      }
+      .shape_Carousel2 {
+        background: transparent;
       }
 
-      .portfolio_Text {
-        font-size: 16px;
+      .slick-prev {
+        left: 0px;
+        top: 90% !important;
       }
-    }
 
-    .shape_Carousel2 {
-      background: transparent;
-    }
-
-    .slick-prev {
-      left: 0px;
-      top: 90% !important;
-    }
-
-    .slick-next {
-      left: 81px;
-      top: 90% !important;
+      .slick-next {
+        left: 81px;
+        top: 90% !important;
+      }
     }
   }
   .section5 {
@@ -2264,6 +2596,12 @@ $black: #131A22;
   .section7 {
     margin-top: 208px;
 
+    .rec6{
+      top: 0;
+    }
+    .slick-slider {
+      padding-top: 0px;
+    }
     .team_Carousel {
       .team_Title {
         font-size: 30px;
@@ -2271,8 +2609,6 @@ $black: #131A22;
       }
 
       .team_Card {
-        margin-top: 70px;
-
         .img_Round {
           transform: translate(0, -55px);
           width: 135px;
@@ -2285,7 +2621,7 @@ $black: #131A22;
         }
 
         .user_Name {
-          margin-top: 27px;
+          margin-top: -40px;
         }
       }
     }
@@ -2309,5 +2645,48 @@ $black: #131A22;
   100% {
     opacity: 1;
   }
+}
+.portfolio-card{
+
+  margin-right: 20px;
+  overflow: hidden;
+  img{
+    height: 100%;
+  }
+
+  .ant-card-body {
+    padding: 12px 10px 0 0 !important;
+    zoom: 1.6 !important;
+  }
+
+  .ant-upload {
+    width: 100%;
+  }
+
+  &:hover {
+    .delete-portfolio {
+      opacity: 1;
+    }
+  }
+    .delete-portfolio{
+    transition: 0.5s ease;
+    opacity: 0;
+
+    svg {
+      path {
+        color: red;
+      }
+
+      width: 20px;
+      height: 20px;
+    }
+
+    top: 10px;
+    right: 10px;
+
+  }
+  width: 250px!important;
+  height: 200px !important;
+
 }
 

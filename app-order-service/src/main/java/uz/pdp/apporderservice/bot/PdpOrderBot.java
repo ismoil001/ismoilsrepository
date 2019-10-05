@@ -6,12 +6,21 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.methods.updatingmessages.DeleteMessage;
+import org.telegram.telegrambots.meta.api.objects.Message;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 import uz.pdp.apporderservice.bot.actions.DocumentAction;
 import uz.pdp.apporderservice.bot.actions.QueryAction;
 import uz.pdp.apporderservice.bot.actions.TextAction;
 import uz.pdp.apporderservice.bot.service.BotMainService;
+import uz.pdp.apporderservice.entity.DeletingMessage;
+import uz.pdp.apporderservice.entity.TelegramState;
+import uz.pdp.apporderservice.exception.ResourceNotFoundException;
+import uz.pdp.apporderservice.repository.TelegramStateRepository;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
 @Component
 public class PdpOrderBot extends TelegramLongPollingBot {
@@ -25,6 +34,8 @@ public class PdpOrderBot extends TelegramLongPollingBot {
     BotMainService botMainService;
     @Autowired
     DocumentAction documentAction;
+    @Autowired
+    TelegramStateRepository telegramStateRepository;
 
     @Value("${bot.token}")
     private String botToken;
@@ -41,7 +52,7 @@ public class PdpOrderBot extends TelegramLongPollingBot {
             //contact
             else if (update.getMessage().hasContact()) {
                 try {
-                    execute(botMainService.shareContact(update));
+                   execute(botMainService.shareContact(update));
                 } catch (TelegramApiException e) {
                     e.printStackTrace();
                 }

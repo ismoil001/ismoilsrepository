@@ -19,6 +19,9 @@ public class ReqCompany {
     private String phoneNumber1;
     private String phoneNumber2;
     private String phoneNumber3;
+    private int customerCount;
+    private int masterCount;
+    private int orderCount;
 
 
 }
