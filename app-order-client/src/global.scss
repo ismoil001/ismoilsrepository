@@ -1758,6 +1758,7 @@ $black: #131A22;
     .bg-img {
       width: 1160px;
       height: 282px;
+      left: 0!important;
       position: absolute;
     }
 
@@ -1824,7 +1825,8 @@ $black: #131A22;
   }
   .section5 {
     .bg-img {
-      width: 1160px;
+      left: 0;
+      width: 90%;
       height: 282px;
       position: absolute;
     }
@@ -1843,6 +1845,7 @@ $black: #131A22;
     height: 100vh;
   }
 }
+
 
 @media (max-width: 1200px) and (min-width: 992px) {
   .CaruselContainer {
@@ -1939,7 +1942,8 @@ $black: #131A22;
     margin-top: 190px;
 
     .bg-img {
-      width: 960px;
+      width: 90%;
+      left: 0;
       height: 240px;
       position: absolute;
     }
@@ -2078,7 +2082,8 @@ $black: #131A22;
     margin-top: 100px;
 
     .bg-img {
-      width: 720px;
+      left: 0;
+      width: 90%;
       height: 240px;
       position: absolute;
     }
@@ -2142,6 +2147,15 @@ $black: #131A22;
 }
 
 @media (max-width: 765px) and (min-width: 576px) {
+  .section5 {
+    margin-top: 100px;
+
+    .bg-img {
+      left: 0;
+      width: 90%!important;
+    }
+  }
+
   .CaruselContainer {
     margin-top: 45px;
   }
