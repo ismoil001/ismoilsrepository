@@ -110,7 +110,7 @@ class Index extends PureComponent {
         key: 'manager',
       },
       {
-        title: 'Hisob',
+        title: 'Soni',
         dataIndex: 'count',
         key: 'count',
         render: (text, record) => record.count.toLocaleString()

@@ -98,6 +98,11 @@ class BasicLayout extends React.Component {
                   <span>Managerlar</span>
                 </Link>
               </Menu.Item>:"":""}
+              <Menu.Item key="9">
+                <Link to="/">
+                  <span>Bosh sahifa</span>
+                </Link>
+              </Menu.Item>
             </Menu>
           </Sider>
           <Layout

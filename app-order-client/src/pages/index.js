@@ -94,8 +94,8 @@ class A extends React.Component {
     let settings = {
       dots: true,
       infinite: true,
-      slidesToShow: 3,
-      slidesToScroll: 1,
+      slidesToShow:3,
+      slidesToScroll: homeData? homeData.masters.length>=3?3:homeData.masters.length:1,
       autoplay: true,
       speed: 500,
       autoplaySpeed: 5000,
@@ -1219,7 +1219,6 @@ class A extends React.Component {
                         <Col xs={11} sm={11} md={11} lg={11} xl={11} className='p-0'>
                           <p className='addres mb-0'>140100</p>
                           <p className="lato-regular addres">
-                            <FormattedMessage id='footer_address'/>
                             {getLocale()==="en-US"? company.address:company.addressRu}
                           </p>
                         </Col>

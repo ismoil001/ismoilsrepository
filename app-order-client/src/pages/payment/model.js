@@ -101,7 +101,7 @@ export default {
       const data = yield call(savePayment,payload);
       if(data.success){
         notification['success']({
-          message:data.message==="success"?"success":"Saqlandi va barchasi buyurtma hisobiga yechildi."
+          message:data.message==="false"?"success":"Saqlandi va barchasi buyurtma hisobiga yechildi."
         })
         yield put({
           type:'updateState',
@@ -116,7 +116,7 @@ export default {
             page:0,
             size:10,
             name:'',
-            isArchive:data.message !== "success"
+            isArchive:data.message === "true"
           }
         })
       }

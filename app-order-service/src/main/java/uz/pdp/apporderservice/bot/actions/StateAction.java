@@ -88,17 +88,17 @@ public class StateAction {
                     sendMessage.setChatId(update.getMessage().getChatId());
                     telegramStateRepository.save(telegramState);
                     pdpOrderBot.execute(sendMessage);
-                }else if (currentState.equals(BotState.ADMIN_CABINET)) {
+                } else if (currentState.equals(BotState.ADMIN_CABINET)) {
                     SendMessage sendMessage = new SendMessage();
                     sendMessage.setText("Mijozlarga xabar yuborish uchun javob berish tugmasini bosing.");
                     sendMessage.setChatId(update.getMessage().getChatId());
-                     pdpOrderBot.execute(sendMessage);
+                    pdpOrderBot.execute(sendMessage);
                 } else if (currentState.equals(BotState.DIRECTOR_NAME)) {
                     TelegramState telegramState1 = telegramStateRepository.findByTgUserId(update.getMessage().getChatId().intValue()).orElseThrow(() -> new ResourceNotFoundException("order", "id", update));
                     Order order = orderRepository.findById(telegramState1.getOrderId()).orElseThrow(() -> new ResourceNotFoundException("order", "id", update));
-                    File file = pdfService.readPdf(new ReqPdf(order.getId(),order.getUser().getCompanyName(),update.getMessage().getText()));
+                    File file = pdfService.readPdf(new ReqPdf(order.getId(), order.getUser().getCompanyName(), update.getMessage().getText()));
                     Long clientChatId = update.getMessage().getChatId();
-                    pdpOrderBot.execute(new DeleteMessage(clientChatId,update.getMessage().getMessageId()));
+                    pdpOrderBot.execute(new DeleteMessage(clientChatId, update.getMessage().getMessageId()));
                     SendDocument sendDocumentRequest = new SendDocument();
                     sendDocumentRequest.setChatId(clientChatId);
                     sendDocumentRequest.setDocument(file);
@@ -112,11 +112,11 @@ public class StateAction {
 
                     sendDocumentRequest.setChatId(telegramState2.getTgUserId().longValue());
                     sendDocumentRequest.setCaption("<b>Shartnoma yuborildi</b>\n" +
-                            "<b>Mijoz:</b> "+order.getUser().getLastName()+" "+order.getUser().getFirstName()+"\n" +
-                            "<b>Raxbar:</b> "+update.getMessage().getText()+"\n" +
-                            "<b>Maxsulot:</b> "+order.getProductName()+"\n" +
-                            "<b>Price:</b> "+order.getPrice()+"\n" +
-                            "<b>Count:</b> "+order.getCount());
+                            "<b>Mijoz:</b> " + order.getUser().getLastName() + " " + order.getUser().getFirstName() + "\n" +
+                            "<b>Raxbar:</b> " + update.getMessage().getText() + "\n" +
+                            "<b>Maxsulot:</b> " + order.getProductName() + "\n" +
+                            "<b>Price:</b> " + order.getPrice() + "\n" +
+                            "<b>Count:</b> " + order.getCount());
                     sendDocumentRequest.setParseMode(ParseMode.HTML);
                     pdpOrderBot.execute(sendDocumentRequest);
                 } else if (currentState.equals(BotState.REGISTRATION_PATRON)) {
@@ -221,11 +221,37 @@ public class StateAction {
                         pdpOrderBot.execute(sendMessage);
                     }
 
+                } else if (currentState.equals(BotState.SETTINGS_FIRSTNAME)) {
+                    lastStateOptional.get().setFirstName(update.getMessage().getText());
+                    telegramStateRepository.save(lastStateOptional.get());
+                    botMainService.sendSimpleMessage(update, "Familiyangizni kiriting", BotState.SETTINGS_LASTNAME);
+                } else if (currentState.equals(BotState.SETTINGS_LASTNAME)) {
+                    lastStateOptional.get().setLastName(update.getMessage().getText());
+                    telegramStateRepository.save(lastStateOptional.get());
+                    botMainService.sendSimpleMessage(update, "Sharifingizni kiriting", BotState.SETTINGS_PATRON);
+                } else if (currentState.equals(BotState.SETTINGS_PATRON)) {
+                    lastStateOptional.get().setPatron(update.getMessage().getText());
+                    telegramStateRepository.save(lastStateOptional.get());
+                    botMainService.sendSimpleMessage(update, "Kompaniya nomini kiriting", BotState.SETTINGS_COMPANY_NAME);
+                } else if (currentState.equals(BotState.SETTINGS_COMPANY_NAME)) {
+                    lastStateOptional.get().setCompanyName(update.getMessage().getText());
+                    telegramStateRepository.save(lastStateOptional.get());
+                    User user = userRepository.findByTelegramId(update.getMessage().getChatId().intValue()).orElseThrow(() -> new ResourceNotFoundException("user", "id", update));
+                    user.setFirstName(lastStateOptional.get().getFirstName());
+                    user.setLastName(lastStateOptional.get().getLastName());
+                    user.setPatron(lastStateOptional.get().getPatron());
+                    user.setCompanyName(lastStateOptional.get().getCompanyName());
+                    userRepository.save(user);
+                    SendMessage sendMessage = new SendMessage();
+                    sendMessage.setText("O'zgarishlar muvaffaqiyatli saqlandi");
+                    sendMessage.setChatId(update.getMessage().getChatId());
+                    pdpOrderBot.execute(sendMessage);
+                    botMainService.cabinetPage(update);
                 } else if (currentState.equals(BotState.ADMIN_CUSTOMER_CHAT)) {
                     String uuidString = orderRepository.getUserWithLessOrder();
                     User admin = userRepository.findById(UUID.fromString(uuidString)).orElseThrow(() -> new ResourceNotFoundException("user", "id", uuidString));
                     Optional<User> customer = userRepository.findByTelegramId(update.getMessage().getFrom().getId());
-                    if (admin.getChatId() != null) {
+                    if (admin.getTelegramId() != null) {
 //                                Chat chat = new Chat();
 //                                chat.setFromClient(customer.get());
 //                                chat.setText(update.getMessage().getText());
@@ -312,7 +338,7 @@ public class StateAction {
                             List<ReqInlineButton> buttons1 = new ArrayList<>();
                             buttons1.add(new ReqInlineButton("❌ Bekor qilish", BotState.ADMIN_CABINET + "/" + update.getMessage().getChatId()));
                             buttons1.add(new ReqInlineButton("✅ Tasdiqlash/", "Apply/" + update.getMessage().getChatId()));
-                            buttons1.add(new ReqInlineButton("\uD83D\uDD04 Narxni o'zgartirish", BotConstant.CHANGE_EXISTING_ORDER_PRICE + "/" + update.getMessage().getChatId()));
+                            buttons1.add(new ReqInlineButton("\uD83D\uDD04 Kompredlojeniya", BotState.KOMPRED));
                             InlineKeyboardMarkup inlineKeyboardMarkup1 = new InlineKeyboardMarkup();
                             List<List<InlineKeyboardButton>> rows1 = new ArrayList<>();
                             rows1.add(createButtonService.createOneRowButtons(buttons1));
@@ -335,11 +361,11 @@ public class StateAction {
                     }
                 }
             } else {
-                    SendMessage sendMessage = new SendMessage();
-                    sendMessage.setText("Iltimos kontakt yuborish tugmasini bosing");
-                    sendMessage.setChatId(update.getMessage().getChatId());
-                    pdpOrderBot.execute(sendMessage);
-                }
+                SendMessage sendMessage = new SendMessage();
+                sendMessage.setText("Iltimos kontakt yuborish tugmasini bosing");
+                sendMessage.setChatId(update.getMessage().getChatId());
+                pdpOrderBot.execute(sendMessage);
+            }
         } catch (
                 TelegramApiException e) {
             e.printStackTrace();

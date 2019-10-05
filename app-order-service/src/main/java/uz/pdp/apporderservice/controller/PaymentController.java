@@ -2,6 +2,7 @@ package uz.pdp.apporderservice.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import uz.pdp.apporderservice.payload.ReqPayment;
 import uz.pdp.apporderservice.service.PaymentService;

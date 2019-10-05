@@ -93,6 +93,10 @@ public class PaymentService {
     public HttpEntity<?> deletePayment(UUID id) {
         try {
             List<OrderPayment> payments = orderPaymentRepository.findAllByPayment_Id(id);
+            for (OrderPayment payment : payments) {
+                payment.getOrder().setStatus(OrderStatus.ACTIVE);
+                orderRepository.save(payment.getOrder());
+            }
             orderPaymentRepository.deleteAll(payments);
             paymentRepository.deleteById(id);
 

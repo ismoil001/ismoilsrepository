@@ -161,13 +161,27 @@ public class BotMainService {
         List<ReqInlineButton> buttons = new ArrayList<>();
         buttons.add(new ReqInlineButton("Active Buyurtmalar", BotConstant.ACTIVE_ORDER_PAGE));
         buttons.add(new ReqInlineButton("\uD83D\uDCB5 Balance", BotConstant.BALANCE));
-        buttons.add(new ReqInlineButton("? Yordam", BotConstant.HELP));
+        buttons.add(new ReqInlineButton("⚒ Sozlamalar", BotConstant.SETTINGS));
         rows.add(createButtonService.createOneRowButtons(buttons));
         sendMessage.setText("Shaxsiy kabinet");
         sendMessage.setChatId(update.hasCallbackQuery() ? update.getCallbackQuery().getMessage().getChatId() : update.getMessage().getChatId());
         inlineKeyboardMarkup.setKeyboard(rows);
         sendMessage.setReplyMarkup(inlineKeyboardMarkup);
         pdpOrderBot.execute(sendMessage);
+    }
+    public void sendSimpleMessage(Update update,String messageText,String state){
+        TelegramState telegramState = getLastState(update).orElseThrow(() -> new ResourceNotFoundException("state", "id", update));
+        telegramState.setState(state);
+        telegramStateRepository.save(telegramState);
+        SendMessage sendMessage = new SendMessage();
+        sendMessage.setChatId(update.hasCallbackQuery()?update.getCallbackQuery().getMessage().getChatId():update.getMessage().getChatId());
+        sendMessage.setText(messageText);
+        sendMessage.setReplyMarkup(createButtonService.createInlineButton("Orqaga",BotState.BACK_TO_CABINET));
+        try {
+            pdpOrderBot.execute(sendMessage);
+        } catch (TelegramApiException e) {
+            e.printStackTrace();
+        }
     }
 
     public void startPage(Update update) {

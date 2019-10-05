@@ -21,6 +21,8 @@ public class DocumentAction {
     PdpOrderBot pdpOrderBot;
     @Autowired
     BotMainService botMainService;
+    @Autowired
+    CreateButtonService createButtonService;
 
     public void run(Update update) {
         TelegramState telegramState = telegramStateRepository.findByTgUserId(update.getMessage().getChatId().intValue()).orElseThrow(() -> new ResourceNotFoundException("state", "id", update));
@@ -28,6 +30,7 @@ public class DocumentAction {
             SendDocument sendDocument = new SendDocument();
             sendDocument.setChatId(telegramState.getCustomerChatId());
             sendDocument.setDocument(update.getMessage().getDocument().getFileId());
+            sendDocument.setReplyMarkup(createButtonService.createInlineButton("Orqaga",BotState.BACK_TO_CABINET));
             try {
                 pdpOrderBot.execute(sendDocument);
                 botMainService.adminCabinetPage(update);

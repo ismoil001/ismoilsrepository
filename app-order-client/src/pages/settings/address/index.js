@@ -105,14 +105,23 @@ class Index extends Component {
                       )}
                     </Form.Item>
                   </Col>
-                </Col>
-                <Col span={12}>
                   <Col span={24} className="px-3">
                     <Form.Item>
                       {getFieldDecorator('customerCount', {
                         initialValue: company && company.countCustomer
                       })(
                         <Input placeholder="Customers count"/>,
+                      )}
+                    </Form.Item>
+                  </Col>
+                </Col>
+                <Col span={12}>
+                  <Col span={24} className="px-3">
+                    <Form.Item>
+                      {getFieldDecorator('addressRu', {
+                        initialValue: company && company.addressRu
+                      })(
+                        <Input placeholder="Address Ru"/>,
                       )}
                     </Form.Item>
                   </Col>
