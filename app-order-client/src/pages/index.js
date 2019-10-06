@@ -90,12 +90,24 @@ class A extends React.Component {
   render() {
     const {app} = this.props;
     const {company, homeData} = app;
+let count=3;
+if(homeData ){
+  if(homeData.masters.length==2){
+    count=2
+  }
+  else if (homeData.masters.length==1){
+    count=1
+  }
+  if (homeData.masters.length==0) {
+    count=0
+  }
+}
 
     let settings = {
       dots: true,
       infinite: true,
-      slidesToShow:3,
-      slidesToScroll: homeData? homeData.masters.length>=3?3:homeData.masters.length:1,
+      slidesToShow:count==1?1:count==2?2:3,
+      slidesToScroll: count==1?1:count==2?1:3,
       autoplay: true,
       speed: 500,
       autoplaySpeed: 5000,
@@ -104,8 +116,8 @@ class A extends React.Component {
         {
           breakpoint: 1024,
           settings: {
-            slidesToShow: 2,
-            slidesToScroll: 2,
+            slidesToShow: count===1?1:2,
+            slidesToScroll: count===1?1:2,
             infinite: true,
             dots: true
           }
@@ -981,35 +993,38 @@ class A extends React.Component {
             </Container>
           </section>
 
-          <section className="section7 position-relative" id='jamoa'>
-            <img src="/assets/images/Rectangle6.png" className='rec6 img-fluid position-absolute' alt=""/>
-            <Container className='team_Carousel position-relative'>
-              <div className="bg-1 position-absolute"></div>
-              <div className="bg-2 position-absolute"></div>
-              <p className='team_Title'>
-                <FormattedMessage id='section7_Title'/>
-              </p>
-              <Slider {...settings}>
-                {homeData&& homeData.masters.map(item =>
-                  <div className=''>
-                    <Card className='team_Card'>
-                      <p className="d-flex align-items-center flex-column">
-                        <p className='d-flex justify-content-center align-items-center img_Round'>
-                          <CardImg className='user_Img' src={"/api/file/get/"+item.attachment.id} alt=""/>
-                        </p>
-                      </p>
-                      <CardBody>
-                        <CardTitle className='user_Name'>{item.fullName}</CardTitle>
+          {count==0?"":
+            <section className="section7 position-relative" id='jamoa'>
+              <img src="/assets/images/Rectangle6.png" className='rec6 img-fluid position-absolute' alt=""/>
+              <Container className='team_Carousel position-relative'>
+                <div className="bg-1 position-absolute"></div>
+                <div className="bg-2 position-absolute"></div>
+                <p className='team_Title'>
+                  <FormattedMessage id='section7_Title'/>
+                </p>
+                <Slider {...settings}>
+                  {homeData&& homeData.masters.map(item =>
+                    <div className=''>
+                      <Card className='team_Card'>
                         <p className="d-flex align-items-center flex-column">
-                          <CardText className='user_Profession'>{item.description}</CardText>
+                          <p className='d-flex justify-content-center align-items-center img_Round'>
+                            <CardImg className='user_Img' src={"/api/file/get/"+item.attachment.id} alt=""/>
+                          </p>
                         </p>
-                      </CardBody>
-                    </Card>
-                  </div>
-                )}
-              </Slider>
-            </Container>
-          </section>
+                        <CardBody>
+                          <CardTitle className='user_Name'>{item.fullName}</CardTitle>
+                          <p className="d-flex align-items-center flex-column">
+                            <CardText className='user_Profession'>{item.description}</CardText>
+                          </p>
+                        </CardBody>
+                      </Card>
+                    </div>
+                  )}
+                </Slider>
+              </Container>
+            </section>
+          }
+
 
           <section className='section8'>
             <Container fluid={1} className="p-0">
