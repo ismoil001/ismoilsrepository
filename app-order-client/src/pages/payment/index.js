@@ -2,25 +2,10 @@ import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'dva'
 import CurrencyInput from 'react-currency-input';
-
-import {
-  Button,
-  Form,
-  Col,
-  DatePicker,
-  Modal,
-  Row,
-  Select,
-  Table,
-  Input,
-  InputNumber,
-  Icon,
-  Popconfirm,
-  Checkbox, Pagination
-} from "antd/lib/index";
+import ant from 'antd';
 import moment from "moment/moment";
 import {Link} from "react-router-dom";
-
+const {Button, Form, Col, DatePicker, Modal, Row, Select, Table, Input, InputNumber, Icon, Popconfirm, Checkbox, Pagination}=ant;
 @connect(({payment}) => ({payment}))
 class Index extends PureComponent {
   render() {

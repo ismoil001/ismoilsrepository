@@ -3,6 +3,7 @@ package uz.pdp.apporderservice.bot.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.telegram.telegrambots.meta.api.methods.ParseMode;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.methods.updatingmessages.DeleteMessage;
 import org.telegram.telegrambots.meta.api.methods.updatingmessages.EditMessageText;
@@ -21,8 +22,11 @@ import uz.pdp.apporderservice.entity.enums.OrderStatus;
 import uz.pdp.apporderservice.entity.enums.RoleName;
 import uz.pdp.apporderservice.exception.ResourceNotFoundException;
 import uz.pdp.apporderservice.payload.ReqInlineButton;
+import uz.pdp.apporderservice.payload.ReqOrderBot;
 import uz.pdp.apporderservice.repository.*;
+import uz.pdp.apporderservice.service.OrderService;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -47,6 +51,10 @@ public class BotMainService {
     OrderRepository orderRepository;
     @Autowired
     PaymentRepository paymentRepository;
+    @Autowired
+    OrderService orderService;
+    @Autowired
+    BasketRepository basketRepository;
 
     public Optional<TelegramState> getLastState(Update update) {
         return telegramStateRepository.findByTgUserId(update.hasCallbackQuery() ? update.getCallbackQuery().getFrom().getId() : update.getMessage().getFrom().getId());
@@ -149,7 +157,6 @@ public class BotMainService {
         List<Order> allOrdersByUser_id = orderRepository.findAllByUser_Id1(user.getId());
         InlineKeyboardMarkup inlineKeyboardMarkup = new InlineKeyboardMarkup();
         List<List<InlineKeyboardButton>> rows = new ArrayList<>();
-
         for (Order order : allOrdersByUser_id) {
             rows.add(createButtonService.createRowWithOneButton(
                     order.getProductName() + " " + order.getCount() + "ta " + order.getOrderedDate(),
@@ -159,6 +166,15 @@ public class BotMainService {
         rows.add(createButtonService.createRowWithOneButton("Yangi buyurtma", BotConstant.NEW_ORDER));
         rows.add(createButtonService.createRowWithOneButton("\uD83D\uDD04", BotConstant.REFRESH_CABINET_PAGE));
         List<ReqInlineButton> buttons = new ArrayList<>();
+        Optional<Basket> optBasket = basketRepository.findByUser(user);
+        if(optBasket.isPresent()){
+            InlineKeyboardButton button = new InlineKeyboardButton();
+            button.setText("Savatcha");
+            button.setCallbackData(BotConstant.BASKET_PAGE+"#"+optBasket.get().getId());
+            List<InlineKeyboardButton> buttons1 = new ArrayList<>();
+            buttons1.add(button);
+            rows.add(buttons1);
+        }
         buttons.add(new ReqInlineButton("Active Buyurtmalar", BotConstant.ACTIVE_ORDER_PAGE));
         buttons.add(new ReqInlineButton("\uD83D\uDCB5 Balance", BotConstant.BALANCE));
         buttons.add(new ReqInlineButton("⚒ Sozlamalar", BotConstant.SETTINGS));
@@ -169,14 +185,15 @@ public class BotMainService {
         sendMessage.setReplyMarkup(inlineKeyboardMarkup);
         pdpOrderBot.execute(sendMessage);
     }
-    public void sendSimpleMessage(Update update,String messageText,String state){
+
+    public void sendSimpleMessage(Update update, String messageText, String state) {
         TelegramState telegramState = getLastState(update).orElseThrow(() -> new ResourceNotFoundException("state", "id", update));
         telegramState.setState(state);
         telegramStateRepository.save(telegramState);
         SendMessage sendMessage = new SendMessage();
-        sendMessage.setChatId(update.hasCallbackQuery()?update.getCallbackQuery().getMessage().getChatId():update.getMessage().getChatId());
+        sendMessage.setChatId(update.hasCallbackQuery() ? update.getCallbackQuery().getMessage().getChatId() : update.getMessage().getChatId());
         sendMessage.setText(messageText);
-        sendMessage.setReplyMarkup(createButtonService.createInlineButton("Orqaga",BotState.BACK_TO_CABINET));
+        sendMessage.setReplyMarkup(createButtonService.createInlineButton("Orqaga", BotState.BACK_TO_CABINET));
         try {
             pdpOrderBot.execute(sendMessage);
         } catch (TelegramApiException e) {
@@ -262,7 +279,7 @@ public class BotMainService {
     }
 
 
-    public void removeDeletingButtons(Update update){
+    public void removeDeletingButtons(Update update) {
         TelegramState telegramState = getLastState(update).orElseThrow(() -> new ResourceNotFoundException("state", "id", update));
         for (DeletingMessage deletingMessage : telegramState.getDeletingMessages()) {
             DeleteMessage deleteMessage = new DeleteMessage();
@@ -273,6 +290,149 @@ public class BotMainService {
             } catch (TelegramApiException e) {
                 e.printStackTrace();
             }
+        }
+    }
+
+    public void sale(Update update) {
+        TelegramState telegramState1 = getLastState(update).orElseThrow(() -> new ResourceNotFoundException("state", "chatid", update));
+        String text = update.getMessage().getText();
+        if (text.contains("/") && text.split("/").length == 3 && isNumeric(text.split("/")[1]) && isNumeric(text.split("/")[2])) {
+            String productName = text.split("/")[0];
+            Double price = Double.parseDouble(text.split("/")[1]);
+            Double count = Double.parseDouble(text.split("/")[2]);
+            User client = userRepository.findByTelegramId(telegramState1.getCustomerChatId().intValue()).orElseThrow(() -> new ResourceNotFoundException("user", "telegramid", telegramState1));
+            User admin = userRepository.findByTelegramId(telegramState1.getTgUserId()).orElseThrow(() -> new ResourceNotFoundException("admin", "id", update));
+            Order order = orderService.saveOrderByBot(new ReqOrderBot("HIDDEN", client.getId(), new Timestamp(System.currentTimeMillis()), productName, price, count, admin.getId()));
+            Basket basket = saveToBasket(client, order);
+            Basket save = basketRepository.save(basket);
+            SendMessage sendMessage = new SendMessage();
+            sendMessage.setChatId(update.getMessage().getChatId());
+            String msg = "<b>Basket</b>\n" +
+                    "<b>Mijoz:</b>" + client.getLastName() + " " + client.getFirstName() + " " + client.getCompanyName()+"\n-------------\n";
+            Double a = 0.0;
+            for (Order saveOrder : save.getOrders()) {
+                a += saveOrder.getPrice() * saveOrder.getCount();
+                msg += (save.getOrders().indexOf(saveOrder)+1) +
+                        "<b>Mahsulot:</b> " + saveOrder.getProductName() + "\n" +
+                        "<b>Soni:</b> " + saveOrder.getCount() + "\n" +
+                        "<b>Narx:</b> " + saveOrder.getPrice() * saveOrder.getCount() + "\n-------------\n";
+            }
+            msg += "\n<b>Umumit:</b>" + a;
+            sendMessage.setText(msg);
+            sendMessage.setParseMode(ParseMode.HTML);
+            List<List<InlineKeyboardButton>> rows = new ArrayList<>();
+            InlineKeyboardButton button = new InlineKeyboardButton();
+            InlineKeyboardButton button1 = new InlineKeyboardButton();
+            InlineKeyboardButton button2 = new InlineKeyboardButton();
+            button.setText("Yana maxsulot qo'shish");
+            button.setCallbackData("PdfSend#"+client.getTelegramId());
+            button1.setText("Xaridni yakunlash");
+            button1.setCallbackData(BotConstant.FINISH_ORDER+"#"+save.getId());
+            List<InlineKeyboardButton> row = new ArrayList<>();
+            List<InlineKeyboardButton> row1 = new ArrayList<>();
+            row.add(button);
+            row.add(button1);
+            button2.setCallbackData(BotState.ADMIN_IGNORE_ORDER_CABINET+"#"+save.getId());
+            button2.setText("Bekor qilish");
+            row1.add(button2);
+            rows.add(row1);
+            rows.add(row);
+            InlineKeyboardMarkup inlineKeyboardMarkup = new InlineKeyboardMarkup();
+            inlineKeyboardMarkup.setKeyboard(rows);
+            sendMessage.setReplyMarkup(inlineKeyboardMarkup);
+            try {
+                pdpOrderBot.execute(sendMessage);
+            } catch (TelegramApiException e) {
+                e.printStackTrace();
+            }
+        } else {
+            SendMessage sendMessage = new SendMessage();
+            sendMessage.setText("Ma'lumotlarni kiritishda xatolikka yo'l qo'ydingiz. Iltimos qaytadan urinib ko'ring. kiritishni quyidagi qonuniyatga muvofiq xolda amalga oshiring:\n" +
+                    "Maxsulot nomi/Birta maxsulot narxi/soni");
+            sendMessage.setChatId(update.getMessage().getChatId());
+            try {
+                pdpOrderBot.execute(sendMessage);
+            } catch (TelegramApiException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+    public String basketMessageGeneration(Basket basket){
+        String msg = "<b>Basket</b>\n" +
+                "<b>Mijoz:</b>" + basket.getUser().getLastName() + " " + basket.getUser().getFirstName() + " " + basket.getUser().getCompanyName()+"\n-------------\n";
+        Double a = 0.0;
+        for (Order saveOrder : basket.getOrders()) {
+            a += saveOrder.getPrice() * saveOrder.getCount();
+            msg += (basket.getOrders().indexOf(saveOrder)+1) +
+                    "<b>Mahsulot:</b> " + saveOrder.getProductName() + "\n" +
+                    "<b>Soni:</b> " + saveOrder.getCount() + "\n" +
+                    "<b>Narx:</b> " + saveOrder.getPrice() * saveOrder.getCount() + "\n-------------\n";
+        }
+        msg += "\n<b>Umumiy:</b>" + a;
+        return msg;
+    }
+
+    public Basket saveToBasket(User client,Order order){
+        Optional<Basket> optB = basketRepository.findByUser(client);
+        Basket basket = new Basket();
+        basket.setUser(client);
+        if (optB.isPresent()) {
+            basket = optB.get();
+            if (basket.getOrders() != null) {
+                basket.getOrders().add(order);
+            } else {
+                List<Order> orders = new ArrayList<>();
+                orders.add(order);
+                basket.setOrders(orders);
+            }
+        }else{
+            basket.setCreatedAt(new Timestamp(System.currentTimeMillis()));
+            List<Order> orders = new ArrayList<>();
+            orders.add(order);
+            basket.setOrders(orders);
+        }
+        basket.setUpdatedAt(new Timestamp(System.currentTimeMillis()));
+        basket.setCreatedBy(order.getCreatedBy());
+        basket.setUpdatedBy(order.getCreatedBy());
+        return basketRepository.save(basket);
+    }
+
+    public void savatChaPage(Update update,Basket basket){
+        List<List<InlineKeyboardButton>> rows = new ArrayList<>();
+        List<InlineKeyboardButton> row = new ArrayList<>();
+        List<InlineKeyboardButton> row1 = new ArrayList<>();
+        InlineKeyboardButton button = new InlineKeyboardButton();
+        InlineKeyboardButton button1 = new InlineKeyboardButton();
+        InlineKeyboardButton button2 = new InlineKeyboardButton();
+        button.setText("Bekor qilish");
+        button.setCallbackData(BotConstant.ORDER_IGNORE_BY_CUSTOMER+"#"+basket.getId());
+        button1.setText("Yana maxsulot qo'shish");
+        button1.setCallbackData(BotState.BACK_TO_CABINET);
+        button2.setText("Xaridni aktivlashtirish");
+        button2.setCallbackData(BotConstant.BASKET_ACTIVATE+"#"+basket.getId());
+        row.add(button);
+        row.add(button1);
+        row1.add(button2);
+        rows.add(row);
+        rows.add(row1);
+        InlineKeyboardMarkup inlineKeyboardMarkup = new InlineKeyboardMarkup();
+        inlineKeyboardMarkup.setKeyboard(rows);
+        SendMessage sendMessage = new SendMessage();
+        sendMessage.setChatId(update.hasCallbackQuery()?update.getCallbackQuery().getMessage().getChatId():update.getMessage().getChatId());
+        sendMessage.setText(basketMessageGeneration(basket));
+        sendMessage.setReplyMarkup(inlineKeyboardMarkup);
+        sendMessage.setParseMode(ParseMode.HTML);
+        try {
+            pdpOrderBot.execute(sendMessage);
+        } catch (TelegramApiException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void clearBasket(Basket basket){
+        basketRepository.deleteById(basket.getId());
+        for (Order order : basket.getOrders()) {
+            orderRepository.deleteById(order.getId());
         }
     }
 }

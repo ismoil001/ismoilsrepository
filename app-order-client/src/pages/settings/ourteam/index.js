@@ -1,8 +1,8 @@
 import {Modal, Button, Col, Checkbox, Row, Form, Input, Table, Popconfirm} from 'antd';
 import React from "react";
-import {Upload, Icon, message} from 'antd';
+import ant from 'antd';
 import {connect} from "react-redux";
-
+const {Upload, Icon, message}=ant;
 
 function getBase64(img, callback) {
   const reader = new FileReader();

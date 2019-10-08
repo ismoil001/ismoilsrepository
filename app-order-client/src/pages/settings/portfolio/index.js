@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from "dva";
-import {Upload, Col, Row, Icon, Modal, notification, Button, Card, Popconfirm} from 'antd';
+import ant from 'antd';
 function getBase64(file) {
   return new Promise((resolve, reject) => {
     const reader = new FileReader();
@@ -9,6 +9,7 @@ function getBase64(file) {
     reader.onerror = error => reject(error);
   });
 }
+const {Upload, Col, Row, Icon, Modal, notification, Button, Card, Popconfirm}=ant;
 @connect(({settings})=>({settings}))
 class Portfolio extends Component {
 

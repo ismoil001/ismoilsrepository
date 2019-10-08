@@ -27,6 +27,7 @@ import Carusel from "../components/Carusel";
 import {FaAngleDown} from "react-icons/fa";
 import {connect} from "dva";
 import {FormattedMessage, formatMessage, setLocale, getLocale,} from 'umi-plugin-locale';
+
 @connect(({app}) => ({app}))
 
 class A extends React.Component {
@@ -94,8 +95,8 @@ class A extends React.Component {
     let settings = {
       dots: true,
       infinite: true,
-      slidesToShow:3,
-      slidesToScroll: homeData? homeData.masters.length>=3?3:homeData.masters.length:1,
+      slidesToShow: 3,
+      slidesToScroll: homeData ? homeData.masters.length >= 3 ? 3 : homeData.masters.length : 1,
       autoplay: true,
       speed: 500,
       autoplaySpeed: 5000,
@@ -105,7 +106,7 @@ class A extends React.Component {
           breakpoint: 1024,
           settings: {
             slidesToShow: 2,
-            slidesToScroll: 2,
+            slidesToScroll: homeData ? homeData.masters.length >= 2 ? 2 : homeData.masters.length : 1,
             infinite: true,
             dots: true
           }
@@ -228,7 +229,7 @@ class A extends React.Component {
     ];
 
     const handleLang2 = (key) => {
-      localStorage.setItem("dropdown",key)
+      localStorage.setItem("dropdown", key)
       if (key === 1) {
         setLocale("en-US")
       } else {
@@ -259,10 +260,11 @@ class A extends React.Component {
                         <FormattedMessage id='header_text'/>
                         <p className="lato-bold mb-0"><b><FormattedMessage id="header_text_bold"/></b></p>
                       </p>
-                      <Button color="danger" className="order-button">
+                      <a href={"http://t.me/EuroPrintTestPdpBot"}> <Button color="danger" className="order-button">
                         <span className='lato-regular'><FormattedMessage id="header_btn"/></span>
                         <span className="ml-2"><img src="/assets/images/arrow-right.png" alt="#"/></span>
                       </Button>
+                      </a>
                       <Row className='contact ml-0 mr-0'>
                         <Col xs={5} sm={4} md={3} lg={4} xl={3} className='p-0'>
                           <span><img src="/assets/images/phone.png" className='mr-n3'
@@ -447,7 +449,8 @@ class A extends React.Component {
                             <p className='text-white text-center lato-bold'>{service.title}</p>
                           </li>
                           <li className=''>
-                            <a href="https://t.me/EuroPrintTestPdpBot"> <Button className='text-white lato-regular card-btn'>
+                            <a target="_blank" href="https://t.me/EuroPrintTestPdpBot"> <Button
+                              className='text-white lato-regular card-btn'>
                               <FormattedMessage id='section3_Btn'/>
                             </Button>
                             </a>
@@ -502,7 +505,8 @@ class A extends React.Component {
                       <Col xs={12} sm={4} md={4} lg={4} xl={4} id="count" className="text-center pl-0">
 
                         {this.state.count ?
-                          <CountTo className="lato-bold text-center number d-inline-block" to={company.countCustomer} speed={3000}/> :
+                          <CountTo className="lato-bold text-center number d-inline-block" to={company.countCustomer}
+                                   speed={3000}/> :
                           <CountTo className="lato-bold text-center number d-inline-block" to={0} speed={1000}/>}
                         <span className="lato-bold number">+</span>
                         <div className="d-flex justify-content-center">
@@ -990,12 +994,12 @@ class A extends React.Component {
                 <FormattedMessage id='section7_Title'/>
               </p>
               <Slider {...settings}>
-                {homeData&& homeData.masters.map(item =>
+                {homeData && homeData.masters.map(item =>
                   <div className=''>
                     <Card className='team_Card'>
                       <p className="d-flex align-items-center flex-column">
                         <p className='d-flex justify-content-center align-items-center img_Round'>
-                          <CardImg className='user_Img' src={"/api/file/get/"+item.attachment.id} alt=""/>
+                          <CardImg className='user_Img' src={"/api/file/get/" + item.attachment.id} alt=""/>
                         </p>
                       </p>
                       <CardBody>
@@ -1182,7 +1186,7 @@ class A extends React.Component {
                         <Col xs={4} sm={3} md={3} lg={2} xl={2} className='dropdownMenu'>
                           <UncontrolledDropdown>
                             <DropdownToggle caret className="dropdownMain">
-                              {localStorage.getItem("dropdown")==1?"Узбек" :"Русский"}<FaAngleDown/>
+                              {localStorage.getItem("dropdown") == 1 ? "Узбек" : "Русский"}<FaAngleDown/>
                             </DropdownToggle>
                             <DropdownMenu right>
                               <DropdownItem onClick={() => handleLang2(1)} key={1}>
@@ -1196,10 +1200,12 @@ class A extends React.Component {
                         </Col>
                         <Col xs={8} sm={9} md={9} lg={10} xl={10}>
                           <div className="telegram d-inline-block">
-                            <a href={company.telegram}><img className="text-center" src="/assets/images/002-telegram.png" alt=""/></a>
+                            <a href={company.telegram}><img className="text-center"
+                                                            src="/assets/images/002-telegram.png" alt=""/></a>
                           </div>
                           <div className="telegram ml-md-3 ml-1 d-inline-block">
-                            <a href={company.instagram} href={company.instagram}><img src="/assets/images/003-instagram.png" alt=""/></a>
+                            <a href={company.instagram} href={company.instagram}><img
+                              src="/assets/images/003-instagram.png" alt=""/></a>
                           </div>
                           <div className="telegram ml-md-3 ml-1 d-inline-block">
                             <a href={company.facebook}><img src="/assets/images/001-facebook-logo.png" alt=""/></a>
@@ -1218,7 +1224,7 @@ class A extends React.Component {
                         <Col xs={11} sm={11} md={11} lg={11} xl={11} className='p-0'>
                           <p className='addres mb-0'>140100</p>
                           <p className="lato-regular addres">
-                            {getLocale()==="en-US"? company.address:company.addressRu}
+                            {getLocale() === "en-US" ? company.address : company.addressRu}
                           </p>
                         </Col>
                       </Row>

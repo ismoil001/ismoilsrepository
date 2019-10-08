@@ -41,6 +41,9 @@ public class TelegramState extends AbsEntity {
 
     private Double newPrice;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    private User myAdmin;
+
     @OneToMany(fetch = FetchType.LAZY)
     private List<DeletingMessage> deletingMessages;
 

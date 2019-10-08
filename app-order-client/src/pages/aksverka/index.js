@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import {Button, Card, Col, Input, Row, Select, Table} from "antd";
+import ant from 'antd';
 import {connect} from "dva"
-
+const {Button, Card, Col, Input, Row, Select, Table} = ant;
 @connect(({aksverka}) => ({aksverka}))
 class Index extends Component {
   render() {

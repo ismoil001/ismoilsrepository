@@ -162,7 +162,7 @@ public class OrderService {
                             return new OrdersResponse(
                                     order.getId(),
                                     order.getOrderedDate(),
-                                    order.getUser().getLastName() + " " + order.getUser().getFirstName(),
+                                    order.getUser().getLastName() + " " + order.getUser().getFirstName()+" #"+order.getUser().getPhoneNumber(),
                                     order.getStatus().name(),
                                     order.getUser().getId(),
                                     order.getProductName(),

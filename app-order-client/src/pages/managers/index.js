@@ -2,9 +2,9 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from "react-redux";
 import MaskedInput from 'react-text-mask'
-import {Button, Col, Form, Icon, Input, Modal, Row, Table} from "antd";
+import ant from "antd";
 import {Container} from "reactstrap";
-
+const {Button, Col, Form, Icon, Input, Modal, Row, Table}=ant;
 @connect(({manager}) => ({manager}))
 class Index extends Component {
   componentWillMount() {

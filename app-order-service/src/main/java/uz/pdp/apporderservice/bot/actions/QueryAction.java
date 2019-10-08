@@ -15,19 +15,13 @@ import uz.pdp.apporderservice.bot.PdpOrderBot;
 import uz.pdp.apporderservice.bot.service.BotMainService;
 import uz.pdp.apporderservice.bot.utils.BotConstant;
 import uz.pdp.apporderservice.bot.utils.BotState;
-import uz.pdp.apporderservice.entity.DeletingMessage;
-import uz.pdp.apporderservice.entity.Order;
-import uz.pdp.apporderservice.entity.TelegramState;
-import uz.pdp.apporderservice.entity.User;
+import uz.pdp.apporderservice.entity.*;
 import uz.pdp.apporderservice.entity.enums.OrderStatus;
 import uz.pdp.apporderservice.exception.ResourceNotFoundException;
 import uz.pdp.apporderservice.payload.ReqInlineButton;
 import uz.pdp.apporderservice.payload.ReqOrder;
 import uz.pdp.apporderservice.payload.ReqOrderBot;
-import uz.pdp.apporderservice.repository.OrderRepository;
-import uz.pdp.apporderservice.repository.RoleRepository;
-import uz.pdp.apporderservice.repository.TelegramStateRepository;
-import uz.pdp.apporderservice.repository.UserRepository;
+import uz.pdp.apporderservice.repository.*;
 import uz.pdp.apporderservice.service.OrderService;
 import uz.pdp.apporderservice.service.PdfService;
 
@@ -59,6 +53,8 @@ public class QueryAction {
     PdfService pdfService;
     @Autowired
     OrderService orderService;
+    @Autowired
+    BasketRepository basketRepository;
 
     public void runQuery(Update update) {
         String query = update.getCallbackQuery().getData();
@@ -129,6 +125,9 @@ public class QueryAction {
             } catch (TelegramApiException e) {
                 e.printStackTrace();
             }
+        } else if (query.startsWith(BotConstant.BASKET_PAGE)) {
+            Basket basket = basketRepository.findById(UUID.fromString(query.split("#")[1])).orElseThrow(() -> new ResourceNotFoundException("Basket", "id", update));
+            botMainService.savatChaPage(update,basket);
         } else if (query.equals(BotState.CLEINT_INFO)) {
             User user = userRepository.findByTelegramId(update.getCallbackQuery().getMessage().getChatId().intValue()).orElseThrow(() -> new ResourceNotFoundException("user", "id", update));
             SendMessage sendMessage = new SendMessage();
@@ -190,6 +189,70 @@ public class QueryAction {
             } catch (TelegramApiException e) {
                 e.printStackTrace();
             }
+        } else if (query.startsWith(BotConstant.BASKET_ADMIN_FINISH)) {
+            Basket basket = basketRepository.findById(UUID.fromString(query.split("#")[1])).orElseThrow(() -> new ResourceNotFoundException("basket", "id", update));
+            SendMessage sendMessage = new SendMessage();
+            sendMessage.setChatId(basket.getUser().getTelegramId().longValue());
+            sendMessage.setText("Buyurtmangiz rasmiylashtirildi.pdfpdfpdf");
+            sendMessage.setReplyMarkup(createButtonService.createInlineButton("Bosh sahifa",BotState.BACK_TO_CABINET));
+            for (Order order : basket.getOrders()) {
+                order.setStatus(OrderStatus.ACTIVE);
+                orderRepository.save(order);
+            }
+            basketRepository.deleteById(basket.getId());
+            try {
+                pdpOrderBot.execute(sendMessage);
+                botMainService.adminCabinetPage(update);
+            } catch (TelegramApiException e) {
+                e.printStackTrace();
+            }
+
+        } else if (query.startsWith(BotConstant.BASKET_ADMIN_IGNORE)) {
+            Basket basket = basketRepository.findById(UUID.fromString(query.split("#")[1])).orElseThrow(() -> new ResourceNotFoundException("basket", "id", update));
+            SendMessage sendMessage  =new SendMessage();
+            sendMessage.setChatId(basket.getUser().getTelegramId().longValue());
+            sendMessage.setText("Adminstrator buyurtmangizni bekor qildi. Murojaat uchun tel:"+basket.getOrders().get(0).getCreatedBy().getPhoneNumber());
+            sendMessage.setReplyMarkup(createButtonService.createInlineButton("Bosh sahifa",BotState.BACK_TO_CABINET));
+            basketRepository.deleteById(basket.getId());
+            for (Order order : basket.getOrders()) {
+                orderRepository.deleteById(order.getId());
+            }
+            try {
+                pdpOrderBot.execute(sendMessage);
+                botMainService.adminCabinetPage(update);
+            } catch (TelegramApiException e) {
+                e.printStackTrace();
+            }
+        } else if (query.startsWith(BotConstant.BASKET_ACTIVATE)) {
+            try {
+                Basket basket = basketRepository.findById(UUID.fromString(query.split("#")[1])).orElseThrow(() -> new ResourceNotFoundException("basket", "id", update));
+                SendMessage sendMessage = new SendMessage();
+                sendMessage.setText("Adminstrator tasdiqlagandan so'ng buyurtma rasmiylashtiriladi");
+                sendMessage.setChatId(basket.getUser().getTelegramId().longValue());
+                SendMessage sendMessage1 = new SendMessage();
+                sendMessage1.setText(botMainService.basketMessageGeneration(basket));
+                sendMessage1.setChatId(basket.getOrders().get(0).getCreatedBy().getTelegramId().longValue());
+                sendMessage1.setParseMode(ParseMode.HTML);
+                List<List<InlineKeyboardButton>> rows = new ArrayList<>();
+                List<InlineKeyboardButton> row = new ArrayList<>();
+                InlineKeyboardButton button = new InlineKeyboardButton();
+                InlineKeyboardButton button1 = new InlineKeyboardButton();
+                button.setText("Tasdiqlash");
+                button.setCallbackData(BotConstant.BASKET_ADMIN_FINISH + "#" + basket.getId());
+                button1.setText("Rad etish");
+                button1.setCallbackData(BotConstant.BASKET_ADMIN_IGNORE + "#" + basket.getId());
+                row.add(button);
+                row.add(button1);
+                rows.add(row);
+                InlineKeyboardMarkup inlineKeyboardMarkup = new InlineKeyboardMarkup();
+                inlineKeyboardMarkup.setKeyboard(rows);
+                sendMessage1.setReplyMarkup(inlineKeyboardMarkup);
+                pdpOrderBot.execute(sendMessage1);
+                pdpOrderBot.execute(sendMessage);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
         } else if (query.startsWith("Apply/")) {
             try {
                 pdpOrderBot.execute(new DeleteMessage().setMessageId(update.getCallbackQuery().getMessage().getMessageId()).setChatId(update.getCallbackQuery().getMessage().getChatId()));
@@ -418,6 +481,110 @@ public class QueryAction {
             }
 
 
+        } else if (query.startsWith(BotState.ADMIN_IGNORE_ORDER_CABINET)) {
+            UUID basketId = UUID.fromString(query.split("#")[1]);
+            Basket basket = basketRepository.findById(basketId).orElseThrow(() -> new ResourceNotFoundException("basket", "Id", basketId));
+            SendMessage sendMessage = new SendMessage();
+            sendMessage.setText("Buyurtmangiz adminstrator tomonidan bekor qilindi. Murojaat uchun tel:" + basket.getOrders().get(0).getCreatedBy().getPhoneNumber());
+            sendMessage.setChatId(basket.getOrders().get(0).getUser().getTelegramId().longValue());
+            sendMessage.setReplyMarkup(createButtonService.createInlineButton("Bosh menyu", BotState.BACK_TO_CABINET));
+
+            basketRepository.deleteById(basketId);
+
+            for (Order order : basket.getOrders()) {
+                orderRepository.deleteById(order.getId());
+            }
+            try {
+                pdpOrderBot.execute(sendMessage);
+            } catch (TelegramApiException e) {
+                e.printStackTrace();
+            }
+            try {
+                botMainService.adminCabinetPage(update);
+            } catch (TelegramApiException e) {
+                e.printStackTrace();
+            }
+
+
+        } else if (query.startsWith(BotConstant.ORDER_ALLOW_BY_CUSTOMER)) {
+            Basket basket = basketRepository.findById(UUID.fromString(query.split("#")[1])).orElseThrow(() -> new ResourceNotFoundException("basket", "id", update));
+            for (Order order : basket.getOrders()) {
+                order.setStatus(OrderStatus.ACTIVE);
+                orderRepository.save(order);
+            }
+            SendMessage sendMessage = new SendMessage();
+            sendMessage.setText(botMainService.basketMessageGeneration(basket) + "\nTasdiqlandi");
+            sendMessage.setChatId(basket.getOrders().get(0).getCreatedBy().getTelegramId().longValue());
+            sendMessage.setParseMode(ParseMode.HTML);
+            basketRepository.deleteById(basket.getId());
+            try {
+                botMainService.cabinetPage(update);
+                pdpOrderBot.execute(sendMessage);
+            } catch (TelegramApiException e) {
+                e.printStackTrace();
+            }
+
+        } else if (query.startsWith(BotConstant.ORDER_IGNORE_BY_CUSTOMER)) {
+            Basket basket = basketRepository.findById(UUID.fromString(query.split("#")[1])).orElseThrow(() -> new ResourceNotFoundException("basket", "id", update));
+            EditMessageText sendMessage1 = new EditMessageText();
+            sendMessage1.setMessageId(update.getCallbackQuery().getMessage().getMessageId());
+            sendMessage1.setChatId(basket.getOrders().get(0).getUser().getTelegramId().longValue());
+            sendMessage1.setText("Buyurtmangiz bekor qilindi");
+            try {
+                pdpOrderBot.execute(sendMessage1);
+                botMainService.clearBasket(basket);
+                botMainService.cabinetPage(update);
+            } catch (TelegramApiException e) {
+                e.printStackTrace();
+            }
+
+        } else if (query.startsWith(BotConstant.FINISH_ORDER)) {
+            try {
+                Basket basket = basketRepository.findById(UUID.fromString(query.split("#")[1])).orElseThrow(() -> new ResourceNotFoundException("Basket", "id", update));
+                SendMessage sendMessage = new SendMessage();
+                sendMessage.setText("Mijoz tasdiqlagandan so'ng buyurtma rasmiylashtiriladi");
+                sendMessage.setChatId(update.getCallbackQuery().getMessage().getChatId());
+                SendMessage sendMessage1 = new SendMessage();
+                String msg = "<b>Basket</b>\n" +
+                        "<b>Mijoz:</b>" + basket.getUser().getLastName() + " " + basket.getUser().getFirstName() + " " + basket.getUser().getCompanyName() + "\n-------------\n";
+                Double a = 0.0;
+                for (Order saveOrder : basket.getOrders()) {
+                    a += saveOrder.getPrice() * saveOrder.getCount();
+                    msg += (basket.getOrders().indexOf(saveOrder) + 1) +
+                            "<b>. Mahsulot:</b> " + saveOrder.getProductName() + "\n" +
+                            "<b>Soni:</b> " + saveOrder.getCount() + "\n" +
+                            "<b>Narx:</b> " + saveOrder.getPrice() * saveOrder.getCount() + "\n-------------\n";
+                }
+                msg += "\n<b>Umumiy:</b>" + a;
+                sendMessage1.setText(msg);
+                List<List<InlineKeyboardButton>> rows = new ArrayList<>();
+                List<InlineKeyboardButton> row = new ArrayList<>();
+                List<InlineKeyboardButton> row1 = new ArrayList<>();
+                InlineKeyboardButton button = new InlineKeyboardButton();
+                InlineKeyboardButton button1 = new InlineKeyboardButton();
+                InlineKeyboardButton button2 = new InlineKeyboardButton();
+                button2.setText("Yana maxsulot qo'shish");
+                button2.setCallbackData(BotState.BACK_TO_CABINET);
+                button.setText("Tasdiqlash");
+                button1.setText("Bekor qilish");
+                button.setCallbackData(BotConstant.ORDER_ALLOW_BY_CUSTOMER + "#" + basket.getId());
+                button1.setCallbackData(BotConstant.ORDER_IGNORE_BY_CUSTOMER + "#" + basket.getId());
+                row.add(button);
+                row.add(button1);
+                row1.add(button2);
+                rows.add(row);
+                rows.add(row1);
+                InlineKeyboardMarkup inlineKeyboardMarkup = new InlineKeyboardMarkup();
+                inlineKeyboardMarkup.setKeyboard(rows);
+                sendMessage1.setParseMode(ParseMode.HTML);
+                sendMessage1.setReplyMarkup(inlineKeyboardMarkup);
+                sendMessage1.setChatId(basket.getUser().getTelegramId().longValue());
+                pdpOrderBot.execute(sendMessage1);
+                pdpOrderBot.execute(sendMessage);
+                botMainService.adminCabinetPage(update);
+            } catch (TelegramApiException e) {
+                e.printStackTrace();
+            }
         } else if (query.startsWith("PdfSend#")) {
             try {
                 SendMessage sendMessage = new SendMessage();
@@ -429,8 +596,6 @@ public class QueryAction {
                 telegramState.setCustomerChatId(Long.parseLong(query.split("#")[1]));
                 telegramStateRepository.save(telegramState);
                 pdpOrderBot.execute(sendMessage);
-
-
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -446,6 +611,40 @@ public class QueryAction {
                 sendMessage.setChatId(update.getCallbackQuery().getMessage().getChatId());
                 pdpOrderBot.execute(sendMessage);
             } catch (Exception e) {
+                e.printStackTrace();
+            }
+        } else if (false) {
+            TelegramState telegramState = botMainService.getLastState(update).orElseThrow(() -> new ResourceNotFoundException("state", "id", update));
+            SendMessage sendMessage = new SendMessage();
+            sendMessage.setText("Mijoz tasdiqlagandan so'ng buyurtma aktivlashtiriladi");
+            sendMessage.setChatId(update.getMessage().getChatId());
+            telegramState.setState(BotState.ADMIN_CABINET);
+            telegramStateRepository.save(telegramState);
+            try {
+                pdpOrderBot.execute(sendMessage);
+            } catch (TelegramApiException e) {
+                e.printStackTrace();
+            }
+
+            SendMessage sendMessage1 = new SendMessage();
+//            sendMessage1.setText("<b>Buyurtma:</b>\n" +
+//                    "<b>Maxsulot nomi:</b> " + order.getProductName() + "\n" +
+//                    "<b>Narxi(dona):</b> " + order.getPrice() + "\n" +
+//                    "<b>Soni:</b>: " + order.getCount());
+            List<ReqInlineButton> buttons = new ArrayList<>();
+            buttons.add(new ReqInlineButton("✅ Tasdiqlash", "ActivateOrder/"));
+            buttons.add(new ReqInlineButton("❌ Bekror qilish", "DeactivateOrder/"));
+            List<List<InlineKeyboardButton>> rows = new ArrayList<>();
+            List<InlineKeyboardButton> row = createButtonService.createOneRowButtons(buttons);
+            rows.add(row);
+            InlineKeyboardMarkup inlineKeyboardMarkup = new InlineKeyboardMarkup();
+            inlineKeyboardMarkup.setKeyboard(rows);
+            sendMessage1.setReplyMarkup(inlineKeyboardMarkup);
+            sendMessage1.setChatId(telegramState.getCustomerChatId());
+            sendMessage1.setParseMode(ParseMode.HTML);
+            try {
+                pdpOrderBot.execute(sendMessage1);
+            } catch (TelegramApiException e) {
                 e.printStackTrace();
             }
         } else if (query.startsWith(BotConstant.APLY_ORDER_WITH_NEW_PRICE)) {
@@ -474,7 +673,7 @@ public class QueryAction {
                 e.printStackTrace();
             }
         } else if (query.equals(BotState.KOMPRED)) {
-            botMainService.sendSimpleMessage(update,"Faylni yuklang",BotState.FILE_SEND);
+            botMainService.sendSimpleMessage(update, "Faylni yuklang", BotState.FILE_SEND);
         } else if (query.startsWith(BotConstant.CHANGE_EXISTING_ORDER_PRICE)) {
             try {
                 TelegramState telegramState = botMainService.getLastState(update).orElseThrow(() -> new ResourceNotFoundException("laststate", "id", update));
@@ -499,6 +698,12 @@ public class QueryAction {
             } catch (TelegramApiException e) {
                 e.printStackTrace();
             }
+            try {
+                botMainService.adminCabinetPage(update);
+            } catch (TelegramApiException e) {
+                e.printStackTrace();
+            }
+        } else if (query.equals(BotState.BACK_TO_ADMIM_CABINET)) {
             try {
                 botMainService.adminCabinetPage(update);
             } catch (TelegramApiException e) {

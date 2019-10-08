@@ -26,10 +26,11 @@ public interface OrderRepository extends JpaRepository<Order, UUID> {
 
     List<Order> findAllByUserAndStatusOrderByCreatedAtDesc(User user,OrderStatus status);
 
-    @Query(value = "select * from orders t where t.id=(select id from orders where product_name=t.product_name order by created_at desc limit 1) and t.user_id=:userId",nativeQuery = true)
+    @Query(value = "select * from orders t where t.id=(select id from orders where product_name=t.product_name order by created_at desc limit 1) and t.user_id=:userId and t.status<>'HIDDEN'",nativeQuery = true)
     List<Order> findAllByUser_Id1(UUID userId);
 
     @Query(value = "select cast(t.id as varchar ) from users t where t.id in (select user_id from user_role where role_id=30) order by (select count(*) from orders o where o.created_by_id=t.id) limit 1",nativeQuery = true)
     String getUserWithLessOrder();
 
+    Integer countAllByUser(User user);
 }

@@ -3,27 +3,10 @@ import {connect} from "dva"
 import moment from 'moment'
 import PaymentModal from '../../components/PaymentModal/index'
 import CurrencyInput from 'react-currency-input';
-import {
-  Button,
-  Checkbox,
-  Col,
-  DatePicker,
-  Dropdown,
-  Form,
-  Icon,
-  Input,
-  Menu,
-  Modal,
-  Pagination,
-  Popconfirm,
-  Row,
-  Select,
-  Table,
-  Tabs
-} from "antd";
+import ant from "antd";
 import './index.less'
 
-
+const {Button, Checkbox, Col, DatePicker, Dropdown, Form, Icon, Input, Menu, Modal, Pagination, Popconfirm, Row, Select, Table, Tabs}=ant;
 @connect(({dashboard}) => ({dashboard}))
 class Index extends PureComponent {
 
@@ -361,7 +344,7 @@ class Index extends PureComponent {
 
     return (
       <div className="container-fluid bg-white">
-        <div className="container admin">
+        <div className="admin">
           <h2 className="text-center pt-5 py-3"><b>Buyurtmalar</b></h2>
           <Row>
             <Col offset={17} className=''>

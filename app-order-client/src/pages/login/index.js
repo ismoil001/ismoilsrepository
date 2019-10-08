@@ -2,11 +2,11 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import MaskedInput from 'react-text-mask'
 import { connect } from 'dva'
-import {Button, Row, Form, Input, Col, Icon} from 'antd'
+import ant from 'antd'
 import { config } from 'utils'
 import styles from './index.less'
 // import {FormattedMessage, formatMessage} from 'umi/locale'
-
+const {Button, Row, Form, Input, Col, Icon} = ant;
 const FormItem = Form.Item;
 
 const Login = ({
