@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 import {connect} from "react-redux";
 import MaskedInput from 'react-text-mask'
 import {Button, Col, Form, Icon, Input, Modal, Row, Table} from "antd";
-import {Container} from "reactstrap";
+import {Container, Nav, NavItem, NavLink, TabContent, TabPane} from "reactstrap";
+import classnames from 'classnames';
 
 @connect(({manager}) => ({manager}))
 class Index extends Component {
@@ -11,15 +12,33 @@ class Index extends Component {
     const {dispatch} = this.props;
     dispatch({
       type: 'manager/getManager'
+    });
+    dispatch({
+      type: 'manager/getCustomers'
     })
   }
+  constructor(props) {
+    super(props);
+    this.toggle = this.toggle.bind(this);
+    this.state = {
+      activeTab: '1'
+    };
+  }
 
+  toggle(tab) {
+    if (this.state.activeTab !== tab) {
+      this.setState({
+        activeTab: tab
+      });
+    }
+  }
   render() {
     const {dispatch, manager} = this.props;
     const {
-      allManagers, record, isEdit,
+      allManagers, record, isEdit,allCustomers,
       recordId, openDeleteModal, openAddModal
     } = manager;
+    console.log(allCustomers)
     const {getFieldDecorator, getFieldsError, getFieldError, isFieldTouched} = this.props.form;
     const columns = [
       {
@@ -136,15 +155,42 @@ class Index extends Component {
     return (
       <div>
         <Container>
-          <h2 className="text-center mt-5"><b>Menejerlar</b></h2>
-          <Row className="my-4">
-            <Col span={20}>
-              <Button  onClick={addManager} className=" btn-dark mb-4">Qo'shish</Button>
-            </Col>
-          </Row>
           <Row className="mt-3">
             <Col span={24}>
-              <Table pagination={false} columns={columns} dataSource={allManagers}/>
+              <Nav tabs className="mt-4">
+                <NavItem>
+                  <NavLink
+                    className={classnames({active: this.state.activeTab === '1'})}
+                    onClick={() => {
+                      this.toggle('1');
+                    }}
+                  >
+                    <h6> Barcha Manager lar ro'yxati</h6>
+                  </NavLink>
+                </NavItem>
+                <NavItem>
+                  <NavLink
+                    className={classnames({active: this.state.activeTab === '2'})}
+                    onClick={() => {
+                      this.toggle('2');
+                    }}
+                  >
+                    <h6>Barcha Xaridorlar ro'yxati</h6>
+                  </NavLink>
+                </NavItem>
+              </Nav>
+              <TabContent activeTab={this.state.activeTab}>
+                <TabPane tabId="1">
+                  <h2 className="text-center mt-2 mb-1"><b>Managerlar</b></h2>
+                      <Button  onClick={addManager} className=" btn-dark mb-2">Qo'shish</Button>
+                  <Table pagination={false} columns={columns} dataSource={allManagers}/>
+                </TabPane>
+                <TabPane tabId="2">
+                  <h2 className="text-center mt-2 mb-2"><b>Haridorlar</b></h2>
+                  <Table pagination={false} columns={columns} dataSource={allCustomers}/>
+                </TabPane>
+              </TabContent>
+              {/*<Table pagination={false} columns={columns} dataSource={allManagers}/>*/}
             </Col>
           </Row>
         </Container>

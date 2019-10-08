@@ -33,6 +33,7 @@ module.exports = {
     saveMaster:`${API}/master`,
     getAllMasters:`${API}/master`,
     deleteMasters:`${API}/master`,
-    editMaster:`${API}/master`
+    editMaster:`${API}/master`,
+    getCustomers:`${API}/users/customer`
   },
 };

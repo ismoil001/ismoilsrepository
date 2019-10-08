@@ -1,10 +1,11 @@
 import {managers,saveManager,
-  deleteManager,editManag} from 'services/app'
+  deleteManager,editManag,customers} from 'services/app'
 
 export default {
   namespace: 'manager',
   state: {
     allManagers: [],
+    allCustomers:[],
     openAddModal:false,
     openDeleteModal:false,
     record:{},
@@ -42,6 +43,15 @@ export default {
         }
       })
     },
+    * getCustomers({payload}, {call, put, select}) {
+      const res = yield call(customers);
+      yield put({
+        type:'updateState',
+        payload:{
+          allCustomers: res.object
+        }
+      })
+    },
     * saveManager({payload},{call,put,select}){
       const res=yield call(saveManager,payload);
       const {openAddModal}=yield select(_=>_.manager);
@@ -61,6 +71,9 @@ export default {
       const res=yield call(deleteManager,payload);
       yield put({
         type:'getManager'
+      });
+      yield put({
+        type:'getCustomers'
       });
       yield put({
         type:'updateState',
@@ -84,8 +97,6 @@ export default {
 
     }
   },
-
-
   reducers: {
     updateState(state, {payload}) {
       return {

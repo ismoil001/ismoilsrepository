@@ -49,7 +49,7 @@ public class DataLoader implements CommandLineRunner {
             User user1 = new User("+998947777777", passwordEncoder.encode("root123"), "Sobir", "Xalimov", "Botirovich", new HashSet<>(roleRepository.findAllByName(RoleName.ROLE_ADMIN)), "Europrint");
             userRepository.save(user);
             userRepository.save(user1);
-            User user12 = new User("+998993632582", passwordEncoder.encode("asd"), "Alisher", "Atadjanov", "Baxramovich", new HashSet<>(roleRepository.findAllByName(RoleName.ROLE_CUSTOMER)), "PDP");
+            User user12 = new User("+998993632587", passwordEncoder.encode("asd"), "Alisher", "Atadjanov", "Baxramovich", new HashSet<>(roleRepository.findAllByName(RoleName.ROLE_CUSTOMER)), "PDP");
             userRepository.save(user12);
         }
     }
